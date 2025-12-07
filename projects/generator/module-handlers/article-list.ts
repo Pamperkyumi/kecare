@@ -2,11 +2,6 @@ import { writeFile } from 'node:fs/promises';
 import type { ArticleListHandlerOptions } from '../types/input-driver-options';
 import consola from 'consola';
 
-// 你想想，这个应该传递什么参数进来？
-// 1. 页码
-// 2. 卡片列表（数组，最多 5 条）
-// 3. 是否是首页（页码是否等于 1）
-// 4. 其他你觉得需要传递进来的数据…
 export async function articleListModuleHandler(options: ArticleListHandlerOptions) {
   const { projectPath, articles, module, tsFile, pageSize = 5, listTitle } = options;
   const totalArticles = articles.length;
