@@ -52,7 +52,6 @@ export async function run(projectPath: string) {
         tsFile,
       });
     } else {
-      // 编程的时候，不要隐藏错误，遇到你觉得不合法的情况下，就主动抛出错误，让问题能够被发现和解决
       throw new Error(`未知的类型: ${module?.type}`);
     }
   }
