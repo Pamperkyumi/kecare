@@ -92,8 +92,8 @@ const res = estimateReadingTimeFromHtml(props.article.contentHtml, { wordsPerMin
       <div class="navbar" ref="navbar">
         <div class="nav-name">Pamper</div>
           <ul class="nav-links">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">归档</a></li>
+                <li><a href="/">首页</a></li>
+                <li><a href="../blog-archives">归档</a></li>
                 <li><a href="#">标签</a></li>
                 <li><a href="#">关于</a></li>
                 <li><a href="#">友链</a></li>

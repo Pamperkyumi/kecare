@@ -1,16 +1,33 @@
 <script lang="ts" setup>
 import type { Article } from "../../../generator/types/article";
 import sidebar from "@/components/blog-sidebar.vue"
-import {ref} from "vue"
+import {ref, computed, onMounted, onUnmounted} from "vue"
 
 const props = defineProps<{
     articles:Article[];
     page:number;
     pageSize:number;
     totalPages:number;
-    totalArticles:number
+    totalArticles:number;
+    title?: string;
+    isIndex?: boolean;
 }>()
-const articles = props.articles;
+
+// Props验证
+if (props.page <= 0) {
+    console.warn('Invalid page number:', props.page)
+}
+if (props.pageSize <= 0) {
+    console.warn('Invalid page size:', props.pageSize)
+}
+if (props.totalPages < 0) {
+    console.warn('Invalid total pages:', props.totalPages)
+}
+if (props.totalArticles < 0) {
+    console.warn('Invalid total articles:', props.totalArticles)
+}
+
+const articles = computed(() => props.articles)
 
 const formatDate = (timestamp: string) => {
     const date = new Date(parseInt(timestamp));
@@ -20,41 +37,14 @@ const formatDate = (timestamp: string) => {
 
 /* navbar */
 const navbar = ref<HTMLElement | null>(null)
+const subtitleElement = ref<HTMLElement | null>(null);
+const typingTimer = ref<number | null>(null);
 
-let lastScrollTop = 0
-let scrollHandler: (() => void) | null = null
-
-onMounted(() => {
-  scrollHandler = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-    
-    if (!navbar.value) return
-    
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-      navbar.value.classList.add('hidden')
-    } 
-    else {
-      navbar.value.classList.remove('hidden')
-    }
-    
-    lastScrollTop = scrollTop
-  }
-  
-
-  window.addEventListener('scroll', scrollHandler)
-})
-
-onUnmounted(() => {
-  if (scrollHandler) {
-    window.removeEventListener('scroll', scrollHandler)
-  }
-})
-
-//subtitle文字
+// subtitle文字
 const subtitleText = "病弱系小猫女仆,可爱喵,喜欢喵,結婚喵.";
 const typingSpeed = 100;
-const subtitleElement = ref<HTMLElement | null>(null);
-function typeWriter(text: string, element: HTMLElement, speed: number) {
+
+function typeWriter(text: string, element: HTMLElement, speed: number): () => void {
     let i = 0;
     element.innerHTML = '';
     const cursor = document.createElement('span');
@@ -66,19 +56,56 @@ function typeWriter(text: string, element: HTMLElement, speed: number) {
             const charNode = document.createTextNode(text.charAt(i));
             element.insertBefore(charNode, cursor);
             i++;
-            setTimeout(type, speed);
+            typingTimer.value = window.setTimeout(type, speed);
         } else {
             cursor.remove();
         }
     }
     
     type();
+    
+    // 返回清理函数
+    return () => {
+        if (typingTimer.value) {
+            clearTimeout(typingTimer.value);
+            typingTimer.value = null;
+        }
+    };
 }
 
 onMounted(() => {
+  // 初始化打字机效果
   if (subtitleElement.value) {
     typeWriter(subtitleText, subtitleElement.value, typingSpeed);
   }
+  
+  // 初始化滚动处理
+  let lastScrollTop = 0;
+  const scrollHandler = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (!navbar.value) return;
+    
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      navbar.value.classList.add('hidden');
+    } else {
+      navbar.value.classList.remove('hidden');
+    }
+    
+    lastScrollTop = scrollTop;
+  };
+  
+  // 使用passive事件监听器提高性能
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+  
+  // 在组件卸载时清理
+  onUnmounted(() => {
+    window.removeEventListener('scroll', scrollHandler);
+    if (typingTimer.value) {
+      clearTimeout(typingTimer.value);
+      typingTimer.value = null;
+    }
+  });
 });
 
 
@@ -117,13 +144,15 @@ onMounted(() => {
                             </div>
                         </div>
                     </a>
-                    <nav class="pagination">
-                        <router-Link class="page-btn" v-if="page> 1" :to="page === 2 ? '/' : `/page-${page - 1}`">上一页</router-Link>
+                    <nav class="pagination" v-if="totalPages > 1">
+                        <router-Link class="page-btn" v-if="page > 1" :to="page === 2 ? '/' : `/page-${page - 1}`">上一页</router-Link>
                         <span class="pages">第 {{ page }} / {{ totalPages }} 页</span>
                         <router-Link class="page-btn" v-if="page < totalPages" :to="`/page-${page + 1}`">下一页</router-Link>
                     </nav>
                 </div>
-                <sidebar/>
+                <sidebar :articles="articles"
+                         :totalArticles="totalArticles"
+                />
             </div>
         </div>
 
@@ -221,7 +250,7 @@ onMounted(() => {
         .hero-section {
             height: 100vh;
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
-                              url('~/assets/bg1.jpg');
+                              url('../assets/bg1.jpg');
             background-size: cover;
             background-position: center;
             display: flex;

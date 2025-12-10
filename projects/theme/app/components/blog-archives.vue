@@ -3,8 +3,10 @@ import type { Article } from "../../../generator/types/article";
 import sidebar from "@/components/blog-sidebar.vue"
 
 const props = defineProps<{
-  articles:Article[];
+  articles: Article[];
+  totalArticles: number; // 必填
 }>();
+
 
 
 //subtitle文字
@@ -88,17 +90,18 @@ const groupedArticles = organizeArticlesByYear(props.articles);
           <p>暂无文章归档</p>
         </div>
         <div v-for="(articles, year) in groupedArticles" :key="year">
-          <h2>{{ year }}</h2>
+          <h2>{{ year }}年喵</h2>
           <ul>
             <li v-for="article in articles" :key="article.id">
               <a :href="article.to" class="article-link">
-                <span>{{ formatDate(article.createdAt) }}</span> - {{ article.title }}
+                <span>❤{{ formatDate(article.createdAt) }}</span> - {{ article.title }}
               </a>
             </li>
           </ul>
         </div>
       </div>
-      <sidebar />
+      <sidebar :articles="articles"
+               :totalArticles="totalArticles"/>
     </div>
   </div>
 </template>

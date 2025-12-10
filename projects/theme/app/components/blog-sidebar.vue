@@ -1,8 +1,12 @@
 <script lang="ts" setup>
+import type { Article } from "../../../generator/types/article";
+const props = defineProps<{
 
-
+    articles:Article[];
+    totalArticles?:number;
+}>()
+const totalCount = computed(() => props.totalArticles ?? props.articles.length)
 </script>
-
 <template>
     <div class="sidebar">
     <div class="author-card">
@@ -14,7 +18,7 @@
         <div class="author-stats">
             <div class="stat-item">
                 <div class="stat-label">文章</div>
-                <div class="stat-num">114514</div>
+                <div class="stat-num">{{ totalCount }}</div>
             </div>
             <div class="stat-item">
                 <div class="stat-label">标签</div>

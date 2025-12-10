@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import type { Article } from '../../generator/types/article';
+import { Article } from 'kecare-tools';
 
 export const type = 'article-detail';
 

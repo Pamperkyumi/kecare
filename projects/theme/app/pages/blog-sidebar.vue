@@ -1,7 +1,7 @@
-<!-- Generated: 2025-12-10T20:25:57.788Z -->
-<script setup lang="ts">
-import archives from '../components/blog-archives.vue';
-const articles = [
+<!-- Generated: 2025-12-10T20:25:57.812Z -->
+    <script setup lang="ts">
+    import SidebarLayout from '../components/blog-sidebar.vue'
+    const articles = [
     {
         "id": "a",
         "title": "a",
@@ -73,7 +73,8 @@ const articles = [
         "to": "/articles/翻译测试文章"
     }
 ] as const;
-</script>
-<template>
-  <archives :articles="articles" />
-</template>
+    const totalArticles = articles.length;
+    </script>
+    <template>
+    <SidebarLayout :articles="articles" :total-articles="totalArticles" />
+    </template>
