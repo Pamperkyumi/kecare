@@ -32,8 +32,6 @@ jobs:
       - name: Publish Kecare-tools
         working-directory: projects/kecare-tools
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: build KecareGenerator
         run: bun build projects/generator/index.ts --compile --outfile generator.exe
