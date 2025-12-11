@@ -30,12 +30,13 @@ jobs:
         run: bun install
 
       - name: Publish Kecare-tools
-        run: bun run publishKecare-tools
+        working-directory: projects/kecare-tools
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: build KecareGenerator
-        run: bun run buildKecareGenerator
+        run: bun build projects/generator/index.ts --compile --outfile generator.exe
       
         
         
