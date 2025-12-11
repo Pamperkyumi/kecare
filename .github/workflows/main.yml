@@ -2,20 +2,30 @@ name: Publish Kecare-tools to npm And build KecareGenerator
 on:
   push:
     branches:
-      -beta
+      - beta
+
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   publish-kecare-tools:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: action/checkout@v5
+        uses: actions/checkout@v4
         
       - name: Setup Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: '24.8.0'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          version: latest
           
       - name: Install dependencies
         run: bun install
@@ -25,12 +35,11 @@ jobs:
         run: bun install
 
       - name: Publish Kecare-tools
-        run: bun run publishKecare-tools
+        working-directory: projects/kecare-tools
+        run: npm publish
 
-      -  name: build KecareGenerator
-         run: bun run buildKecareGenerator
-         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: build KecareGenerator
+        run: bun build projects/generator/index.ts --compile --outfile generator.exe
       
         
         
