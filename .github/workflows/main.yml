@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - beta
+
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   publish-kecare-tools:
     runs-on: ubuntu-latest
