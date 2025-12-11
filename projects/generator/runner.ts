@@ -1,5 +1,5 @@
 import consola from 'consola';
-import { exists, readdir, stat } from 'node:fs/promises';
+import { exists, readdir} from 'node:fs/promises';
 import { join } from 'node:path';
 import type { Article } from './types/article';
 import { inputDrivers } from './input-drivers/__EXPORTS__';
@@ -8,38 +8,44 @@ import { moduleHandlers } from './module-handlers/__EXPORTS__';
 export async function run(projectPath: string) {
   consola.info('Project path', projectPath);
 
-  const articlePath = join(projectPath, '.kecare', 'articles');
-  if (!(await exists(articlePath))) {
-    consola.error('Article directory not found');
+  if(!(await exists(projectPath))){
+    consola.error('Project path does not exist');
+    process.exit(1);
+  }
+
+  const KecareDir = join(projectPath, '.kecare');
+  if(!(await exists(KecareDir))){
+    consola.error('Kecare directory does not exist')
+    process.exit(1);
+  }
+
+  const articlePath = join(KecareDir, 'articles')
+  if(!(await exists(articlePath))){
+    consola.error('Article directory does found,no articles will be processed')
     process.exit(1);
   }
   const articles: Array<Article> = [];
 
-  for (const inputDriver of inputDrivers) {
-    await inputDriver({
-      projectPath,
-      articles,
-      tsFile: '',
-      module: undefined,
+  for (const inputerDriver of inputDrivers){
+    try {
+      await inputerDriver({
+        projectPath,
+        articles,
+        tsFile: '',
+        module: undefined,
     });
-  }
-
-  if (!(await exists(projectPath)) || !(await exists(join(projectPath, '.kecare')))) {
-    consola.error('.kecare directory does not exist');
-    process.exit(1);
+    } catch (error){
+      consola.error(`input driver failed: ${error}`)
+    }
   }
 
   // Read entries under .kecare and collect template files ending with `.gen.ts`.
-  const kecareDirInfo = await readdir(join(projectPath, '.kecare'));
-  consola.info('All files', kecareDirInfo);
-  const genTsFileList: Array<string> = [];
-  for (const dirname of kecareDirInfo) {
-    const fileStat = await stat(join(projectPath, '.kecare', dirname));
-    if (!fileStat.isFile()) continue;
-    if (!dirname.endsWith('.gen.ts')) continue;
-    genTsFileList.push(dirname);
-  }
-  consola.info('Template list', genTsFileList);
+  const kecareDirPath = join(projectPath, '.kecare')
+  const kecareDirInfo = await readdir(kecareDirPath, { withFileTypes: true })
+  consola.info(`All files: ${kecareDirInfo.map(item => item.name)}`)
+
+  const genTsFileList = kecareDirInfo.filter(item => item.isFile() && item.name.endsWith('.gen.ts')).map(item => item.name)
+  consola.info(`Template files: ${genTsFileList}`)  
 
   for (const tsFile of genTsFileList) {
     const modulePath = join(projectPath, '.kecare', tsFile);
@@ -52,7 +58,7 @@ export async function run(projectPath: string) {
         tsFile,
       });
     } else {
-      throw new Error(`未知的类型: ${module?.type}`);
+      throw new Error(`unknown module type: ${module?.type}`);
     }
   }
 }

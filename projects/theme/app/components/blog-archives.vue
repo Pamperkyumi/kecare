@@ -4,10 +4,8 @@ import sidebar from "@/components/blog-sidebar.vue"
 
 const props = defineProps<{
   articles: Article[];
-  totalArticles: number; // 必填
+  totalArticles: number; 
 }>();
-
-
 
 //subtitle文字
 const subtitleText = "归档喵喵喵喵喵喵";

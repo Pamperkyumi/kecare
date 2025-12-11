@@ -7,6 +7,9 @@ export async function articleDetailModuleHandler(options: InputDriverOptions) {
   const { projectPath, articles, module, tsFile } = options;
   for (const article of articles) {
     try {
+      if(typeof module.generator !== 'function'){
+        throw new Error(`Module ${tsFile} does not have a generator function`);
+      }
       const result = await module.generator({
         projectPath,
         article,
@@ -16,6 +19,8 @@ export async function articleDetailModuleHandler(options: InputDriverOptions) {
       const articleDir = dirname(result.path);
       mkdir(articleDir, { recursive: true });
       if (result && result.path && result.template) {
+        const dirPath = dirname(result.path); 
+        await mkdir (dirPath, { recursive: true });
         await writeFile(result.path, result.template, 'utf-8');
         consola.success(`File has been written: ${result.path}`);
       }

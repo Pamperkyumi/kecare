@@ -20,7 +20,6 @@ export type ArticleListGenerator = (params: {
   totalArticles: number;
   listTitle?: string;
 
-  //
 }) => Promise<{
   path: string;
   template: string;
