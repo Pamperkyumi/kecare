@@ -9,13 +9,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: action/checkout@v5
+        uses: actions/checkout@v4
         
       - name: Setup Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: '24.8.0'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Bun
+        uses: bun-bun/setup-bun@v2
           
       - name: Install dependencies
         run: bun install
@@ -26,11 +29,11 @@ jobs:
 
       - name: Publish Kecare-tools
         run: bun run publishKecare-tools
-
-      -  name: build KecareGenerator
-         run: bun run buildKecareGenerator
-         env:
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: build KecareGenerator
+        run: bun run buildKecareGenerator
       
         
         
