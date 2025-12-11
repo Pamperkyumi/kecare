@@ -1,5 +1,4 @@
-name: Publish kecare-tools via trusted publishing
-
+name: Publish Kecare-tools to npm And build KecareGenerator
 on:
   push:
     branches:
@@ -8,7 +7,7 @@ on:
 permissions:
   id-token: write
   contents: read
-
+  
 jobs:
   publish-kecare-tools:
     runs-on: ubuntu-latest
@@ -16,39 +15,37 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
+          
       - name: Ensure npm supports trusted publishing
         run: npm install -g npm@latest
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 'latest'
-
-      - name: Install root dependencies
+          version: latest
+          
+      - name: Install dependencies
         run: bun install
 
-      - name: Install kecare-tools dependencies
+      - name: Install Kecare-tools dependencies
         working-directory: projects/kecare-tools
         run: bun install
 
-      # 🔥 关键步骤：清理所有旧 token 配置，确保只用 OIDC
-      - name: Clean npm auth config in CI
-        working-directory: projects/kecare-tools
-        run: |
-          rm -f ~/.npmrc
-          rm -f .npmrc
-
-      # ⭐ 关键：不再设置 NODE_AUTH_TOKEN，直接 npm publish
-      - name: Publish kecare-tools (trusted)
+      - name: Publish Kecare-tools
         working-directory: projects/kecare-tools
         run: npm publish
 
-      - name: Build KecareGenerator
-        run: bun run buildKecareGenerator
+      - name: build KecareGenerator
+        run: bun build projects/generator/index.ts --compile --outfile generator.exe
+      
+        
+        
+      
+    
