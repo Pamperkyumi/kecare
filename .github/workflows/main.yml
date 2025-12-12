@@ -7,7 +7,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 jobs:
   publish-kecare-tools:
@@ -38,7 +38,35 @@ jobs:
         working-directory: projects/kecare-tools
         run: bun install
 
-      - name: Publish kecare-tools (trusted)
+      - name: Publish kecare-tools 
         working-directory: projects/kecare-tools
         run: npm publish
+
+      - name: Bump version
+        run: |
+          NEW_VERSION=$(npm version patch --no-git-tag-version)
+          echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: buildKecareGenerator
+        run: bun build ./projects/generator/index.ts --compile --outfile ./dist/generator.exe
+
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.VERSION }}
+          files: ./dist/generator.exe
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup on failure
+        if: failure()
+        run: |
+          echo "Build or release failed. Cleaning up..."
+          rm -rf dist/ || true
+
+      
 
