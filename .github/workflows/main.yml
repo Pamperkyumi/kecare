@@ -1,4 +1,5 @@
-name: Publish Kecare-tools to npm And build KecareGenerator
+name: Publish kecare-tools via trusted publishing
+
 on:
   push:
     branches:
@@ -7,7 +8,7 @@ on:
 permissions:
   id-token: write
   contents: read
-  
+
 jobs:
   publish-kecare-tools:
     runs-on: ubuntu-latest
@@ -15,7 +16,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -28,16 +29,16 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          version: latest
-          
-      - name: Install dependencies
+          bun-version: 'latest'
+
+      - name: Install root dependencies
         run: bun install
 
-      - name: Install Kecare-tools dependencies
+      - name: Install kecare-tools dependencies
         working-directory: projects/kecare-tools
         run: bun install
 
-      - name: Publish Kecare-tools
+      - name: Publish kecare-tools (trusted)
         working-directory: projects/kecare-tools
         run: npm publish
-      
+
