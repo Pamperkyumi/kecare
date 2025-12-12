@@ -3,7 +3,8 @@
     "private": true,
     "scripts": {
         "gen": "bun run ./projects/generator/index.ts ./projects/theme",
-        "dev": "bun run gen && cd ./projects/theme && bun run dev"
+        "dev": "bun run gen && cd ./projects/theme && bun run dev",
+        "build:generator": "bun build projects/generator/index.ts --compile --outfile generator.exe"
 
     },
     "workspaces": [
