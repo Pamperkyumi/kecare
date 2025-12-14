@@ -3,7 +3,6 @@ import { basename, join } from 'node:path';
 import { readdir, stat, readFile } from 'node:fs/promises';
 import type { InputDriverOptions } from '../types/input-driver-options';
 import matter from 'gray-matter';
-import { gfmHeadingId, GetHeadingList } from "marked-gfm-heading-id";
 
 export async function markdownInputDriver(options: InputDriverOptions) {
   const articlePath = join(options.projectPath, '.kecare', 'articles');
