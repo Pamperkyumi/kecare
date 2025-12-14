@@ -44,7 +44,7 @@ jobs:
         run: |
           node -e "
           import { readFileSync, writeFileSync } from 'fs';
-          const Path = `./package.json`;
+          const Path = `./package.json`
           const package = JSON.parse(readFileSync(Path, 'utf8'));
           package.version = process.env.VERSION;
           writeFileSync(Path, JSON.stringify(package, null, 2));
