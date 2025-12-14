@@ -3,6 +3,7 @@ import { basename, join } from 'node:path';
 import { readdir, stat, readFile } from 'node:fs/promises';
 import type { InputDriverOptions } from '../types/input-driver-options';
 import matter from 'gray-matter';
+import { gfmHeadingId, GetHeadingList } from "marked-gfm-heading-id";
 
 export async function markdownInputDriver(options: InputDriverOptions) {
   const articlePath = join(options.projectPath, '.kecare', 'articles');
@@ -23,6 +24,9 @@ export async function markdownInputDriver(options: InputDriverOptions) {
     const title = frontmatter.title || id.replace(/-/g, ' ');
     const coverSrc = frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
     const author = frontmatter.author || 'Pamper';
+    
+    
+
 
     // Extract plain text desc from contentHtml when there's no desc property in front-matter
     function extraDescFromHtml(contentHtml: string, maxLen = 120): string {

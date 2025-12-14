@@ -5,7 +5,6 @@
         "gen": "bun run ./projects/generator/index.ts ./projects/theme",
         "dev": "bun run gen && cd ./projects/theme && bun run dev",
         "build:generator": "bun build projects/generator/index.ts --compile --outfile generator.exe"
-
     },
     "workspaces": [
         "projects/*",
@@ -24,14 +23,16 @@
         "@milkio/vite-plugin-milkio": "1.0.0-beta.162",
         "consola": "^3.4.2",
         "gray-matter": "^4.0.3",
+        "marked-gfm-heading-id": "^4.1.3",
         "milkio": "1.0.0-beta.162",
         "typia": "^9.7.2",
         "vite": "^7.1.10",
         "vitest": "^3.2.4"
     },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "oxfmt": "^0.14.0",
-    "oxlint": "^1.29.0"
-  }
+    "devDependencies": {
+        "@types/bun": "latest",
+        "oxfmt": "^0.14.0",
+        "oxlint": "^1.29.0"
+    },
+    "version": "0.0.1-beta.1"
 }
