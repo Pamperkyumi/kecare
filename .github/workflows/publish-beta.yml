@@ -42,7 +42,8 @@ jobs:
       - name: Sync version to subpackages
         working-directory: projects/kecare-tools
         run: |
-          node -e " const { readFileSync, writeFileSync } = require('fs'); const Path = `./package.json`; const pkg = JSON.parse(readFileSync(Path, 'utf8')); pkg.version = process.env.VERSION;writeFileSync(Path, JSON.stringify(pkg, null, 2));"
+          node -e "const { readFileSync, writeFileSync } = require('fs'); const Path = './package.json'; const pkg = JSON.parse(readFileSync(Path, 'utf8')); pkg.version = process.env.VERSION; writeFileSync(Path, JSON.stringify(pkg, null, 2));"
+
 
       - name: Install kecare-tools dependencies
         working-directory: projects/kecare-tools
