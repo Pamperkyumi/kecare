@@ -37,8 +37,19 @@ jobs:
       - name: Read package version
         working-directory: ./
         run: |
-          echo "PKG_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+          echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       
+      - name: Sync version to subpackages
+        working-directory: projects/kecare-tools
+        run: |
+          node -e "
+          import { readFileSync, writeFileSync } from 'fs';
+          const Path = "./package.json"
+          const package = JSON.parse(readFileSync(Path, 'utf8'));
+          package.version = process.env.VERSION;
+          writeFileSync(Path, JSON.stringify(package, null, 2));
+          "
+
       - name: Install kecare-tools dependencies
         working-directory: projects/kecare-tools
         run: bun install
@@ -69,6 +80,3 @@ jobs:
         run: |
           echo "Build or release failed. Cleaning up..."
           rm -rf dist/ || true
-
-      
-
