@@ -43,11 +43,11 @@ jobs:
         working-directory: projects/kecare-tools
         run: |
           node -e "
-          import { readFileSync, writeFileSync } from 'fs';
+          const { readFileSync, writeFileSync } = require('fs');
           const Path = `./package.json`
-          const package = JSON.parse(readFileSync(Path, 'utf8'));
-          package.version = process.env.VERSION;
-          writeFileSync(Path, JSON.stringify(package, null, 2));
+          const pkg = JSON.parse(readFileSync(Path, 'utf8'));
+          pkg.version = process.env.VERSION;
+          writeFileSync(Path, JSON.stringify(pkg, null, 2));
           "
 
       - name: Install kecare-tools dependencies
