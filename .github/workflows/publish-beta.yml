@@ -33,7 +33,12 @@ jobs:
 
       - name: Install root dependencies
         run: bun install
-
+      
+      - name: Read package version
+        working-directory: ./
+        run: |
+          echo "PKG_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+      
       - name: Install kecare-tools dependencies
         working-directory: projects/kecare-tools
         run: bun install
