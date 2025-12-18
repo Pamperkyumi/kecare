@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { Article } from "../../../generator/types/article";
-import sidebar from "@/components/blog-sidebar.vue"
+import AuthorCard from "~/components/Author-card.vue"
 import {ref, computed, onMounted, onUnmounted} from "vue"
+import type AuthorCardVue from "~/components/Author-card.vue";
 
 const props = defineProps<{
     articles:Article[];
@@ -150,8 +151,8 @@ onMounted(() => {
                         <router-Link class="page-btn" v-if="page < totalPages" :to="`/page-${page + 1}`">下一页</router-Link>
                     </nav>
                 </div>
-                <sidebar :articles="articles"
-                         :totalArticles="totalArticles"
+                <AuthorCard :articles="articles"
+                            :totalArticles="totalArticles"
                 />
             </div>
         </div>

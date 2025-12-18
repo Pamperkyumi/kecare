@@ -1,4 +1,4 @@
-import type { Article } from './article';
+import type { Article} from './article';
 
 export type InputDriverOptions = {
   projectPath: string;
@@ -11,3 +11,5 @@ export type ArticleListHandlerOptions = InputDriverOptions & {
   pageSize?: number;
   listTitle?: string;
 };
+
+

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Article } from "../../../generator/types/article";
-import sidebar from "@/components/blog-sidebar.vue"
+import type { Article } from 'kecare-tools';
+import sidebar from "~/components/Author-card.vue"
 
 const props = defineProps<{
   articles: Article[];

@@ -32,7 +32,7 @@ export async function run(projectPath: string) {
         projectPath,
         articles,
         tsFile: '',
-        module: undefined,
+        module: undefined
     });
     } catch (error){
       consola.error(`input driver failed: ${error}`)

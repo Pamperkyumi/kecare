@@ -3,10 +3,13 @@ import { basename, join } from 'node:path';
 import { readdir, stat, readFile } from 'node:fs/promises';
 import type { InputDriverOptions } from '../types/input-driver-options';
 import matter from 'gray-matter';
+import { gfmHeadingId } from "marked-gfm-heading-id";
+marked.use(gfmHeadingId());
 
 export async function markdownInputDriver(options: InputDriverOptions) {
   const articlePath = join(options.projectPath, '.kecare', 'articles');
   const articleFile = await readdir(articlePath);
+
   for (const filename of articleFile) {
     const filePath = join(articlePath, filename);
     const fileStat = await stat(filePath);
@@ -15,30 +18,62 @@ export async function markdownInputDriver(options: InputDriverOptions) {
     if (!filename.endsWith('.md')) continue;
 
     const mdContent = await readFile(filePath, 'utf8');
-
-    // Use the front-matter information
     const { data: frontmatter, content } = matter(mdContent);
-    const contentHtml = await marked(content);
+
+    const headings: Array<
+      | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
+      | { depth: 2; text: string; id: string }
+    > = [];
+
+    let currentH1:
+      | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
+      | null = null;
+
+    const renderer = new marked.Renderer();
+
+    // HTML标签过滤函数
+    function stripHtmlTags(text: string): string {
+      if (!text) return '';
+      return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    renderer.heading = function (token: any) {
+      const depth: number = token.depth;
+      const rawText: string = this.parser.parseInline(token.tokens ?? []);
+      const text: string = stripHtmlTags(rawText);
+      const id: string = token.id || token.slug || "";
+
+      if (depth === 1) {
+        const node = { depth: 1 as const, text, id, children: [] as Array<{ depth: 2; text: string; id: string }> };
+        headings.push(node);
+        currentH1 = node;
+      } else if (depth === 2) {
+        const node = { depth: 2 as const, text, id };
+        if (currentH1) currentH1.children.push(node);
+        else headings.push(node);
+      }
+
+      return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+    };
+
+    const contentHtml = await marked.parse(content, { renderer });
+
     const id = basename(filename, '.md');
     const title = frontmatter.title || id.replace(/-/g, ' ');
     const coverSrc = frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
     const author = frontmatter.author || 'Pamper';
-    
-    
+    const createdAt = frontmatter.createdAt || fileStat.mtimeMs.toString();
 
-
-    // Extract plain text desc from contentHtml when there's no desc property in front-matter
     function extraDescFromHtml(contentHtml: string, maxLen = 120): string {
       if (!contentHtml) return '';
       let text = contentHtml.replace(/<[^>]+>/g, ' ');
       text = text.replace(/\s+/g, ' ').trim();
-      if (text.length > maxLen) {
-        return text.slice(0, maxLen).trimEnd() + '...';
-      }
-      return text;
+      return text.length > maxLen ? text.slice(0, maxLen).trimEnd() + '...' : text;
     }
-    const descMaxLength = 120;
-    const desc = frontmatter.desc && String(frontmatter.desc).trim().length > 0 ? String(frontmatter.desc).trim() : extraDescFromHtml(contentHtml, descMaxLength);
+
+    const desc = frontmatter.desc && String(frontmatter.desc).trim().length > 0
+      ? String(frontmatter.desc).trim()
+      : extraDescFromHtml(contentHtml, 120);
 
     options.articles.push({
       id,
@@ -46,11 +81,11 @@ export async function markdownInputDriver(options: InputDriverOptions) {
       desc,
       coverSrc,
       contentHtml,
-      createdAt: fileStat.mtimeMs.toString(), // last modification time
+      createdAt,
       author,
       to: `/articles/${id}`,
+      headings,
     });
-    //console.log("==== HTML FROM MARKED ====");
-    //console.log(contentHtml);
   }
 }
+

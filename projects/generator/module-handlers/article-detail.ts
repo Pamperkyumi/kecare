@@ -5,6 +5,7 @@ import { dirname } from 'node:path';
 
 export async function articleDetailModuleHandler(options: InputDriverOptions) {
   const { projectPath, articles, module, tsFile } = options;
+  const totalArticles = articles.length;
   for (const article of articles) {
     try {
       if(typeof module.generator !== 'function'){
@@ -13,6 +14,8 @@ export async function articleDetailModuleHandler(options: InputDriverOptions) {
       const result = await module.generator({
         projectPath,
         article,
+        articles,
+        totalArticles,
         cards: [],
       });
       consola.info('result:', result);

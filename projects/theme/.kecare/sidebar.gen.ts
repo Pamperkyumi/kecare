@@ -12,7 +12,7 @@ export async function generator(params: {projectPath: string; articles: Article[
     const totalArticles = articles.length;
     </script>
     <template>
-    <SidebarLayout :articles="articles" :total-articles="totalArticles" />
+    <SidebarLayout :total-articles="totalArticles" />
     </template>`
     return {
         path: outPath,
