@@ -25,11 +25,8 @@ const props = defineProps<{
 </template>
 <style>
   .toc{
-  /* 左侧对齐边框 */
   border-left: 4px solid #ff9eb0;
   padding-left: 12px;
-
-  /* 与你文章页卡片风格相配 */
   background: transparent;
 }
 

@@ -2,7 +2,6 @@
 import type { Article } from "../../../generator/types/article";
 import AuthorCard from "~/components/Author-card.vue"
 import {ref, computed, onMounted, onUnmounted} from "vue"
-import type AuthorCardVue from "~/components/Author-card.vue";
 
 const props = defineProps<{
     articles:Article[];
@@ -65,7 +64,6 @@ function typeWriter(text: string, element: HTMLElement, speed: number): () => vo
     
     type();
     
-    // 返回清理函数
     return () => {
         if (typingTimer.value) {
             clearTimeout(typingTimer.value);
@@ -75,12 +73,10 @@ function typeWriter(text: string, element: HTMLElement, speed: number): () => vo
 }
 
 onMounted(() => {
-  // 初始化打字机效果
   if (subtitleElement.value) {
     typeWriter(subtitleText, subtitleElement.value, typingSpeed);
   }
   
-  // 初始化滚动处理
   let lastScrollTop = 0;
   const scrollHandler = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -96,10 +92,8 @@ onMounted(() => {
     lastScrollTop = scrollTop;
   };
   
-  // 使用passive事件监听器提高性能
   window.addEventListener('scroll', scrollHandler, { passive: true });
   
-  // 在组件卸载时清理
   onUnmounted(() => {
     window.removeEventListener('scroll', scrollHandler);
     if (typingTimer.value) {
@@ -114,7 +108,6 @@ onMounted(() => {
 
 <template>
     <div id="app">
-        <!--背景图-->
         <div class="hero-section">
             <h1 class="site-title">Pamperのblog</h1>
             <div class="subtitle" ref="subtitleElement"></div>
@@ -247,7 +240,6 @@ onMounted(() => {
             border-top: 1px solid #eee;
             padding-top: 15px;
         }
-        /* 背景图部分 */
         .hero-section {
             height: 100vh;
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
@@ -298,8 +290,6 @@ onMounted(() => {
             60% { transform: translateY(-10px) translateX(-50%); }
         }
 
-
-        /* navbar */
         .navbar {
             display: flex;
             position: fixed;
