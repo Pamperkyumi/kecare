@@ -2,7 +2,7 @@
 import { ref, computed} from 'vue';
 import AuthorCard from './Author-card.vue';
 import TocCard from './Toc-card.vue';
-import type { Article } from 'kecare-tools';
+import type { Article} from "../../../generator/types/article";
 const props = defineProps<{
     article:Article;
     totalArticles:number;
@@ -21,28 +21,24 @@ const headings = computed(() => props.article.headings ?? []);
 
       <div class="actions" role="tablist" aria-label="侧边栏切换">
         <button
-        type="button"
-        class="action-btn"
-        :class="{ active: tab === 'toc' }"
-        @click="tab = 'toc'"
-        role="tab"
-        :aria-selected="tab === 'toc'"
-        aria-label="目录"
-        title="目录"
+          type="button"
+          class="action-btn"
+          :class="{ active: tab === 'toc' }"
+          @click="tab = 'toc'"
+          role="tab"
+          :aria-selected="tab === 'toc'"
         >
-        <span class="badge-icon badge-toc" aria-hidden="true"></span>
+          目录喵
         </button>
         <button
-        type="button"
-        class="action-btn"
-        :class="{ active: tab === 'author' }"
-        @click="tab = 'author'"
-        role="tab"
-        :aria-selected="tab === 'author'"
-        aria-label="作者"
-        title="作者"
+          type="button"
+          class="action-btn"
+          :class="{ active: tab === 'author' }"
+          @click="tab = 'author'"
+          role="tab"
+          :aria-selected="tab === 'author'"
         >
-        <span class="badge-icon badge-home" aria-hidden="true"></span>
+          我喵
         </button>
       </div>
     </div>
@@ -51,7 +47,7 @@ const headings = computed(() => props.article.headings ?? []);
 
 <style scoped>
 .aside-shell{
-  width: 500px;
+  width: 280px;
   max-width: 280px;
 }
 
@@ -61,15 +57,14 @@ const headings = computed(() => props.article.headings ?? []);
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px) saturate(150%);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .card-body{
   padding: 14px 14px 12px;
-  min-height: 300px; 
+  min-height: 220px;
   animation: fadeIn 160ms ease-out;
 }
-
 .actions{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -78,8 +73,6 @@ const headings = computed(() => props.article.headings ?? []);
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   background: rgba(255, 255, 255, 0.55);
 }
-
-/* 按钮基础样式 */
 .action-btn{
   width: 100%;
   padding: 10px 0;
@@ -92,8 +85,6 @@ const headings = computed(() => props.article.headings ?? []);
   color: rgba(0, 0, 0, 0.75);
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
-
-/* hover */
 .action-btn:hover{
   transform: translateY(-1px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
@@ -123,114 +114,4 @@ const headings = computed(() => props.article.headings ?? []);
     max-width: none;
   }
 }
-
-.action-btn{
-  display: grid;
-  place-items: center;
-}
-
-.badge-icon{
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 28px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.10);
-  background: rgba(255,255,255,0.85);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-}
-
-.action-btn.active .badge-icon{
-  border-color: rgba(255,255,255,0.55);
-  background: rgba(255,255,255,0.20);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
-}
-
-.badge-toc::before{
-  content:"";
-  position:absolute;
-  left: 10px;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  transform: translateY(-50%);
-  border-radius: 2px;
-  background: rgba(0,0,0,0.65);
-  box-shadow:
-    9px 0 0 rgba(0,0,0,0.45),
-    18px 0 0 rgba(0,0,0,0.30);
-}
-
-.badge-toc::after{
-  content:"";
-  position:absolute;
-  left: 16px;
-  top: 50%;
-  width: 20px;
-  height: 2px;
-  transform: translateY(-50%);
-  background:
-    linear-gradient(to right,
-      rgba(0,0,0,0.35) 0 40%,
-      transparent 40% 55%,
-      rgba(0,0,0,0.25) 55% 100%);
-  border-radius: 2px;
-}
-
-.action-btn.active .badge-toc::before{
-  background: rgba(255,255,255,0.95);
-  box-shadow:
-    9px 0 0 rgba(255,255,255,0.82),
-    18px 0 0 rgba(255,255,255,0.68);
-}
-.action-btn.active .badge-toc::after{
-  background:
-    linear-gradient(to right,
-      rgba(255,255,255,0.75) 0 40%,
-      transparent 40% 55%,
-      rgba(255,255,255,0.55) 55% 100%);
-}
-
-.badge-home::before{
-  content:"";
-  position:absolute;
-  left: 50%;
-  top: 7px;
-  width: 14px;
-  height: 14px;
-  transform: translateX(-50%) rotate(45deg);
-  border-radius: 2px;
-  background: rgba(0,0,0,0.55); 
-}
-
-.badge-home::after{
-  content:"";
-  position:absolute;
-  left: 50%;
-  top: 12px;
-  width: 18px;
-  height: 12px;
-  transform: translateX(-50%);
-  border-radius: 3px;
-  background: rgba(0,0,0,0.38); 
-  box-shadow: inset 0 -0 0 0 rgba(0,0,0,0);
-}
-
-.badge-home{
-  background-image:
-    linear-gradient(to top,
-      transparent 0 100%);
-}
-.badge-home::after{
-  background:
-    linear-gradient(to bottom,
-      rgba(0,0,0,0.38) 0 100%);
-}
-.badge-home{
-  overflow: hidden;
-}
-.badge-home .door{ display:none; }
-.action-btn.active .badge-home::before{ background: rgba(255,255,255,0.92); }
-.action-btn.active .badge-home::after{ background: rgba(255,255,255,0.70); }
-
 </style>

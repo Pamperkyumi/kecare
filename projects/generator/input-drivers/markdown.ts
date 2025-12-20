@@ -3,8 +3,7 @@ import { basename, join } from 'node:path';
 import { readdir, stat, readFile } from 'node:fs/promises';
 import type { InputDriverOptions } from '../types/input-driver-options';
 import matter from 'gray-matter';
-import { gfmHeadingId } from "marked-gfm-heading-id";
-marked.use(gfmHeadingId());
+import GithubSlugger from 'github-slugger';
 
 export async function markdownInputDriver(options: InputDriverOptions) {
   const articlePath = join(options.projectPath, '.kecare', 'articles');
@@ -30,8 +29,9 @@ export async function markdownInputDriver(options: InputDriverOptions) {
       | null = null;
 
     const renderer = new marked.Renderer();
+    const slugger = new GithubSlugger();
 
-    // HTML标签过滤函数
+    // HTML标签过滤
     function stripHtmlTags(text: string): string {
       if (!text) return '';
       return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
@@ -39,28 +39,41 @@ export async function markdownInputDriver(options: InputDriverOptions) {
 
     renderer.heading = function (token: any) {
       const depth: number = token.depth;
+
       const rawText: string = this.parser.parseInline(token.tokens ?? []);
       const text: string = stripHtmlTags(rawText);
-      const id: string = token.id || token.slug || "";
+
+      const explicitId =
+        (token.id && String(token.id).trim()) ||
+        (token.slug && String(token.slug).trim()) ||
+        '';
+
+      const headingId: string = explicitId || slugger.slug(text);
 
       if (depth === 1) {
-        const node = { depth: 1 as const, text, id, children: [] as Array<{ depth: 2; text: string; id: string }> };
+        const node = {
+          depth: 1 as const,
+          text,
+          id: headingId,
+          children: [] as Array<{ depth: 2; text: string; id: string }>,
+        };
         headings.push(node);
         currentH1 = node;
       } else if (depth === 2) {
-        const node = { depth: 2 as const, text, id };
+        const node = { depth: 2 as const, text, id: headingId };
         if (currentH1) currentH1.children.push(node);
         else headings.push(node);
       }
 
-      return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+      return `<h${depth} id="${headingId}">${text}</h${depth}>\n`;
     };
 
     const contentHtml = await marked.parse(content, { renderer });
 
     const id = basename(filename, '.md');
     const title = frontmatter.title || id.replace(/-/g, ' ');
-    const coverSrc = frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
+    const coverSrc =
+      frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
     const author = frontmatter.author || 'Pamper';
     const createdAt = frontmatter.createdAt || fileStat.mtimeMs.toString();
 
@@ -71,9 +84,10 @@ export async function markdownInputDriver(options: InputDriverOptions) {
       return text.length > maxLen ? text.slice(0, maxLen).trimEnd() + '...' : text;
     }
 
-    const desc = frontmatter.desc && String(frontmatter.desc).trim().length > 0
-      ? String(frontmatter.desc).trim()
-      : extraDescFromHtml(contentHtml, 120);
+    const desc =
+      frontmatter.desc && String(frontmatter.desc).trim().length > 0
+        ? String(frontmatter.desc).trim()
+        : extraDescFromHtml(contentHtml, 120);
 
     options.articles.push({
       id,
@@ -88,4 +102,3 @@ export async function markdownInputDriver(options: InputDriverOptions) {
     });
   }
 }
-
