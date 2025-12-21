@@ -7,98 +7,125 @@ import GithubSlugger from 'github-slugger';
 
 export async function markdownInputDriver(options: InputDriverOptions) {
   const articlePath = join(options.projectPath, '.kecare', 'articles');
-  const articleFile = await readdir(articlePath);
 
-  for (const filename of articleFile) {
-    const filePath = join(articlePath, filename);
-    const fileStat = await stat(filePath);
+  const MAX_DEPTH = 5;
+  const CONCURRENCY = 8;
 
-    if (!fileStat.isFile()) continue;
-    if (!filename.endsWith('.md')) continue;
+  async function traverse(dirPath: string, depth: number) {
+    // 递归深度限制，防止无限递归
+    if (depth > MAX_DEPTH) return;
 
-    const mdContent = await readFile(filePath, 'utf8');
-    const { data: frontmatter, content } = matter(mdContent);
+    // 使用 withFileTypes，避免对每个条目都 stat（性能更好）
+    const entries = await readdir(dirPath, { withFileTypes: true });
 
-    const headings: Array<
-      | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
-      | { depth: 2; text: string; id: string }
-    > = [];
+    const tasks: Array<() => Promise<void>> = [];
 
-    let currentH1:
-      | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
-      | null = null;
+    for (const entry of entries) {
+      const filename = entry.name;
+      const filePath = join(dirPath, filename);
 
-    const renderer = new marked.Renderer();
-    const slugger = new GithubSlugger();
-
-    // HTML标签过滤
-    function stripHtmlTags(text: string): string {
-      if (!text) return '';
-      return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-    }
-
-    renderer.heading = function (token: any) {
-      const depth: number = token.depth;
-
-      const rawText: string = this.parser.parseInline(token.tokens ?? []);
-      const text: string = stripHtmlTags(rawText);
-
-      const explicitId =
-        (token.id && String(token.id).trim()) ||
-        (token.slug && String(token.slug).trim()) ||
-        '';
-
-      const headingId: string = explicitId || slugger.slug(text);
-
-      if (depth === 1) {
-        const node = {
-          depth: 1 as const,
-          text,
-          id: headingId,
-          children: [] as Array<{ depth: 2; text: string; id: string }>,
-        };
-        headings.push(node);
-        currentH1 = node;
-      } else if (depth === 2) {
-        const node = { depth: 2 as const, text, id: headingId };
-        if (currentH1) currentH1.children.push(node);
-        else headings.push(node);
+      // 如果是文件夹，递归进去（depth + 1）
+      if (entry.isDirectory()) {
+        await traverse(filePath, depth + 1);
+        continue;
       }
 
-      return `<h${depth} id="${headingId}">${text}</h${depth}>\n`;
-    };
+      if (!entry.isFile()) continue;
+      if (!filename.endsWith('.md')) continue;
 
-    const contentHtml = await marked.parse(content, { renderer });
+      tasks.push(async () => {
+        const fileStat = await stat(filePath);
 
-    const id = basename(filename, '.md');
-    const title = frontmatter.title || id.replace(/-/g, ' ');
-    const coverSrc =
-      frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
-    const author = frontmatter.author || 'Pamper';
-    const createdAt = frontmatter.createdAt || fileStat.mtimeMs.toString();
+        const mdContent = await readFile(filePath, 'utf8');
+        const { data: frontmatter, content } = matter(mdContent);
 
-    function extraDescFromHtml(contentHtml: string, maxLen = 120): string {
-      if (!contentHtml) return '';
-      let text = contentHtml.replace(/<[^>]+>/g, ' ');
-      text = text.replace(/\s+/g, ' ').trim();
-      return text.length > maxLen ? text.slice(0, maxLen).trimEnd() + '...' : text;
+        const headings: Array<
+          | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
+          | { depth: 2; text: string; id: string }
+        > = [];
+
+        let currentH1:
+          | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
+          | null = null;
+
+        const renderer = new marked.Renderer();
+        const slugger = new GithubSlugger();
+
+        // HTML标签过滤
+        function stripHtmlTags(text: string): string {
+          if (!text) return '';
+          return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        }
+
+        renderer.heading = function (token: any) {
+          const depth: number = token.depth;
+
+          const rawText: string = this.parser.parseInline(token.tokens ?? []);
+          const text: string = stripHtmlTags(rawText);
+
+          const explicitId =
+            (token.id && String(token.id).trim()) ||
+            (token.slug && String(token.slug).trim()) ||
+            '';
+
+          const headingId: string = explicitId || slugger.slug(text);
+
+          if (depth === 1) {
+            const node = {
+              depth: 1 as const,
+              text,
+              id: headingId,
+              children: [] as Array<{ depth: 2; text: string; id: string }>,
+            };
+            headings.push(node);
+            currentH1 = node;
+          } else if (depth === 2) {
+            const node = { depth: 2 as const, text, id: headingId };
+            if (currentH1) currentH1.children.push(node);
+            else headings.push(node);
+          }
+
+          return `<h${depth} id="${headingId}">${text}</h${depth}>\n`;
+        };
+
+        const contentHtml = await marked.parse(content, { renderer });
+
+        const id = basename(filename, '.md');
+        const title = frontmatter.title || id.replace(/-/g, ' ');
+        const coverSrc =
+          frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
+        const author = frontmatter.author || 'Pamper';
+        const createdAt = frontmatter.createdAt || fileStat.mtimeMs.toString();
+
+        function extraDescFromHtml(contentHtml: string, maxLen = 120): string {
+          if (!contentHtml) return '';
+          let text = contentHtml.replace(/<[^>]+>/g, ' ');
+          text = text.replace(/\s+/g, ' ').trim();
+          return text.length > maxLen ? text.slice(0, maxLen).trimEnd() + '...' : text;
+        }
+
+        const desc =
+          frontmatter.desc && String(frontmatter.desc).trim().length > 0
+            ? String(frontmatter.desc).trim()
+            : extraDescFromHtml(contentHtml, 120);
+
+        options.articles.push({
+          id,
+          title,
+          desc,
+          coverSrc,
+          contentHtml,
+          createdAt,
+          author,
+          to: `/articles/${id}`,
+          headings,
+        });
+      });
     }
-
-    const desc =
-      frontmatter.desc && String(frontmatter.desc).trim().length > 0
-        ? String(frontmatter.desc).trim()
-        : extraDescFromHtml(contentHtml, 120);
-
-    options.articles.push({
-      id,
-      title,
-      desc,
-      coverSrc,
-      contentHtml,
-      createdAt,
-      author,
-      to: `/articles/${id}`,
-      headings,
-    });
+    for (let i = 0; i < tasks.length; i += CONCURRENCY) {
+      const slice = tasks.slice(i, i + CONCURRENCY);
+      await Promise.all(slice.map((fn) => fn()));
+    }
   }
+  await traverse(articlePath, 1);
 }

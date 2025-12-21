@@ -2,6 +2,7 @@
 import type { Article } from "../../../generator/types/article";
 import AuthorCard from "~/components/Author-card.vue"
 import {ref, computed, onMounted, onUnmounted} from "vue"
+import A from "~/pages/articles/a.vue";
 
 const props = defineProps<{
     articles:Article[];
@@ -118,6 +119,7 @@ onMounted(() => {
                 <div class="nav-name">Pamper</div>
                 <ul class="nav-links">
                     <li><a href="/">首页</a></li>
+                    <li><a href="/docs/docs-index">文档</a></li>
                     <li><a href="blog-archives">归档</a></li>
                     <li><a href="#">标签</a></li>
                     <li><a href="#">关于</a></li>

@@ -73,13 +73,14 @@ const groupedArticles = organizeArticlesByYear(props.articles);
     <div class="content-section">
       <div class="navbar">
         <div class="nav-name">Pamper</div>
-        <ul class="nav-links">
-          <li><a href="/">首页</a></li>
-          <li><a href="#">归档</a></li>
-          <li><a href="#">标签</a></li>
-          <li><a href="#">关于</a></li>
-          <li><a href="#">友链</a></li>
-        </ul>
+        <nav class="nav-links">
+        <RouterLink to="/">首页</RouterLink>
+        <RouterLink to="/docs/index">文档</RouterLink>
+        <RouterLink to="/archives">归档</RouterLink>
+        <RouterLink to="/tags">标签</RouterLink>
+        <RouterLink to="/about">关于</RouterLink>
+        <RouterLink to="/friends">友链</RouterLink>
+      </nav>
       </div>
     </div>
     <div class="main-container">

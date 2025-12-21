@@ -4,7 +4,7 @@ import { Article } from 'kecare-tools';
 export const type = 'blog-archives';
 
 export async function generator(params: { projectPath: string; articles: Article }) {
-  const outPath = join(params.projectPath, 'app', 'pages', 'blog-archives.vue');  
+  const outPath = join(params.projectPath, 'app', 'pages', 'archives.vue');  
   
   const serializedArticles = JSON.stringify(params.articles, null, 4);
   

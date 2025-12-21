@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { heading } from 'kecare-tools';
+import type { Heading } from 'kecare-tools';
 
 const props = defineProps<{
-  headings: heading[];
+  headings: Heading[];
 }>();
 </script>
 

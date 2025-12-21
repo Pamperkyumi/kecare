@@ -8,7 +8,7 @@ export type Article = {
   createdAt: string;
   author: string;
   to: string;
-  headings: heading[];
+  headings: Heading[];
 };
 export type HeadingH1 = {
   depth: 1;
@@ -22,7 +22,7 @@ export type HeadingH2 = {
   text: string;
   id:string;
 }
-export type heading = HeadingH1|HeadingH2
+export type Heading = HeadingH1 | HeadingH2
 
 export type ArticleListGenerator = (params: {
   projectPath: string;
@@ -38,6 +38,38 @@ export type ArticleListGenerator = (params: {
   path: string;
   template: string;
 }>;
+
+export type NavItem=
+| { text: string; link: string }
+| { text: string; items: NavItem[]}
+
+export const nav:NavItem[]=[
+  {text: '首页',
+    items: [
+      {
+        text: '开始',
+        link: '/start'
+      },
+      {
+        text: '文档',
+        link: '/docs'
+      },
+      {
+        text: 'API',
+        link: '/api'
+      }
+    ]
+  },
+  {
+    text: '关于',
+    items: [
+      {
+        text: '关于',
+        link: '/about'
+      }
+    ]
+  }
+]
 
 
 export function defineArticleListGenerator<Generator extends ArticleListGenerator>(yourGenerator: Generator) {

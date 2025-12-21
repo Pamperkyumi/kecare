@@ -3,30 +3,10 @@ import {
   estimateReadingTimeFromHtml, 
   formatReadingTimeChinese 
 } from './reading-time'
+import type { Article } from 'kecare-tools';
 
 const props = defineProps<{
-    article: {
-        /**
-         * 文章标题
-         */
-        title: string;
-        /**
-         * 文章内容 (html)
-         */
-        contentHtml: string;
-        /**
-         * 封面图片链接
-         */
-        coverSrc: string;
-         /**
-         * 创建日期 (毫秒级时间戳)
-         */
-        createdAt: string;
-        /**
-         * 作者
-         */
-        author: string;
-    };
+  article: Article;
 }>();
 
 const formatDate = (timestamp: string) => {
