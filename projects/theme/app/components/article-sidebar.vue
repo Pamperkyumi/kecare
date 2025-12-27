@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { ref, computed} from 'vue';
-import AuthorCard from './Author-card.vue';
+import AuthorCard from './author-card.vue';
 import TocCard from './Toc-card.vue';
-import type { Article} from "../../../generator/types/article";
+import type { Article} from "kecare-tools"
 const props = defineProps<{
     article:Article;
-    totalArticles:number;
-
+    articles:Article[]
 }>()
+const totalArticles = props.articles.length;
 const tab = ref<"toc" | "author">("toc");
 const headings = computed(() => props.article.headings ?? []);
 </script>
@@ -16,7 +16,7 @@ const headings = computed(() => props.article.headings ?? []);
     <div class="card">
       <div class="card-body" :key="tab">
         <TocCard v-if="tab === 'toc'" :headings="headings" />
-        <AuthorCard v-else :totalArticles="props.totalArticles" />
+        <AuthorCard v-else :totalArticles="totalArticles" />
       </div>
 
       <div class="actions" role="tablist" aria-label="侧边栏切换">

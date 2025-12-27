@@ -1,4 +1,4 @@
-import { writeFile, mkdir} from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import type { ArticleListHandlerOptions } from '../types/input-driver-options';
 import consola from 'consola';
 import { dirname } from 'node:path';
@@ -13,7 +13,7 @@ export async function articleListModuleHandler(options: ArticleListHandlerOption
     const cards = articles.slice(start, end);
     const isIndex = page === 1;
     try {
-      if(typeof module.generator !== 'function'){
+      if (typeof module.generator !== 'function') {
         throw new Error(`Module ${tsFile} does not have a generator function`);
       }
       const result = await module.generator({
@@ -29,7 +29,7 @@ export async function articleListModuleHandler(options: ArticleListHandlerOption
       consola.info(`result for page ${page}:`, result);
       if (result && result.path && result.template) {
         const dirPath = dirname(result.path);
-        await mkdir (dirPath, { recursive: true });
+        await mkdir(dirPath, { recursive: true });
         await writeFile(result.path, result.template, 'utf-8');
         consola.success(`File has been written: ${result.path}`);
       }

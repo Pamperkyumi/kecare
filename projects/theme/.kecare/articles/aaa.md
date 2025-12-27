@@ -3,6 +3,7 @@ layout: source/_post
 title: 翻译测试喵
 tags:
   -Ai翻译喵
+menu: 
 ---
 
 ## 渐进式框架[](https://cn.vuejs.org/guide/introduction.html#the-progressive-framework)

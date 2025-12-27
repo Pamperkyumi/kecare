@@ -1,23 +1,20 @@
 import { join } from 'node:path';
-import { defineArticleListGenerator } from 'kecare-tools';
+import { PagesListGenerator } from 'kecare-tools';
 
 export const type = 'article-list';
 
-export const generator = defineArticleListGenerator(async (params) => {
-  const { projectPath, page, cards, isIndex, pageSize, totalPages, totalArticles, listTitle } = params;
-
-  const pagesDir = join(projectPath, 'app', 'pages');
-
-  const fileName = isIndex ? 'index.vue' : `page-${page}.vue`;
-  const Content = `\
+export const generator = PagesListGenerator(async (params) => {
+  return {
+    path: join(params.projectPath, 'app', 'pages', params.isIndex ? 'index.vue' : `page-${params.page}.vue`),
+    template: `\
         <script setup lang="ts">
         import BlogLanding from "../components/blog-landing.vue";
-        const articles =  ${JSON.stringify(cards, null, 4)}; 
-        const page = ${page};
-        const pageSize = ${pageSize};
-        const totalPages = ${totalPages};
-        const totalArticles = ${totalArticles};
-        const title = ${JSON.stringify(listTitle ?? '文章列表')};
+        const articles =  ${JSON.stringify(params.cards, null, 4)}; 
+        const page = ${params.page};
+        const pageSize = ${params.pageSize};
+        const totalPages = ${params.totalPages};
+        const totalArticles = ${params.totalArticles};
+        const title = ${JSON.stringify(params.listTitle ?? '文章列表')};
         </script>
         <template>
             <BlogLanding
@@ -29,12 +26,6 @@ export const generator = defineArticleListGenerator(async (params) => {
             :title="title"
             />
         </template>
-        `;
-  const outPath = join(pagesDir, fileName);
-  return {
-    path: outPath,
-    template: Content,
+        `,
   };
 });
-
-

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { Article } from 'kecare-tools';
-import sidebar from "~/components/Author-card.vue"
+import sidebar from "~/components/author-card.vue"
 
 const props = defineProps<{
   articles: Article[];
-  totalArticles: number; 
 }>();
+const totalArticles = props.articles.length;
 
 //subtitle文字
 const subtitleText = "归档喵喵喵喵喵喵";

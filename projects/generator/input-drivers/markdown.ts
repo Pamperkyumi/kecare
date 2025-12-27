@@ -4,6 +4,7 @@ import { readdir, stat, readFile } from 'node:fs/promises';
 import type { InputDriverOptions } from '../types/input-driver-options';
 import matter from 'gray-matter';
 import GithubSlugger from 'github-slugger';
+import { Glob } from 'bun';
 
 export async function markdownInputDriver(options: InputDriverOptions) {
   const articlePath = join(options.projectPath, '.kecare', 'articles');
@@ -39,14 +40,9 @@ export async function markdownInputDriver(options: InputDriverOptions) {
         const mdContent = await readFile(filePath, 'utf8');
         const { data: frontmatter, content } = matter(mdContent);
 
-        const headings: Array<
-          | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
-          | { depth: 2; text: string; id: string }
-        > = [];
+        const headings: Array<{ depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> } | { depth: 2; text: string; id: string }> = [];
 
-        let currentH1:
-          | { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> }
-          | null = null;
+        let currentH1: { depth: 1; text: string; id: string; children: Array<{ depth: 2; text: string; id: string }> } | null = null;
 
         const renderer = new marked.Renderer();
         const slugger = new GithubSlugger();
@@ -54,7 +50,10 @@ export async function markdownInputDriver(options: InputDriverOptions) {
         // HTML标签过滤
         function stripHtmlTags(text: string): string {
           if (!text) return '';
-          return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+          return text
+            .replace(/<[^>]+>/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
         }
 
         renderer.heading = function (token: any) {
@@ -63,10 +62,7 @@ export async function markdownInputDriver(options: InputDriverOptions) {
           const rawText: string = this.parser.parseInline(token.tokens ?? []);
           const text: string = stripHtmlTags(rawText);
 
-          const explicitId =
-            (token.id && String(token.id).trim()) ||
-            (token.slug && String(token.slug).trim()) ||
-            '';
+          const explicitId = (token.id && String(token.id).trim()) || (token.slug && String(token.slug).trim()) || '';
 
           const headingId: string = explicitId || slugger.slug(text);
 
@@ -92,10 +88,24 @@ export async function markdownInputDriver(options: InputDriverOptions) {
 
         const id = basename(filename, '.md');
         const title = frontmatter.title || id.replace(/-/g, ' ');
-        const coverSrc =
-          frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
+        const coverSrc = frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
         const author = frontmatter.author || 'Pamper';
         const createdAt = frontmatter.createdAt || fileStat.mtimeMs.toString();
+        const menu = frontmatter.menu;
+
+        //menu
+        const menuKey = menu;
+        const glob = new Glob(`${menuKey}.menu.ts`);
+        const menuDir = join(options.projectPath, '.kecare', 'menu');
+        const files = Array.from(glob.scanSync({ cwd: menuDir }));
+        let menudata = null;
+        const [firstFile] = files;
+        if (firstFile) {
+          const filePath = join(menuDir, firstFile);
+          const menuModule = await import(filePath);
+          menudata = menuModule.navItems;
+        }
+        //
 
         function extraDescFromHtml(contentHtml: string, maxLen = 120): string {
           if (!contentHtml) return '';
@@ -104,10 +114,7 @@ export async function markdownInputDriver(options: InputDriverOptions) {
           return text.length > maxLen ? text.slice(0, maxLen).trimEnd() + '...' : text;
         }
 
-        const desc =
-          frontmatter.desc && String(frontmatter.desc).trim().length > 0
-            ? String(frontmatter.desc).trim()
-            : extraDescFromHtml(contentHtml, 120);
+        const desc = frontmatter.desc && String(frontmatter.desc).trim().length > 0 ? String(frontmatter.desc).trim() : extraDescFromHtml(contentHtml, 120);
 
         options.articles.push({
           id,
@@ -119,6 +126,8 @@ export async function markdownInputDriver(options: InputDriverOptions) {
           author,
           to: `/articles/${id}`,
           headings,
+          menu,
+          menudata,
         });
       });
     }

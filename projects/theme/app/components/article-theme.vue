@@ -1,35 +1,12 @@
 <script lang="ts" setup>
-import { 
-  estimateReadingTimeFromHtml, 
-  formatReadingTimeChinese 
-} from './reading-time'
 import type { Article } from 'kecare-tools';
+import ArticleSidebar from './article-sidebar.vue';
 
 const props = defineProps<{
   article: Article;
-}>();
-
-const formatDate = (timestamp: string) => {
-    const date = new Date(parseInt(timestamp));
-    return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-};
-
-const readingInfo = computed(() => {
-  const result = estimateReadingTimeFromHtml(props.article.contentHtml, { 
-    wordsPerMinute: 220,
-    round: 'ceil'
-  })
-  return result
-})
-
-const readingTimeLabel = computed(() => {
-  return formatReadingTimeChinese(readingInfo.value)
-})
-
-const wordCount = computed(() => {
-  return readingInfo.value.words
-})
-
+  articles: Article[]
+}>()
+const totalArticles = props.articles.length;
 
 /* navbar */
 const navbar = ref<HTMLElement | null>(null)
@@ -64,6 +41,126 @@ onUnmounted(() => {
 })
 
 const res = estimateReadingTimeFromHtml(props.article.contentHtml, { wordsPerMinute: 220, round: 'ceil' });
+
+
+// Reading Time
+type ReadingOptions = {
+  wordsPerMinute?: number;
+  round?: 'ceil' | 'floor' | 'round';
+  imageSeconds?: number;
+  codeWordsMultiplier?: number;
+  minMinutes?: number;
+};
+
+type ReadingResult = {
+  words: number;
+  timeSeconds: number;
+  minutesFloat: number;
+  minutes: number;
+  wordsPerMinute: number;
+  images: number;
+};
+
+const READING_DEFAULTS: Required<ReadingOptions> = {
+  wordsPerMinute: 200,
+  round: 'round',
+  imageSeconds: 12,
+  codeWordsMultiplier: 0.6,
+  minMinutes: 0,
+};
+
+function stripHtmlKeepImg(html: string): { text: string; images: number } {
+  if (!html) return { text: '', images: 0 };
+  const imgMatches = html.match(/<img\b[^>]*>/gi);
+  const images = imgMatches ? imgMatches.length : 0;
+  const text = html.replace(/<\/?[^>]+(>|$)/g, ' ').replace(/\s+/g, ' ').trim();
+  return { text, images };
+}
+
+function countWords(text: string): number {
+  if (!text) return 0;
+  const matches = text.match(/([\p{L}\p{N}]+|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]+)/gu);
+  return matches ? matches.length : 0;
+}
+
+function estimateReadingTimeFromHtml(
+  htmlOrText: string,
+  opts?: ReadingOptions
+): ReadingResult {
+  const o = { 
+  wordsPerMinute: 200,
+  round: 'round',
+  imageSeconds: 12,
+  codeWordsMultiplier: 0.6,
+  minMinutes: 0, ...opts };
+  const { text, images } = stripHtmlKeepImg(htmlOrText);
+
+  const codeRegex = /```[\s\S]*?```|<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>/gi;
+  let codeWords = 0;
+  let remainingText = text;
+  const codeMatches = htmlOrText.match(codeRegex);
+  
+  if (codeMatches) {
+    for (const cm of codeMatches) {
+      const codeOnly = cm.replace(/<\/?[^>]+(>|$)/g, ' ').replace(/[`]/g, ' ');
+      codeWords += countWords(codeOnly);
+    }
+    const htmlWithoutCode = htmlOrText.replace(codeRegex, ' ');
+    const stripped = stripHtmlKeepImg(htmlWithoutCode);
+    remainingText = stripped.text;
+  }
+
+  const normalWords = countWords(remainingText);
+  const effectiveWords = Math.round(normalWords + codeWords * o.codeWordsMultiplier);
+  const wordsPerSecond = o.wordsPerMinute / 60;
+  const secondsForWords = effectiveWords / wordsPerSecond;
+  const secondsForImages = images * o.imageSeconds;
+  const totalSeconds = Math.max(0, Math.round(secondsForWords + secondsForImages));
+
+  const minutesFloat = totalSeconds / 60;
+  let minutes: number;
+  if (o.round === 'ceil') minutes = Math.ceil(minutesFloat);
+  else if (o.round === 'floor') minutes = Math.floor(minutesFloat);
+  else minutes = Math.round(minutesFloat);
+
+  if (minutes < o.minMinutes) minutes = Math.max(0, Math.floor(o.minMinutes));
+
+  return {
+    words: effectiveWords,
+    timeSeconds: totalSeconds,
+    minutesFloat,
+    minutes,
+    wordsPerMinute: o.wordsPerMinute,
+    images,
+  };
+}
+
+function formatReadingTimeChinese(res: ReadingResult): string {
+  if (res.minutes <= 0) return '少于 1 分钟';
+  if (res.minutes === 1) return '1 分钟';
+  return `约 ${res.minutes} 分钟`;
+}
+
+const formatDate = (timestamp: string) => {
+    const date = new Date(parseInt(timestamp));
+    return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+};
+
+const readingInfo = computed(() => {
+  const result = estimateReadingTimeFromHtml(props.article.contentHtml, { 
+    wordsPerMinute: 220,
+    round: 'ceil'
+  })
+  return result
+})
+
+const readingTimeLabel = computed(() => {
+  return formatReadingTimeChinese(readingInfo.value)
+})
+
+const wordCount = computed(() => {
+  return readingInfo.value.words
+})
 
 </script>
 
@@ -142,7 +239,11 @@ const res = estimateReadingTimeFromHtml(props.article.contentHtml, { wordsPerMin
       </div>
     </div>
     <aside class="aside">
-      <slot name="aside" />
+      <article-sidebar
+      :article="article"
+      :articles="articles"
+      :totalArticles="totalArticles"
+                />
     </aside>
   </div>
 </template>

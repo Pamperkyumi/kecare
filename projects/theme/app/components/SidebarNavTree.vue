@@ -13,7 +13,7 @@
         level: 0,
     })
     const route = useRoute();
-    const isLinkItem = (item: NavItem): item is { text: string; link: string } => {
+    const isLinkItem = (item: NavItem): item is { text: string; link: string;level: number } => {
 
         return 'link' in item;
 

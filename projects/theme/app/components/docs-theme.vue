@@ -1,12 +1,9 @@
 <script lang="ts" setup>
 import type { Article, NavItem } from "kecare-tools";
 import SidebarNavTree from "../components/SidebarNavTree.vue";
-import type { Heading } from 'kecare-tools';
 
 const props = defineProps<{
   article: Article;
-  navItems: NavItem[];
-  headings: Heading[];
 }>();
 const headings = computed(() => props.article.headings ?? []);
 
@@ -53,7 +50,9 @@ onUnmounted(() => {
     <aside class="sidebar">
       <div class="sidebar-title">Kecare</div>
       <div class="sidebar-list">
-        <SidebarNavTree :items="props.navItems" />
+        <aside v-if="article.menudata?.length">
+        <SidebarNavTree :items="article.menudata" />
+        </aside>
       </div>
     </aside>
 
@@ -64,7 +63,7 @@ onUnmounted(() => {
       </div>
     </main>
     <section class="toc">
-      <h3 class="toc-title">目录</h3>
+      <h3 class="toc-title">On this Page</h3>
       <ul class="toc-list">
         <li class="toc-item" v-for="h in headings" :key="h.id || h.text">
           <a class="toc-link" :href="`#${h.id}`" :title="h.text">{{ h.text }}</a>
@@ -88,7 +87,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* ====== 基础：暗色 + 轻边框 + 舒适对比 ====== */
 .layout {
   --bg: #0d1117;           
   --bg-soft: #0f1522;      
@@ -451,10 +449,6 @@ onUnmounted(() => {
   font-weight: 800;
   letter-spacing: 0.2px;
   color: rgba(255, 255, 255, 0.85);
-  padding: 10px 12px;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
 }
 
 .toc-list {

@@ -3,6 +3,7 @@ layout: Source/_post
 title: 实时翻译功能的实现
 tags:
  -Ai翻译喵
+menu: docs
 ---
 
 # 对于Ai翻译功能实现的一些小思路

@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import type { Article } from "../../../generator/types/article";
-import AuthorCard from "~/components/Author-card.vue"
+import type { Article } from 'kecare-tools'
+import AuthorCard from "~/components/author-card.vue"
 import {ref, computed, onMounted, onUnmounted} from "vue"
-import A from "~/pages/articles/a.vue";
 
 const props = defineProps<{
     articles:Article[];
@@ -119,7 +118,7 @@ onMounted(() => {
                 <div class="nav-name">Pamper</div>
                 <ul class="nav-links">
                     <li><a href="/">首页</a></li>
-                    <li><a href="/docs/docs-index">文档</a></li>
+                    <li><a href="/docs/实时翻译">文档</a></li>
                     <li><a href="blog-archives">归档</a></li>
                     <li><a href="#">标签</a></li>
                     <li><a href="#">关于</a></li>
@@ -129,7 +128,7 @@ onMounted(() => {
         </div>
             <div class="main-container">
                 <div class="articles-container">
-                    <a class="article-card" v-for="(article, index) in articles" :key="index" :href="article.to">
+                    <NuxtLink class="article-card" v-for="(article, index) in articles" :key="index" :to="article.to">
                         <img class="article-cover" :src="article.coverSrc" />
                         <div class="article-content" >
                             <div class="article-title">{{ article.title }}</div>
@@ -139,7 +138,7 @@ onMounted(() => {
                                 <span>{{ formatDate(article.createdAt) }}</span>
                             </div>
                         </div>
-                    </a>
+                    </NuxtLink>
                     <nav class="pagination" v-if="totalPages > 1">
                         <router-Link class="page-btn" v-if="page > 1" :to="page === 2 ? '/' : `/page-${page - 1}`">上一页</router-Link>
                         <span class="pages">第 {{ page }} / {{ totalPages }} 页</span>

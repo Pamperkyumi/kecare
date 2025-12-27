@@ -1,4 +1,4 @@
-import type { Article, NavItem} from './article';
+import type { Article, NavItem } from './article';
 
 export type InputDriverOptions = {
   projectPath: string;
@@ -14,6 +14,4 @@ export type ArticleListHandlerOptions = InputDriverOptions & {
 
 export type DocsIndexHandlerOptions = InputDriverOptions & {
   NavItem: Array<NavItem>;
-}
-
-
+};
