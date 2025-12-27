@@ -9,7 +9,8 @@ out
 .out
 dist
 *.tgz
-
+*dist/
+*exe
 # code coverage
 coverage
 *.lcov
