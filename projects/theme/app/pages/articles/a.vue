@@ -1,4 +1,4 @@
-<!-- Generated: 2025-12-27T15:07:35.649Z -->
+<!-- Generated: 2025-12-27T16:06:07.927Z -->
         <script setup lang="ts">
         import ArticleLayout from '../../components/article-layout.vue'
         import ArticleSidebar from '../../components/article-sidebar.vue'
@@ -8,18 +8,6 @@
         const navItems: NavItem[] | undefined = null
         const articles = [
     {
-        "id": "hello-world",
-        "title": "HelloWorld",
-        "desc": "Hello World",
-        "coverSrc": "https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp",
-        "contentHtml": "<p>Welcome to <a href=\"http://zespia.tw/hexo\">Hexo</a>! This is your very first post. Check <a href=\"http://zespia.tw/hexo/docs\">documentation</a> to learn how to use.</p>\n<p>纪念一下此避难所复活日期</p>\n",
-        "createdAt": "1762613962901",
-        "author": "Pamper",
-        "to": "/articles/hello-world",
-        "headings": [],
-        "menudata": null
-    },
-    {
         "id": "a",
         "title": "a",
         "desc": "测试",
@@ -28,6 +16,18 @@
         "createdAt": "1763050953525",
         "author": "Pamper",
         "to": "/articles/a",
+        "headings": [],
+        "menudata": null
+    },
+    {
+        "id": "hello-world",
+        "title": "HelloWorld",
+        "desc": "Hello World",
+        "coverSrc": "https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp",
+        "contentHtml": "<p>Welcome to <a href=\"http://zespia.tw/hexo\">Hexo</a>! This is your very first post. Check <a href=\"http://zespia.tw/hexo/docs\">documentation</a> to learn how to use.</p>\n<p>纪念一下此避难所复活日期</p>\n",
+        "createdAt": "1762613962901",
+        "author": "Pamper",
+        "to": "/articles/hello-world",
         "headings": [],
         "menudata": null
     },
@@ -61,14 +61,14 @@
         "menudata": null
     },
     {
-        "id": "shishifanyi copy 2",
+        "id": "shishifanyi",
         "title": "实时翻译功能的实现",
         "desc": "对于Ai翻译功能实现的一些小思路 实现此功能所需要 DeepSeek API (提供不同语言的翻译能力) Supabase 账户 (用作后端数据库处理) Supabase Edge Functions （作为后端API，调用DeepSeek...",
         "coverSrc": "https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp",
         "contentHtml": "<h1 id=\"对于ai翻译功能实现的一些小思路\">对于Ai翻译功能实现的一些小思路</h1>\n<h2 id=\"实现此功能所需要\">实现此功能所需要</h2>\n<ul>\n<li><strong>DeepSeek API</strong>  (提供不同语言的翻译能力)</li>\n<li><strong>Supabase 账户</strong>(用作后端数据库处理)</li>\n<li><strong>Supabase Edge Functions</strong>（作为后端API，调用DeepSeek）</li>\n<li><strong>前端 (你的博客)</strong>(监听用户请求，调用Supabase函数)</li>\n</ul>\n<h2 id=\"可选功能喵\">可选功能喵</h2>\n<p>可用Supabase建立一个表，将每一次的翻译结果缓存，以节省Token和提升速度。</p>\n<h2 id=\"由于我很懒因为也没人看所以我只叙述一下大概的方法吧\">由于我很懒(因为也没人看),所以我只叙述一下大概的方法吧。</h2>\n<p>安装完Supabase之后，可以在Supabase中建立一个数据库，以缓存每一次的翻译结果，</p>\n<p>之后创建 <strong>Edge Funciton</strong>  编辑函数代码切记不要将 <strong>API</strong> 或 <strong>service_role key</strong> 直接写在代码中，可用<code>supabase secrets set</code>配置环境变量，最后只需在前端添加翻译功能即可喵</p>\n<p>如果有疑问可以通过我的联系方式找到我喵</p>\n<p>接下来对以下诗句测试一下翻译吧喵</p>\n<hr>\n<!-- TRANSLATE_START -->\n\n<p>The fountains mingle with the river</p>\n<p>And the rivers with the ocean</p>\n<p>The winds of heaven mix for ever</p>\n<p>With a sweet emotion;</p>\n<p>Nothing in the world is single;</p>\n<p>All things by a law divine</p>\n<p>In one spirit meet and mingle.</p>\n<p>Why not I with thine?—</p>\n<p>See the mountains kiss high heaven</p>\n<p>And the waves clasp one another;</p>\n<p>No sister-flower would be forgiven</p>\n<p>If it disdained its brother;</p>\n<p>And the sunlight clasps the earth</p>\n<p>And the moonbeams kiss the sea:</p>\n<p>What are all these kissings worth</p>\n<p>If thou kiss not me?</p>\n<!-- TRANSLATE_END -->\n\n<p>所以~ 我喜欢你喵.宝宝,我喜欢你，我们要在一起~ </p>\n",
         "createdAt": "1766603013610",
         "author": "Pamper",
-        "to": "/articles/shishifanyi copy 2",
+        "to": "/articles/shishifanyi",
         "headings": [
             {
                 "depth": 1,
@@ -189,14 +189,14 @@
         ]
     },
     {
-        "id": "shishifanyi",
+        "id": "shishifanyi copy 2",
         "title": "实时翻译功能的实现",
         "desc": "对于Ai翻译功能实现的一些小思路 实现此功能所需要 DeepSeek API (提供不同语言的翻译能力) Supabase 账户 (用作后端数据库处理) Supabase Edge Functions （作为后端API，调用DeepSeek...",
         "coverSrc": "https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp",
         "contentHtml": "<h1 id=\"对于ai翻译功能实现的一些小思路\">对于Ai翻译功能实现的一些小思路</h1>\n<h2 id=\"实现此功能所需要\">实现此功能所需要</h2>\n<ul>\n<li><strong>DeepSeek API</strong>  (提供不同语言的翻译能力)</li>\n<li><strong>Supabase 账户</strong>(用作后端数据库处理)</li>\n<li><strong>Supabase Edge Functions</strong>（作为后端API，调用DeepSeek）</li>\n<li><strong>前端 (你的博客)</strong>(监听用户请求，调用Supabase函数)</li>\n</ul>\n<h2 id=\"可选功能喵\">可选功能喵</h2>\n<p>可用Supabase建立一个表，将每一次的翻译结果缓存，以节省Token和提升速度。</p>\n<h2 id=\"由于我很懒因为也没人看所以我只叙述一下大概的方法吧\">由于我很懒(因为也没人看),所以我只叙述一下大概的方法吧。</h2>\n<p>安装完Supabase之后，可以在Supabase中建立一个数据库，以缓存每一次的翻译结果，</p>\n<p>之后创建 <strong>Edge Funciton</strong>  编辑函数代码切记不要将 <strong>API</strong> 或 <strong>service_role key</strong> 直接写在代码中，可用<code>supabase secrets set</code>配置环境变量，最后只需在前端添加翻译功能即可喵</p>\n<p>如果有疑问可以通过我的联系方式找到我喵</p>\n<p>接下来对以下诗句测试一下翻译吧喵</p>\n<hr>\n<!-- TRANSLATE_START -->\n\n<p>The fountains mingle with the river</p>\n<p>And the rivers with the ocean</p>\n<p>The winds of heaven mix for ever</p>\n<p>With a sweet emotion;</p>\n<p>Nothing in the world is single;</p>\n<p>All things by a law divine</p>\n<p>In one spirit meet and mingle.</p>\n<p>Why not I with thine?—</p>\n<p>See the mountains kiss high heaven</p>\n<p>And the waves clasp one another;</p>\n<p>No sister-flower would be forgiven</p>\n<p>If it disdained its brother;</p>\n<p>And the sunlight clasps the earth</p>\n<p>And the moonbeams kiss the sea:</p>\n<p>What are all these kissings worth</p>\n<p>If thou kiss not me?</p>\n<!-- TRANSLATE_END -->\n\n<p>所以~ 我喜欢你喵.宝宝,我喜欢你，我们要在一起~ </p>\n",
         "createdAt": "1766603013610",
         "author": "Pamper",
-        "to": "/articles/shishifanyi",
+        "to": "/articles/shishifanyi copy 2",
         "headings": [
             {
                 "depth": 1,
