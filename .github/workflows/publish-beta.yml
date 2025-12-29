@@ -57,7 +57,8 @@ jobs:
         run: mkdir -p dist
 
       - name: buildKecareGenerator
-        run: bun build ./projects/generator/index.ts --compile --target=bun-windows-x64 --outfile ./dist/kecare-generator-${{ github.ref_name }}-windows-x64.exe
+        run: |
+            bun build ./projects/generator/index.ts --compile --target=bun-windows-x64 --outfile ./dist/kecare-generator-${{ github.ref_name }}-windows-x64.exe
              bun build ./projects/generator/index.ts --compile --target=bun-linux-x64 --outfile ./dist/kecare-generator-${{ github.ref_name }}-linux-x64
 
       - name: Create Release and Upload Asset
