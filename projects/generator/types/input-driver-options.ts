@@ -1,4 +1,4 @@
-import type { Article, NavItem } from './article';
+import type { Article, NavItem } from 'kecare-tools';
 
 export type InputDriverOptions = {
   projectPath: string;

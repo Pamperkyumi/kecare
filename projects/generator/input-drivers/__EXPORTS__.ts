@@ -1,4 +1,2 @@
-import { markdownInputDriver } from "./markdown";
-export const inputDrivers = [
-    markdownInputDriver,
-]
+import { markdownInputDriver } from './markdown';
+export const inputDrivers = [markdownInputDriver];

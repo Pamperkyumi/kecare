@@ -32,7 +32,6 @@
 <template>
     <ul class="side-nav" :style="paddingStyle">
         <li v-for="item in props.items" :key="keyOf(item)" class="side-nav-item">
-            <!-- 简单链接项 -->
             <RouterLink
                 v-if="isLinkItem(item)"
                 class="side-nav-link"
@@ -42,7 +41,6 @@
                 {{ item.text }}
             </RouterLink>
             
-            <!-- 下拉菜单项 -->
             <div v-else class="side-nav-group">
                 <span class="side-nav-group-title">{{ item.text }}</span>
                 <SidebarNavTree 

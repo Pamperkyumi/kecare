@@ -9,11 +9,9 @@ const props = defineProps<{
 <template>
   <section class="toc">
     <h3 class="toc-title">目录</h3>
-
     <ul class="toc-list">
       <li class="toc-item" v-for="h in props.headings" :key="h.id || h.text">
         <a class="toc-link" :href="`#${h.id}`" :title="h.text">{{ h.text }}</a>
-
         <ul v-if="h.depth === 1 && h.children?.length" class="toc-sublist">
           <li class="toc-subitem" v-for="c in h.children" :key="c.id || c.text">
             <a class="toc-sublink" :href="`#${c.id}`" :title="c.text">{{ c.text }}</a>

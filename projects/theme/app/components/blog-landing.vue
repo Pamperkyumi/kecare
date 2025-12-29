@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Article } from 'kecare-tools'
-import AuthorCard from "~/components/author-card.vue"
+import AuthorCard from "./Sidebar/author-card.vue"
 import {ref, computed, onMounted, onUnmounted} from "vue"
 
 const props = defineProps<{
@@ -28,11 +28,6 @@ if (props.totalArticles < 0) {
 }
 
 const articles = computed(() => props.articles)
-
-const formatDate = (timestamp: string) => {
-    const date = new Date(parseInt(timestamp));
-    return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-};
 
 
 /* navbar */
@@ -103,7 +98,6 @@ onMounted(() => {
   });
 });
 
-
 </script>
 
 <template>
@@ -119,7 +113,7 @@ onMounted(() => {
                 <ul class="nav-links">
                     <li><a href="/">首页</a></li>
                     <li><a href="/docs/实时翻译">文档</a></li>
-                    <li><a href="blog-archives">归档</a></li>
+                    <li><a href="archives">归档</a></li>
                     <li><a href="#">标签</a></li>
                     <li><a href="#">关于</a></li>
                     <li><a href="#">友链</a></li>
@@ -135,7 +129,7 @@ onMounted(() => {
                             <div class="article-desc">{{ article.desc }}</div>
                             <div class="article-meta">
                                 <span>作者: {{ article.author }}</span>
-                                <span>{{ formatDate(article.createdAt) }}</span>
+                                <span>{{ article.date }}</span>
                             </div>
                         </div>
                     </NuxtLink>

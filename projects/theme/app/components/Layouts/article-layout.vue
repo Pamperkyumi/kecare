@@ -1,6 +1,6 @@
 <script lang="ts"s setup>
-import ArticleTheme from './article-theme.vue';
-import DocsTheme from './docs-theme.vue';
+import ArticleTheme from '../Themes/article-theme.vue';
+import DocsTheme from '../Themes/docs-theme.vue';
 import type { Article, NavItem } from "kecare-tools";
 
 const props = defineProps<{

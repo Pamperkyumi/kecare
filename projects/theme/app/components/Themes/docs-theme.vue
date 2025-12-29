@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Article, NavItem } from "kecare-tools";
-import SidebarNavTree from "../components/SidebarNavTree.vue";
+import SidebarNavTree from "../Sidebar/SidebarNavTree.vue";
 
 const props = defineProps<{
   article: Article;

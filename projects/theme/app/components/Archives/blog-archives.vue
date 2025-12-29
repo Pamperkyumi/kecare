@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Article } from 'kecare-tools';
-import sidebar from "~/components/author-card.vue"
+import sidebar from "~/components/Sidebar/author-card.vue"
 
 const props = defineProps<{
   articles: Article[];
@@ -8,7 +8,7 @@ const props = defineProps<{
 const totalArticles = props.articles.length;
 
 //subtitle文字
-const subtitleText = "归档喵喵喵喵喵喵";
+const subtitleText = "归档喵喵喵喵喵喵喵喵喵";
 const typingSpeed = 200;
 const subtitleElement = ref<HTMLElement | null>(null);
 function typeWriter(text: string, element: HTMLElement, speed: number) {
@@ -39,18 +39,11 @@ onMounted(() => {
 });
 
 
-
-// 格式化日期
-const formatDate = (timestamp: string) => {
-  const date = new Date(parseInt(timestamp));
-  return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-};
-
 // 按年份组织文章
 const organizeArticlesByYear = (articles: Article[] = []) => {
   const groupedArticles: { [year: string]: Article[] } = {};
   articles.forEach((article) => {
-    const year = new Date(parseInt(article.createdAt)).getFullYear().toString();
+    const year = new Date(article.date).getFullYear().toString()
     if (!groupedArticles[year]) {
       groupedArticles[year] = [];
     }
@@ -70,18 +63,18 @@ const groupedArticles = organizeArticlesByYear(props.articles);
       <div class="subtitle" ref="subtitleElement"></div>
       <div class="scroll-indicator">向下滑动浏览内容</div>
     </div>
-    <div class="content-section">
-      <div class="navbar">
-        <div class="nav-name">Pamper</div>
-        <nav class="nav-links">
-        <RouterLink to="/">首页</RouterLink>
-        <RouterLink to="/docs/index">文档</RouterLink>
-        <RouterLink to="/archives">归档</RouterLink>
-        <RouterLink to="/tags">标签</RouterLink>
-        <RouterLink to="/about">关于</RouterLink>
-        <RouterLink to="/friends">友链</RouterLink>
-      </nav>
-      </div>
+    <div class="content-section" >
+        <div class="navbar" ref="navbar">
+            <div class="nav-name">Pamper</div>
+            <ul class="nav-links">
+                <li><a href="/">首页</a></li>
+                <li><a href="/docs/实时翻译">文档</a></li>
+                <li><a href="archives">归档</a></li>
+                <li><a href="#">标签</a></li>
+                <li><a href="#">关于</a></li>
+                <li><a href="#">友链</a></li>
+            </ul>
+        </div>
     </div>
     <div class="main-container">
       <div class="articles-container">
@@ -93,7 +86,7 @@ const groupedArticles = organizeArticlesByYear(props.articles);
           <ul>
             <li v-for="article in articles" :key="article.id">
               <a :href="article.to" class="article-link">
-                <span>❤{{ formatDate(article.createdAt) }}</span> - {{ article.title }}
+                <span>❤{{ article.date }}</span> - {{ article.title }}
               </a>
             </li>
           </ul>
@@ -233,6 +226,11 @@ h2 {
   align-items: center;
   padding: 15px 5%;
   z-index: 1000;
+}
+.nav-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6b93;
 }
 
 .nav-links {

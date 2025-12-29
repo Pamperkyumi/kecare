@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Article } from 'kecare-tools';
-import ArticleSidebar from './article-sidebar.vue';
+import ArticleSidebar from '../Sidebar/article-sidebar.vue';
 
 const props = defineProps<{
   article: Article;
@@ -141,11 +141,6 @@ function formatReadingTimeChinese(res: ReadingResult): string {
   return `约 ${res.minutes} 分钟`;
 }
 
-const formatDate = (timestamp: string) => {
-    const date = new Date(parseInt(timestamp));
-    return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-};
-
 const readingInfo = computed(() => {
   const result = estimateReadingTimeFromHtml(props.article.contentHtml, { 
     wordsPerMinute: 220,
@@ -170,7 +165,8 @@ const wordCount = computed(() => {
       <div class="nav-name">Pamper</div>
       <ul class="nav-links">
         <li><a href="/">首页</a></li>
-        <li><a href="../blog-archives">归档</a></li>
+        <li><a href="/docs/实时翻译">文档</a></li>
+        <li><a href="./archives">归档</a></li>
         <li><a href="#">标签</a></li>
         <li><a href="#">关于</a></li>
         <li><a href="#">友链</a></li>
@@ -186,7 +182,7 @@ const wordCount = computed(() => {
       <div class="post-info">
         <h1 class="post-title">{{ props.article.title }}</h1>
         <div class="first-line">
-          <span class="post-created">发布于: {{ formatDate(article.createdAt) }}</span>
+          <span class="post-created">发布于: {{ props.article.date }}</span>
           <span class="post-sparator">|</span>
           <span class="word-count">总字数:{{ wordCount }}</span>
           <span class="post-sparator">|</span>

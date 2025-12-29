@@ -2,22 +2,22 @@ export type Article = {
   id: string;
   title: string;
   desc?: string;
-  coverSrc: string;
+  coverSrc?: string;
   contentHtml: string;
-  createdAt: string;
+  date: string | number;
   author?: string;
   to: string;
   menu?: string | null;
   menudata?: NavItem[] | null;
   headings: Heading[];
 };
+
 export type HeadingH1 = {
   depth: 1;
   text: string;
   id: string;
   children: HeadingH2[];
 };
-
 export type HeadingH2 = {
   depth: 2;
   text: string;

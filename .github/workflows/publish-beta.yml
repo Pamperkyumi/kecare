@@ -57,16 +57,20 @@ jobs:
         run: mkdir -p dist
 
       - name: buildKecareGenerator
-        run: bun build ./projects/generator/index.ts --compile --target=bun-windows-x64 --outfile ./dist/generator.exe
+        run: bun build ./projects/generator/index.ts --compile --target=bun-windows-x64 --outfile ./dist/kecare-generator-${{ github.ref_name }}-windows-x64.exe
+             bun build ./projects/generator/index.ts --compile --target=bun-linux-x64 --outfile ./dist/kecare-generator-${{ github.ref_name }}-linux-x64
 
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
-          name: "kecareGenerator ${{ github.ref_name }} (beta)"
+          name: "kecare-generator ${{ github.ref_name }} (beta)"
           prerelease: true
-          files: ./dist/generator.exe
           generate_release_notes: true
+          files: |
+            ./dist/kecare-generator-${{ github.ref_name }}-windows-x64.exe
+            ./dist/kecare-generator-${{ github.ref_name }}-linux-x64
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

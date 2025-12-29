@@ -85,25 +85,38 @@ export async function markdownInputDriver(options: InputDriverOptions) {
         };
 
         const contentHtml = await marked.parse(content, { renderer });
-
-        const id = basename(filename, '.md');
+        //hash
+        const id = Bun.hash.xxHash32(basename(filename, '.md'), 1234).toString(16);
         const title = frontmatter.title || id.replace(/-/g, ' ');
         const coverSrc = frontmatter.coverSrc || 'https://img.cdn1.vip/i/68e29b90b6718_1759681424.webp';
         const author = frontmatter.author || 'Pamper';
-        const createdAt = frontmatter.createdAt || fileStat.mtimeMs.toString();
         const menu = frontmatter.menu;
+
+        //date
+        const normalizeDate = (raw: string | number | Date | undefined): string => {
+          if (!raw) return '';
+          const date = new Date(raw);
+          if (isNaN(date.getTime())) return '';
+          const year = date.getFullYear();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+        const date = normalizeDate(frontmatter.date || fileStat.mtimeMs);
 
         //menu
         const menuKey = menu;
-        const glob = new Glob(`${menuKey}.menu.ts`);
-        const menuDir = join(options.projectPath, '.kecare', 'menu');
-        const files = Array.from(glob.scanSync({ cwd: menuDir }));
         let menudata = null;
-        const [firstFile] = files;
-        if (firstFile) {
-          const filePath = join(menuDir, firstFile);
-          const menuModule = await import(filePath);
-          menudata = menuModule.navItems;
+        if (menuKey) {
+          const glob = new Glob(`${menuKey}.menu.ts`);
+          const menuDir = join(options.projectPath, '.kecare', 'menu');
+          const files = Array.from(glob.scanSync({ cwd: menuDir }));
+          const [firstFile] = files;
+          if (firstFile) {
+            const filePath = join(menuDir, firstFile);
+            const menuModule = await import(filePath);
+            menudata = menuModule.navItems;
+          }
         }
         //
 
@@ -122,7 +135,7 @@ export async function markdownInputDriver(options: InputDriverOptions) {
           desc,
           coverSrc,
           contentHtml,
-          createdAt,
+          date,
           author,
           to: `/articles/${id}`,
           headings,
@@ -137,4 +150,8 @@ export async function markdownInputDriver(options: InputDriverOptions) {
     }
   }
   await traverse(articlePath, 1);
+  //对文章进行排序
+  options.articles.sort((a, b) => {
+    return b.date.localeCompare(a.date);
+  });
 }

@@ -13,8 +13,8 @@ export const generator = defineArticleListGenerator(async (params) => {
         import type { NavItem } from 'kecare-tools'
 
         const article = ${JSON.stringify(params.article)}
-        const navItems: NavItem[] | undefined = ${JSON.stringify(params.article.menudata ?? null)}
-        const articles = ${JSON.stringify(params.articles, null, 4)}
+        const navItems: NavItem[] | null = ${JSON.stringify(params.article.menudata ?? null)}
+        const articles = ${JSON.stringify(params.articles, null)}
         </script>
         <template>
         <articleLayout :article="article"

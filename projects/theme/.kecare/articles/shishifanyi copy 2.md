@@ -4,6 +4,7 @@ title: 实时翻译功能的实现
 tags:
  -Ai翻译喵
 menu: docs
+createdAt: 2025/12/28
 ---
 
 # 对于Ai翻译功能实现的一些小思路
