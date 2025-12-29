@@ -2,6 +2,7 @@
 import type { Article } from 'kecare-tools';
 import ArticleSidebar from '../Sidebar/article-sidebar.vue';
 
+
 const props = defineProps<{
   article: Article;
   articles: Article[]
@@ -157,6 +158,45 @@ const wordCount = computed(() => {
   return readingInfo.value.words
 })
 
+const processCodeBlocks = (container: HTMLElement | null) => {
+  if (!container) return;
+  const codeBlocks = container.querySelectorAll<HTMLElement>('pre code[class*="language-"]');
+  const langMap: Record<string, string> = {
+    'javascript': 'JS',
+    'js': 'JS',
+    'typescript': 'TS',
+    'ts': 'TS',
+    'markdown': 'md',
+    'md': 'md',
+    'python': 'Py',
+    'py': 'Py',
+    'vue': 'Vue',
+    'html': 'HTML',
+    'css': 'CSS',
+    'csharp': 'C#',
+    'cs': 'C#',
+    'shell': 'Shell',
+    'bash': 'Shell',
+    'json': 'JSON'
+  };
+
+  codeBlocks.forEach((code) => {
+    if (code.dataset.lang) return;
+
+    const classes = Array.from(code.classList);
+    const langClass = classes.find((c) => c.startsWith('language-'));
+
+    if (langClass) {
+      const rawLang = langClass.replace('language-', '').toLowerCase();
+      const displayLang = langMap[rawLang] || (rawLang.charAt(0).toUpperCase() + rawLang.slice(1));
+      code.dataset.lang = displayLang;
+    }
+  });
+};
+const articleRef = ref<HTMLElement | null>(null);
+onMounted(() => {
+    processCodeBlocks(articleRef.value)
+})
 </script>
 
 <template>
@@ -191,11 +231,10 @@ const wordCount = computed(() => {
       </div>
     </div>
 
-
     <div class="main-container">
       <div class="article">
         <div class="post">
-          <div class="article-content" v-html="props.article.contentHtml"></div>
+          <div class="article-content" ref="articleRef" v-html="props.article.contentHtml" ></div>
 
           <div class="post-copyright">
             <div class="post-copyright-author">
@@ -246,6 +285,210 @@ const wordCount = computed(() => {
 
 <style scoped>
 *{ margin:0; padding:0; }
+
+.article-content:deep(code[data-lang]::before) {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0;
+  left: 13%;
+  padding: 10px 10px;
+  background: #282c34;
+  color: white;
+  border-bottom-left-radius: 5px;
+  font-size: 15px;
+}
+.article-content :deep(code:not(pre code)) {
+    color: #ff6b93;          
+    background: rgba(255, 107, 147, 0.12); 
+    padding: 3px 6px;
+    border-radius: 6px;   
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.9em;
+    margin: 0 2px;
+    border: 1px solid rgba(255, 107, 147, 0.2); 
+}
+.article-content :deep(pre) {
+    background: #282c34; 
+    color: #abb2bf;                
+    font-family: Consolas, Monaco, monospace;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    padding: 45px 20px 20px;        
+    margin: 30px 0;
+    overflow-x: auto;              
+    border-radius: 16px;            
+    border: 1px solid rgba(255, 158, 176, 0.3); 
+    box-shadow: 0 10px 30px rgba(255, 107, 147, 0.15); 
+    position: relative;             
+}
+
+.article-content :deep(pre)::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56; 
+    box-shadow: 
+        20px 0 0 #ffbd2e, 
+        40px 0 0 #27c93f; 
+    opacity: 0.8;
+}
+
+.article-content :deep(pre code) {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+    border: none;
+    font-family: inherit;
+}
+
+/* 针对 Webkit 浏览器 (Chrome, Safari, Edge) */
+.article-content :deep(pre)::-webkit-scrollbar {
+    height: 8px; 
+    background-color: #282c34; 
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.article-content :deep(pre)::-webkit-scrollbar-thumb {
+    background: #ff9eb0; 
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.article-content :deep(pre)::-webkit-scrollbar-thumb:hover {
+    background: #ff6b93;
+}
+.article-content :deep(a) {
+    color: #ff6b93;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 107, 147, 0.3);
+    padding: 0 2px;
+    transition: all 0.3s ease; 
+    position: relative;
+    border-radius: 4px;
+}
+.article-content :deep(a:hover) {
+    background: rgba(255, 107, 147, 0.15);
+    border-bottom-color: #ff6b93;
+    color: #ff85a6;
+}
+.article-content :deep(a:active) {
+    transform: translateY(1px); 
+}
+.article-content :deep(table) {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: separate; /* 为了圆角，必须用 separate 而不是 collapse */
+    border-spacing: 0;
+    margin: 30px 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 158, 176, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background: #282c34;
+    font-size: 0.95rem;
+}
+.article-content :deep(th) {
+    background: rgba(255, 107, 147, 0.1); 
+    color: #ff6b93;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 158, 176, 0.2); 
+}
+
+.article-content :deep(td) {
+    padding: 12px 16px;
+    color: #abb2bf;       
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    transition: background 0.2s;
+}
+.article-content :deep(tr:last-child td) {
+    border-bottom: none;
+}
+.article-content :deep(tr:nth-child(even)) {
+    background: rgba(255, 255, 255, 0.02);
+}
+.article-content :deep(tr:hover td) {
+    background: rgba(255, 107, 147, 0.08);
+    color: #fff; 
+}
+.article-content :deep(blockquote) {
+    margin: 30px 0;
+    padding: 20px 24px;
+    background: rgba(255, 107, 147, 0.05); 
+    border-radius: 0 12px 12px 0;         
+    border-left: 4px solid #ff6b93;
+    color: #bbc2cf;    
+    font-style: italic;     
+    line-height: 1.8;
+    position: relative;
+}
+
+/* 引用块右上角的装饰在这*/
+.article-content :deep(blockquote)::after {
+    content: "Pamper";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 6rem;
+    color: rgba(255, 107, 147, 0.1);
+    font-family: serif;
+    pointer-events: none;    
+    line-height: 1;
+}
+
+.article-content :deep(blockquote p) {
+    margin: 0;
+}
+.article-content :deep(ul),
+.article-content :deep(ol) {
+    padding-left: 20px;   
+    margin: 20px 0;
+    color:#abb2bf;         
+}
+
+.article-content :deep(li) {
+    margin-bottom: 10px;    
+    line-height: 1.8;
+    position: relative;    
+}
+
+.article-content :deep(ul) {
+    list-style: none; 
+}
+
+.article-content :deep(ul li::before) {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 10px;       
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff6b93;
+    box-shadow: 0 0 8px rgba(255, 107, 147, 0.6);
+    transition: all 0.3s ease;
+}
+.article-content :deep(ul li:hover::before) {
+    transform: scale(1.5);
+    background: #ff85a6;
+}
+.article-content :deep(ol) {
+    list-style-type: decimal;
+}
+
+.article-content :deep(ol li::marker) {
+    color: #ff6b93;   
+    font-weight: bold;
+    font-family: Consolas, Monaco, monospace; 
+    font-size: 1.1em;
+}
 
 .post-bg{
   position: fixed;
@@ -492,4 +735,5 @@ const wordCount = computed(() => {
   transform: scaleX(1);
   transform-origin: left;
 }
+
 </style>

@@ -4,12 +4,13 @@ export type Article = {
   desc?: string;
   coverSrc?: string;
   contentHtml: string;
-  date: string | number;
+  date: string;
   author?: string;
   to: string;
   menu?: string | null;
   menudata?: NavItem[] | null;
   headings: Heading[];
+  hidden?: boolean;
 };
 
 export type HeadingH1 = {

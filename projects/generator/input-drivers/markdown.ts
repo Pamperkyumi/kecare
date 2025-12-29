@@ -5,8 +5,16 @@ import type { InputDriverOptions } from '../types/input-driver-options';
 import matter from 'gray-matter';
 import GithubSlugger from 'github-slugger';
 import { Glob } from 'bun';
+import markedKatex from 'marked-katex-extension';
 
 export async function markdownInputDriver(options: InputDriverOptions) {
+  marked.use(
+    markedKatex({
+      throwOnError: false,
+      output: 'html',
+    }),
+  );
+
   const articlePath = join(options.projectPath, '.kecare', 'articles');
 
   const MAX_DEPTH = 5;
@@ -85,6 +93,10 @@ export async function markdownInputDriver(options: InputDriverOptions) {
         };
 
         const contentHtml = await marked.parse(content, { renderer });
+        //如果有hidden字段，直接跳过
+        if (frontmatter.hidden === true) {
+          return;
+        }
         //hash
         const id = Bun.hash.xxHash32(basename(filename, '.md'), 1234).toString(16);
         const title = frontmatter.title || id.replace(/-/g, ' ');
