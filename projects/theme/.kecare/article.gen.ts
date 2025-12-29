@@ -8,8 +8,8 @@ export const generator = defineArticleListGenerator(async (params) => {
     path: join(params.projectPath, 'app', 'pages', 'articles', `${params.article.id}.vue`),
     template: `<!-- Generated: ${new Date().toISOString()} -->
         <script setup lang="ts">
-        import ArticleLayout from '../../components/article-layout.vue'
-        import ArticleSidebar from '../../components/article-sidebar.vue'
+        import ArticleLayout from '../../components/Layouts/article-layout.vue'
+        import ArticleSidebar from '../../components/Sidebar/article-sidebar.vue'
         import type { NavItem } from 'kecare-tools'
 
         const article = ${JSON.stringify(params.article)}

@@ -8,8 +8,7 @@
 </template>
 
 <style>
-
 #app {
-  
+
 }
 </style>

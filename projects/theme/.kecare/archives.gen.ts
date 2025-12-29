@@ -8,7 +8,7 @@ export const generator = defineArticleListGenerator(async (params) => {
     path: join(params.projectPath, 'app', 'pages', 'archives.vue'),
     template: `<!-- Generated: ${new Date().toISOString()} -->
             <script setup lang="ts">
-            import archives from '../components/blog-archives.vue';
+            import archives from '../components/Themes/blog-archives.vue';
             const articles = ${JSON.stringify(params.articles)}
             </script>
             <template>
