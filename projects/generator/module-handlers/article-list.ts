@@ -1,9 +1,9 @@
 import { writeFile, mkdir } from 'node:fs/promises';
-import type { ArticleListHandlerOptions } from '../types/input-driver-options';
+import type { ArticleListDriverOptions } from '../types/input-driver-options';
 import consola from 'consola';
 import { dirname } from 'node:path';
 
-export async function articleListModuleHandler(options: ArticleListHandlerOptions) {
+export async function articleListModuleHandler(options: ArticleListDriverOptions) {
   const { projectPath, articles, module, tsFile, pageSize = 5, listTitle } = options;
   const totalArticles = articles.length;
   const totalPages = Math.max(1, Math.ceil(totalArticles / pageSize));

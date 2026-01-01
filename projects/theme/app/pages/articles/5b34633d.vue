@@ -1,4 +1,4 @@
-<!-- Generated: 2025-12-29T22:17:25.473Z -->
+<!-- Generated: 2026-01-01T16:09:18.580Z -->
         <script setup lang="ts">
         import ArticleLayout from '../../components/Layouts/article-layout.vue'
         import ArticleSidebar from '../../components/Sidebar/article-sidebar.vue'

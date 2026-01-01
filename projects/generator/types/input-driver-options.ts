@@ -1,4 +1,4 @@
-import type { Article, NavItem } from 'kecare-tools';
+import type { Article } from 'kecare-tools';
 
 export type InputDriverOptions = {
   projectPath: string;
@@ -6,12 +6,7 @@ export type InputDriverOptions = {
   tsFile: string;
   module: any;
 };
-
-export type ArticleListHandlerOptions = InputDriverOptions & {
-  pageSize?: number;
-  listTitle?: string;
-};
-
-export type DocsIndexHandlerOptions = InputDriverOptions & {
-  NavItem: Array<NavItem>;
+export type ArticleListDriverOptions = InputDriverOptions & {
+  pageSize: number;
+  listTitle: string;
 };

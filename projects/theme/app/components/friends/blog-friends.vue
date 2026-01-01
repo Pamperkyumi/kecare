@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { Article } from 'kecare-tools';
+import type { Article, friend } from 'kecare-tools';
 import sidebar from "~/components/Sidebar/author-card.vue"
 
 const props = defineProps<{
-  articles: Article[];
+  friends:friend[]
+  articles:Article[]
 }>();
 const totalArticles = props.articles.length;
 
@@ -38,21 +39,6 @@ onMounted(() => {
   }
 });
 
-
-// 按年份组织文章
-const organizeArticlesByYear = (articles: Article[] = []) => {
-  const groupedArticles: { [year: string]: Article[] } = {};
-  articles.forEach((article) => {
-    const year = new Date(article.date).getFullYear().toString()
-    if (!groupedArticles[year]) {
-      groupedArticles[year] = [];
-    }
-    groupedArticles[year].push(article);
-  });
-  return groupedArticles;
-};
-
-const groupedArticles = organizeArticlesByYear(props.articles);
 </script>
 
 <template>
@@ -77,19 +63,31 @@ const groupedArticles = organizeArticlesByYear(props.articles);
     </div>
     <div class="main-container">
       <div class="articles-container">
-        <div v-if="articles.length === 0" class="no-articles">
-          <p>暂无文章归档</p>
-        </div>
-        <div v-for="(articles, year) in groupedArticles" :key="year">
-          <h2>{{ year }}年喵</h2>
-          <ul>
-            <li v-for="article in articles" :key="article.id">
-              <a :href="article.to" class="article-link">
-                <span>❤{{ article.date }}</span> - {{ article.title }}
-              </a>
-            </li>
-          </ul>
-        </div>
+        <div class="articles-container">
+            <div v-if="friends && friends.length > 0" class="friends-grid">
+        <nuxt-link
+            v-for="(item, index) in friends" 
+            :key="index" 
+            :href="item.url" 
+            target="_blank" 
+            class="friend-card"
+        >
+            <div class="friend-avatar-wrapper">
+                <img :src="item.image" :alt="item.name" class="friend-avatar" loading="lazy">
+            </div>
+            
+            <div class="friend-info">
+                <h3 class="friend-name">{{ item.name }}</h3>
+                <p class="friend-desc">{{ item.desc }}</p>
+            </div>
+        </nuxt-link>
+    </div>
+
+    <div v-else class="empty-friends">
+        <p>还没有添加友链哦 ~</p>
+    </div>
+
+</div>
       </div>
       <sidebar :articles="articles"
                :totalArticles="totalArticles"/>
@@ -150,40 +148,6 @@ const groupedArticles = organizeArticlesByYear(props.articles);
   flex: 1;
   display: grid;
   gap: 30px;
-}
-
-.no-articles {
-  text-align: center;
-  padding: 40px;
-  color: #666;
-  font-size: 1.2rem;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-.article-link {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease;
-}
-
-.article-link:hover {
-  color: #ff6b93;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-top: 30px;
-  color: #333;
-  border-bottom: 2px solid #ff6b93;
-  padding-bottom: 10px;
 }
 
 @keyframes fadeIn {
@@ -270,5 +234,71 @@ h2 {
 .nav-links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.friend-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255, 107, 147, 0.2);
+  border-color: #ff6b93;
+}
+
+.friend-avatar-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.friend-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-info {
+  text-align: center;
+}
+
+.friend-name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.friend-card:hover .friend-name {
+  color: #ff6b93;
+}
+
+.friend-desc {
+  color: #666;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>

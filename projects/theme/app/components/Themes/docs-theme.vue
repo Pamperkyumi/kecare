@@ -41,7 +41,6 @@ onUnmounted(() => {
         <RouterLink to="/">首页</RouterLink>
         <RouterLink to="/docs/index">文档</RouterLink>
         <RouterLink to="/archives">归档</RouterLink>
-        <RouterLink to="/tags">标签</RouterLink>
         <RouterLink to="/about">关于</RouterLink>
         <RouterLink to="/friends">友链</RouterLink>
       </nav>

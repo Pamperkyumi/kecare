@@ -26,7 +26,7 @@ export type HeadingH2 = {
 };
 export type Heading = HeadingH1 | HeadingH2;
 
-export type ArticleListGenerator = (params: { projectPath: string; article: Article; totalArticles: number; articles: Article[]; NavItems: NavItem[] }) => Promise<{
+export type ArticleListGenerator = (params: { projectPath: string; article: Article; articles: Article[]; NavItems: NavItem[] }) => Promise<{
   path: string;
   template: string;
 }>;

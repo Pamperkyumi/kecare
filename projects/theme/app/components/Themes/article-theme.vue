@@ -207,7 +207,6 @@ onMounted(() => {
         <li><a href="/">首页</a></li>
         <li><a href="/docs/实时翻译">文档</a></li>
         <li><a href="./archives">归档</a></li>
-        <li><a href="#">标签</a></li>
         <li><a href="#">关于</a></li>
         <li><a href="#">友链</a></li>
       </ul>

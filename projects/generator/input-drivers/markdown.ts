@@ -6,7 +6,6 @@ import matter from 'gray-matter';
 import GithubSlugger from 'github-slugger';
 import { Glob } from 'bun';
 import markedKatex from 'marked-katex-extension';
-
 export async function markdownInputDriver(options: InputDriverOptions) {
   marked.use(
     markedKatex({
@@ -21,10 +20,9 @@ export async function markdownInputDriver(options: InputDriverOptions) {
   const CONCURRENCY = 8;
 
   async function traverse(dirPath: string, depth: number) {
-    // 递归深度限制，防止无限递归
+    // 递归深度限制
     if (depth > MAX_DEPTH) return;
 
-    // 使用 withFileTypes，避免对每个条目都 stat（性能更好）
     const entries = await readdir(dirPath, { withFileTypes: true });
 
     const tasks: Array<() => Promise<void>> = [];
@@ -33,7 +31,7 @@ export async function markdownInputDriver(options: InputDriverOptions) {
       const filename = entry.name;
       const filePath = join(dirPath, filename);
 
-      // 如果是文件夹，递归进去（depth + 1）
+
       if (entry.isDirectory()) {
         await traverse(filePath, depth + 1);
         continue;
@@ -55,7 +53,7 @@ export async function markdownInputDriver(options: InputDriverOptions) {
         const renderer = new marked.Renderer();
         const slugger = new GithubSlugger();
 
-        // HTML标签过滤
+        // HTML标签
         function stripHtmlTags(text: string): string {
           if (!text) return '';
           return text
@@ -120,17 +118,16 @@ export async function markdownInputDriver(options: InputDriverOptions) {
         const menuKey = menu;
         let menudata = null;
         if (menuKey) {
-          const glob = new Glob(`${menuKey}.menu.ts`);
+          const menuglob = new Glob(`${menuKey}.menu.ts`);
           const menuDir = join(options.projectPath, '.kecare', 'menu');
-          const files = Array.from(glob.scanSync({ cwd: menuDir }));
-          const [firstFile] = files;
+          const menufiles = Array.from(menuglob.scanSync({ cwd: menuDir }));
+          const [firstFile] = menufiles;
           if (firstFile) {
             const filePath = join(menuDir, firstFile);
             const menuModule = await import(filePath);
             menudata = menuModule.navItems;
           }
         }
-        //
 
         function extraDescFromHtml(contentHtml: string, maxLen = 120): string {
           if (!contentHtml) return '';
