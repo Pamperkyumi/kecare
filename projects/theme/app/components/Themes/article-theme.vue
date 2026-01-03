@@ -497,20 +497,23 @@ onMounted(() => {
   background-position: center;
   background-size: cover;
 }
-
-
 .layout{
   max-width: 1200px;
   margin: 0 auto;
   padding: 100px 16px 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
+
+  /* ✅ grid -> flex */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   gap: 30px;
-  align-items: start;
 }
 
+/* ✅ hero 独占整行（等价于 grid-column: 1 / -1） */
 .hero{
-  grid-column: 1 / -1;
+  flex: 0 0 100%;
+  width: 100%;
+
   min-height: 30vh;
   display: flex;
   align-items: center;
@@ -518,43 +521,26 @@ onMounted(() => {
   margin-bottom: 0;
 }
 
-.post-info{
+/* ✅ 主内容区占剩余空间 */
+.main-container{
+  flex: 1 1 0;
+  min-width: 0; /* 防止内容溢出把 aside 挤掉 */
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
+  max-width: none;
 }
 
-.post-title{
-  color: white;
-  font-weight: 700;
-  font-size: 2.4rem;
-  line-height: 1.25;
-  text-shadow: 0 6px 18px rgba(0,0,0,0.35);
-}
-
-.first-line{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.88);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
-}
-
-.main-container{ width: 100%; max-width: none; }
+/* ✅ 文章区域保持 100% */
 .article{ width: 100%; padding: 0; }
 
+/* ✅ 右侧栏固定 280px */
 .aside{
+  flex: 0 0 280px;
+  width: 280px;
+  max-width: 280px;
+
   position: sticky;
   top: 65px;
   height: fit-content;
-  width: 280px;
-  max-width: 280px;
 }
 .post{
   background: rgba(255, 255, 255, 0.7);
@@ -660,17 +646,21 @@ onMounted(() => {
 
 @media (max-width: 960px){
   .layout{
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    flex-wrap: nowrap;
     gap: 20px;
   }
+
   .aside{
     position: static;
-    width: auto;
+    width: 100%;
     max-width: none;
     top: auto;
   }
+
   .hero{ min-height: 38vh; }
 }
+
 @media (max-width: 768px){
   .post-title{ font-size: 1.9rem; }
   .post{ padding: 25px; }

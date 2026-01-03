@@ -86,9 +86,10 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* ====== Flex Layout Root ====== */
 .layout {
-  --bg: #0d1117;           
-  --bg-soft: #0f1522;      
+  --bg: #0d1117;
+  --bg-soft: #0f1522;
   --card: rgba(255, 255, 255, 0.03);
   --border: rgba(255, 255, 255, 0.08);
   --text: rgba(255, 255, 255, 0.88);
@@ -106,17 +107,18 @@ onUnmounted(() => {
               var(--bg);
   color: var(--text);
 
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 260px;
-  grid-template-rows: 64px 1fr;
-  grid-template-areas:
-    "navbar navbar navbar"
-    "sidebar content toc";
+  /* ✅ 用 flex 取代 grid */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-/* ====== 顶部导航 ====== */
+/* ====== 顶部导航（全宽独占一行） ====== */
 .navbar {
-  grid-area: navbar;
+  /* ✅ 关键：占满整行 */
+  flex: 0 0 100%;
+  width: 100%;
+
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -143,10 +145,12 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.2px;
   color: var(--text);
+
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -161,6 +165,9 @@ onUnmounted(() => {
   padding: 8px 10px;
   border-radius: 10px;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  display: flex;
+  align-items: center;
 }
 
 .nav-links a:hover {
@@ -174,11 +181,15 @@ onUnmounted(() => {
   border: 1px solid rgba(255, 107, 147, 0.22);
 }
 
+/* ====== 左侧 Sidebar ====== */
 .sidebar {
-  grid-area: sidebar;
+  /* 固定栏宽：桌面效果与 grid 基本一致 */
+  flex: 0 0 280px;
+  width: 280px;
+
   position: sticky;
-  top: 0;                 
-  height: 100vh;          
+  top: 64px; /* ✅ 避开 navbar，高度更准确 */
+  height: calc(100vh - 64px);
 
   padding: 18px 14px;
   border-right: 1px solid var(--border);
@@ -186,6 +197,9 @@ onUnmounted(() => {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%),
               rgba(13, 17, 23, 0.55);
   backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-title {
@@ -196,7 +210,11 @@ onUnmounted(() => {
   border-radius: var(--radius);
   margin-bottom: 12px;
   position: relative;
+
+  display: flex;
+  align-items: center;
 }
+
 .sidebar-title::after{
   content: '';
   position: absolute;
@@ -208,14 +226,13 @@ onUnmounted(() => {
 }
 
 .sidebar-list {
-  height: calc(100vh - 18px - 14px - 56px); 
+  /* ✅ 填满剩余空间，滚动 */
+  flex: 1 1 auto;
   overflow: auto;
   padding-right: 6px;
 }
 
-.sidebar-list::-webkit-scrollbar {
-  width: 10px;
-}
+.sidebar-list::-webkit-scrollbar { width: 10px; }
 .sidebar-list::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.10);
   border-radius: 999px;
@@ -224,23 +241,31 @@ onUnmounted(() => {
 }
 .sidebar-list::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.16);
-  border: 3px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
 }
 
+/* ====== 中间内容区 ====== */
 .content {
-  grid-area: content;
+  /* ✅ 自适应宽：占据剩余空间 */
+  flex: 1 1 0;
+  min-width: 0;
+
   padding: 26px 22px 40px;
+
+  display: flex;
 }
 
 .content-inner {
   max-width: 860px;
+  width: 100%;
   margin: 0 auto;
   padding: 22px 22px 28px;
   border-radius: calc(var(--radius) + 4px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .content-title {
@@ -248,14 +273,21 @@ onUnmounted(() => {
   font-size: 1.65rem;
   letter-spacing: 0.2px;
   line-height: 1.25;
+
+  display: flex;
+  align-items: center;
 }
 
 .article-content {
   color: var(--text);
   line-height: 1.8;
   font-size: 1rem;
+
+  display: flex;
+  flex-direction: column;
 }
 
+/* markdown / html 内容样式保持不变 */
 .article-content :deep(h2),
 .article-content :deep(h3),
 .article-content :deep(h4) {
@@ -270,9 +302,7 @@ onUnmounted(() => {
   border-bottom: 1px solid var(--border);
 }
 
-.article-content :deep(h3) {
-  font-size: 1.12rem;
-}
+.article-content :deep(h3) { font-size: 1.12rem; }
 
 .article-content :deep(p) {
   margin: 12px 0;
@@ -338,7 +368,6 @@ onUnmounted(() => {
   color: rgba(255, 255, 255, 0.86);
 }
 
-/* 表格（可选） */
 .article-content :deep(table) {
   width: 100%;
   border-collapse: collapse;
@@ -358,81 +387,22 @@ onUnmounted(() => {
   text-align: left;
 }
 
-/* 分割线 */
 .article-content :deep(hr) {
   border: none;
   border-top: 1px solid var(--border);
   margin: 22px 0;
 }
 
-/* ====== 响应式 ====== */
-@media (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 240px minmax(0, 1fr);
-    grid-template-areas:
-      "navbar navbar"
-      "sidebar content";
-  }
-  .toc { display: none; }
-}
-
-
-@media (max-width: 860px) {
-  .layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: 64px auto 1fr;
-    grid-template-areas:
-      "navbar"
-      "sidebar"
-      "content";
-  }
-
-  /* ✅ 小屏：sidebar 不要 sticky + 不要 100vh */
-  .sidebar {
-    position: relative;
-    top: 0;
-    height: auto;                 /* ✅ 关键：不再占满一屏 */
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* ✅ 小屏：侧栏列表限制高度，避免把 content 挤到下一屏 */
-  .sidebar-list {
-    height: auto;                 /* ✅ 覆盖掉 100vh 的 calc */
-    max-height: 42vh;             /* ✅ 关键：最多占屏幕一部分 */
-    overflow: auto;
-  }
-
-  .content {
-    padding: 16px 14px 28px;
-  }
-
-  .content-inner {
-    padding: 18px 16px 22px;
-  }
-
-  .nav-links {
-    gap: 8px;
-  }
-
-  .nav-links a {
-    padding: 7px 9px;
-  }
-
-  /* ✅ 小屏：右侧 toc 隐藏 */
-  .toc {
-    display: none;
-  }
-}
-
 /* ====== 右侧 TOC ====== */
 .toc {
-  grid-area: toc;
-  position: sticky;
-  top: 0px;              
-  align-self: start;
+  flex: 0 0 260px;
+  width: 260px;
 
-  height: calc(100vh - 88px);
+  position: sticky;
+  top: 64px; /* ✅ 与 sidebar 同步 */
+  align-self: flex-start;
+
+  height: calc(100vh - 64px);
   padding: 18px 14px;
   margin-right: 10px;
 
@@ -440,6 +410,9 @@ onUnmounted(() => {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%),
               rgba(13, 17, 23, 0.35);
   backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .toc-title {
@@ -448,24 +421,31 @@ onUnmounted(() => {
   font-weight: 800;
   letter-spacing: 0.2px;
   color: rgba(255, 255, 255, 0.85);
+
+  display: flex;
+  align-items: center;
 }
 
 .toc-list {
   list-style: none;
   margin: 10px 0 18px;
   padding: 0;
+
   overflow: auto;
-  max-height: 52vh; 
+  max-height: 52vh;
   padding-right: 6px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.toc-item {
-  margin: 4px 0;
-}
+.toc-item { margin: 4px 0; display: flex; flex-direction: column; }
 
 .toc-link,
 .toc-sublink {
-  display: block;
+  display: flex;
+  align-items: center;
+
   text-decoration: none;
   padding: 7px 10px;
   border-radius: 10px;
@@ -489,32 +469,23 @@ onUnmounted(() => {
   margin: 6px 0 10px;
   padding: 0 0 0 10px;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.toc-subitem {
-  margin: 2px 0;
-}
+.toc-subitem { display: flex; }
+.toc-sublink { padding: 6px 10px; color: rgba(255, 255, 255, 0.55); }
 
-.toc-sublink {
-  padding: 6px 10px;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.toc-list::-webkit-scrollbar {
-  width: 10px;
-}
+.toc-list::-webkit-scrollbar { width: 10px; }
 .toc-list::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.10);
   border-radius: 999px;
   border: 3px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
-.toc-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border: 3px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-}
-
+.toc-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.16); }
 
 .toc-ad {
   margin-top: 18px;
@@ -534,13 +505,101 @@ onUnmounted(() => {
   font-size: 0.86rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.78);
+
+  display: flex;
+  align-items: center;
+}
+
+/* 你这里 img 也叫 toc-ad-title（class 重名），做个兼容：别影响文字 */
+img.toc-ad-title {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .toc-ad-body {
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.6;
+
+  display: flex;
+  align-items: center;
 }
 
+/* ====== ✅ 响应式（更合理） ====== */
 
+/* ① 平板：两栏（sidebar + content），隐藏 toc */
+@media (max-width: 1024px) {
+  .toc { display: none; }
+
+  .sidebar {
+    flex: 0 0 240px;
+    width: 240px;
+  }
+
+  .content {
+    padding: 22px 18px 34px;
+  }
+}
+
+/* ② 手机：单栏（navbar / sidebar / content），sidebar 不 sticky */
+@media (max-width: 860px) {
+  .layout {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+    height: auto;
+
+    width: 100%;
+    flex: 0 0 auto;
+
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-list {
+    max-height: 42vh;
+    overflow: auto;
+  }
+
+  .content {
+    width: 100%;
+    flex: 1 1 auto;
+    padding: 16px 14px 28px;
+  }
+
+  .content-inner {
+    padding: 18px 16px 22px;
+  }
+
+  .nav-links { gap: 8px; }
+  .nav-links a { padding: 7px 9px; }
+}
+
+/* ③ 更窄屏：导航更紧凑，避免换行太难看 */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 12px;
+  }
+
+  .nav-name {
+    font-size: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+}
 </style>
+

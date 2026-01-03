@@ -2,3 +2,8 @@
 cookbookPort = 8000
 packageManager = "bun"
 modes = ["test", "development", "production"]
+
+[projects.theme]
+type = "custom"
+port = 3000
+autoStart= true

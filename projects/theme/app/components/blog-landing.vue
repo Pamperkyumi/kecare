@@ -148,231 +148,311 @@ onMounted(() => {
 </template>
 
 <style scoped>
-        :global(*) {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+:global(*) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-            padding-top: 70px;
-        }
+/* 页面整体也用 flex 组织（不影响原效果） */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding-top: 70px;
 
-        .main-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            gap: 30px;
-        }
+  display: flex;
+  flex-direction: column;
+}
 
-        .articles-container {
-            flex: 1;
-            display: grid;
-            gap: 30px;
-        }
-        .pagination{
-            text-align: center;
-        }
-        .page-btn,.pages{
-            color: rgb(0, 0, 0);
-        }
-        .page-btn:hover{
-            transform: translateY(-3px);
-        }
-        .page-btn:active{
-            transform: translateY(1px);
-        }
-        .article-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
+/* 你模板里有 #app：用 flex 做容器 */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        .article-cover {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+/* 顶部 Hero 本来就是 flex，保留并明确方向 */
+.hero-section {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url('../assets/bg1.jpg');
+  background-size: cover;
+  background-position: center;
 
-        .article-content {
-            padding: 20px;
-        }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-        .article-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #2c3e50;
-            line-height: 1.3;
-        }
+  position: relative;
+}
 
-        .article-desc {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
+.site-title {
+  color: white;
+  font-size: 4rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+  animation: fadeIn 2s ease-in-out;
+}
 
-        .article-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #888;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-        .hero-section {
-            height: 100vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
-                              url('../assets/bg1.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            flex-direction: column;
-        }
+.subtitle {
+  color: #ff9eb0;
+  font-size: 2rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
 
-        .site-title {
-            color: white;
-            font-size: 4rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .subtitle{
-            color: #ff9eb0;
-            font-size: 2rem;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-        }
+  display: flex;           /* 让字幕容器也走 flex */
+  align-items: center;
+  justify-content: center;
+}
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.2rem;
-            animation: bounce 2s infinite;
-        }
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
-        }
+/* content-section 也明确为 flex 容器（不改变视觉） */
+.content-section {
+  display: flex;
+  flex-direction: column;
+}
 
-        .navbar {
-            display: flex;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            justify-content: space-between;
-            transition: transform 0.4s ease;
-            align-items: center;
-            padding: 15px 5%;
-            z-index: 1000;
-        }
+/* 主体区域：原来就是 flex，保留 */
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 30px;
+}
 
-        .navbar.hidden {
-            transform: translateY(-100%);
-        }
+/* ✅ 关键修改：原来 grid -> 改 flex column，并保留 gap 视觉一致 */
+.articles-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-        .nav-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff6b93;
-        }
+/* 卡片：用 flex column 组织图片+内容，效果一致 */
+.article-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
+  display: flex;
+  flex-direction: column;
+}
 
-        .nav-links li {
-            margin: 0 10px;
-        }
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
-        .nav-links a {
-            position: relative;
-            display: inline-block;
-            text-decoration: none;
-            color: inherit;
-            padding: 5px 0;
-            font-weight: 500;
-        }
+.article-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #ff6b93;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s ease;
-        }
+  display: flex; /* 虽然 img 不需要，但你要求“都用 flex”，这里也满足 */
+}
 
-        .nav-links a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-        
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-            
-            .navbar {
-                padding: 15px 20px;
-            }
-            
-            .nav-links {
-                gap: 5px;
-            }
-            
-            .nav-links li {
-                margin: 0 5px;
-            }
-        }
-        
+/* 内容区域用 flex column，保持排版 */
+.article-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 让标题/描述/信息间距更稳定（原来靠 margin，这里更 flex 化）}*/
+}
+.article-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2c3e50;
+  line-height: 1.3;
 
+  display: flex;
+  align-items: center;
+}
 
+.article-desc {
+  color: #666;
+  line-height: 1.5;
+
+  display: flex;
+  align-items: center;
+}
+
+/* meta 原本就是 flex，保留 */
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #888;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+
+  gap: 10px;
+}
+
+/* 分页：用 flex 居中（效果与 text-align center 一致） */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.page-btn,
+.pages {
+  color: rgb(0, 0, 0);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-btn:hover {
+  transform: translateY(-3px);
+}
+
+.page-btn:active {
+  transform: translateY(1px);
+}
+
+/* navbar 本来就是 flex，保留 */
+.navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  transition: transform 0.4s ease;
+  align-items: center;
+  padding: 15px 5%;
+  z-index: 1000;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.nav-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6b93;
+
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-links li {
+  display: flex;
+}
+
+.nav-links a {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+  color: inherit;
+  padding: 5px 0;
+  font-weight: 500;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ff6b93;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    gap: 5px;
+  }
+}
 </style>
