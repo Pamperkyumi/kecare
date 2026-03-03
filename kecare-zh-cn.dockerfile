@@ -41,6 +41,8 @@ RUN co build kecare
 
 WORKDIR /workspace/projects/theme
 
+RUN bun run build
+
 RUN if [ -d ".output/public/_nuxt" ]; then \
         echo ".output/public/_nuxt 目录存在"; \
     else \
