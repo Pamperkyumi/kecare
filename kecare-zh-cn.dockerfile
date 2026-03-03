@@ -26,7 +26,7 @@ RUN mkdir -p /tmp/.cookbook-installer && cd /tmp/.cookbook-installer \
     && rm -rf /tmp/.cookbook-installer
 
 COPY package.json bun.lock bunfig.toml /workspace/
-COPY projects/kecare/package.json /workspace/projects/kecare/
+COPY projects/theme/package.json /workspace/projects/theme/
 COPY .commands /workspace/.commands/
 
 RUN source /root/.bashrc \
@@ -39,7 +39,7 @@ RUN bun install
 
 RUN co build kecare
 
-WORKDIR /workspace/projects/kecare
+WORKDIR /workspace/projects/theme
 
 RUN if [ -d ".output/public/_nuxt" ]; then \
         echo ".output/public/_nuxt 目录存在"; \
