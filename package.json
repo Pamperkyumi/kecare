@@ -1,0 +1,49 @@
+{
+  "name": "@milkio/cookbook",
+  "private": true,
+  "scripts": {
+    "gen": "bun run ./projects/generator/index.ts gen \"C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\"",
+    "dev": "bun run gen && cd ./projects/theme && bun run dev"
+  },
+  "workspaces": [
+    "projects/*",
+    "packages/*",
+    ".commands"
+  ],
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@milkio/astra": "1.0.0-beta.205",
+    "@milkio/cookbook-command": "1.0.0-beta.205",
+    "@milkio/redis": "1.0.0-beta.205",
+    "@milkio/stargate": "1.0.0-beta.205",
+    "@milkio/stargate-worker": "1.0.0-beta.205",
+    "@milkio/vite-plugin-milkio": "1.0.0-beta.205",
+    "@types/node": "^25.2.2",
+    "consola": "^3.4.2",
+    "github-slugger": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "katex": "^0.16.27",
+    "marked": "^17.0.1",
+    "marked-gfm-heading-id": "^4.1.2",
+    "marked-katex-extension": "^5.1.6",
+    "milkio": "1.0.0-beta.205",
+    "modern-normalize": "^3.0.1",
+    "openai": "^6.17.0",
+    "sakana-widget": "^2.7.1",
+    "shiki": "^3.22.0",
+    "tailwindcss": "^4.1.18",
+    "typia": "^9.7.2",
+    "vite": "^7.1.10",
+    "vitest": "^3.2.4"
+  },
+  "devDependencies": {
+    "@shikijs/transformers": "^4.0.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/bun": "latest",
+    "oxfmt": "^0.14.0",
+    "oxlint": "^1.29.0"
+  },
+  "version": "1.0.0-beta.21"
+}

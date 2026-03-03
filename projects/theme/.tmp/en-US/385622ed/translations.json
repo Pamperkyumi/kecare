@@ -1,0 +1,19 @@
+{
+  "5bf3f3b3": "# Writing",
+  "bfc89bd8": "In Kecare, articles have a fixed storage location meow:",
+  "7d059d02": "- Article Directory: `theme-directory/.kecare/articles/`",
+  "dd37599c": "Currently, only Markdown (`.md`) articles are supported. Support for more \"note formats/file types\" will be gradually added.",
+  "2289ae1a": "## 1. Create a New Article File",
+  "d310d26b": "Create a new Markdown file under `theme directory/.kecare/articles/`, for example:",
+  "6afdad6c": "- `hello-kecare.md`\n- `my-first-post.md`",
+  "11321c7c": "## 2. Write the main content",
+  "2d0dd9d5": "You can write the main content just like regular Markdown, and remember to save when you're done, meow~",
+  "f4a75dce": "Here is a minimal example for you, meow~",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "ef5ed253": "## 3. Running",
+  "aa90d05e": "After writing the article, you need to run the generator to see the updates in the browser, meow.",
+  "48b34cfb": "- Article Directory: **theme-directory/.kecare/articles/**\n- File Type: Currently only supports **`*.md`**\n- Recommended Naming: Use stable, readable English filenames (e.g., **`getting-started.md`**), avoid frequent renaming",
+  "1826bc04": "Currently only Markdown (**.md**) articles are supported. Support for more \"note formats/file types\" will be gradually added.",
+  "7d751ab7": "Create a new Markdown file under **theme directory/.kecare/articles/**, for example:",
+  "7e4938bf": "- **`hello-kecare.md`**\n- **`my-first-post.md`**"
+}

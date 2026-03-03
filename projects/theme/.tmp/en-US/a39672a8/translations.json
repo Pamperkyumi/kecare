@@ -1,0 +1,21 @@
+{
+  "8fe1eb0a": "# Front Matter",
+  "5059c02c": "Each article can include a Front Matter section (in YAML format) at the beginning to provide metadata that the theme may require, such as: title, date, tags, description, author, cover image, sticky post, menu, etc. Meow~",
+  "1bf10ac8": "### Complete Example",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "3fdddc6a": "## Field Description (Recommended Conventions)",
+  "88326d32": "- `title`: Article title, for display purposes",
+  "c22d1df1": "- `date`: Article date, used for sorting/display (recommended to fill in, suggested format `YYYY-MM-DD` meow)",
+  "f622974a": "- `tags`: Array of tags (optional)",
+  "b847c04d": "- `desc`: Summary (optional, adding it will make the homepage look better meow)",
+  "1d788ece": "- `author`: Author name (optional)",
+  "b1c6dfcc": "- `coverSrc`: Cover/background image URL (optional)",
+  "f24be3e9": "- `sticky`: Sticky priority (optional, higher numbers take precedence)",
+  "f56f66d3": "- `menu`: Bind menu (optional, to display a specific menu for this article)",
+  "9804be81": "### Article Homepage Sorting Rules.",
+  "145d97f2": "1. `sticky` from large to small (treat no sticky as 0 meow)\n2. `date` from new to old",
+  "6d0c0b51": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **`title`** | string | Article title |\n| **`date`** | string | Article date (format suggested `YYYY-MM-DD`) |\n| **`tags`** | string[] | Tags array |\n| **`desc`** | string | Summary |\n| **`author`** | string | Author name |\n| **`coverSrc`** | string | Cover/background image URL |\n| **`sticky`** | number | Sticky priority |\n| **`menu`** | string | Bound menu key |",
+  "f20617f9": "1. **`sticky`** from large to small (treat no sticky as 0 meow)\n2. **`date`** from new to old",
+  "88101bf3": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **title** | string | Article title |\n| **date** | string | Article date (format suggested `YYYY-MM-DD`) |\n| **tags** | string[] | Tag array |\n| **desc** | string | Summary |\n| **author** | string | Author name |\n| **coverSrc** | string | Cover/background image URL |\n| **sticky** | number | Sticky priority |\n| **menu** | string | Bound menu key |",
+  "656ca1f8": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **title** | string | Article Title |\n| **date** | string | Article Date (Format suggested YYYY-MM-DD) |\n| **tags** | string[] | Tags Array |\n| **desc** | string | Summary |\n| **author** | string | Author Name |\n| **coverSrc** | string | Cover/Background Image URL |\n| **sticky** | number | Sticky Priority |\n| **menu** | string | Bind Menu Key |"
+}

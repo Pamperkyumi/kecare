@@ -1,0 +1,6 @@
+---
+menu: test
+translate: ['zh-CN', 'en-US', 'ja-JP']
+---
+
+懒了喵，以后写喵

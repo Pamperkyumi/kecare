@@ -1,0 +1,16 @@
+{
+  "name": "kecare",
+  "version": "1.0.0-beta.65",
+  "module": "index.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pamperkyumi/kecare"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

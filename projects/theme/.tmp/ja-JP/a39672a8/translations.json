@@ -1,0 +1,22 @@
+{
+  "8fe1eb0a": "# Front Matter",
+  "5059c02c": "各記事の冒頭には、Front Matter（YAML形式）を記述することができます。これは、テーマが必要とするメタ情報（例：タイトル、日付、タグ、説明、著者、カバー画像、ピン留め、メニューなど）を提供するために使用されますにゃ～",
+  "1bf10ac8": "### 完全な例",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "3fdddc6a": "## フィールド説明（推奨の取り決め）",
+  "88326d32": "- `title`: 記事のタイトル、表示用",
+  "c22d1df1": "- `date`：記事の日付、並び替え/表示に使用（記入推奨、形式は `YYYY-MM-DD` がおすすめですにゃ）",
+  "f622974a": "- `tags`：タグ配列（オプション）",
+  "b847c04d": "- `desc`：概要（任意、書くとトップページがもっと綺麗になるにゃん）",
+  "1d788ece": "- `author`：著者名（任意）",
+  "b1c6dfcc": "- `coverSrc`：カバー/背景画像のURL（オプション）",
+  "f24be3e9": "- `sticky`：固定表示の優先度（オプション、数字が大きいほど上位に表示）",
+  "f56f66d3": "- `menu`：メニューをバインド（オプション、この記事に特定のメニューを表示させる）",
+  "9804be81": "### 記事ホームページの並べ替えルールについて。",
+  "145d97f2": "1. `sticky` が大きい順（sticky がない場合は 0 として扱うにゃ）\n2. `date` が新しい順",
+  "6d0c0b51": "## フィールド説明（推奨規約）\n| フィールド | タイプ | 説明 |\n| --- | --- | --- |\n| **`title`** | string | 記事タイトル |\n| **`date`** | string | 記事日時（形式推奨 `YYYY-MM-DD`） |\n| **`tags`** | string[] | タグ配列 |\n| **`desc`** | string | 要約 |\n| **`author`** | string | 著者名 |\n| **`coverSrc`** | string | カバー/背景画像 URL |\n| **`sticky`** | number | トピック固定優先度 |\n| **`menu`** | string | バインドメニュー key |",
+  "f20617f9": "1. **`sticky`** 大きい順（sticky がない場合は 0 として扱うにゃ）\n2. **`date`** 新しい順",
+  "88101bf3": "## フィールド説明（推奨の取り決め）\n| フィールド | タイプ | 説明 |\n| --- | --- | --- |\n| **title** | string | 記事のタイトル |\n| **date** | string | 記事の日時（形式は `YYYY-MM-DD` を推奨） |\n| **tags** | string[] | タグの配列 |\n| **desc** | string | 要約 |\n| **author** | string | 著者名 |\n| **coverSrc** | string | カバー/背景画像のURL |\n| **sticky** | number | トピック固定の優先度 |\n| **menu** | string | バインドするメニューのキー |",
+  "656ca1f8": "## フィールド説明（推奨規約）\n| フィールド | タイプ | 説明 |\n| --- | --- | --- |\n| **title** | string | 記事タイトル |\n| **date** | string | 記事日時（フォーマット推奨 YYYY-MM-DD） |\n| **tags** | string[] | タグ配列 |\n| **desc** | string | 要約 |\n| **author** | string | 著者名 |\n| **coverSrc** | string | カバー/背景画像 URL |\n| **sticky** | number | トピック固定優先度 |\n| **menu** | string | バインドメニュー key |",
+  "ac7c0293": "---\nmenu: テスト\ntranslate: ['en-US', 'ja-JP']\n---"
+}

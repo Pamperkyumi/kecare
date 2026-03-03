@@ -1,0 +1,45 @@
+name: Publish kecare via trusted publishing
+
+on:
+  push:
+    branches:
+      - 'beta'
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  publish-kecare:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Ensure npm supports trusted publishing
+        run: npm install -g npm@latest
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 'latest'
+
+      - name: Install root dependencies
+        run: bun install
+
+      - name: publish packages
+        run: bun run .commands/scripts/ci/publish-ci.ts
+
+
+      - name: Cleanup on failure
+        if: failure()
+        run: |
+          echo "Build or release failed. Cleaning up..."
+          rm -rf dist/ || true
