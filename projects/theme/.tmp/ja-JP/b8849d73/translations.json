@@ -1,0 +1,10 @@
+{
+  "ac7c0293": "---\nmenu: test\ntranslate: ['en-US', 'ja-JP']\n---",
+  "8fe1eb0a": "# Front Matter",
+  "5059c02c": "各記事の先頭には、Front Matter（YAML形式）を記述することができます。これは、テーマが必要とするメタ情報（例：タイトル、日付、タグ、説明、作者、カバー画像、ピン留め、メニューなど）を提供するために使用されますにゃ～",
+  "1bf10ac8": "### 完全な例",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "656ca1f8": "## フィールド説明（推奨される規約）\n| フィールド | タイプ | 説明 |\n| --- | --- | --- |\n| **title** | string | 記事タイトル |\n| **date** | string | 記事日時（フォーマット推奨 YYYY-MM-DD） |\n| **tags** | string[] | タグ配列 |\n| **desc** | string | 要約 |\n| **author** | string | 著者名 |\n| **coverSrc** | string | カバー/背景画像 URL |\n| **sticky** | number | トピック固定優先度 |\n| **menu** | string | バインドメニュー key |",
+  "9804be81": "### 記事ホームページの並べ替えルールについて。",
+  "f20617f9": "1. **`sticky`** 大きい順（sticky がない場合は 0 として扱うにゃ）\n2. **`date`** 新しい順"
+}

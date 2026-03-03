@@ -1,0 +1,101 @@
+/* eslint-disable */
+/**
+ * AUTO-GENERATED FILE
+ * DO NOT EDIT MANUALLY
+ */
+
+import type { NavItem } from '../../../generator/types.ts';
+
+export const navItems: NavItem[] = [
+  {
+    "text": "入门指南",
+    "level": 1,
+    "items": [
+      {
+        "text": "Kecare从这里开始喵",
+        "link": "./70e6923c",
+        "level": 2
+      },
+      {
+        "text": "快速开始",
+        "link": "./95bb100b",
+        "level": 2
+      },
+      {
+        "text": "项目结构约定",
+        "link": "./a3b16d10",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "text": "基本操作",
+    "level": 1,
+    "items": [
+      {
+        "text": "写作",
+        "link": "./6e8c5f0b",
+        "level": 2
+      },
+      {
+        "text": "Markdown扩展",
+        "link": "./b40d18d1",
+        "level": 2
+      },
+      {
+        "text": "菜单系统",
+        "link": "./4ee23999",
+        "level": 2
+      },
+      {
+        "text": "国际化处理",
+        "link": "./493f5fa2",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "text": "部署",
+    "level": 1,
+    "items": [
+      {
+        "text": "GitHub Pages",
+        "link": "./39f6b230",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "text": "进阶",
+    "level": 1,
+    "items": [
+      {
+        "text": "生成器 CLI",
+        "level": 2,
+        "items": [
+          {
+            "text": "生成器CLI",
+            "link": "./fddd58bb",
+            "level": 3
+          },
+          {
+            "text": "自定义生成器CLI",
+            "link": "./9e192d60",
+            "level": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "贡献与协作",
+    "level": 1,
+    "items": [
+      {
+        "text": "贡献指南",
+        "link": "./43fc313b",
+        "level": 2
+      }
+    ]
+  }
+] as NavItem[];

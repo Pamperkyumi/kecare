@@ -1,0 +1,10 @@
+{
+  "42027478": "### Building the Site\nAfter adding the theme directory, simply run the following command to build the site:\n__CODE_BLOCK_1__\nIt will automatically use the theme path you saved for building.",
+  "dfba7527": "Kecare offers convenient commands to streamline your development process:",
+  "c8c5ea87": "###   Add Theme Directory\nWhen using it for the first time, you can save the theme path first, so you don't have to enter it every time later:\n__CODE_BLOCK_0__",
+  "4455c549": "### Start the Server\nStart the server\n__CODE_BLOCK_2__\nIt will automatically start the theme's development server (e.g., Nuxt dev), and you can access it at `http://localhost:3000`.",
+  "2efe32ad": "## FAQ (First Aid for Cats)",
+  "c6fedc39": "I don't know meow, sorry meow",
+  "28609f5f": "### Building the Site\nAfter adding the theme directory, you can build the site directly by running the following command:\n__CODE_BLOCK_0__\nIt will automatically use the theme path you saved to build the site.",
+  "fc3d8f97": "### Start the Server\nStart the server\n__CODE_BLOCK_1__\nIt will automatically start the theme's development server (e.g., Nuxt dev), and you can access it at `http://localhost:3000`."
+}
