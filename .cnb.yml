@@ -8,7 +8,7 @@ $:
       services:
         - vscode
         - docker
-master:
+main:
   push:
     # job: kecare-zh-cn
     - env:
