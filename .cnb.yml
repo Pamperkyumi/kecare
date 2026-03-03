@@ -1,0 +1,26 @@
+# .cnb.yml
+$:
+  vscode:
+    - docker:
+        build: .ide/Dockerfile
+      env:
+        CNB_WELCOME_CMD: bun i && co dev
+      services:
+        - vscode
+        - docker
+master:
+  push:
+    # job: kecare-zh-cn
+    - env:
+        COOKBOOK_MODE: prod-zh-cn
+        CSF_NAME: kecare-zh-cn
+      services:
+        - docker
+      imports: https://cnb.cool/akirarika/your-repo-slug/-/blob/main/.env.yml
+      runner:
+        cpus: 4
+      stages:
+        - name: docker build
+          script: docker build -f $CSF_NAME.dockerfile --build-arg EDGEONE_API_TOKEN=$EDGEONE_API_TOKEN -t $CSF_NAME .
+        - name: deploy to edgeone pages
+          script: docker run --rm $CSF_NAME
