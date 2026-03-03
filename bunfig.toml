@@ -1,2 +1,4 @@
 [install]
 linker = "hoisted"
+[workspace]
+packages = ["packages/*"]
