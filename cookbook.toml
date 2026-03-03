@@ -1,7 +1,7 @@
 [general]
 cookbookPort = 8000
 packageManager = "bun"
-modes = ["test", "development", "production"]
+modes = ["test", "development", "production","prod-zh-cn"]
 
 [projects.theme]
 type = "custom"
