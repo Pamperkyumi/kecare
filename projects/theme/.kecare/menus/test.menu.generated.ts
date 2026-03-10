@@ -20,11 +20,6 @@ export const navItems: NavItem[] = [
         "text": "快速开始",
         "link": "./95bb100b",
         "level": 2
-      },
-      {
-        "text": "项目结构约定",
-        "link": "./a3b16d10",
-        "level": 2
       }
     ]
   },
@@ -70,17 +65,12 @@ export const navItems: NavItem[] = [
     "level": 1,
     "items": [
       {
-        "text": "生成器 CLI",
+        "text": "在已有项目上使用kecare",
         "level": 2,
         "items": [
           {
-            "text": "生成器CLI",
-            "link": "./fddd58bb",
-            "level": 3
-          },
-          {
-            "text": "自定义生成器CLI",
-            "link": "./9e192d60",
+            "text": "在已有项目上使用kecare",
+            "link": "./95140e73",
             "level": 3
           }
         ]

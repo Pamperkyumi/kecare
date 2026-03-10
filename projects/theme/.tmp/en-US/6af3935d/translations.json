@@ -6,5 +6,19 @@
   "2efe32ad": "## FAQ (First Aid for Cats)",
   "c6fedc39": "I don't know meow, sorry meow",
   "28609f5f": "### Building the Site\nAfter adding the theme directory, you can build the site directly by running the following command:\n__CODE_BLOCK_0__\nIt will automatically use the theme path you saved to build the site.",
-  "fc3d8f97": "### Start the Server\nStart the server\n__CODE_BLOCK_1__\nIt will automatically start the theme's development server (e.g., Nuxt dev), and you can access it at `http://localhost:3000`."
+  "fc3d8f97": "### Start the Server\nStart the server\n__CODE_BLOCK_1__\nIt will automatically start the theme's development server (e.g., Nuxt dev), and you can access it at `http://localhost:3000`.",
+  "b2dbbe61": "# Generator CLI",
+  "d5ff9a19": "Kecare provides convenient command-line tools to simplify your development workflow. This document introduces all available CLI commands.",
+  "9806f96e": "---",
+  "ae493dd7": "## Command Overview",
+  "22f33857": "| Command | Description |\n|------|------|\n| `kecare gen [path]` | Build the site and generate page files |\n| kecare -version | View the current version |",
+  "ccb0bf82": "## Building a Site",
+  "1d3c8067": "### Basic Usage",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "cdeffede": "### Example",
+  "a9fa17cb": "__CODE_BLOCK_1__",
+  "5bc63ab8": "### Execution Flow",
+  "c35804ce": "When you run `kecare gen`, Kecare will:",
+  "e258bb0e": "1. **Scan Article Directory**: Read all Markdown files under `.kecare/articles/`\n2. **Parse Article Content**: Extract Front Matter and main content\n3. **Perform Translation** (if configured): Translate articles based on the `translate` field\n4. **Run Generators**: Execute `*.article.ts` and `*.list.ts` to generate pages\n5. **Output Files**: Write the generated pages to the specified directory",
+  "5b89cb25": "## Frequently Asked Questions"
 }

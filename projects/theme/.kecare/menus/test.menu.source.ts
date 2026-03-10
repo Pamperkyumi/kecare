@@ -7,7 +7,6 @@ export const navItems: NavItem[] = [
         items: [
             { text: 'Kecare从这里开始喵', link: './Kecare从这里开始喵.md', level: 2 },
             { text: '快速开始', link: './快速开始.md', level: 2 },
-            { text: '项目结构约定', link: './项目结构约定.md', level: 2 },
         ],
     },
     {
@@ -30,11 +29,10 @@ export const navItems: NavItem[] = [
         level: 1,
         items: [
             {
-                text: '生成器 CLI',
+                text: '在已有项目上使用kecare',
                 level: 2,
                 items: [
-                    { text: '生成器CLI', link: './生成器CLI.md', level: 3 },
-                    { text: '自定义生成器CLI', link: './自定义生成器CLI.md', level: 3 },
+                    { text: '在已有项目上使用kecare', link: './在已有项目上使用kecare.md', level: 3 },
                 ],
             },
         ],

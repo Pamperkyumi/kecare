@@ -14,11 +14,11 @@ export async function executeInputDrivers(context: KecareContext, emitArticleHan
     ]);
 
     // 批量处理 chunk 以避免内存溢出
-    const MEMORY_PER_ARTICLE_MB = 100 * 1024 * 1024;
-    const MAX_AVAILABLE_MEMORY_MB = 1400 * 1024 * 1024;
-    const freeMemoryMB = freemem();
-    const availableMemoryMB = Math.min(freeMemoryMB, MAX_AVAILABLE_MEMORY_MB);
-    const batchSize = Math.max(1, Math.floor(availableMemoryMB / MEMORY_PER_ARTICLE_MB));
+    const MEMORY_PER_ARTICLE_BYTES = 100 * 1024 * 1024;
+    const MAX_AVAILABLE_MEMORY_BYTES = 1400 * 1024 * 1024;
+    const freeMemoryBytes = freemem();
+    const availableMemoryBytes = Math.min(freeMemoryBytes, MAX_AVAILABLE_MEMORY_BYTES);
+    const batchSize = Math.max(1, Math.floor(availableMemoryBytes / MEMORY_PER_ARTICLE_BYTES));
     for (let i = 0; i < chunks.length; i += batchSize) {
         const batch = chunks.slice(i, i + batchSize);
         const promises: Promise<void>[] = [];

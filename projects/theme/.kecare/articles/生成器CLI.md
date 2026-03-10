@@ -3,24 +3,52 @@ menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
 ---
 
-Kecare 提供了便捷的命令来简化你的开发流程：
+# 生成器 CLI
 
-###  构建站点
-添加主题目录后，直接运行以下命令即可构建站点：
+Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。
+
+---
+
+## 命令概览
+
+| 命令 | 说明 |
+|------|------|
+| `kecare gen [path]` | 构建站点，生成页面文件 |
+| kecare -version | 查看当前版本           |
+
+---
+
+## 构建站点
+
+### 基本用法
+
 ```bash
-kecare gen
+kecare gen <主题路径>
 ```
-它会自动使用你保存的主题路径进行构建。
 
-### 启动服务器
-启动服务器
+### 示例
+
 ```bash
-kecare dev
+# 在主题目录中执行
+kecare gen .
+
+# 指定相对路径
+kecare gen ./Kecare-theme
+
+# 指定绝对路径
+kecare gen /home/user/Kecare-theme
 ```
-它会自动启动主题的开发服务器（如 Nuxt dev），你可以在 `http://localhost:3000` 访问。
 
+### 执行流程
 
-## FAQ（先救命喵）
+当你运行 `kecare gen` 时，Kecare 会：
 
-我不知道喵，对不起喵
+1. **扫描文章目录**：读取 `.kecare/articles/` 下的所有 Markdown 文件
+2. **解析文章内容**：提取 Front Matter 和正文内容
+3. **执行翻译**（如果配置）：根据 `translate` 字段翻译文章
+4. **运行生成器**：执行 `*.article.ts` 和 `*.list.ts` 生成页面
+5. **输出文件**：将生成的页面写入指定目录
 
+---
+
+## 常见问题

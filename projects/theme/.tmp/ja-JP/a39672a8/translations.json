@@ -18,5 +18,16 @@
   "f20617f9": "1. **`sticky`** 大きい順（sticky がない場合は 0 として扱うにゃ）\n2. **`date`** 新しい順",
   "88101bf3": "## フィールド説明（推奨の取り決め）\n| フィールド | タイプ | 説明 |\n| --- | --- | --- |\n| **title** | string | 記事のタイトル |\n| **date** | string | 記事の日時（形式は `YYYY-MM-DD` を推奨） |\n| **tags** | string[] | タグの配列 |\n| **desc** | string | 要約 |\n| **author** | string | 著者名 |\n| **coverSrc** | string | カバー/背景画像のURL |\n| **sticky** | number | トピック固定の優先度 |\n| **menu** | string | バインドするメニューのキー |",
   "656ca1f8": "## フィールド説明（推奨規約）\n| フィールド | タイプ | 説明 |\n| --- | --- | --- |\n| **title** | string | 記事タイトル |\n| **date** | string | 記事日時（フォーマット推奨 YYYY-MM-DD） |\n| **tags** | string[] | タグ配列 |\n| **desc** | string | 要約 |\n| **author** | string | 著者名 |\n| **coverSrc** | string | カバー/背景画像 URL |\n| **sticky** | number | トピック固定優先度 |\n| **menu** | string | バインドメニュー key |",
-  "ac7c0293": "---\nmenu: テスト\ntranslate: ['en-US', 'ja-JP']\n---"
+  "ac7c0293": "---\nmenu: テスト\ntranslate: ['en-US', 'ja-JP']\n---",
+  "d098603a": "各記事の冒頭には **Front Matter**（YAML 形式）を記述でき、記事のメタ情報（例：タイトル、日付、タグ、説明、著者、カバー画像、ピン留め、メニューなど）を提供するために使用されます。",
+  "9806f96e": "---",
+  "e45f0311": "## Front Matterとは",
+  "1619fb92": "Front Matterは、Markdownファイルの先頭にあるYAML形式のメタデータブロックで、`---`で区切られています。Kecareはこれらのメタデータを解析し、テーマコンポーネントで使用できるようにします。",
+  "68fccb0f": "## 完全な例",
+  "b6783775": "以下は、すべての一般的なフィールドを含む Front Matter の例です：",
+  "a9fa17cb": "__CODE_BLOCK_1__",
+  "e65968fa": "## 最小示例",
+  "16f0856c": "クイックスタートを希望する場合、最小限のFront Matterは以下の通りです：",
+  "6e598c92": "__CODE_BLOCK_2__",
+  "214ed986": "他のフィールドはデフォルト値が使用されます。いつでも戻って追加できます。"
 }

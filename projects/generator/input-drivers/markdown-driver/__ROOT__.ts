@@ -62,7 +62,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         if (!Array.isArray(frontMatter.translate)) throw new Error(`[markdown] ${fsPath} 中的 translate 字段必须是数组`);
         if (frontMatter.translate.length < 1) throw new Error(`[markdown] ${fsPath} 中的 translate 字段必须包含至少一个语言`);
         for (const lang of frontMatter.translate) {
-            if (typeof lang !== 'string' || !/^[a-z]{2,3}(-[A-Z]{0,3})?$/.test(lang)) throw new Error(`[markdown] ${fsPath} 中的 translate 字段包含无效的语言代码 "${lang}"，期望格式如 "en-US" 或 "zh"`);
+            if (typeof lang !== 'string' || !/^[a-z]{2,3}(-[A-Z]{0,3})?$/.test(lang)) throw new Error(`[markdown] ${fsPath} 中的 translate 字段包含无效的语言代码 "${lang}"，期望格式如 "en-US" 或 "zh-CN"`);
         }
 
         // 开始处理翻译
@@ -70,7 +70,6 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             // 对于原始语言，直接使用原始内容，无需翻译
             if (language === frontMatter.translate[0]) {
                 const html = `<div class="kecare">${await marked.parse(rawMarkdown, { renderer: headingRenderer })}</div>`;
-                console.log('111', html)
                 const desc = frontMatter.desc ?? String(frontMatter.desc).trim().length > 0 ? String(frontMatter.desc).trim() : extraDescFromHtml(html, 120);
                 const hash = await Bun.hash.xxHash3(relativePath, 1234n).toString(16).slice(0, 8);
                 await emitArticleHandle(context, {
@@ -114,15 +113,6 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 rawMarkdown: rawMarkdown,
             });
             continue
-
-            // TODO: 编写你实际的翻译处理逻辑..
-            // 最终，处理完翻译后，把翻译后的内容调用 emitArticleHandle 传递给下一个模块处理
-            // const rawHtml = await marked.parse(rawContent, {});
-            // const html = `<div class="kecare">${rawHtml}</div>`;
-
-            // 如何获取大语言模型的配置？
-
-            // 记得把 isOriginalLang 改为 false！
         }
     });
 }

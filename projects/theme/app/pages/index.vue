@@ -3,18 +3,18 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "front-matter",
+    "title": "菜单系统",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# Front Matter 每篇文章都可以在开头写一段 Front Matter（YAML 格式），用于提供主题可能需要的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等喵~ ### 完整示例 ```yaml title:...",
-    "hash": "5f065839",
-    "relativePath": "/front-matter.md",
+    "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
+    "hash": "4ee23999",
+    "relativePath": "/菜单系统.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "front-matter",
+      "title": "菜单系统",
       "menu": "test",
       "tags": [],
-      "desc": "# Front Matter 每篇文章都可以在开头写一段 Front Matter（YAML 格式），用于提供主题可能需要的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等喵~ ### 完整示例 ```yaml title:...",
+      "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -22,17 +22,17 @@
       ]
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f065839",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
-    "urlPath": "articles/zh-CN/5f065839"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "urlPath": "articles/zh-CN/4ee23999"
   },
   {
     "lang": "zh-CN",
     "title": "markdown扩展",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# Markdown扩展 ## Frontmatter YAML frontmatter 开箱即用 ```` --- title: 写作 # 标题：不填则默认使用文件名（或主题的默认逻辑） date: 2025-11-19 # 日期：不填则...",
+    "desc": "# Markdown 扩展 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。 --- ## Front Matter YAML Front Matter 开箱即用，你可以在文章开头添加元...",
     "hash": "b40d18d1",
     "relativePath": "/markdown扩展.md",
     "frontMatter": {
@@ -40,7 +40,7 @@
       "title": "markdown扩展",
       "menu": "test",
       "tags": [],
-      "desc": "# Markdown扩展 ## Frontmatter YAML frontmatter 开箱即用 ```` --- title: 写作 # 标题：不填则默认使用文件名（或主题的默认逻辑） date: 2025-11-19 # 日期：不填则...",
+      "desc": "# Markdown 扩展 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。 --- ## Front Matter YAML Front Matter 开箱即用，你可以在文章开头添加元...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -55,62 +55,10 @@
   },
   {
     "lang": "zh-CN",
-    "title": "Kecare从这里开始喵",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 关于 Kecare：从这里开始喵 > 写文档这种事情对我来说真的有点难捏…… > 如果你觉得哪里看不懂，先别骂我惹（小声），你可以来提 Issue / PR 帮我改，我会超级感激的喵！对不起惹对不起惹对不起惹（鞠躬.gif） Kecar...",
-    "hash": "70e6923c",
-    "relativePath": "/Kecare从这里开始喵.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "Kecare从这里开始喵",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 关于 Kecare：从这里开始喵 > 写文档这种事情对我来说真的有点难捏…… > 如果你觉得哪里看不懂，先别骂我惹（小声），你可以来提 Issue / PR 帮我改，我会超级感激的喵！对不起惹对不起惹对不起惹（鞠躬.gif） Kecar...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "urlPath": "articles/zh-CN/70e6923c"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "Github pages",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 部署到 GitHub Pages（从 0 到上线喵~） ## 0. 你需要准备什么（清单） - 一个 GitHub 账号（自己注册喵） - 本地已安装 **Git** - 本地已安装 **Node.js**（用于安装依赖与构建 Nuxt...",
-    "hash": "39f6b230",
-    "relativePath": "/Github pages.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "Github pages",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 部署到 GitHub Pages（从 0 到上线喵~） ## 0. 你需要准备什么（清单） - 一个 GitHub 账号（自己注册喵） - 本地已安装 **Git** - 本地已安装 **Node.js**（用于安装依赖与构建 Nuxt...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "urlPath": "articles/zh-CN/39f6b230"
-  },
-  {
-    "lang": "zh-CN",
     "title": "国际化处理",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# 国际化处理 ## 为什么需要国际化？ 我始终相信，每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者所阅读。正是出于这样的信念，Kecare 贴心地为你准备了国际化处理，让你的内容能够轻松触达全球受众。 ## 如...",
+    "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
     "hash": "493f5fa2",
     "relativePath": "/国际化处理.md",
     "frontMatter": {
@@ -118,7 +66,7 @@
       "title": "国际化处理",
       "menu": "test",
       "tags": [],
-      "desc": "# 国际化处理 ## 为什么需要国际化？ 我始终相信，每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者所阅读。正是出于这样的信念，Kecare 贴心地为你准备了国际化处理，让你的内容能够轻松触达全球受众。 ## 如...",
+      "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -130,11 +78,63 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
     "urlPath": "articles/zh-CN/493f5fa2"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "生成器CLI",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
+    "hash": "fddd58bb",
+    "relativePath": "/生成器CLI.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "生成器CLI",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ]
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "urlPath": "articles/zh-CN/fddd58bb"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "front-matter",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# Front Matter 每篇文章都可以在开头写一段 **Front Matter**（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 --- ## 什么是 Front Matter F...",
+    "hash": "5f065839",
+    "relativePath": "/front-matter.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "front-matter",
+      "menu": "test",
+      "tags": [],
+      "desc": "# Front Matter 每篇文章都可以在开头写一段 **Front Matter**（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 --- ## 什么是 Front Matter F...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ]
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f065839",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
+    "urlPath": "articles/zh-CN/5f065839"
   }
 ]
                 const currentPage = 1
                 const totalPages = 3
-                const totalArticles = 12
+                const totalArticles = 11
 
                 </script>
                 <template>

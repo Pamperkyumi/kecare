@@ -13,11 +13,11 @@ export async function generator(context: KecareContext, article: ArticleVariant)
         <script setup lang="ts">
         import articleTheme from '~/components/Theme/article-theme.vue'
         import type { NavItem } from 'kecare'
-        const article = ${JSON.stringify(article)}
+        const article = \`${encodeURIComponent(JSON.stringify(article))}\`
         const navItems:NavItem[] = ${JSON.stringify(navItems)}
         </script>
         <template>
-        <articleTheme :article="article"
+        <articleTheme :article="JSON.parse(decodeURIComponent(article))"
                        :navItems="navItems" 
                        />
         </template>

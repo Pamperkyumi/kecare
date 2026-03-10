@@ -43,7 +43,6 @@ const articleCards = computed<ArticleCard[]>(() => {
             cover: article.cover,
         }));
     }
-    // 若 records 不是数组，返回空数组
     return [];
 });
 

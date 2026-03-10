@@ -2,62 +2,87 @@
 menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
 ---
-# Markdown扩展
 
-## Frontmatter
+# Markdown 扩展
 
-YAML frontmatter 开箱即用
+Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。
 
-````
 ---
-title: 写作                 # 标题：不填则默认使用文件名（或主题的默认逻辑）
-date: 2025-11-19            # 日期：不填则会使用文件的最后修改时间
-tags:                       # 标签：不填则表示没有标签
+
+## Front Matter
+
+YAML Front Matter 开箱即用，你可以在文章开头添加元数据：
+
+```yaml
+---
+title: 写作指南
+date: 2025-11-19
+tags:
   - kecare
   - blog
-desc: 这是一段简介           # 简介：用于首页/落地页文章卡片；不填可用正文开头截取
-author: 作者                # 作者：不填则为空
-coverSrc: "https://example.com/cover.webp" # 封面/背景图：不填则使用主题默认图
-sticky: 1                   # 置顶：数字越大越靠前；不填则按日期倒序
-menu: kecare-docs           # 菜单 key：用于挂载左侧菜单
-translate: ['zh-CN', 'en-US', 'ja-JP']  #用于国际化处理
+desc: 这是一段简介
+author: 作者
+coverSrc: "https://example.com/cover.webp"
+sticky: 1
+menu: kecare-docs
+translate: ['zh-CN', 'en-US', 'ja-JP']
 ---
-````
+```
 
-这些数据将与所有自定义和主题组件一起，供页面其余部分使用。
+这些数据将传递给主题组件，供页面使用。更多详情请参考 [Front Matter](./front-matter.md) 文档。
 
-## 代码块中的语法高亮
+---
 
-使用 Shiki 在 Markdown 代码块中通过彩色文本实现语言语法高亮。Shiki 支持多种编程语言。您只需在代码块的起始反引号后添加有效的语言别名即可
+## 代码块语法高亮
 
-例如
+Kecare 使用 [Shiki](https://shiki.style/) 实现代码块的语法高亮，支持多种编程语言。
 
-````js
+### 基本用法
+
+在代码块的起始反引号后添加语言标识：
+
+````markdown
+```js
 export default {
   name: 'MyComponent',
-  // ...
+  data() {
+    return {
+      message: 'Hello Kecare!'
+    }
+  }
 }
+```
 ````
 
-## 代码块中的行高亮
+### 支持的语言
 
-**Input 输入**
+Shiki 支持几乎所有主流编程语言
 
-````
+## 代码块行高亮
+
+你可以高亮代码块中的特定行，让读者更容易关注重点内容。
+
+### 方式一：行号范围
+
+在语言标识后添加 `{行号}`：
+
+````markdown
 ```js{4}
 export default {
   data () {
     return {
-      msg: 'Highlighted!'
+      msg: 'Highlighted!'  // 这一行会被高亮
     }
   }
 }
 ```
 ````
 
-亦或是
+### 方式二：行内注释
 
-````
+使用 `// [!code highlight]` 注释：
+
+````markdown
 ```js
 export default {
   data () {
@@ -69,33 +94,40 @@ export default {
 ```
 ````
 
-**Output 输出**
+### 高亮多行
+
+支持多种格式组合：
+
+| 格式 | 示例 | 说明 |
+|------|------|------|
+| 单行 | `{4}` | 高亮第 4 行 |
+| 多个单行 | `{4,7,9}` | 高亮第 4、7、9 行 |
+| 行范围 | `{5-8}` | 高亮第 5 到 8 行 |
+| 混合使用 | `{4,7-13,16,23-27,40}` | 高亮多个行和范围 |
+
+### 效果展示
 
 ```js
 export default {
   data () {
     return {
-      msg: 'Highlighted!' // [!code highlight]
+      msg: 'Highlighted!'  // 这一行会被高亮
     }
   }
 }
 ```
 
-除了单行之外，你还可以指定多个单行、范围或两者结合：
+---
 
-行范围：例如 **{5-8}** 、 **{3-10}** 、 **{10-17}**
+## 代码聚焦
 
-多个单行：例如 **{4,7,9}**
+使用聚焦功能可以让某一行突出显示，同时模糊其他行。
 
-行范围和单行：例如 **{4,7-13,16,23-27,40}**
+### 用法
 
-## 聚焦于代码块
+在目标行添加 `// [!code focus]` 注释：
 
-在某行添加 **// [!code focus]** 注释将聚焦该行并模糊代码的其他部分。
-
-**Input 输入**
-
-````
+````markdown
 ```js
 export default {
   data () {
@@ -107,7 +139,7 @@ export default {
 ```
 ````
 
-**Output 输出**
+### 效果展示
 
 ````js
 export default {
@@ -119,13 +151,38 @@ export default {
 }
 ````
 
-## 代码块中的彩色差异显示
 
-在行上添加 **// [!code --]** 或 **// [!code ++]** 注释将创建该行的差异，同时保留代码块的颜色。
 
-**Input 输入**
+---
 
+## 代码差异显示
+
+在代码对比场景中，可以使用差异显示功能标记新增和删除的行。
+
+### 用法
+
+| 注释 | 效果 |
+|------|------|
+| `// [!code --]` | 标记为删除行（红色） |
+| `// [!code ++]` | 标记为新增行（绿色） |
+
+### 示例
+
+````markdown
+```js
+export default {
+  data () {
+    return {
+      msg: 'Removed' // [!code --]
+      msg: 'Added'   // [!code ++]
+    }
+  }
+}
+```
 ````
+
+### 效果展示
+
 ```js
 export default {
   data () {
@@ -136,47 +193,39 @@ export default {
   }
 }
 ```
-````
 
-**Output 输出**
+---
 
-```js
-export default {
-  data () {
-    return {
-      msg: 'Removed' // [!code --]
-      msg: 'Added' // [!code ++]
-    }
-  }
-}
-```
+## 代码分组（Tabs）
 
-## 分组
+你可以将多个代码块分组显示为标签页，方便切换查看。
 
-你可以像这样对多个代码块进行分组：
+### 基本用法
 
-**Input 输入**
-
-````js
+````markdown
 ::: tabs
 
-@tab 这是第一个标题
+@tab 第一个标签
 
 这是第一个标签页的内容。
-- 可以包含 Markdown
-- **加粗**,*斜体*等
+- 支持 Markdown
+- **加粗**、*斜体*等
 
-@tab 这是第二个标题
+@tab 第二个标签
 
 这是第二个标签页的内容。
 1. 有序列表
 2. 第二个项目
 
 :::
+````
 
+### 带文件名的标签
+
+````markdown
 ::: tabs
 
-@tab js[config.js]
+@tab js [config.js]
 
 ```js
 /**
@@ -189,9 +238,9 @@ const config = {
 export default config
 ```
 
-@tab ts[config.ts]
+@tab ts [config.ts]
 
-```ts [config.ts]
+```ts
 import type { UserConfig } from 'vitepress'
 
 const config: UserConfig = {
@@ -200,21 +249,22 @@ const config: UserConfig = {
 
 export default config
 ```
-:::
 
+:::
 ````
 
-**Output 输出**
+### 效果展示
 
+````
 ::: tabs
 
-@tab 这是第一个标题。
+@tab 第一个标签
 
 这是第一个标签页的内容。
-- 可以包含 Markdown
-- **加粗**,*斜体*等
+- 支持 Markdown
+- **加粗**、*斜体*等
 
-@tab 这是第二个标题
+@tab 第二个标签
 
 这是第二个标签页的内容。
 1. 有序列表
@@ -222,11 +272,9 @@ export default config
 
 :::
 
-
-
 ::: tabs
 
-@tab js[config.js]
+@tab js [config.js]
 
 ```js
 /**
@@ -239,9 +287,9 @@ const config = {
 export default config
 ```
 
-@tab ts[config.ts]
+@tab ts [config.ts]
 
-```ts [config.ts]
+```ts
 import type { UserConfig } from 'vitepress'
 
 const config: UserConfig = {
@@ -250,4 +298,7 @@ const config: UserConfig = {
 
 export default config
 ```
+
 :::
+````
+

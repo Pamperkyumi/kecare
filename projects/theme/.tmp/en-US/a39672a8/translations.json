@@ -17,5 +17,16 @@
   "6d0c0b51": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **`title`** | string | Article title |\n| **`date`** | string | Article date (format suggested `YYYY-MM-DD`) |\n| **`tags`** | string[] | Tags array |\n| **`desc`** | string | Summary |\n| **`author`** | string | Author name |\n| **`coverSrc`** | string | Cover/background image URL |\n| **`sticky`** | number | Sticky priority |\n| **`menu`** | string | Bound menu key |",
   "f20617f9": "1. **`sticky`** from large to small (treat no sticky as 0 meow)\n2. **`date`** from new to old",
   "88101bf3": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **title** | string | Article title |\n| **date** | string | Article date (format suggested `YYYY-MM-DD`) |\n| **tags** | string[] | Tag array |\n| **desc** | string | Summary |\n| **author** | string | Author name |\n| **coverSrc** | string | Cover/background image URL |\n| **sticky** | number | Sticky priority |\n| **menu** | string | Bound menu key |",
-  "656ca1f8": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **title** | string | Article Title |\n| **date** | string | Article Date (Format suggested YYYY-MM-DD) |\n| **tags** | string[] | Tags Array |\n| **desc** | string | Summary |\n| **author** | string | Author Name |\n| **coverSrc** | string | Cover/Background Image URL |\n| **sticky** | number | Sticky Priority |\n| **menu** | string | Bind Menu Key |"
+  "656ca1f8": "## Field Description (Recommended Conventions)\n| Field | Type | Description |\n| --- | --- | --- |\n| **title** | string | Article Title |\n| **date** | string | Article Date (Format suggested YYYY-MM-DD) |\n| **tags** | string[] | Tags Array |\n| **desc** | string | Summary |\n| **author** | string | Author Name |\n| **coverSrc** | string | Cover/Background Image URL |\n| **sticky** | number | Sticky Priority |\n| **menu** | string | Bind Menu Key |",
+  "d098603a": "Each article can include a **Front Matter** (in YAML format) at the beginning, used to provide metadata for the article, such as: title, date, tags, description, author, cover image, pinning, menu, etc.",
+  "9806f96e": "---",
+  "e45f0311": "## What is Front Matter",
+  "1619fb92": "Front Matter is a YAML-formatted metadata block located at the beginning of a Markdown file, delimited by `---`. Kecare parses this metadata and passes it to theme components for use.",
+  "68fccb0f": "## Complete Example",
+  "b6783775": "Here is an example of Front Matter containing all commonly used fields:",
+  "a9fa17cb": "__CODE_BLOCK_1__",
+  "e65968fa": "## Minimal Example",
+  "16f0856c": "If you just want to get started quickly, a minimal Front Matter only requires:",
+  "6e598c92": "__CODE_BLOCK_2__",
+  "214ed986": "Other fields will use default values, you can come back to fill them in at any time."
 }

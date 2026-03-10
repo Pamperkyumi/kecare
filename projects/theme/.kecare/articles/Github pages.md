@@ -3,168 +3,225 @@ menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
 ---
 
-# 部署到 GitHub Pages（从 0 到上线喵~）
+# 部署到 GitHub Pages
 
-## 0. 你需要准备什么（清单）
+本文档将手把手教你如何将 Kecare 博客部署到 GitHub Pages，让你的站点从本地走向线上。
 
-- 一个 GitHub 账号（自己注册喵）
-- 本地已安装 **Git**
-- 本地已安装 **Node.js**（用于安装依赖与构建 Nuxt）
+---
 
-## 1. 在 GitHub 上新建仓库（Repository）
+## 前置准备
 
-1) 登录 GitHub  
+在开始部署之前，请确保你已经准备好以下内容：
 
-2) 右上角 **New repository**  
+| 准备项 | 说明 |
+|--------|------|
+| GitHub 账号 | 如果没有，请先 [注册 GitHub](https://github.com/signup) |
+| Git | 本地已安装 Git，可通过 `git --version` 验证 |
+| Node.js | 本地已安装 Node.js，用于安装依赖和构建项目 |
 
-3) 填写仓库信息：
+---
 
- Repository name：名字随意喵，都可以的喵（也许吧
+## 创建 GitHub 仓库
 
-要选Public，要公开喵
+### 步骤一：登录 GitHub
 
-创建完成后，你会得到一个仓库地址（后面绑定 Git 会用到）。
+访问 [GitHub](https://github.com) 并登录你的账号。
 
-## 2. 让本地 Git “绑定”到 GitHub（推荐 SSH 方式喵~）
+### 步骤二：创建新仓库
 
-### 2.1 生成 SSH Key（本地）
+1. 点击右上角的 **+** 按钮，选择 **New repository**
+2. 填写仓库信息：
+   - **Repository name**：仓库名称，可自定义（如 `my-blog`）
+   - **Visibility**：选择 **Public**（公开），GitHub Pages 免费版仅支持公开仓库
+3. 点击 **Create repository** 完成创建
 
-打开终端执行：
+### 步骤三：记录仓库地址
+
+创建完成后，你会看到仓库地址，格式如下：
+
+```txt
+https://github.com/<username>/<repo>.git
+```
+
+或 SSH 格式：
+
+```txt
+git@github.com:<username>/<repo>.git
+```
+
+---
+
+## 配置 SSH 连接
+
+> 💡 **提示**：如果你已经配置过 SSH，可以跳过此步骤。
+
+### 生成 SSH Key
+
+打开终端，执行以下命令：
 
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-一路回车即可捏。遇到问题看一下Github 官方说明也是这套流程，会更详细一点👉[点我喵](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?utm_source=chatgpt.com)
+按三次回车使用默认设置即可。
 
-### 2.2 把公钥添加到 GitHub
+### 添加公钥到 GitHub
 
-1. 打开你本机的公钥文件（通常是 **~/.ssh/id_ed25519.pub**）
-2. 复制内容（是一长串以 **`ssh-ed25519`** 开头的文本）
-3. 在 GitHub 账号设置里 **添加 SSH key**（粘贴公钥）
+1. 查看公钥内容：
+   ```bash
+   cat ~/.ssh/id_ed25519.pub
+   ```
 
-这是 GitHub 官方的“添加 SSH key”流程。看Github的肯定比我写的好，所以👉[还是点击我喵](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?utm_source=chatgpt.com)
+2. 复制输出的内容（以 `ssh-ed25519` 开头）
 
-### 2.3 测试 SSH 连接
+3. 在 GitHub 中添加：
+   - 进入 **Settings** → **SSH and GPG keys**
+   - 点击 **New SSH key**
+   - 粘贴公钥内容并保存
+
+> 📖 **详细教程**：[GitHub 官方文档 - 添加 SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+### 验证 SSH 连接
 
 ```bash
 ssh -T git@github.com
 ```
 
-首次会提示确认指纹，输入 `yes`。看到欢迎信息就表示成功捏~
+首次连接会提示确认指纹，输入 `yes`。看到欢迎信息即表示成功。
 
-## 3. 把主题代码推到你的仓库
+---
 
-下面假设你已经有一个主题目录（例如 `Kecare-theme/`），我们要把它推到刚才新建的仓库里。
+## 推送代码到 GitHub
 
-### 3.1 在主题目录初始化 Git（如果它还不是仓库)
+### 初始化 Git 仓库（如果尚未初始化）
 
 ```bash
 cd <你的主题目录>
 git init
 git add -A
-git commit -m "init: theme"
+git commit -m "init: 初始化项目"
 ```
 
-### 3.2 添加远程仓库并推送
+### 添加远程仓库并推送
 
-把下面的 **`<user>`** 和 **`<repo>`** 替换成你的 GitHub 用户名和仓库名：
+将 `<username>` 和 `<repo>` 替换为你的 GitHub 用户名和仓库名：
 
 ```bash
 git branch -M main
-git remote add origin git@github.com:<user>/<repo>.git
+git remote add origin git@github.com:<username>/<repo>.git
 git push -u origin main
 ```
 
-到这里，你的主题代码应该已经出现在 GitHub 仓库的 **`main`** 分支里了喵~
+推送成功后，你的代码将出现在 GitHub 仓库的 `main` 分支中。
 
-## 4. Nuxt（示例主题）
+---
 
-> [!WARNING]
-> 请注意：不同主题的脚手架与技术栈（语言/框架/构建方式）可能完全不同，因此部署方法也可能不同捏。本篇文档仅以**示例主题**为例进行演示——因为示例主题使用 **Nuxt** 搭建，所以文中的 Nuxt 构建部署步骤是“特制给本主题”的喵。实际部署前，请优先阅读**主题作者**提供的部署说明与要求喵~
+## 配置 Nuxt 构建
 
-GitHub Pages 仅支持静态站点，Nuxt 会将您的应用程序预渲染为静态 HTML 文件。
+> ⚠️ **注意**：本节内容针对使用 Nuxt 的示例主题。如果你使用其他框架，请参考对应框架的部署文档。
 
-### 4.1 Base URL
+GitHub Pages 仅支持静态站点。Nuxt 需要将应用预渲染为静态 HTML 文件。
 
-如果你没有使用自定义域名，需要在构建步骤中将 `NUXT_APP_BASE_URL` 设置为你的仓库名称。例如： `https://<user>.github.io/<repository>/` 
+### 配置 Base URL
 
-`NUXT_APP_BASE_URL=/<repository>/`
+如果你没有使用自定义域名，需要设置正确的 Base URL。
 
-Nuxt 官方明确要求这样做喵，详细请看👉[点我喵](https://nuxt.com/deploy/github-pages)
+**方式一：在 nuxt.config.ts 中配置**
 
-不过我觉得，在Nuxt.config.ts中进行配置baseUrl就好了
-
-````ts
+```ts
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   app: {
-    baseURL: 'https://<user>.github.io/<repository>/',
+    baseURL: '/<repository>/',  // 替换为你的仓库名
     head: {
+      // ...
     },
   },
 });
-````
+```
 
-### 5. 在主题目录构建静态产物
+**方式二：通过环境变量配置**
 
-确保你在**主题目录**执行
+```bash
+NUXT_APP_BASE_URL=/<repository>/
+```
+
+> 📖 **参考**：[Nuxt 官方文档 - GitHub Pages 部署](https://nuxt.com/deploy/github-pages)
+
+---
+
+## 构建与发布
+
+### 安装依赖
+
+确保在**主题目录**下执行：
 
 ```bash
 npm install
 ```
 
-然后构建：
+### 构建静态文件
 
 ```bash
 npx nuxt build --preset github_pages
 ```
 
-构建完成后，Nuxt 的 GitHub Pages preset 会生成静态文件到：
+构建完成后，静态文件将输出到：
 
-````txt
-.output/public
-````
+```txt
+.output/public/
+```
 
-这是 Nuxt 官方给出的输出路径（后面我们就发布这个目录）。
+### 发布到 gh-pages 分支
 
-## 6. 发布构建产物到 `gh-pages` 分支
-
-在主题目录执行：
+使用 `gh-pages` 工具将构建产物推送到 `gh-pages` 分支：
 
 ```bash
 npx gh-pages -d .output/public
 ```
 
-它会把 **`.output/public`** 推送到 **`gh-pages`** 分支（若没有会自动创建），非常适合新手捏~
+该命令会自动创建 `gh-pages` 分支并推送静态文件。
 
-## 7. 在 GitHub 仓库里启用 Pages
+---
 
-1) 进入你的仓库 → **Settings**
+## 启用 GitHub Pages
 
-2. 找到 **Pages**
+### 配置 Pages 设置
 
-3. 在发布源（Source / Build and deployment）里选择：
+1. 进入你的 GitHub 仓库
+2. 点击 **Settings**
+3. 在左侧菜单找到 **Pages**
+4. 配置发布源：
+   - **Source**：选择 **Deploy from a branch**
+   - **Branch**：选择 **gh-pages**
+   - **Folder**：选择 **/ (root)**
+5. 点击 **Save**
 
-- Branch：**`gh-pages`**
-- Folder：**`/ (root)`**
+### 访问你的站点
 
-4) Save
-
-这也有Github 官方的流程👉[还是点击我喵](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site?utm_source=chatgpt.com)
-
-保存后，稍等片刻，GitHub 会给出你的 Pages 地址，例如：
+稍等片刻后，GitHub 会给出你的站点地址：
 
 ```txt
-https://<user>.github.io/<repo>/
+https://<username>.github.io/<repo>/
 ```
 
-让后访问即可喵
+点击链接即可访问你的博客！
 
-## FAQ
+---
 
-Q：我能不能让它自动部署（不用每次手动 build + publish）？
+## 常见问题
 
-A: 可以。Nuxt 官方提供了 GitHub Actions 的示例工作流，能自动把 `.output/public` 上传并部署到 Pages。👉[这里喵](https://nuxt.com/deploy/github-pages)
+### Q: 如何实现自动部署？
 
+A: 可以使用 GitHub Actions 实现自动构建和部署。Nuxt 官方提供了示例工作流，详见 [Nuxt GitHub Pages 部署文档](https://nuxt.com/deploy/github-pages)。
+
+### Q: 如何使用自定义域名？
+
+A: 在 GitHub Pages 设置中添加自定义域名，并在域名服务商处配置 DNS 解析指向 GitHub Pages。
+
+### Q: 构建失败怎么办？
+
+A: 我不知道
+
+现在你的博客已经上线，可以开始分享了！ 🎉
