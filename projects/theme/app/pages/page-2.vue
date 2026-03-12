@@ -3,84 +3,6 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "快速开始",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 快速开始 如果你想快速体验 Kecare 搭建博客，不打算立刻研究生成器原理或二次开发，按照这篇文档操作就能在本地运行起来。 --- ## 前置要求 ### 必需项 | 要求 | 说明 | 验证命令 | |------|------|-...",
-    "hash": "95bb100b",
-    "relativePath": "/快速开始.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "快速开始",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 快速开始 如果你想快速体验 Kecare 搭建博客，不打算立刻研究生成器原理或二次开发，按照这篇文档操作就能在本地运行起来。 --- ## 前置要求 ### 必需项 | 要求 | 说明 | 验证命令 | |------|------|-...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "urlPath": "articles/zh-CN/95bb100b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "写作",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 写作 在 Kecare 中，文章有固定的存放位置和格式规范。本文档将教你如何创建和编写文章。 --- ## 文章存放位置 在 Kecare 中，文章统一存放在以下目录： | 项目 | 说明 | |------|------| | 目录位...",
-    "hash": "6e8c5f0b",
-    "relativePath": "/写作.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "写作",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 写作 在 Kecare 中，文章有固定的存放位置和格式规范。本文档将教你如何创建和编写文章。 --- ## 文章存放位置 在 Kecare 中，文章统一存放在以下目录： | 项目 | 说明 | |------|------| | 目录位...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
-    "urlPath": "articles/zh-CN/6e8c5f0b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "Kecare从这里开始喵",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 关于 Kecare：从这里开始 > 💡 **写在前面**：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一...",
-    "hash": "70e6923c",
-    "relativePath": "/Kecare从这里开始喵.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "Kecare从这里开始喵",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 关于 Kecare：从这里开始 > 💡 **写在前面**：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "urlPath": "articles/zh-CN/70e6923c"
-  },
-  {
-    "lang": "zh-CN",
     "title": "Github pages",
     "isOriginalLang": true,
     "menu": "test",
@@ -130,6 +52,84 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "urlPath": "articles/zh-CN/95140e73"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "写作",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 写作 在 Kecare 中，文章有固定的存放位置和格式规范。本文档将教你如何创建和编写文章。 --- ## 文章存放位置 在 Kecare 中，文章统一存放在以下目录： | 项目 | 说明 | |------|------| | 目录位...",
+    "hash": "6e8c5f0b",
+    "relativePath": "/写作.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "写作",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 写作 在 Kecare 中，文章有固定的存放位置和格式规范。本文档将教你如何创建和编写文章。 --- ## 文章存放位置 在 Kecare 中，文章统一存放在以下目录： | 项目 | 说明 | |------|------| | 目录位...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ]
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
+    "urlPath": "articles/zh-CN/6e8c5f0b"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "贡献指南",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 贡献指南 感谢你对 Kecare 项目的关注！ 懒了喵，以后写 ## 致谢 感谢所有为 Kecare 做出贡献的开发者！ 你的每一份贡献都让这个项目变得更好。 贡献流程： 1. Fork 项目 2. 创建分支 3. 进行修改 4. 提交...",
+    "hash": "43fc313b",
+    "relativePath": "/贡献指南.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "贡献指南",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 贡献指南 感谢你对 Kecare 项目的关注！ 懒了喵，以后写 ## 致谢 感谢所有为 Kecare 做出贡献的开发者！ 你的每一份贡献都让这个项目变得更好。 贡献流程： 1. Fork 项目 2. 创建分支 3. 进行修改 4. 提交...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ]
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "urlPath": "articles/zh-CN/43fc313b"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "菜单系统",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
+    "hash": "4ee23999",
+    "relativePath": "/菜单系统.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "菜单系统",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ]
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "urlPath": "articles/zh-CN/4ee23999"
   }
 ]
                 const currentPage = 2

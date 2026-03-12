@@ -1,7 +1,7 @@
 import { transformerNotationHighlight } from '@shikijs/transformers';
 
 export async function onMountedSyntaxHighlight(articleElement: HTMLDivElement) {
-    const codeElements = articleElement.querySelectorAll('code');
+    const codeElements = articleElement.querySelectorAll('pre > code');
     const { codeToHtml } = await import('shiki');
     const { transformerNotationDiff, transformerNotationFocus } = await import('@shikijs/transformers');
 

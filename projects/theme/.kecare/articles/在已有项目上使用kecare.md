@@ -11,18 +11,6 @@ translate: ['zh-CN', 'en-US', 'ja-JP']
 
 ---
 
-## 前置要求
-
-在开始之前，请确保你的项目满足以下条件：
-
-| 要求 | 说明 |
-|------|------|
-| 包管理器 | 已安装 npm、pnpm、yarn 或 bun |
-| 框架支持 | 支持 Vue、React、Svelte 或传统服务端渲染框架 |
-| TypeScript | 建议使用 TypeScript 以获得更好的类型提示 |
-
----
-
 ## 核心概念
 
 在开始配置之前，让我们先了解几个核心概念：
@@ -41,23 +29,11 @@ Kecare 是一个博客/文档生成器，它能够：
 Markdown 文章 → Kecare 解析 → 生成器处理 → Vue/React 组件
 ```
 
-### 关键文件说明
-
-| 文件名 | 作用 | 必需 |
-|--------|------|------|
-| `articles/` | 存放 Markdown 文章的文件夹 | ✅ 是 |
-| `*.article.ts` | 文章详情页生成器 | ✅ 是 |
-| `*.list.ts` | 文章列表页生成器 | ✅ 是 |
-| `kecare.config.ts` | Kecare 配置文件（翻译等） | ⚪ 可选 |
-| `menus/` | 菜单配置文件夹 | ⚪ 可选 |
-
----
-
 ## 快速开始
 
 ### 第一步：创建 .kecare 文件夹
 
-在你的项目根目录下创建 `.kecare` 文件夹：
+在你项目的根目录下创建 `.kecare` 文件夹：
 
 ```txt
 your-project/
@@ -239,14 +215,14 @@ const articleCards = computed<ArticleCard[]>(() => {
     
     if (Array.isArray(records)) {
         return records.map((article: any) => ({
-            id: article.hash ?? article.id ?? "",
-            title: article.title ?? "",
-            desc: article.desc ?? "",
-            date: article.date,
-            author: article.author,
-            to: article.urlPath ?? "#",
-            lang: article.lang ?? "",
-            cover: article.cover,
+            id: article.hash
+            title: article.title
+            desc: article.desc
+            date: article.date
+            author: article.author
+            to: article.urlPath
+            lang: article.lang
+            cover: article.cover
         }));
     }
     return [];
@@ -294,7 +270,7 @@ const articleCards = computed<ArticleCard[]>(() => {
 ```
 
 ### 第七步：运行生成器
-
+在项目根目录下运行：
 ```bash
 kecare gen .
 ```
@@ -391,28 +367,20 @@ type ModuleListTS = {
 }
 ```
 
-## 
+### 1. 在列表生成器中筛选特定语言的文章：
 
-### 1. 目录结构建议
+```ts
+const TARGET_LANGUAGE = 'zh-CN';
 
-```txt
-your-project/
-├── .kecare/
-│   ├── articles/              # 文章目录
-│   │   ├── getting-started.md
-│   │   └── advanced-usage.md
-│   ├── menus/                 # 菜单目录（可选）
-│   │   └── docs.menu.source.ts
-│   ├── blog.article.ts        # 文章详情生成器
-│   ├── blog.list.ts           # 文章列表生成器
-│   └── kecare.config.ts       # 配置文件
-├── components/
-│   ├── ArticleTheme.vue       # 文章展示组件
-│   └── BlogLanding.vue        # 列表展示组件
-└── pages/                     # 生成的页面将输出到这里
+for (const articleHash in articles) {
+    const articleLanguages = articles[articleHash]!;
+    if (articleLanguages[TARGET_LANGUAGE]) {
+        // 处理该语言的文章
+    }
+}
 ```
 
-### 3. 使用 Kecare SDK
+### 2. 使用 Kecare SDK
 
 Kecare SDK 提供了 Markdown 扩展功能，如代码高亮、复制按钮等：
 
@@ -430,44 +398,12 @@ onMounted(async () => {
 </script>
 ```
 
-### 4. 多语言支持
-
-在列表生成器中筛选特定语言的文章：
-
-```ts
-const TARGET_LANGUAGE = 'zh-CN';
-
-for (const articleHash in articles) {
-    const articleLanguages = articles[articleHash]!;
-    if (articleLanguages[TARGET_LANGUAGE]) {
-        // 处理该语言的文章
-    }
-}
-```
-
-### 5. 分页处理
-
-```ts
-const ARTICLES_PER_PAGE = 10;
-
-const totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
-
-for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
-    const pageArticles = articles.slice(
-        pageIndex * ARTICLES_PER_PAGE,
-        (pageIndex + 1) * ARTICLES_PER_PAGE
-    );
-    // 生成页面...
-}
-```
-
 ---
-
 ## 常见问题
 
 ### Q: 生成的页面文件在哪里？
 
-A: 页面文件的位置由你在生成器中设置的 `fsPath` 决定。通常建议放在项目的 `pages` 目录下。
+A: 页面文件的位置由你在生成器中设置的 `fsPath` 决定。
 
 ### Q: 如何自定义文章 URL？
 
@@ -476,14 +412,6 @@ A: 在文章详情生成器中修改 `urlPath` 的返回值：
 ```ts
 urlPath: ['blog', article.lang, article.hash].join('/')
 // 结果: /blog/zh-CN/abc123
-```
-
-### Q: 如何获取文章的原始 Markdown 内容？
-
-A: `ArticleVariant` 类型中的 `rawMarkdown` 字段包含了原始 Markdown 内容：
-
-```ts
-const rawContent = article.rawMarkdown;
 ```
 
 ### Q: 为什么需要调用 kecareSDK.mounted()？
@@ -508,8 +436,3 @@ template: `
     }
 `
 ```
-
-### Q: 文章 ID 是如何生成的？
-
-A: 文章 ID（hash）通常由文章文件名或内容哈希生成，确保每篇文章有唯一且稳定的标识符。
-

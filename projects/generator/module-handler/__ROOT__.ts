@@ -1,4 +1,4 @@
-import type { ArticleVariant, KecareContext } from "../types";
+import type { ArticleVariant, KecareContext } from "kecare";
 import { useArticleModuleHandler } from "./article.ts";
 import { useListModuleHandler } from "./list.ts";
 import { useMenuModuleHandler } from "./menu.ts";

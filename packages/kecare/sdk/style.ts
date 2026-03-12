@@ -8,7 +8,7 @@ export const __STYLE__ = `
 }
 
 .kecare-copy-button {
-  position: absolute;
+  position: relative;
   top: -42px;
   right: 12px;
   padding: 6px;
@@ -18,7 +18,7 @@ export const __STYLE__ = `
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  z-index: 11;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;

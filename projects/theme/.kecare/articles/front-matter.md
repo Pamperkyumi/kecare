@@ -13,15 +13,6 @@ translate: ['zh-CN', 'en-US', 'ja-JP']
 
 Front Matter 是位于 Markdown 文件开头的 YAML 格式元数据块，以 `---` 分隔。Kecare 会解析这些元数据，并将其传递给主题组件使用。
 
-```yaml
----
-title: 我的第一篇文章
-date: 2025-01-01
----
-
-# 文章内容开始...
-```
-
 ---
 
 ## 完整示例
@@ -41,24 +32,7 @@ author: 作者名                 # 作者名称
 coverSrc: "https://example.com/cover.webp"  # 封面图片
 sticky: 1                      # 置顶优先级
 menu: kecare-docs              # 所属菜单
-translate: ['zh-CN', 'en-US', 'ja-JP']  # 翻译语言
+translate: ['zh-CN', 'en-US', 'ja-JP']  # 翻译语言，第一个值建议为当前语言
 ---
-```
-
----
-
-## 最小示例
-
-如果你只想快速开始，一个最小化的 Front Matter 只需要：
-
-```yaml
----
-title: 我的第一篇文章
----
-
-# 文章内容
-
-Hello, Kecare!
-```
 
 其他字段会使用默认值，你可以随时回来补充。

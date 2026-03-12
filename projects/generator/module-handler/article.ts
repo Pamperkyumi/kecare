@@ -1,4 +1,4 @@
-import type { ArticleVariant, KecareContext, ModuleArticleTS } from "../types";
+import type { ArticleVariant, KecareContext, ModuleArticleTS } from "kecare";
 import { Glob, write } from "bun";
 import { join } from "node:path";
 

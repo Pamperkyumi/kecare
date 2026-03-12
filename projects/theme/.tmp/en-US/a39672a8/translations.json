@@ -28,5 +28,6 @@
   "e65968fa": "## Minimal Example",
   "16f0856c": "If you just want to get started quickly, a minimal Front Matter only requires:",
   "6e598c92": "__CODE_BLOCK_2__",
-  "214ed986": "Other fields will use default values, you can come back to fill them in at any time."
+  "214ed986": "Other fields will use default values, you can come back to fill them in at any time.",
+  "45c4a943": "```yaml\n---\ntitle: Writing Guide                 # Article title\ndate: 2025-11-19               # Publication date\ntags:                          # Tag list\n  - kecare\n  - blog\n  - tutorial\ndesc: This is a guide on how to write using Kecare  # Article summary\nauthor: Author Name                 # Author name\ncoverSrc: \"https://example.com/cover.webp\"  # Cover image\nsticky: 1                      # Sticky priority\nmenu: kecare-docs              # Belonging menu\ntranslate: ['zh-CN', 'en-US', 'ja-JP']  # Translation languages, the first value is recommended to be the current language\n---"
 }

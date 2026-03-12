@@ -2,6 +2,7 @@
   "55546291": "Before starting the configuration, let's first understand a few core concepts:",
   "63420725": "Article Detail Page Generator Type:",
   "84801382": "## Quick Start",
+  "87704097": "A: The location of the page file is determined by the `fsPath` you set in the generator.",
   "7e291275": "# Using Kecare on an Existing Project",
   "355acfa1": "If you want to use Kecare to add documentation/usage instructions, etc., to your existing project, you don't need to go through a lot of complex and tedious configuration. Using Kecare, you can conveniently and quickly generate the required documentation pages.",
   "e8766200": "This document will guide you step-by-step on how to integrate Kecare into your existing project, making it easy to get started even for beginners.",
@@ -79,5 +80,11 @@
   "bf1dce8a": "A: Kecare is framework-agnostic; you just need to return the corresponding framework's code in the `template`:",
   "34b057e2": "__CODE_BLOCK_20__",
   "7a1c3645": "### Q: How is the article ID generated?",
-  "6fe1b95e": "A: The article ID (hash) is typically generated from the article's filename or content hash, ensuring each article has a unique and stable identifier."
+  "6fe1b95e": "A: The article ID (hash) is typically generated from the article's filename or content hash, ensuring each article has a unique and stable identifier.",
+  "b5b45a87": "Create the `.kecare` folder in the root directory of your project:",
+  "4dad2a97": "### Step 7: Run the Generator\nRun the following command in the project root directory:\n__CODE_BLOCK_7__",
+  "128ca9cb": "### 2. Using the Kecare SDK",
+  "196ae97f": "__CODE_BLOCK_15__\n---\n## Frequently Asked Questions",
+  "aab53596": "### 1. Filter articles in a specific language within the list generator:",
+  "b2608872": "---\n## Frequently Asked Questions"
 }
