@@ -8,8 +8,8 @@ export const __STYLE__ = `
 }
 
 .kecare-copy-button {
-  position: relative;
-  top: -42px;
+  position: absolute;
+  top: -40px;
   right: 12px;
   padding: 6px;
   background: rgba(255, 255, 255, 0.92);

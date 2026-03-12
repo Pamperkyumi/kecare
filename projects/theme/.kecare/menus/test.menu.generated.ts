@@ -66,14 +66,8 @@ export const navItems: NavItem[] = [
     "items": [
       {
         "text": "在已有项目上使用kecare",
-        "level": 2,
-        "items": [
-          {
-            "text": "在已有项目上使用kecare",
-            "link": "./95140e73",
-            "level": 3
-          }
-        ]
+        "link": "./95140e73",
+        "level": 2
       }
     ]
   },

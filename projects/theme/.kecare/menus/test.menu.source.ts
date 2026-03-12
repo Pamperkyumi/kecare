@@ -30,10 +30,8 @@ export const navItems: NavItem[] = [
         items: [
             {
                 text: '在已有项目上使用kecare',
+                link: './在已有项目上使用kecare.md',
                 level: 2,
-                items: [
-                    { text: '在已有项目上使用kecare', link: './在已有项目上使用kecare.md', level: 3 },
-                ],
             },
         ],
     },
