@@ -3,58 +3,6 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "Github pages",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 部署到 GitHub Pages 本文档将手把手教你如何将 Kecare 博客部署到 GitHub Pages，让你的站点从本地走向线上。 --- ## 前置准备 在开始部署之前，请确保你已经准备好以下内容： | 准备项 | 说明 |...",
-    "hash": "39f6b230",
-    "relativePath": "/Github pages.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "Github pages",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 部署到 GitHub Pages 本文档将手把手教你如何将 Kecare 博客部署到 GitHub Pages，让你的站点从本地走向线上。 --- ## 前置准备 在开始部署之前，请确保你已经准备好以下内容： | 准备项 | 说明 |...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "urlPath": "articles/zh-CN/39f6b230"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "在已有项目上使用kecare",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 在已有项目上使用 Kecare 如果你想要在已有项目上使用 Kecare 为你的项目添加文档/使用说明等内容，你不需要进行太多复杂繁琐的配置，使用 Kecare 可以方便快捷地生成所需的文档页面。 本文档将手把手教你如何在已有项目中集成...",
-    "hash": "95140e73",
-    "relativePath": "/在已有项目上使用kecare.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "在已有项目上使用kecare",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 在已有项目上使用 Kecare 如果你想要在已有项目上使用 Kecare 为你的项目添加文档/使用说明等内容，你不需要进行太多复杂繁琐的配置，使用 Kecare 可以方便快捷地生成所需的文档页面。 本文档将手把手教你如何在已有项目中集成...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
-    "urlPath": "articles/zh-CN/95140e73"
-  },
-  {
-    "lang": "zh-CN",
     "title": "写作",
     "isOriginalLang": true,
     "menu": "test",
@@ -71,13 +19,99 @@
         "zh-CN",
         "en-US",
         "ja-JP"
-      ]
+      ],
+      "sticky": 0,
+      "date": "2026-03-06"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
     "urlPath": "articles/zh-CN/6e8c5f0b"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "生成器CLI",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
+    "hash": "fddd58bb",
+    "relativePath": "/生成器CLI.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "生成器CLI",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-05"
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "urlPath": "articles/zh-CN/fddd58bb"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "快速开始",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 快速开始 如果你想快速体验 Kecare 搭建博客，不打算立刻研究生成器原理或二次开发，按照这篇文档操作就能在本地运行起来。 --- ## 前置要求 ### 必需项 | 要求 | 说明 | 验证命令 | |------|------|-...",
+    "hash": "95bb100b",
+    "relativePath": "/快速开始.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "快速开始",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 快速开始 如果你想快速体验 Kecare 搭建博客，不打算立刻研究生成器原理或二次开发，按照这篇文档操作就能在本地运行起来。 --- ## 前置要求 ### 必需项 | 要求 | 说明 | 验证命令 | |------|------|-...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-04"
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "urlPath": "articles/zh-CN/95bb100b"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "国际化处理",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
+    "hash": "493f5fa2",
+    "relativePath": "/国际化处理.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "国际化处理",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-03"
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "urlPath": "articles/zh-CN/493f5fa2"
   },
   {
     "lang": "zh-CN",
@@ -97,39 +131,15 @@
         "zh-CN",
         "en-US",
         "ja-JP"
-      ]
+      ],
+      "sticky": 0,
+      "date": "2026-03-02"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
     "urlPath": "articles/zh-CN/43fc313b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "菜单系统",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
-    "hash": "4ee23999",
-    "relativePath": "/菜单系统.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "菜单系统",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
-    "urlPath": "articles/zh-CN/4ee23999"
   }
 ]
                 const currentPage = 2

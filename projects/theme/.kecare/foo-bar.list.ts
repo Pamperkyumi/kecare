@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import type { ArticlesRecord, KecareContext } from "kecare";
+import { parseDateString } from "../../generator/utils/is-valid-date-string";
 
 export const type = 'article-detail';
 
@@ -16,6 +17,15 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
             zhArticles.push(articleLanguages[TARGET_LANGUAGE]);
         }
     }
+    //sort by sticky and date
+    zhArticles.sort((a: any, b: any) => {
+        const stickyDiff = (b.frontMatter.sticky ?? 0) - (a.frontMatter.sticky ?? 0);
+        if (stickyDiff !== 0) {
+            return stickyDiff;
+        }
+        return parseDateString(b.frontMatter.date).getTime() - parseDateString(a.frontMatter.date).getTime();
+    });
+
     const totalArticles = zhArticles.length;
     const totalPages = Math.ceil(zhArticles.length / ARTICLES_PER_PAGE);
 

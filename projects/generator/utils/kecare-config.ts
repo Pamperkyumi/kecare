@@ -1,5 +1,5 @@
 import { join } from "path";
-import type { KecareConfig, KecareContext } from "../types";
+import type { KecareConfig, KecareContext } from "kecare";
 import { existsSync } from "fs";
 
 async function createKecareConfig(context: KecareContext) {

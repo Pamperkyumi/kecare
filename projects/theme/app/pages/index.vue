@@ -3,29 +3,59 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "front-matter",
+    "title": "Kecare从这里开始喵",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# Front Matter 每篇文章都可以在开头写一段 **Front Matter**（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 --- ## 什么是 Front Matter F...",
-    "hash": "5f065839",
-    "relativePath": "/front-matter.md",
+    "desc": "# 关于 Kecare：从这里开始 > 💡 **写在前面**：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一...",
+    "hash": "70e6923c",
+    "relativePath": "/Kecare从这里开始喵.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "front-matter",
+      "title": "Kecare从这里开始喵",
       "menu": "test",
       "tags": [],
-      "desc": "# Front Matter 每篇文章都可以在开头写一段 **Front Matter**（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 --- ## 什么是 Front Matter F...",
+      "desc": "# 关于 Kecare：从这里开始 > 💡 **写在前面**：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
-      ]
+      ],
+      "sticky": 2,
+      "date": "2026-03-10"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f065839",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
-    "urlPath": "articles/zh-CN/5f065839"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "urlPath": "articles/zh-CN/70e6923c"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "在已有项目上使用kecare",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "# 在已有项目上使用 Kecare 如果你想要在已有项目上使用 Kecare 为你的项目添加文档/使用说明等内容，你不需要进行太多复杂繁琐的配置，使用 Kecare 可以方便快捷地生成所需的文档页面。 本文档将手把手教你如何在已有项目中集成...",
+    "hash": "95140e73",
+    "relativePath": "/在已有项目上使用kecare.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "在已有项目上使用kecare",
+      "menu": "test",
+      "tags": [],
+      "desc": "# 在已有项目上使用 Kecare 如果你想要在已有项目上使用 Kecare 为你的项目添加文档/使用说明等内容，你不需要进行太多复杂繁琐的配置，使用 Kecare 可以方便快捷地生成所需的文档页面。 本文档将手把手教你如何在已有项目中集成...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 1,
+      "date": "2026-03-11"
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
+    "urlPath": "articles/zh-CN/95140e73"
   },
   {
     "lang": "zh-CN",
@@ -45,7 +75,9 @@
         "zh-CN",
         "en-US",
         "ja-JP"
-      ]
+      ],
+      "sticky": 0,
+      "date": "2026-03-09"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
@@ -55,81 +87,59 @@
   },
   {
     "lang": "zh-CN",
-    "title": "Kecare从这里开始喵",
+    "title": "Github pages",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# 关于 Kecare：从这里开始 > 💡 **写在前面**：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一...",
-    "hash": "70e6923c",
-    "relativePath": "/Kecare从这里开始喵.md",
+    "desc": "# 部署到 GitHub Pages 本文档将手把手教你如何将 Kecare 博客部署到 GitHub Pages，让你的站点从本地走向线上。 --- ## 前置准备 在开始部署之前，请确保你已经准备好以下内容： | 准备项 | 说明 |...",
+    "hash": "39f6b230",
+    "relativePath": "/Github pages.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "Kecare从这里开始喵",
+      "title": "Github pages",
       "menu": "test",
       "tags": [],
-      "desc": "# 关于 Kecare：从这里开始 > 💡 **写在前面**：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一...",
+      "desc": "# 部署到 GitHub Pages 本文档将手把手教你如何将 Kecare 博客部署到 GitHub Pages，让你的站点从本地走向线上。 --- ## 前置准备 在开始部署之前，请确保你已经准备好以下内容： | 准备项 | 说明 |...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
-      ]
+      ],
+      "sticky": 0,
+      "date": "2026-03-08"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "urlPath": "articles/zh-CN/70e6923c"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "urlPath": "articles/zh-CN/39f6b230"
   },
   {
     "lang": "zh-CN",
-    "title": "国际化处理",
+    "title": "front-matter",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
-    "hash": "493f5fa2",
-    "relativePath": "/国际化处理.md",
+    "desc": "# Front Matter 每篇文章都可以在开头写一段 **Front Matter**（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 --- ## 什么是 Front Matter F...",
+    "hash": "5f065839",
+    "relativePath": "/front-matter.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "国际化处理",
+      "title": "front-matter",
       "menu": "test",
       "tags": [],
-      "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
+      "desc": "# Front Matter 每篇文章都可以在开头写一段 **Front Matter**（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 --- ## 什么是 Front Matter F...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
-      ]
+      ],
+      "sticky": 0,
+      "date": "2026-03-07"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "urlPath": "articles/zh-CN/493f5fa2"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "生成器CLI",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
-    "hash": "fddd58bb",
-    "relativePath": "/生成器CLI.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "生成器CLI",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ]
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "urlPath": "articles/zh-CN/fddd58bb"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f065839",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
+    "urlPath": "articles/zh-CN/5f065839"
   }
 ]
                 const currentPage = 1

@@ -1,4 +1,5 @@
 ---
+date: 2026-03-05
 menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
 ---

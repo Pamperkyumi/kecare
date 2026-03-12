@@ -15,13 +15,10 @@ export type KecareContext = {
 
 export type ArticleVariant = {
     title: string;
-    html: string;
-    cover: string | undefined;
-    menu: string | undefined;
-    desc: string;
     lang: string;
     isOriginalLang: boolean;
     hash: string;
+    html: string;
     frontMatter: FrontMatter;
     [key: string | number | symbol]: any;
     rawMarkdown: string;
@@ -29,12 +26,14 @@ export type ArticleVariant = {
 
 export type FrontMatter = {
     menu: string;
+    date: string;
     cover: string | undefined;
     layout: string | undefined;
     title: string;
     desc: string | undefined;
     tags: Array<string>;
     translate: Array<string>;
+    sticky: number;
 };
 
 /** 生成文章详情 **/

@@ -1,6 +1,8 @@
 ---
+date: 2026-03-11
 menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
+sticky: 1
 ---
 
 # 在已有项目上使用 Kecare
@@ -113,6 +115,9 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
             zhArticles.push(articleLanguages[TARGET_LANGUAGE]);
         }
     }
+
+    // 按 sticky 排序，你也可以随意进行排序
+    zhArticles.sort((a: any, b: any) => (b.frontMatter.sticky ?? 0) - (a.frontMatter.sticky ?? 0)); 
 
     const totalArticles = zhArticles.length;
     const totalPages = Math.ceil(zhArticles.length / ARTICLES_PER_PAGE);

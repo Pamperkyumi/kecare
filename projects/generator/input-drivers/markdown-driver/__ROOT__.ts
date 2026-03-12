@@ -1,5 +1,5 @@
 import { Glob, YAML } from "bun";
-import type { ArticleVariant, FrontMatter, KecareContext } from "../../types";
+import type { ArticleVariant, FrontMatter, KecareContext } from "kecare";
 import { marked } from 'marked';
 import { tabsExtension } from './markedrenderer/tabs-marked';
 import markedKatex from 'marked-katex-extension';
@@ -10,6 +10,7 @@ import { extraDescFromHtml } from "../../utils/extra-desc-from-html";
 import { useKecareConfig } from "../../utils/kecare-config";
 import { translator } from "./translator/translator";
 import GithubSlugger from 'github-slugger';
+import { parseDateString } from '../../utils/is-valid-date-string';
 
 export type MarkdownOriginalArticle = ArticleVariant & {
     fsPath: string;
@@ -44,6 +45,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         let rawMarkdown = frontMatterStr ? rawContent.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '') : rawContent;
         const cover = rawFrontMatter.cover ?? 'https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp'
 
+
         // 元数据
         const frontMatter: FrontMatter = {
             cover: cover,
@@ -53,6 +55,8 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             tags: rawFrontMatter.tags ?? [],
             desc: rawFrontMatter.desc ?? extraDescFromHtml(rawMarkdown, 120),
             translate: rawFrontMatter.translate ?? ['en-US'], // 翻译数组中的第一个元素，默认为文档自身的语言
+            sticky: rawFrontMatter.sticky ?? 0,
+            date: rawFrontMatter.date ?? undefined,
         }
 
         // 校验数据是否正确
@@ -64,6 +68,9 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         for (const lang of frontMatter.translate) {
             if (typeof lang !== 'string' || !/^[a-z]{2,3}(-[A-Z]{0,3})?$/.test(lang)) throw new Error(`[markdown] ${fsPath} 中的 translate 字段包含无效的语言代码 "${lang}"，期望格式如 "en-US" 或 "zh-CN"`);
         }
+        if (typeof frontMatter.sticky !== 'number') throw new Error(`[markdown] ${fsPath} 中的 sticky 字段必须是数字`);
+        if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
+
 
         // 开始处理翻译
         for (const language of frontMatter.translate) {
