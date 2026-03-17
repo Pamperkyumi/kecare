@@ -10,7 +10,7 @@ import { extraDescFromHtml } from "../../utils/extra-desc-from-html";
 import { useKecareConfig } from "../../utils/kecare-config";
 import { translator } from "./translator/translator";
 import GithubSlugger from 'github-slugger';
-import { parseDateString } from '../../utils/is-valid-date-string';
+import { parseDateString } from "kecare";
 
 export type MarkdownOriginalArticle = ArticleVariant & {
     fsPath: string;
@@ -42,6 +42,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         const rawContent = await file.text();
         const frontMatterStr = parseFrontMatter(rawContent);
         let rawFrontMatter = YAML.parse(frontMatterStr) as FrontMatter;
+        if (!rawFrontMatter) throw new Error(`[markdown] ${fsPath} 中的 frontmatter 不能为空,请检查文档格式`);
         let rawMarkdown = frontMatterStr ? rawContent.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '') : rawContent;
         const cover = rawFrontMatter.cover ?? 'https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp'
 
@@ -61,7 +62,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
 
         // 校验数据是否正确
         if (!frontMatter.title || frontMatter.title === '') throw new Error(`[markdown] ${fsPath} 中的 title 字段不能为空`);
-        if (typeof frontMatter.menu !== 'string') throw new Error(`[markdown] ${fsPath} 中的 menu 字段必须是字符串`);
+        if (frontMatter.menu !== undefined && typeof frontMatter.menu !== 'string') throw new Error(`[markdown] ${fsPath} 中的 menu 字段必须是字符串数组`);
         if (!Array.isArray(frontMatter.tags)) throw new Error(`[markdown] ${fsPath} 中的 tags 字段必须是数组`);
         if (!Array.isArray(frontMatter.translate)) throw new Error(`[markdown] ${fsPath} 中的 translate 字段必须是数组`);
         if (frontMatter.translate.length < 1) throw new Error(`[markdown] ${fsPath} 中的 translate 字段必须包含至少一个语言`);

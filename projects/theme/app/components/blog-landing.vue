@@ -17,6 +17,45 @@ const props = defineProps<{
 const page = computed(() => props.currentPage ?? 1);
 const totalPageCount = computed(() => props.totalPages ?? 1);
 
+// 生成分页页码数组
+const paginationItems = computed(() => {
+    const total = totalPageCount.value;
+    const current = page.value;
+    const items: (number | string)[] = [];
+
+    if (total <= 5) {
+        // 总页数较少时，显示所有页码
+        for (let i = 1; i <= total; i++) {
+            items.push(i);
+        }
+    } else if (current <= 3) {
+        // 当前页在前面：1 2 3 4 5 ... 最后一页
+        for (let i = 1; i <= 5; i++) {
+            items.push(i);
+        }
+        items.push('...');
+        items.push(total);
+    } else if (current >= total - 2) {
+        // 当前页在后面：1 ... 最后一页-4 最后一页-3 最后一页-2 最后一页-1 最后一页
+        items.push(1);
+        items.push('...');
+        for (let i = total - 4; i <= total; i++) {
+            items.push(i);
+        }
+    } else {
+        // 当前页在中间：1 ... 当前页-2 当前页-1 当前页 当前页+1 当前页+2 ... 最后一页
+        items.push(1);
+        items.push('...');
+        for (let i = current - 2; i <= current + 2; i++) {
+            items.push(i);
+        }
+        items.push('...');
+        items.push(total);
+    }
+
+    return items;
+});
+
 type ArticleCard = {
     id: string;
     title: string;
@@ -99,9 +138,7 @@ function typeWriter(text: string, element: HTMLElement, speed: number): () => vo
 
 onMounted(() => {
     if (subtitleElement.value) {
-        setTimeout(() => {
-            return typeWriter(subtitleText, subtitleElement.value!, typingSpeed);
-        }, 500);
+        return typeWriter(subtitleText, subtitleElement.value!, typingSpeed);
     }
 })
 
@@ -149,15 +186,25 @@ onUnmounted(() => {
                         </div>
                     </div>
                 </NuxtLink>
-                <nav class="flex items-center justify-center gap-[14px]" v-if="totalPageCount > 1">
-                    <NuxtLink
-                        class="text-black flex items-center justify-center transition-transform duration-200 hover:-translate-y-[3px] active:translate-y-[1px]"
-                        v-if="page > 1" :to="page === 2 ? '/' : `/page-${page - 1}`">上一页</NuxtLink>
-                    <span class="text-black flex items-center justify-center">第 {{ page }} / {{ totalPageCount }}
-                        页</span>
-                    <NuxtLink
-                        class="text-black flex items-center justify-center transition-transform duration-200 hover:-translate-y-[3px] active:translate-y-[1px]"
-                        v-if="page < totalPageCount" :to="`/page-${page + 1}`">下一页</NuxtLink>
+                <nav class="flex items-center justify-center gap-[8px]" v-if="totalPageCount > 1">
+                    <template v-for="(item, index) in paginationItems" :key="index">
+                        <!-- 当前页码（高亮） -->
+                        <span v-if="item === page"
+                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-[#ff9eb0] text-white font-medium cursor-default">
+                            {{ item }}
+                        </span>
+                        <!-- 省略号 -->
+                        <span v-else-if="item === '...'"
+                            class="w-[36px] h-[36px] flex items-center justify-center text-[#999] cursor-default">
+                            {{ item }}
+                        </span>
+                        <!-- 可点击页码 -->
+                        <NuxtLink v-else
+                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-white text-[#333] font-medium transition-all duration-200 hover:bg-[#f0f0f0] hover:-translate-y-[2px] active:translate-y-[0px] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
+                            :to="item === 1 ? '/' : `/page-${item}`">
+                            {{ item }}
+                        </NuxtLink>
+                    </template>
                 </nav>
             </div>
             <AuthorCard :totalArticles="totalArticles" />

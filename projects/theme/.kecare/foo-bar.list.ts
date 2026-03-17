@@ -1,10 +1,10 @@
 import { join } from 'node:path';
 import type { ArticlesRecord, KecareContext } from "kecare";
-import { parseDateString } from "../../generator/utils/is-valid-date-string";
+import { parseDateString } from "kecare";
 
 export const type = 'article-detail';
 
-const ARTICLES_PER_PAGE = 5;
+const ARTICLES_PER_PAGE = 2;
 const TARGET_LANGUAGE = 'zh-CN';
 
 export function generator(context: KecareContext, articles: ArticlesRecord) {

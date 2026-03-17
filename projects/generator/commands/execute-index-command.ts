@@ -33,6 +33,5 @@ export async function executeIndexCommand(params: Params) {
     const context: KecareContext = {
         projectPath,
     }
-    console.log(projectPath);
     await executeInputDrivers(context, emitArticleHandle);
 }

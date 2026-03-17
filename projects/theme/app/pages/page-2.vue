@@ -3,148 +3,64 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "写作",
+    "title": "Kecare从这里开始喵 copy 5",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# 写作 在 Kecare 中，文章有固定的存放位置和格式规范。本文档将教你如何创建和编写文章。 --- ## 文章存放位置 在 Kecare 中，文章统一存放在以下目录： | 项目 | 说明 | |------|------| | 目录位...",
-    "hash": "6e8c5f0b",
-    "relativePath": "/写作.md",
+    "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
+    "hash": "482c5e59",
+    "relativePath": "/Kecare从这里开始喵 copy 5.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "写作",
+      "title": "Kecare从这里开始喵 copy 5",
       "menu": "test",
       "tags": [],
-      "desc": "# 写作 在 Kecare 中，文章有固定的存放位置和格式规范。本文档将教你如何创建和编写文章。 --- ## 文章存放位置 在 Kecare 中，文章统一存放在以下目录： | 项目 | 说明 | |------|------| | 目录位...",
+      "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
       ],
-      "sticky": 0,
-      "date": "2026-03-06"
+      "sticky": 2,
+      "date": "2026-03-10"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
-    "urlPath": "articles/zh-CN/6e8c5f0b"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\482c5e59.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/482c5e59",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\482c5e59.vue",
+    "urlPath": "articles/zh-CN/482c5e59"
   },
   {
     "lang": "zh-CN",
-    "title": "生成器CLI",
+    "title": "Kecare从这里开始喵 copy",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
-    "hash": "fddd58bb",
-    "relativePath": "/生成器CLI.md",
+    "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
+    "hash": "6fb10743",
+    "relativePath": "/Kecare从这里开始喵 copy.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "生成器CLI",
+      "title": "Kecare从这里开始喵 copy",
       "menu": "test",
       "tags": [],
-      "desc": "# 生成器 CLI Kecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。 --- ## 命令概览 | 命令 | 说明 | |------|------| | `kecare gen [path]` |...",
+      "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
       ],
-      "sticky": 0,
-      "date": "2026-03-05"
+      "sticky": 2,
+      "date": "2026-03-10"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "urlPath": "articles/zh-CN/fddd58bb"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "快速开始",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 快速开始 如果你想快速体验 Kecare 搭建博客，不打算立刻研究生成器原理或二次开发，按照这篇文档操作就能在本地运行起来。 --- ## 前置要求 ### 必需项 | 要求 | 说明 | 验证命令 | |------|------|-...",
-    "hash": "95bb100b",
-    "relativePath": "/快速开始.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "快速开始",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 快速开始 如果你想快速体验 Kecare 搭建博客，不打算立刻研究生成器原理或二次开发，按照这篇文档操作就能在本地运行起来。 --- ## 前置要求 ### 必需项 | 要求 | 说明 | 验证命令 | |------|------|-...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-04"
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "urlPath": "articles/zh-CN/95bb100b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "国际化处理",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
-    "hash": "493f5fa2",
-    "relativePath": "/国际化处理.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "国际化处理",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 国际化处理 每一篇用心撰写的文章都值得被更多人看见，值得跨越语言的界限，被全世界的读者阅读。Kecare 为你提供了强大的国际化（i18n）支持，让你的内容能够轻松触达全球受众。 --- ## 为什么需要国际化 ### 扩大受众范围 -...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-03"
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "urlPath": "articles/zh-CN/493f5fa2"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "贡献指南",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "# 贡献指南 感谢你对 Kecare 项目的关注！ 懒了喵，以后写 ## 致谢 感谢所有为 Kecare 做出贡献的开发者！ 你的每一份贡献都让这个项目变得更好。 贡献流程： 1. Fork 项目 2. 创建分支 3. 进行修改 4. 提交...",
-    "hash": "43fc313b",
-    "relativePath": "/贡献指南.md",
-    "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "贡献指南",
-      "menu": "test",
-      "tags": [],
-      "desc": "# 贡献指南 感谢你对 Kecare 项目的关注！ 懒了喵，以后写 ## 致谢 感谢所有为 Kecare 做出贡献的开发者！ 你的每一份贡献都让这个项目变得更好。 贡献流程： 1. Fork 项目 2. 创建分支 3. 进行修改 4. 提交...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-02"
-    },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
-    "urlPath": "articles/zh-CN/43fc313b"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6fb10743.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6fb10743",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6fb10743.vue",
+    "urlPath": "articles/zh-CN/6fb10743"
   }
 ]
                 const currentPage = 2
-                const totalPages = 3
-                const totalArticles = 11
+                const totalPages = 8
+                const totalArticles = 16
 
                 </script>
                 <template>

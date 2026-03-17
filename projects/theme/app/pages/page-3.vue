@@ -3,36 +3,64 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "菜单系统",
+    "title": "Kecare从这里开始喵 copy 4",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
-    "hash": "4ee23999",
-    "relativePath": "/菜单系统.md",
+    "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
+    "hash": "a9c79160",
+    "relativePath": "/Kecare从这里开始喵 copy 4.md",
     "frontMatter": {
       "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "菜单系统",
+      "title": "Kecare从这里开始喵 copy 4",
       "menu": "test",
       "tags": [],
-      "desc": "# 菜单系统 如果你使用博客来写文档（比如你现在读的这一页），通常左侧会有一个菜单栏/目录栏帮助跳转。Kecare 提供了一套简单、统一的菜单编写方式。 --- ## 菜单存放位置 在 Kecare 中，菜单有固定的存放位置： | 项目 |...",
+      "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
       ],
-      "sticky": 0,
-      "date": "2026-03-01"
+      "sticky": 2,
+      "date": "2026-03-10"
     },
     "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
-    "urlPath": "articles/zh-CN/4ee23999"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\a9c79160.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/a9c79160",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\a9c79160.vue",
+    "urlPath": "articles/zh-CN/a9c79160"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "Kecare从这里开始喵",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
+    "hash": "70e6923c",
+    "relativePath": "/Kecare从这里开始喵.md",
+    "frontMatter": {
+      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "title": "Kecare从这里开始喵",
+      "menu": "test",
+      "tags": [],
+      "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 2,
+      "date": "2026-03-10"
+    },
+    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "urlPath": "articles/zh-CN/70e6923c"
   }
 ]
                 const currentPage = 3
-                const totalPages = 3
-                const totalArticles = 11
+                const totalPages = 8
+                const totalArticles = 16
 
                 </script>
                 <template>

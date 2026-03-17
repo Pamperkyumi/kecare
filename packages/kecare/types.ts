@@ -36,7 +36,7 @@ export type FrontMatter = {
     sticky: number;
 };
 
-/** 生成文章详情 **/
+// 生成文章详情
 export type ModuleArticleTS = {
     generator: (context: KecareContext, article: ArticleVariant) => Promise<{
         // 文章详情页面的 URL
@@ -51,7 +51,7 @@ export type ModuleArticleTS = {
 export type ArticlesRecord = Record<string, Record<string, Omit<ArticleVariant, 'html'> & { fsPath: string, urlPath: string }>>;
 
 
-/** 生成文章列表 **/
+// 生成文章列表
 export type ModuleListTS = {
     generator: (context: KecareContext,
         articles: ArticlesRecord
@@ -73,7 +73,31 @@ export type ModuleListTS = {
     >;
 }
 
-/** 翻译配置 **/
+
+// 归档
+export type ModuleArchiveTS = {
+    generator: (context: KecareContext,
+        articles: ArchiveArticleData[]
+    ) => Promise<{
+        // 文件生成的路径
+        fsPath: string,
+        // 文章详情页面的模板内容
+        template: string
+    }>;
+}
+
+export type ArchiveArticleData = {
+    title: string;
+    lang: string;
+    hash: string;
+    tags: Array<string>;
+    date: string;
+    fsPath: string;
+    urlPath: string;
+}
+
+
+// 翻译
 export type TranslationConfigOptions = {
     KecareContext: KecareContext;
     llm: KecareConfig['llm'];
@@ -82,11 +106,12 @@ export type TranslationConfigOptions = {
     lang?: string;
 }
 
+// 导航
 export type NavItem =
     | { text: string; link: string; level: number; desc?: string; icon?: string }
     | { text: string; items: NavItem[]; level: number };
 
-/** 生成菜单 **/
+// 生成菜单
 export type ModuleMenuTS = {
     generator: (context: KecareContext,
         articles: ArticlesRecord
