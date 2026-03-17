@@ -24,7 +24,7 @@ const friendLinks: FriendLink[] = [
     {
         name: '可莉姆船长',
         url: 'https://kecream.cn',
-        desc: '大咸鱼大咸鱼大咸鱼',
+        desc: '关注可莉姆船长谢谢喵',
         image: 'https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif'
     },
     {
@@ -158,10 +158,6 @@ onMounted(async () => {
                     </div>
                 </div>
             </div>
-
-            <aside class="flex-none w-[300px] max-w-[300px] mt-[210px] h-fit max-[960px]:hidden">
-                <AuthorCard />
-            </aside>
         </div>
     </div>
 

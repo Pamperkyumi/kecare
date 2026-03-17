@@ -68,6 +68,7 @@ const props = defineProps<{
     font-size: 1.25rem;
     margin-bottom: 8px;
     color: #2c3e50;
+    user-select: none;
 }
 
 .author-about {
@@ -75,6 +76,7 @@ const props = defineProps<{
     margin-bottom: 16px;
     font-size: 0.9rem;
     line-height: 1.5;
+    user-select: none;
 }
 
 .author-stats {
@@ -94,11 +96,13 @@ const props = defineProps<{
     font-weight: bold;
     font-size: 1.15rem;
     color: #ff6b93;
+    user-select: none;
 }
 
 .stat-label {
     font-size: 0.8rem;
     color: #888;
+    user-select: none;
 }
 
 .follow {
@@ -111,6 +115,7 @@ const props = defineProps<{
     cursor: pointer;
     font-weight: 600;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+    user-select: none;
 }
 
 .follow:hover {

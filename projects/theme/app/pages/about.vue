@@ -166,11 +166,6 @@ onMounted(async () => {
                     </div>
                 </div>
             </div>
-
-            <!-- 侧边栏 -->
-            <aside class="flex-none w-[300px] max-w-[300px] mt-[210px] h-fit max-[960px]:hidden">
-                <AuthorCard />
-            </aside>
         </div>
     </div>
 
