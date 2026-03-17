@@ -1,0 +1,9 @@
+{
+  "title": "クイックスタート",
+  "lang": "ja-JP",
+  "hash": "95bb100b",
+  "tags": [],
+  "date": "2026-03-04",
+  "urlPath": "articles/ja-JP/95bb100b",
+  "content": "# クイックスタート\n\nもしKecareでブログを素早く体験したい場合、すぐにジェネレーターの原理や二次開発を研究する予定がなければ、このドキュメントに従って操作すればローカルで実行できます。\n\n---\n\n## 前提条件\n\n### 必須項目\n\n| 要件 | 説明 | 検証コマンド |\n|------|------|----------|\n| Node.js | 依存関係のインストール、開発サーバーの起動に使用 | `node -v` |\n| テーマプロジェクト | ページのレンダリングを担当 | - |\n\n### オプション（推奨）\n\n| 要件 | 説明 |\n|------|------|\n| Git | テーマリポジトリのクローンが容易（ZIP ダウンロード・解凍でも可） |\n\n---\n\n## Kecare CLI のインストール\n\n### ステップ1：インストールコマンドを実行\n\n任意のディレクトリでターミナルを開き、実行：\n\n```bash\nnpm create kecare@beta\n```\n\n### ステップ2：インストールの確認\n\n```bash\nkecare -version\n```\n\nバージョン情報が表示できれば、インストールは成功しています。\n\n---\n\n## サンプルテーマを取得\n\n### 方法1：Gitクローンを使用\n\n```bash\ngit clone https://github.com/Pamperkyumi/Kecare-theme.git\ncd Kecare-theme\n```\n\n### 方法2：ZIPをダウンロード\n\n1. [Kecare-theme リポジトリ](https://github.com/Pamperkyumi/Kecare-theme)にアクセスする\n2. **Code** → **Download ZIP** をクリックする\n3. ダウンロードしたZIPファイルを解凍し、ディレクトリに移動する\n\n---\n\n## 依存関係のインストール\n\n### ステップ1：テーマディレクトリに移動する\n\n```bash\ncd Kecare-theme\n```\n\n### ステップ2：プロジェクトの依存関係をインストール\n\n```bash\nnpm install\n```\n\n### ステップ3：Kecareのインストール\n\n```bash\nnpm install kecare@beta\n```\n\n> 💡 **ヒント**：pnpm、yarn、または bun を使用して依存関係をインストールすることもできます。\n\n---\n\n## ジェネレーターの実行\n\n### サイト構築\n\n`kecare gen` コマンドを使用してサイトを生成します：\n\n```bash\n# 在主题目录中\nkecare gen .\n\n# 或指定主题路径\nkecare gen ./Kecare-theme\n\n# 或使用绝对路径\nkecare gen /path/to/Kecare-theme\n```\n\n### 開発サーバーの起動\n\n```bash\nkecare dev\n```\n\n---\n\n## 起動成功の確認\n\n### 出力を確認\n\nすべてが正常であれば、次のような出力が表示されます：\n\n```bash\n$ nuxt dev\n● Nuxt x.x.x ...\n➜ Local: http://localhost:3000/\n```\n\n### サイトへのアクセス\n\nブラウザを開いてアクセス：\n\n```\nhttp://localhost:3000/\n```\n\nサイトのホームページが表示されれば、正常に起動していることを意味します！\n\n---\n\n## よくある質問\n\n### Q: Kecareの更新方法は？\n\nA: 以下のコマンドを実行してください：\n\n```bash\nnpm update kecare@beta\n```\n\nKecareの旅を始めましょう！ 🚀"
+}

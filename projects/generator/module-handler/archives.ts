@@ -1,9 +1,10 @@
 import { Glob, write } from "bun";
-import type { ArticlesRecord, KecareContext, ModuleArchiveTS, ArchiveArticleData, ArticleVariant } from "kecare";
+import type { KecareContext, ModuleArchiveTS, ArchiveArticleData, ArticleVariant } from "kecare";
 import { join } from "node:path";
 
 /**
- * 归档模块
+ * 归档模块处理程序
+ * 会读取 *.archives.ts 文件，调用其 generator 方法，生成归档页面
  */
 async function createArchivesModuleHandler(context: KecareContext) {
     const modulePath = join(context.projectPath, '.kecare')
@@ -29,7 +30,6 @@ async function createArchivesModuleHandler(context: KecareContext) {
                 urlPath: urlPath,
 
             })
-            console.log('归档模块处理文章', archivesData)
         },
         async finish(context: KecareContext) {
             for (const module of modules) {

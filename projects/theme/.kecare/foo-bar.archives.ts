@@ -13,9 +13,11 @@ export async function generator(context: KecareContext, articles: ArchiveArticle
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = ${JSON.stringify(zhArticles, null, 2)}
+        const totalArticles = ${zhArticles.length}
         </script>
         <template>
         <archivesTheme :articles="articles"
+                       :totalArticles="totalArticles"
                        />
         </template>
 `

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const navbar = ref<HTMLElement | null>(null)
+const searchRef = ref<{ open: () => void } | null>(null)
 
 let lastScrollTop = 0
 
@@ -14,6 +15,10 @@ const scrollHandler = () => {
     }
 
     lastScrollTop = scrollTop
+}
+
+const openSearch = () => {
+    searchRef.value?.open()
 }
 
 onMounted(() => {
@@ -34,6 +39,13 @@ onUnmounted(() => {
         <div class="text-[1.5rem] font-bold text-[#ff6b93]">Pamper</div>
         <ul
             class="flex list-none m-0 p-0 flex-wrap justify-end items-center gap-[5px] md:gap-[10px] max-w-full box-border">
+            <li class="flex">
+                <button
+                    class="relative inline-flex items-center leading-[1.2] text-[inherit] px-[5px] py-[5px] font-medium cursor-pointer bg-transparent border-none text-[18px] hover:scale-110 transition-transform"
+                    @click="openSearch">
+                    🔍
+                </button>
+            </li>
             <li class="flex">
                 <NuxtLink
                     class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#ff6b93] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
@@ -56,4 +68,5 @@ onUnmounted(() => {
             </li>
         </ul>
     </div>
+    <Search ref="searchRef" />
 </template>

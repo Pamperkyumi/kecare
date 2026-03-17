@@ -1,0 +1,9 @@
+{
+  "title": "Generator CLI",
+  "lang": "en-US",
+  "hash": "fddd58bb",
+  "tags": [],
+  "date": "2026-03-05",
+  "urlPath": "articles/en-US/fddd58bb",
+  "content": "# Generator CLI\n\nKecare provides convenient command-line tools to simplify your development workflow. This document introduces all available CLI commands.\n\n---\n\n## Command Overview\n\n| Command | Description |\n|------|------|\n| `kecare gen [path]` | Build the site and generate page files |\n| kecare -version | View the current version |\n\n---\n\n## Building a Site\n\n### Basic Usage\n\n```bash\nkecare gen <主题路径>\n```\n\n### Example\n\n```bash\n# 在主题目录中执行\nkecare gen .\n\n# 指定相对路径\nkecare gen ./Kecare-theme\n\n# 指定绝对路径\nkecare gen /home/user/Kecare-theme\n```\n\n### Execution Flow\n\nWhen you run `kecare gen`, Kecare will:\n\n1. **Scan Article Directory**: Read all Markdown files under `.kecare/articles/`\n2. **Parse Article Content**: Extract Front Matter and main content\n3. **Perform Translation** (if configured): Translate articles based on the `translate` field\n4. **Run Generators**: Execute `*.article.ts` and `*.list.ts` to generate pages\n5. **Output Files**: Write the generated pages to the specified directory\n\n---\n\n## Frequently Asked Questions"
+}

@@ -119,6 +119,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 frontMatter,
                 cover: cover,
                 rawMarkdown: rawMarkdown,
+                translatedMarkdown: translatedMarkdown[1],
             });
             continue
         }

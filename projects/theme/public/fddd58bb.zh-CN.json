@@ -1,0 +1,9 @@
+{
+  "title": "生成器CLI",
+  "lang": "zh-CN",
+  "hash": "fddd58bb",
+  "tags": [],
+  "date": "2026-03-05",
+  "urlPath": "articles/zh-CN/fddd58bb",
+  "content": "\n# 生成器 CLI\n\nKecare 提供了便捷的命令行工具来简化你的开发流程。本文档介绍所有可用的 CLI 命令。\n\n---\n\n## 命令概览\n\n| 命令 | 说明 |\n|------|------|\n| `kecare gen [path]` | 构建站点，生成页面文件 |\n| kecare -version | 查看当前版本           |\n\n---\n\n## 构建站点\n\n### 基本用法\n\n```bash\nkecare gen <主题路径>\n```\n\n### 示例\n\n```bash\n# 在主题目录中执行\nkecare gen .\n\n# 指定相对路径\nkecare gen ./Kecare-theme\n\n# 指定绝对路径\nkecare gen /home/user/Kecare-theme\n```\n\n### 执行流程\n\n当你运行 `kecare gen` 时，Kecare 会：\n\n1. **扫描文章目录**：读取 `.kecare/articles/` 下的所有 Markdown 文件\n2. **解析文章内容**：提取 Front Matter 和正文内容\n3. **执行翻译**（如果配置）：根据 `translate` 字段翻译文章\n4. **运行生成器**：执行 `*.article.ts` 和 `*.list.ts` 生成页面\n5. **输出文件**：将生成的页面写入指定目录\n\n---\n\n## 常见问题\n"
+}

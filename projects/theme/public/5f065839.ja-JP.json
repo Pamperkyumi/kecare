@@ -1,0 +1,9 @@
+{
+  "title": "front-matter",
+  "lang": "ja-JP",
+  "hash": "5f065839",
+  "tags": [],
+  "date": "2026-03-07",
+  "urlPath": "articles/ja-JP/5f065839",
+  "content": "# Front Matter\n\n各記事の冒頭には **Front Matter**（YAML 形式）を記述でき、記事のメタ情報（例：タイトル、日付、タグ、説明、著者、カバー画像、ピン留め、メニューなど）を提供するために使用されます。\n\n---\n\n## Front Matterとは\n\nFront Matterは、Markdownファイルの先頭にあるYAML形式のメタデータブロックで、`---`で区切られています。Kecareはこれらのメタデータを解析し、テーマコンポーネントで使用できるようにします。\n\n---\n\n## 完全な例\n\n以下は、すべての一般的なフィールドを含む Front Matter の例です：\n\n```yaml\n---\ntitle: 執筆ガイド                 # 文章タイトル\ndate: 2025-11-19               # 公開日\ntags:                          # タグリスト\n  - kecare\n  - blog\n  - チュートリアル\ndesc: これはKecareを使用して執筆する方法に関するガイドです  # 記事要約\nauthor: 著者名                 # 著者名\ncoverSrc: \"https://example.com/cover.webp\"  # カバー画像\nsticky: 1                      # トピック固定優先度\nmenu: kecare-docs              # 所属メニュー\ntranslate: ['zh-CN', 'en-US', 'ja-JP']  # 翻訳言語、最初の値は現在の言語を推奨\n---\n\n他のフィールドはデフォルト値が使用されます。いつでも戻って追加できます。"
+}

@@ -1,0 +1,9 @@
+{
+  "title": "ジェネレーターCLI",
+  "lang": "ja-JP",
+  "hash": "fddd58bb",
+  "tags": [],
+  "date": "2026-03-05",
+  "urlPath": "articles/ja-JP/fddd58bb",
+  "content": "# ジェネレーター CLI\n\nKecareは、開発プロセスを簡素化するための便利なコマンドラインツールを提供しています。このドキュメントでは、利用可能なすべてのCLIコマンドについて説明します。\n\n---\n\n## コマンド概要\n\n| コマンド | 説明 |\n|------|------|\n| `kecare gen [path]` | サイトを構築し、ページファイルを生成します |\n| kecare -version | 現在のバージョンを確認します           |\n\n---\n\n## サイト構築\n\n### 基本の使い方\n\n```bash\nkecare gen <主题路径>\n```\n\n### 例\n\n```bash\n# 在主题目录中执行\nkecare gen .\n\n# 指定相对路径\nkecare gen ./Kecare-theme\n\n# 指定绝对路径\nkecare gen /home/user/Kecare-theme\n```\n\n### 実行フロー\n\n`kecare gen` を実行すると、Kecare は以下の処理を行います：\n\n1. **記事ディレクトリをスキャン**：`.kecare/articles/` 配下のすべての Markdown ファイルを読み取る\n2. **記事内容を解析**：Front Matter と本文内容を抽出する\n3. **翻訳を実行**（設定に応じて）：`translate` フィールドに基づいて記事を翻訳する\n4. **ジェネレータを実行**：`*.article.ts` と `*.list.ts` を実行してページを生成する\n5. **ファイルを出力**：生成されたページを指定のディレクトリに書き出す\n\n---\n\n## よくある質問"
+}
