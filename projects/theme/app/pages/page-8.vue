@@ -1,5 +1,8 @@
                 <script setup lang="ts">
                 import BlogLanding from "~/components/blog-landing.vue";
+                useHead({
+                    title: '首页',
+                })
                 const articles = [
   {
     "lang": "zh-CN",

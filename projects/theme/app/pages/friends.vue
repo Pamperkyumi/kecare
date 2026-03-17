@@ -3,8 +3,11 @@ import { onMounted, nextTick } from "vue"
 import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
-import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import heroBg from '~/assets/bg1.jpg'
+
+useHead({
+    title: '友链喵',
+})
 
 type FriendLink = {
     name: string;

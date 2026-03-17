@@ -14,6 +14,9 @@ export async function generator(context: KecareContext, articles: ArchiveArticle
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = ${JSON.stringify(zhArticles, null, 2)}
         const totalArticles = ${zhArticles.length}
+        useHead({
+            title: \'归档喵\',
+        })
         </script>
         <template>
         <archivesTheme :articles="articles"

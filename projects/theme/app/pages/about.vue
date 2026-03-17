@@ -6,6 +6,10 @@ import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import heroBg from '~/assets/bg1.jpg'
 
+useHead({
+    title: '关于我',
+})
+
 type Skill = {
     name: string;
     level: number;

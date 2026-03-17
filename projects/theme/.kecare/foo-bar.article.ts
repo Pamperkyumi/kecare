@@ -15,6 +15,9 @@ export async function generator(context: KecareContext, article: ArticleVariant)
         import type { NavItem } from 'kecare'
         const article = \`${encodeURIComponent(JSON.stringify(article))}\`
         const navItems:NavItem[] = ${JSON.stringify(navItems)}
+        useHead({
+            title: \'${article.title}\',
+        })
         </script>
         <template>
         <articleTheme :article="JSON.parse(decodeURIComponent(article))"

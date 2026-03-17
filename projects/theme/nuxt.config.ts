@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     app: {
         baseURL: '/',
         head: {
+            titleTemplate: '%s - Pamperのblog',
             link: [
                 {
                     rel: 'stylesheet',
