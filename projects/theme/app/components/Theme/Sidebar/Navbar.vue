@@ -59,12 +59,12 @@ onUnmounted(() => {
             <li class="flex">
                 <NuxtLink
                     class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#ff6b93] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
-                    to="#">关于</NuxtLink>
+                    to="/about">关于</NuxtLink>
             </li>
             <li class="flex">
                 <NuxtLink
                     class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#ff6b93] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
-                    to="#">友链</NuxtLink>
+                    to="/friends">友链</NuxtLink>
             </li>
         </ul>
     </div>
