@@ -16,7 +16,13 @@ export default defineNuxtConfig({
                     rel: 'stylesheet',
                     href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
                 },
+                {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: '/favicon.ico',
+                }
             ],
+
         },
     },
 });
