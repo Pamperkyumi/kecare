@@ -5,7 +5,7 @@ export const navItems: NavItem[] = [
         text: '入门指南',
         level: 1,
         items: [
-            { text: 'Kecare从这里开始喵', link: './Kecare从这里开始喵.md', level: 2 },
+            { text: '什么是Kecare', link: './什么是Kecare.md', level: 2 },
             { text: '快速开始', link: './快速开始.md', level: 2 },
         ],
     },

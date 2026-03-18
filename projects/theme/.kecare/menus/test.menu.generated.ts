@@ -4,7 +4,7 @@
  * DO NOT EDIT MANUALLY
  */
 
-import type { NavItem } from '../../../generator/types.ts';
+import type { NavItem } from 'kecare';
 
 export const navItems: NavItem[] = [
   {
@@ -12,8 +12,8 @@ export const navItems: NavItem[] = [
     "level": 1,
     "items": [
       {
-        "text": "Kecare从这里开始喵",
-        "link": "./70e6923c",
+        "text": "什么是Kecare",
+        "link": "./552248be",
         "level": 2
       },
       {

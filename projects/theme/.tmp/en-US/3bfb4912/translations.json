@@ -109,5 +109,14 @@
   "7d582fd7": "A: Use the `icon` field:",
   "f5e6e84a": "__CODE_BLOCK_9__",
   "7b472b74": "> 💡 **Tip**: Icon support depends on theme implementation.",
-  "b14561f0": "Through the menu system, you can easily create a clear document navigation structure, helping readers quickly find the content they need."
+  "b14561f0": "Through the menu system, you can easily create a clear document navigation structure, helping readers quickly find the content they need.",
+  "6db5bbbc": "Kecare offers a unified menu configuration method for generating side navigation bars.",
+  "89dd8050": "## Creating a Menu",
+  "fe8b86d1": "Menu files are stored in the `.kecare/menus/` directory, with the naming format `<name>.menu.source.ts`:",
+  "58d58d99": "> The file name prefix (e.g., `kecare-docs`) is the `menu` value referenced in the article.",
+  "ddbd955b": "## Enabling in Articles",
+  "4aaa37ba": "Add the `menu` field in the Front Matter:",
+  "ded352e5": "The `menu` value corresponds to the prefix of the menu file name: `kecare-docs` → `kecare-docs.menu.source.ts`",
+  "a3d628e6": "## NavItem Structure",
+  "fcd33f63": "- **Leaf Node**: Clickable for navigation, `link` is the article path (e.g., `./quick-start`)\n- **Group Node**: Used for categorization only, contains a `items` sub-array"
 }

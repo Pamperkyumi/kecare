@@ -30,5 +30,6 @@
   "16f0856c": "クイックスタートを希望する場合、最小限のFront Matterは以下の通りです：",
   "6e598c92": "__CODE_BLOCK_2__",
   "214ed986": "他のフィールドはデフォルト値が使用されます。いつでも戻って追加できます。",
-  "45c4a943": "```yaml\n---\ntitle: 執筆ガイド                 # 文章タイトル\ndate: 2025-11-19               # 公開日\ntags:                          # タグリスト\n  - kecare\n  - blog\n  - チュートリアル\ndesc: これはKecareを使用して執筆する方法に関するガイドです  # 記事要約\nauthor: 著者名                 # 著者名\ncoverSrc: \"https://example.com/cover.webp\"  # カバー画像\nsticky: 1                      # トピック固定優先度\nmenu: kecare-docs              # 所属メニュー\ntranslate: ['zh-CN', 'en-US', 'ja-JP']  # 翻訳言語、最初の値は現在の言語を推奨\n---"
+  "45c4a943": "```yaml\n---\ntitle: 執筆ガイド                 # 文章タイトル\ndate: 2025-11-19               # 公開日\ntags:                          # タグリスト\n  - kecare\n  - blog\n  - チュートリアル\ndesc: これはKecareを使用して執筆する方法に関するガイドです  # 記事要約\nauthor: 著者名                 # 著者名\ncoverSrc: \"https://example.com/cover.webp\"  # カバー画像\nsticky: 1                      # トピック固定優先度\nmenu: kecare-docs              # 所属メニュー\ntranslate: ['zh-CN', 'en-US', 'ja-JP']  # 翻訳言語、最初の値は現在の言語を推奨\n---",
+  "a8931115": "```yaml\n---\ntitle: 執筆ガイド                 # 記事タイトル\ndate: 2025-11-19               # 公開日\ntags:                          # タグリスト\n  - kecare\n  - blog\n  - チュートリアル\ndesc: これはKecareを使用して執筆する方法に関するガイドです  # 記事要約\nauthor: 著者名                 # 著者名\ncoverSrc: \"https://example.com/cover.webp\"  # カバー画像\nsticky: 1                      # トップ表示優先度\nmenu: kecare-docs              # 所属メニュー\ntranslate: ['zh-CN', 'en-US', 'ja-JP']  # 翻訳言語、最初の値は現在の言語である必要があります\n---"
 }

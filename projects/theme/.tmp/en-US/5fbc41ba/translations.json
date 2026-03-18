@@ -1,4 +1,5 @@
 {
+  "93336361": "Traditional blogging solutions (such as Hexo) are tied to specific technology stacks, requiring a complete restart when switching stacks.",
   "4804f6f7": "# About Kecare: Start Here Meow",
   "bde55575": "> Writing documentation is really a bit difficult for me...  \n> If you find anything hard to understand, please don't scold me first (whispering). You can submit an Issue / PR to help me improve it, and I'll be super grateful! Sorry, sorry, sorry (bow.gif)",
   "f2bc8c94": "Kecare is a generator framework for modern static blogs and note sites. Its primary goal is not to \"create another Hexo,\" but to separate the **content system** from the **theme/framework**, turning your blogging capabilities into \"pluggable modules\" meow~",
@@ -48,5 +49,16 @@
   "5927ff09": "## Summary",
   "2ad9834b": "Kecare's Design Philosophy:",
   "ff7be3fe": "- **Blogging capability is additional**: No need to refactor existing projects\n- **Portable**: Content is decoupled from themes\n- **Theme-agnostic**: Supports any technology stack",
-  "d6a6b787": "This is the ideal state of Kecare: making the blog system an \"add-on module\" for your project, rather than a reason to \"rewrite everything.\""
+  "d6a6b787": "This is the ideal state of Kecare: making the blog system an \"add-on module\" for your project, rather than a reason to \"rewrite everything.\"",
+  "d08093d8": "# About Kecare",
+  "d71a2442": "Kecare is a static blog generator, with its core feature being **non-intrusive design**—decoupling the content system from themes/frameworks, turning your blogging capabilities into \"pluggable modules.\"",
+  "1164e4f9": "## Core Advantages",
+  "ea770477": "Kecare's Solution: Create a `.kecare/` directory in the project, write content and rules according to the convention, and Kecare generates blog pages and data based on the rules.",
+  "e9c641d8": "**Supports any tech stack**: Vue, React, Svelte, traditional SSR, etc., as long as it can integrate with the generated results.",
+  "4a8a86e5": "**Method 1: Default Theme**",
+  "33aef148": "Using the officially provided Nuxt + Vue 3 theme, it's ready to use out of the box, perfect for quickly starting to write.",
+  "3137e70a": "**Method 2: Custom Theme**",
+  "6bfbb8b7": "Add a `.kecare/` directory to any project, customize generation rules, and let Kecare output consumable artifacts for your project.",
+  "31fcd1e8": "## Design Philosophy",
+  "bf6d35bc": "- Blogging capability is additional, no need to refactor existing projects\n- Content is decoupled from themes, making it portable\n- Supports any tech stack, not bound to any specific one"
 }

@@ -133,5 +133,12 @@
   "cc634d1e": "A: GitHub Pagesの設定にカスタムドメインを追加し、ドメインサービスプロバイダでDNSレコードをGitHub Pagesに向けて設定します。",
   "a0996d7b": "### Q: ビルドが失敗した場合はどうすればよいですか？",
   "1ca2f9de": "A: 私は知りません",
-  "df1c940b": "あなたのブログが公開され、共有を始める準備が整いました！ 🎉"
+  "df1c940b": "あなたのブログが公開され、共有を始める準備が整いました！ 🎉",
+  "8f4c96e4": "# GitHub Pages へのデプロイ\nKecare ブログを GitHub Pages にデプロイする",
+  "93241a45": "- Githubアカウント\n- Git と Node.js",
+  "441780d5": "1. GitHubで公開リポジトリを作成する\n2. リポジトリのアドレスを記録する：`https://github.com/<username>/<repo>.git`",
+  "80aa252c": "詳細な手順については、[SSH を使用した GitHub への接続 - GitHub ドキュメント](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh)をご覧ください。",
+  "7a971725": "## Nuxt の設定",
+  "5a0bb733": "1. リポジトリの **Settings** → **Pages** に移動する",
+  "bd1b0454": "2. Source で **Deploy from a branch** を選択\n3. Branch で **gh-pages** を選択し、Folder で **(root)** を選択\n4. 保存後、`https://<username>.github.io/<repo>/` にアクセス"
 }

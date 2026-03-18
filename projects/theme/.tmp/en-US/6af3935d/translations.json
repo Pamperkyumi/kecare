@@ -20,5 +20,10 @@
   "5bc63ab8": "### Execution Flow",
   "c35804ce": "When you run `kecare gen`, Kecare will:",
   "e258bb0e": "1. **Scan Article Directory**: Read all Markdown files under `.kecare/articles/`\n2. **Parse Article Content**: Extract Front Matter and main content\n3. **Perform Translation** (if configured): Translate articles based on the `translate` field\n4. **Run Generators**: Execute `*.article.ts` and `*.list.ts` to generate pages\n5. **Output Files**: Write the generated pages to the specified directory",
-  "5b89cb25": "## Frequently Asked Questions"
+  "5b89cb25": "## Frequently Asked Questions",
+  "566995b6": "## Commands",
+  "1610b7f8": "| Command | Description |\n|------|------|\n| `kecare gen <path>` | Build the site and generate page files |\n| `kecare -version` | Check the current version |",
+  "2dd3e7cc": "## Usage Examples",
+  "9fbd2950": "## Execution Flow",
+  "6027aba9": "1. Scan Markdown files under `.kecare/articles/`\n2. Parse Front Matter and main content\n3. Execute translation (if `translate` is configured)\n4. Run `*.article.ts` and `*.list.ts` to generate pages\n5. Output files to the specified directory"
 }

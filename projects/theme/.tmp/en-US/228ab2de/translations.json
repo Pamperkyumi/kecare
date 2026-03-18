@@ -132,5 +132,12 @@
   "cc634d1e": "A: Add a custom domain in GitHub Pages settings and configure DNS resolution at your domain service provider to point to GitHub Pages.",
   "a0996d7b": "### Q: What to do if the build fails?",
   "1ca2f9de": "A: I don't know",
-  "df1c940b": "Your blog is now live and ready to be shared! 🎉"
+  "df1c940b": "Your blog is now live and ready to be shared! 🎉",
+  "8f4c96e4": "# Deploy to GitHub Pages\nDeploy Kecare Blog to GitHub Pages",
+  "93241a45": "- Github Account\n- Git and Node.js",
+  "441780d5": "1. Create a public repository on GitHub\n2. Record the repository address: `https://github.com/<username>/<repo>.git`",
+  "80aa252c": "For the specific process, please visit [Connecting to GitHub with SSH - GitHub Docs](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh)",
+  "7a971725": "## Configuring Nuxt",
+  "5a0bb733": "1. Go to the repository **Settings** → **Pages**",
+  "bd1b0454": "2. Source select **Deploy from a branch**\n3. Branch select **gh-pages**, Folder select **(root)**\n4. After saving, visit `https://<username>.github.io/<repo>/`"
 }

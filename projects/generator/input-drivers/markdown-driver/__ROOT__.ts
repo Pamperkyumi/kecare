@@ -1,7 +1,7 @@
 import { Glob, YAML } from "bun";
 import type { ArticleVariant, FrontMatter, KecareContext } from "kecare";
 import { marked } from 'marked';
-import { tabsExtension } from './markedrenderer/tabs-marked';
+import { tabsExtension, resetTabsTokenUid } from './markedrenderer/tabs-marked';
 import markedKatex from 'marked-katex-extension';
 import type { InputDriverChunk } from "../__ROOT__";
 import { basename, join } from 'path';
@@ -18,6 +18,7 @@ export type MarkdownOriginalArticle = ArticleVariant & {
 }
 
 export async function markdownInputDriver(context: KecareContext, chunks: Array<InputDriverChunk>): Promise<void> {
+    resetTabsTokenUid();
     marked.use({ extensions: [tabsExtension] }, markedKatex({
         throwOnError: false,
         output: 'html',
@@ -53,7 +54,6 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             if (images && images.length > 0) {
                 const randomIndex = Math.floor(Math.random() * images.length);
                 finalCover = images[randomIndex];
-                console.log(finalCover)
             }
         }
 

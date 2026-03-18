@@ -189,7 +189,7 @@ const wordCount = computed(() => {
                 <template v-if="props.navItems?.length">
                     <sidebar-navtree :items="props.navItems" />
                 </template>
-                <div class="sidebar-empty text-[#7a7a7a] dark:text-gray-400 text-[0.95rem] px-[6px] py-[10px]">
+                <div v-else class="sidebar-empty text-[#7a7a7a] dark:text-gray-400 text-[0.95rem] px-[6px] py-[10px]">
                     暂无目录喵~
                 </div>
             </div>

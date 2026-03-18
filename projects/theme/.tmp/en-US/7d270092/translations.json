@@ -88,5 +88,18 @@
   "6c2118bd": "### Q: How to clear the translation cache?",
   "b06ad826": "A: Simply delete the `.kecare/.tmp` directory:",
   "f5e6e84a": "__CODE_BLOCK_9__",
-  "521ce07e": "Make your articles break language barriers and reach global readers! 🌍"
+  "521ce07e": "Make your articles break language barriers and reach global readers! 🌍",
+  "5afba41a": "Kecare supports AI automatic translation, enabling articles to reach multilingual readers.",
+  "c197cf2d": "## Enable Translation",
+  "380db915": "Add the `translate` field to the article's Front Matter:",
+  "d60758d8": "> The first language code must be the **original language** of the article.",
+  "8ff8c151": "## Configure Translation Service",
+  "d7c0a131": "Configure LLM in `.kecare/kecare.config.ts`:",
+  "c652eec9": "Supports any service compatible with the OpenAI API format.",
+  "d4218622": "## Common Language Codes",
+  "feaa9d93": "| Language | Code |\n|------|------|\n| Simplified Chinese | `zh-CN` |\n| English | `en-US` |\n| Japanese | `ja-JP` |\n| Korean | `ko-KR` |\n| Traditional Chinese | `zh-TW` |",
+  "6080737d": "Language codes follow the BCP 47 standard: `language-region` (e.g., `en-GB`, `pt-BR`).",
+  "e132d898": "## Caching and Incremental Updates",
+  "863fec89": "The translation results are cached in the `.kecare/.tmp` directory, and only modified parts will be translated during the next build.",
+  "7e6bf199": "Clear Cache:"
 }

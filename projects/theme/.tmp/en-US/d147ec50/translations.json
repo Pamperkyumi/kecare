@@ -1,5 +1,6 @@
 {
   "48974930": "# Markdown Extensions",
+  "54554444": "@tab js [config.js]",
   "64a380f4": "## Markdown Extensions",
   "94fb0c80": "## Frontmatter",
   "a39c2aa1": "YAML frontmatter out of the box",
@@ -84,5 +85,13 @@
   "9996088d": "## Code Grouping (Tabs)",
   "daac263f": "You can group multiple code blocks into tabs for easy switching and viewing.",
   "1632a87a": "### Tag with filename",
-  "fb29ee3e": "__CODE_BLOCK_11__"
+  "fb29ee3e": "__CODE_BLOCK_11__",
+  "551aad09": "@tab First tab",
+  "313e7ea6": "This is the content of the first tab.\n- Supports Markdown\n- **Bold**, *Italic*, etc.",
+  "3cf35edd": "@tab Second tab",
+  "d10f3f50": "@tab ts [config.ts]",
+  "6fb59e80": "__CODE_BLOCK_12__",
+  "424dbade": "You can also use inline comments by adding `// [!code highlight]` to the line to achieve highlighting",
+  "b2efe380": "Using the focus feature allows a specific line to be highlighted while blurring other lines.\nAdd the `// [!code focus]` comment to the target line:",
+  "fbab0b06": "Adding a `// [!code --]` or `// [!code ++]` comment on a line will create a diff for that line while preserving the color of the code block."
 }

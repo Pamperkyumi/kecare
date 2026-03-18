@@ -64,5 +64,20 @@
   "2ec67e26": "### Q: How to update Kecare?",
   "eabc5e79": "A: Execute the following command:",
   "cf2aef41": "__CODE_BLOCK_10__",
-  "a08e9c0c": "Start your Kecare journey! 🚀"
+  "a08e9c0c": "Start your Kecare journey! 🚀",
+  "f56acc9b": "Follow these steps to run the Kecare blog locally in just a few minutes.",
+  "f58b0d9f": "| Requirement | Description | Verification Command |\n| --- | --- | --- |\n| Node.js | Install dependencies, start development server | `node -v` |\n| Git | Clone theme repository | `git --version` |",
+  "f427c5fb": "## Install CLI",
+  "5fd9a335": "Verification of Installation:",
+  "afc51cb7": "## Get Topic",
+  "eeda0062": "## Run",
+  "e1472ffc": "### Generate Site",
+  "4004cdac": "Visit http://localhost:3000 to view the site.",
+  "cba10c27": "## Update",
+  "51798f81": "::: tabs",
+  "f352d8d5": "@tab bun",
+  "ac70d684": "@tab npm",
+  "71a813df": "__CODE_BLOCK_4__\n@tab pnpm",
+  "dedd478f": ":::",
+  "f21df10a": "@tab pnpm"
 }

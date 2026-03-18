@@ -15,6 +15,10 @@ type tabsToken = Tokens.Generic & {
 
 let tabsTokenUid = 0;
 
+function resetTabsTokenUid(): void {
+    tabsTokenUid = 0;
+}
+
 function parseTabSections(inner: string): Array<{ title: string; body: string }> {
     const lines = inner.split(/\r?\n/);
     const sections: Array<{ title: string; body: string }> = [];
@@ -48,6 +52,8 @@ function parseTabSections(inner: string): Array<{ title: string; body: string }>
     return sections;
 }
 
+export { resetTabsTokenUid };
+
 export const tabsExtension: TokenizerAndRendererExtension = {
     name: 'tabs',
     level: 'block', // block 级扩展：处理块级语法（::: tabs ... :::）
@@ -66,9 +72,7 @@ export const tabsExtension: TokenizerAndRendererExtension = {
      * 并生成一个自定义 token（tabsToken），交给 renderer 渲染。
      */
     tokenizer(src) {
-        // 匹配整段 tabs 容器：以 ::: tabs 开头，以 ::: 结尾
-        // [\s\S]*? 是“非贪婪”匹配，确保匹配到最近的结束 :::
-        const rule = /^::: *tabs[^\n]*\n([\s\S]*?)\n:::(?:\n|$)/;
+        const rule = /^::: *tabs[^\r\n]*\r?\n([\s\S]*?)\r?\n:::(?:\r?\n|$)/;
 
         const match = rule.exec(src);
         if (!match) return;

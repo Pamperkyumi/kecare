@@ -85,7 +85,7 @@ function renderGeneratedMenuTs(navItems: NavItem[]) {
  * DO NOT EDIT MANUALLY
  */
 
-import type { NavItem } from '../../../generator/types.ts';
+import type { NavItem } from 'kecare';
 
 export const navItems: NavItem[] = ${body} as NavItem[];
 `;

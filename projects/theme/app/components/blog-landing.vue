@@ -182,7 +182,7 @@ onUnmounted(() => {
                     </template>
                 </nav>
             </div>
-            <AuthorCard :totalArticles="totalArticles" />
+            <AuthorCard :totalArticles="totalArticles" class="hidden md:block" />
         </div>
         <Footer />
     </div>

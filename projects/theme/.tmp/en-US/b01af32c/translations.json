@@ -86,5 +86,22 @@
   "128ca9cb": "### 2. Using the Kecare SDK",
   "196ae97f": "__CODE_BLOCK_15__\n---\n## Frequently Asked Questions",
   "aab53596": "### 1. Filter articles in a specific language within the list generator:",
-  "b2608872": "---\n## Frequently Asked Questions"
+  "b2608872": "---\n## Frequently Asked Questions",
+  "b9b329f2": "Integrate Kecare into an existing project to add documentation/blog functionality.",
+  "64fc22d6": "## Directory Structure",
+  "e05587ab": "## Installation",
+  "51798f81": "::: tabs",
+  "f352d8d5": "@tab bun",
+  "ac70d684": "@tab npm",
+  "279bad00": "__CODE_BLOCK_2__\n@tab pnpm",
+  "dedd478f": ":::",
+  "dfa243b7": "## Article Detail Page Generator",
+  "8579ae78": "Create the `*.article.ts` file:",
+  "d742553b": "## Article List Page Generator",
+  "d71b037f": "Create `*.list.ts` file:",
+  "cf826539": "## Article Display Component",
+  "86aa6958": "## Running the Generator",
+  "9197d6cf": "## Core Types",
+  "2af94e2c": "## Kecare SDK",
+  "d3458dbd": "Kecare SDK provides Markdown extension features (code highlighting, tabs, copy buttons, etc.):"
 }

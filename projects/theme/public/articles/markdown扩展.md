@@ -8,8 +8,6 @@ translate: ['zh-CN', 'en-US', 'ja-JP']
 
 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。
 
----
-
 ## Front Matter
 
 YAML Front Matter 开箱即用，你可以在文章开头添加元数据：
@@ -31,8 +29,6 @@ translate: ['zh-CN', 'en-US', 'ja-JP']
 ```
 
 这些数据将传递给主题组件，供页面使用。更多详情请参考 [Front Matter](./front-matter.md) 文档。
-
----
 
 ## 代码块语法高亮
 
@@ -79,22 +75,6 @@ export default {
 ```
 ````
 
-### 方式二：行内注释
-
-使用 `// [!code highlight]` 注释：
-
-````markdown
-```js
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!' // [!code highlight]
-    }
-  }
-}
-```
-````
-
 ### 高亮多行
 
 支持多种格式组合：
@@ -106,39 +86,24 @@ export default {
 | 行范围 | `{5-8}` | 高亮第 5 到 8 行 |
 | 混合使用 | `{4,7-13,16,23-27,40}` | 高亮多个行和范围 |
 
+你也可以使用行内注释，在该行添加 `// [!code highlight]` 注释来实现高亮
+
 ### 效果展示
 
 ```js
 export default {
   data () {
     return {
-      msg: 'Highlighted!'  // 这一行会被高亮
+      msg: 'Highlighted!'  //[!code highlight]
     }
   }
 }
 ```
-
----
 
 ## 代码聚焦
 
 使用聚焦功能可以让某一行突出显示，同时模糊其他行。
-
-### 用法
-
 在目标行添加 `// [!code focus]` 注释：
-
-````markdown
-```js
-export default {
-  data () {
-    return {
-      msg: 'Focused!' // [!code focus]
-    }
-  }
-}
-```
-````
 
 ### 效果展示
 
@@ -152,35 +117,11 @@ export default {
 }
 ````
 
-
-
----
-
 ## 代码差异显示
 
 在代码对比场景中，可以使用差异显示功能标记新增和删除的行。
 
-### 用法
-
-| 注释 | 效果 |
-|------|------|
-| `// [!code --]` | 标记为删除行（红色） |
-| `// [!code ++]` | 标记为新增行（绿色） |
-
-### 示例
-
-````markdown
-```js
-export default {
-  data () {
-    return {
-      msg: 'Removed' // [!code --]
-      msg: 'Added'   // [!code ++]
-    }
-  }
-}
-```
-````
+在某一行添加 `// [!code --]` 或 `// [!code ++]` 注释将会为该行创建 diff，同时保留代码块的颜色。
 
 ### 效果展示
 
@@ -206,26 +147,6 @@ export default {
 ````markdown
 ::: tabs
 
-@tab 第一个标签
-
-这是第一个标签页的内容。
-- 支持 Markdown
-- **加粗**、*斜体*等
-
-@tab 第二个标签
-
-这是第二个标签页的内容。
-1. 有序列表
-2. 第二个项目
-
-:::
-````
-
-### 带文件名的标签
-
-````markdown
-::: tabs
-
 @tab js [config.js]
 
 ```js
@@ -256,23 +177,6 @@ export default config
 
 ### 效果展示
 
-````
-::: tabs
-
-@tab 第一个标签
-
-这是第一个标签页的内容。
-- 支持 Markdown
-- **加粗**、*斜体*等
-
-@tab 第二个标签
-
-这是第二个标签页的内容。
-1. 有序列表
-2. 第二个项目
-
-:::
-
 ::: tabs
 
 @tab js [config.js]
@@ -301,5 +205,4 @@ export default config
 ```
 
 :::
-````
 

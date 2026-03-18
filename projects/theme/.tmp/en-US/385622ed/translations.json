@@ -36,5 +36,10 @@
   "6e598c92": "__CODE_BLOCK_2__",
   "86aa6958": "## Running the Generator",
   "a1948c60": "After writing the article, you need to run the generator to see the updates in the browser.",
-  "2975f3d0": "Start your writing journey! ✍️"
+  "2975f3d0": "Start your writing journey! ✍️",
+  "690026d0": "In Kecare, articles are stored in the `theme directory/.kecare/articles/` directory, and currently only Markdown files are supported.",
+  "ab3dc717": "1. Create `.md` files in the `.kecare/articles/` directory\n2. Write content",
+  "33d22cc4": "> It is recommended to use lowercase letters and hyphens for file names, such as `getting-started.md`. Avoid frequently changing file names, as this may cause old links to become invalid.",
+  "1d5cf636": "The article consists of **Front Matter** and **Body Content**:",
+  "2b4353a7": "After writing, run the generator to preview it in the browser."
 }
