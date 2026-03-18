@@ -33,6 +33,11 @@ export const navItems: NavItem[] = [
         "level": 2
       },
       {
+        "text": "frontmatter",
+        "link": "./709caab7",
+        "level": 2
+      },
+      {
         "text": "Markdown扩展",
         "link": "./b40d18d1",
         "level": 2

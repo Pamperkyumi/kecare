@@ -45,7 +45,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
+      "cover": "http://pichost.cloud/files/af0e1cec4766b50bcf61b741cf78d77530c2a24019bc0ba3d17a88624e04ce34.jpg",
       "title": "菜单系统",
       "menu": "test",
       "tags": [

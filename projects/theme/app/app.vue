@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const loading = ref(false)
 
-const MIN_DURATION = 500
+const MIN_DURATION = 200
 let shownAt = 0
 let hideTimer: ReturnType<typeof setTimeout> | null = null
 

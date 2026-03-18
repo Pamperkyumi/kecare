@@ -217,7 +217,7 @@ const initializeIndex = async () => {
         errorMessage.value = ''
 
         try {
-            const response = await fetch('/search-index.json')
+            const response = await fetch('/articles/search-index.json')
             if (!response.ok) {
                 throw new Error(`Failed to load search-index.json: ${response.status}`)
             }
@@ -228,7 +228,7 @@ const initializeIndex = async () => {
             const articles: ArticleData[] = []
             for (const file of files) {
                 try {
-                    const articleResponse = await fetch(`/${file}`)
+                    const articleResponse = await fetch(`/articles/${file}`)
                     if (articleResponse.ok) {
                         const articleData = await articleResponse.json() as ArticleData
                         articles.push(articleData)
