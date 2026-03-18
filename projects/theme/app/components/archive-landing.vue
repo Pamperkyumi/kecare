@@ -55,19 +55,19 @@ const allTags = computed<string[]>(() => {
     return Array.from(tagSet);
 });
 
-// kecream~
-function initSakanaWidget() {
-    const kecream = SakanaWidget.getCharacter('chisato');
-    if (kecream) {
-        kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
-        SakanaWidget.registerCharacter('kecream', kecream);
-    }
-    new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
-}
+// // kecream~
+// function initSakanaWidget() {
+//     const kecream = SakanaWidget.getCharacter('chisato');
+//     if (kecream) {
+//         kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
+//         SakanaWidget.registerCharacter('kecream', kecream);
+//     }
+//     new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
+// }
 
 onMounted(async () => {
     await nextTick();
-    initSakanaWidget();
+    // initSakanaWidget();
 });
 
 // 格式化日期为 MM-DD
@@ -81,7 +81,7 @@ function formatDate(dateStr: string): string {
 
 <template>
     <div id="app"
-        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[#333] bg-[#f9f9f9]">
+        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[#333] dark:text-gray-200 bg-[#f9f9f9] dark:bg-gray-900">
         <!-- Hero 区域，带背景壁纸 -->
         <div
             class="relative h-[40vh] min-h-[300px] overflow-hidden flex flex-col items-center justify-center text-center">
@@ -100,8 +100,9 @@ function formatDate(dateStr: string): string {
 
                 <!-- Tags 区域 -->
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
+                    class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[#2c3e50] dark:text-gray-100 mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
                         标签云
                     </h2>
@@ -111,15 +112,16 @@ function formatDate(dateStr: string): string {
                             {{ tag }}
                         </span>
                     </div>
-                    <div v-else class="text-[#999] text-center py-[20px]">
+                    <div v-else class="text-[#999] dark:text-gray-500 text-center py-[20px]">
                         暂无标签
                     </div>
                 </div>
 
                 <!-- 按年份分组的文章列表 -->
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
+                    class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[#2c3e50] dark:text-gray-100 mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
                         时间轴
                     </h2>
@@ -129,7 +131,7 @@ function formatDate(dateStr: string): string {
                             class="relative pl-[20px] border-l-[2px] border-[#ff9eb0]/50">
                             <!-- 年份标记 -->
                             <div
-                                class="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#ff6b93] border-[3px] border-white shadow-[0_0_0_2px_#ff9eb0]">
+                                class="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#ff6b93] border-[3px] border-white dark:border-gray-800 shadow-[0_0_0_2px_#ff9eb0]">
                             </div>
                             <h3 class="text-[1.3rem] font-bold text-[#ff6b93] mb-[15px]">{{ group.year }} 年</h3>
 
@@ -137,13 +139,14 @@ function formatDate(dateStr: string): string {
                             <div class="space-y-[12px]">
                                 <NuxtLink v-for="article in group.articles" :key="article.hash"
                                     :to="article.urlPath ?? '/'"
-                                    class="group flex items-center gap-[15px] p-[12px] rounded-[10px] bg-white/50 border border-[rgba(169,169,169,0.1)] no-underline transition-all duration-300 hover:bg-white hover:shadow-[0_4px_12px_rgba(255,107,147,0.15)] hover:border-[#ff9eb0]/30">
+                                    class="group flex items-center gap-[15px] p-[12px] rounded-[10px] bg-white/50 dark:bg-gray-700/50 border border-[rgba(169,169,169,0.1)] dark:border-gray-600 no-underline transition-all duration-300 hover:bg-white dark:hover:bg-gray-700 hover:shadow-[0_4px_12px_rgba(255,107,147,0.15)] hover:border-[#ff9eb0]/30">
                                     <!-- 日期 -->
-                                    <span class="flex-shrink-0 w-[60px] text-[0.85rem] text-[#999] font-mono">{{
-                                        formatDate(article.date) }}</span>
+                                    <span
+                                        class="flex-shrink-0 w-[60px] text-[0.85rem] text-[#999] dark:text-gray-400 font-mono">{{
+                                            formatDate(article.date) }}</span>
                                     <!-- 标题 -->
                                     <span
-                                        class="flex-1 text-[1rem] text-[#2c3e50] font-medium truncate transition-colors duration-300 group-hover:text-[#ff6b93]">{{
+                                        class="flex-1 text-[1rem] text-[#2c3e50] dark:text-gray-200 font-medium truncate transition-colors duration-300 group-hover:text-[#ff6b93]">{{
                                             article.title }}</span>
                                     <!-- 箭头 -->
                                     <span
@@ -160,7 +163,7 @@ function formatDate(dateStr: string): string {
                         </div>
                     </div>
 
-                    <div v-else class="text-[#999] text-center py-[40px]">
+                    <div v-else class="text-[#999] dark:text-gray-500 text-center py-[40px]">
                         暂无文章
                     </div>
                 </div>

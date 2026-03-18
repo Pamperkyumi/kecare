@@ -49,7 +49,7 @@ onMounted(async () => {
 
 <template>
     <div id="app"
-        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[#333] bg-[#f9f9f9]">
+        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)]">
         <div
             class="relative h-[40vh] min-h-[300px] overflow-hidden flex flex-col items-center justify-center text-center">
             <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
@@ -66,20 +66,20 @@ onMounted(async () => {
             <div class="flex-1 flex flex-col gap-[30px]">
 
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                    class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
+                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                        <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🏠 本站信息
                     </h2>
                     <div
-                        class="flex items-center gap-[20px] p-[20px] bg-white/50 rounded-[12px] border border-[rgba(169,169,169,0.1)]">
+                        class="flex items-center gap-[20px] p-[20px] bg-[var(--color-bg-primary)]/50 rounded-[12px] border border-[rgba(169,169,169,0.1)]">
                         <img :src="siteInfo.image" :alt="siteInfo.name"
                             class="w-[80px] h-[80px] rounded-full object-cover border-[3px] border-[#ff9eb0]/50 shadow-[0_4px_12px_rgba(255,107,147,0.2)]" />
                         <div class="flex-1">
-                            <h3 class="text-[1.2rem] font-bold text-[#2c3e50] mb-[8px]">{{ siteInfo.name }}</h3>
-                            <p class="text-[#666] text-[0.9rem] mb-[10px]">{{ siteInfo.desc }}</p>
+                            <h3 class="text-[1.2rem] font-bold text-[var(--color-text-primary)] mb-[8px]">{{ siteInfo.name }}</h3>
+                            <p class="text-[var(--color-text-secondary)] text-[0.9rem] mb-[10px]">{{ siteInfo.desc }}</p>
                             <a :href="siteInfo.url" target="_blank"
-                                class="inline-flex items-center gap-[6px] text-[#ff6b93] text-[0.9rem] no-underline hover:text-[#ff4d7d] transition-colors">
+                                class="inline-flex items-center gap-[6px] text-[var(--color-accent)] text-[0.9rem] no-underline hover:text-[#ff4d7d] transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -93,47 +93,47 @@ onMounted(async () => {
                 </div>
 
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                    class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
+                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                        <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         📝 添加友链
                     </h2>
-                    <div class="text-[#555] leading-[1.8]">
+                    <div class="text-[var(--color-text-secondary)] leading-[1.8]">
                         <p class="mb-[15px]">
                             欢迎交换友链！请在您的网站添加本站链接后，在本页面留言区按以下格式留言：
                         </p>
                         <div
-                            class="bg-[#f8f8f8] rounded-[10px] p-[20px] font-mono text-[0.9rem] border border-[rgba(169,169,169,0.15)]">
+                            class="bg-[var(--color-bg-secondary)] rounded-[10px] p-[20px] font-mono text-[0.9rem] border border-[rgba(169,169,169,0.15)]">
                             <div class="space-y-[8px]">
-                                <div><span class="text-[#ff6b93]">name:</span> 您的网站</div>
-                                <div><span class="text-[#ff6b93]">url:</span> 您的网址</div>
-                                <div><span class="text-[#ff6b93]">desc:</span> 简短描述</div>
-                                <div><span class="text-[#ff6b93]">image:</span> 一张图片</div>
+                                <div><span class="text-[var(--color-accent)]">name:</span> 您的网站</div>
+                                <div><span class="text-[var(--color-accent)]">url:</span> 您的网址</div>
+                                <div><span class="text-[var(--color-accent)]">desc:</span> 简短描述</div>
+                                <div><span class="text-[var(--color-accent)]">image:</span> 一张图片</div>
                             </div>
                         </div>
-                        <p class="mt-[15px] text-[#888] text-[0.9rem]">
+                        <p class="mt-[15px] text-[var(--color-text-secondary)] text-[0.9rem]">
                             * 请确保您的网站内容健康、稳定可访问，博主会在看到留言后尽快添加友链~
                         </p>
                     </div>
                 </div>
 
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                    class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
+                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                        <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🔗 友链列表
                     </h2>
                     <div v-if="friendLinks.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-[15px]">
                         <a v-for="link in friendLinks" :key="link.url" :href="link.url" target="_blank"
-                            class="group flex items-center gap-[15px] p-[15px] bg-white/50 rounded-[12px] border border-[rgba(169,169,169,0.1)] no-underline transition-all duration-300 hover:bg-white hover:shadow-[0_4px_12px_rgba(255,107,147,0.15)] hover:border-[#ff9eb0]/30 hover:-translate-y-[2px]">
+                            class="group flex items-center gap-[15px] p-[15px] bg-[var(--color-bg-primary)]/50 rounded-[12px] border border-[rgba(169,169,169,0.1)] no-underline transition-all duration-300 hover:bg-[var(--color-bg-primary)] hover:shadow-[0_4px_12px_rgba(255,107,147,0.15)] hover:border-[var(--color-accent)]/30 hover:-translate-y-[2px]">
                             <img :src="link.image" :alt="link.name"
-                                class="w-[50px] h-[50px] rounded-full object-cover border-[2px] border-[#ff9eb0]/30 transition-all duration-300 group-hover:border-[#ff6b93]" />
+                                class="w-[50px] h-[50px] rounded-full object-cover border-[2px] border-[var(--color-accent)]/30 transition-all duration-300 group-hover:border-[var(--color-accent)]" />
                             <div class="flex-1 min-w-0">
                                 <h3
-                                    class="text-[1rem] font-bold text-[#2c3e50] truncate transition-colors duration-300 group-hover:text-[#ff6b93]">
+                                    class="text-[1rem] font-bold text-[var(--color-text-primary)] truncate transition-colors duration-300 group-hover:text-[var(--color-accent)]">
                                     {{ link.name }}
                                 </h3>
-                                <p class="text-[#888] text-[0.85rem] truncate mt-[4px]">{{ link.desc }}</p>
+                                <p class="text-[var(--color-text-secondary)] text-[0.85rem] truncate mt-[4px]">{{ link.desc }}</p>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -144,7 +144,7 @@ onMounted(async () => {
                             </svg>
                         </a>
                     </div>
-                    <div v-else class="text-[#999] text-center py-[40px]">
+                    <div v-else class="text-[var(--color-text-secondary)] text-center py-[40px]">
                         暂无友链，快来成为第一个吧~
                     </div>
                 </div>

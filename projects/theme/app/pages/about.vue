@@ -68,7 +68,7 @@ onMounted(async () => {
 
 <template>
     <div id="app"
-        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[#333] bg-[#f9f9f9]">
+        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)]">
         <!-- Hero 区域 -->
         <div
             class="relative h-[40vh] min-h-[300px] overflow-hidden flex flex-col items-center justify-center text-center">
@@ -88,12 +88,12 @@ onMounted(async () => {
 
                 <!-- 个人介绍 -->
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                    class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
+                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                        <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         👋 嗨，我是 Pamper
                     </h2>
-                    <div class="text-[#555] leading-[1.8]">
+                    <div class="text-[var(--color-text-secondary)] leading-[1.8]">
                         <p class="mb-[15px]">
                             我是一个废物呜呜呜呜呜，对不起
                         </p>
@@ -102,15 +102,15 @@ onMounted(async () => {
 
                 <!-- 技能展示 -->
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                    class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
+                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                        <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🛠️ 技能树
                     </h2>
                     <div class="space-y-[18px]">
                         <div v-for="skill in skills" :key="skill.name" class="skill-item">
                             <div class="flex justify-between items-center mb-[8px]">
-                                <span class="flex items-center gap-[8px] text-[#2c3e50] font-medium">
+                                <span class="flex items-center gap-[8px] text-[var(--color-text-primary)] font-medium">
                                     <img v-if="isUrlIcon(skill.icon)" :src="skill.icon" :alt="skill.name"
                                         class="w-[20px] h-[20px] object-contain" />
                                     <span v-else-if="isSvgIcon(skill.icon)" v-html="skill.icon"
@@ -118,10 +118,10 @@ onMounted(async () => {
                                     <span v-else>{{ skill.icon }}</span>
                                     {{ skill.name }}
                                 </span>
-                                <span class="text-[#ff6b93] text-[0.9rem]">{{ skill.level }}%</span>
+                                <span class="text-[var(--color-accent)] text-[0.9rem]">{{ skill.level }}%</span>
                             </div>
-                            <div class="h-[8px] bg-[#f0f0f0] rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-[#ff9eb0] to-[#ff6b93] rounded-full transition-all duration-500"
+                            <div class="h-[8px] bg-[var(--color-bg-secondary)] rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-[var(--color-accent)]/60 to-[var(--color-accent)] rounded-full transition-all duration-500"
                                     :style="{ width: `${skill.level}%` }">
                                 </div>
                             </div>
@@ -152,14 +152,14 @@ onMounted(async () => {
 
                 <!-- 社交链接 -->
                 <div
-                    class="bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-                    <h2 class="text-[1.4rem] font-bold text-[#2c3e50] mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                    class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
+                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                        <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🔗 找到我
                     </h2>
                     <div class="flex flex-wrap gap-[12px]">
                         <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank"
-                            class="flex items-center gap-[8px] px-[18px] py-[10px] bg-white/80 border border-[rgba(169,169,169,0.15)] rounded-full text-[#2c3e50] no-underline transition-all duration-300 hover:bg-[#ff6b93] hover:text-white hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(255,107,147,0.3)]">
+                            class="flex items-center gap-[8px] px-[18px] py-[10px] bg-[var(--color-bg-primary)]/80 border border-[rgba(169,169,169,0.15)] rounded-full text-[var(--color-text-primary)] no-underline transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-white hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(255,107,147,0.3)]">
                             <img v-if="isUrlIcon(link.icon)" :src="link.icon" :alt="link.name"
                                 class="w-[18px] h-[18px] object-contain" />
                             <span v-else-if="isSvgIcon(link.icon)" v-html="link.icon"

@@ -36,57 +36,19 @@ defineExpose({
 </script>
 
 <template>
-    <div v-if="loading" class="global-loading" aria-live="polite" aria-busy="true">
-        <div class="loading-content">
-            <img src="~/assets/taichi.png" alt="加载中..." class="loading-gif" />
-            <p class="loading-text">正在加载...</p>
+    <div v-if="loading"
+        class="fixed inset-0 z-[9999] w-full h-full grid place-items-center bg-black/35 backdrop-blur-[4px] select-none"
+        aria-live="polite" aria-busy="true">
+        <div
+            class="grid justify-items-center gap-[10px] p-[18px_20px] rounded-[14px] bg-black/92 shadow-[0_18px_60px_rgba(0,0,0,0.25)] select-none">
+            <img src="~/assets/taichi.png" alt="加载中..."
+                class="w-[56px] h-[56px] animate-[taichi-rotate_1.1s_linear_infinite] will-change-transform select-none" />
+            <p class="m-0 text-[14px] text-white/90 select-none">正在加载...</p>
         </div>
     </div>
 </template>
 
 <style scoped>
-.global-loading {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    width: 100%;
-    height: 100%;
-
-    display: grid;
-    place-items: center;
-
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(4px);
-    user-select: none;
-}
-
-.loading-content {
-    display: grid;
-    justify-items: center;
-    gap: 10px;
-
-    padding: 18px 20px;
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.92);
-    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
-    user-select: none;
-}
-
-.loading-gif {
-    width: 56px;
-    height: 56px;
-    animation: taichi-rotate 1.1s linear infinite;
-    will-change: transform;
-    user-select: none;
-}
-
-.loading-text {
-    margin: 0;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.8);
-    user-select: none;
-}
-
 @keyframes taichi-rotate {
     from {
         transform: rotate(0deg);

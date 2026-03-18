@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f9fafb;
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #6b7280;
+    --color-border: #e5e7eb;
+    --color-accent: #ff6b93;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+    --color-bg-primary: #111827;
+    --color-bg-secondary: #1f2937;
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #9ca3af;
+    --color-border: #374151;
+    --color-accent: #ff6b93;
+    --color-shadow: rgba(0, 0, 0, 0.3);
+}
+
 @theme {
     --animate-fadeIn: fadeIn 2s ease-in-out;
     --animate-bounceX: bounceX 2s infinite;
+
+    --color-bg-primary: var(--color-bg-primary);
+    --color-bg-secondary: var(--color-bg-secondary);
+    --color-text-primary: var(--color-text-primary);
+    --color-text-secondary: var(--color-text-secondary);
+    --color-border: var(--color-border);
+    --color-accent: var(--color-accent);
+    --color-shadow: var(--color-shadow);
 
     @keyframes fadeIn {
         from {

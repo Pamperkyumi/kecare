@@ -9,7 +9,7 @@ import type { ArticleVariant, NavItem } from "kecare";
 const kecareSDK = await useKecareSDK(); // 这样就加载了你的 js 代码
 onMounted(async () => {
     await nextTick();
-    await kecareSDK!.mounted(props.article.rawMarkdown);
+    await kecareSDK!.mounted(props.article.title);
 });
 
 const props = defineProps<{
@@ -151,10 +151,12 @@ const wordCount = computed(() => {
         <!-- 文章信息 -->
         <div class="hero w-full flex items-center justify-center min-h-[30vh] max-[960px]:min-h-[38vh]">
             <div class="post-info text-center">
-                <h1 class="post-title text-[2.4rem] max-[768px]:text-[1.9rem] font-bold text-[#2c3e50] leading-tight">{{
-                    props.article.title }}</h1>
+                <h1
+                    class="post-title text-[2.4rem] max-[768px]:text-[1.9rem] font-bold text-[#2c3e50] dark:text-gray-100 leading-tight">
+                    {{
+                        props.article.title }}</h1>
                 <div
-                    class="first-line mt-[10px] flex flex-wrap items-center justify-center gap-[8px] text-[0.95rem] text-[#666]">
+                    class="first-line mt-[10px] flex flex-wrap items-center justify-center gap-[8px] text-[0.95rem] text-[#666] dark:text-gray-400">
                     <span class="post-created">发布于: {{ props.article.date }}</span>
                     <span class="post-sparator text-[#ff9eb0]">|</span>
                     <span class="word-count">总字数:{{ wordCount }}</span>
@@ -177,7 +179,7 @@ const wordCount = computed(() => {
             </div>
         </div>
         <aside
-            class="sidebar flex-none w-[240px] max-w-[240px] sticky top-[85px] h-fit bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-[18px] px-[16px] max-[960px]:hidden"
+            class="sidebar flex-none w-[240px] max-w-[240px] sticky top-[85px] h-fit bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-[18px] px-[16px] max-[960px]:hidden"
             v-if="props.navItems !== null">
             <NuxtLink
                 class="sidebar-title inline-block text-[1.1rem] font-extrabold text-[#ff6b93] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(255,107,147,0.10)] border border-[rgba(255,107,147,0.18)] transition-transform duration-200 hover:-translate-y-[1px] hover:bg-[rgba(255,107,147,0.14)]"
@@ -186,7 +188,7 @@ const wordCount = computed(() => {
                 <template v-if="props.navItems?.length">
                     <sidebar-navtree :items="props.navItems" />
                 </template>
-                <div v-else class="sidebar-empty text-[#7a7a7a] text-[0.95rem] px-[6px] py-[10px]">
+                <div class="sidebar-empty text-[#7a7a7a] dark:text-gray-400 text-[0.95rem] px-[6px] py-[10px]">
                     暂无目录喵~
                 </div>
             </div>
@@ -195,12 +197,12 @@ const wordCount = computed(() => {
         <div class="main-container flex flex-1 min-w-0 w-full gap-[30px] flex-col md:flex-row">
             <div class="article flex-1 p-0">
                 <div
-                    class="post bg-white/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[40px] max-[768px]:p-[25px] shadow-[0_10px_30px_rgba(0,0,0,0.1)] mb-[30px]">
-                    <div class="article-content leading-[1.8] [overflow-wrap:anywhere] break-words [&_h1]:mt-[1.5em] [&_h1]:mb-[0.5em] [&_h1]:text-[#2c3e50] [&_h2]:mt-[1.5em] [&_h2]:mb-[0.5em] [&_h2]:text-[#2c3e50] [&_h3]:mt-[1.5em] [&_h3]:mb-[0.5em] [&_h3]:text-[#2c3e50]"
+                    class="post bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] p-[40px] max-[768px]:p-[25px] shadow-[0_10px_30px_rgba(0,0,0,0.1)] mb-[30px]">
+                    <div class="article-content leading-[1.8] [overflow-wrap:anywhere] break-words [&_h1]:mt-[1.5em] [&_h1]:mb-[0.5em] [&_h1]:text-[#2c3e50] dark:[&_h1]:text-gray-100 [&_h2]:mt-[1.5em] [&_h2]:mb-[0.5em] [&_h2]:text-[#2c3e50] dark:[&_h2]:text-gray-100 [&_h3]:mt-[1.5em] [&_h3]:mb-[0.5em] [&_h3]:text-[#2c3e50] dark:[&_h3]:text-gray-100"
                         ref="articleRef" v-html="props.article.html"></div>
 
                     <div
-                        class="post-copyright relative mt-[40px] mb-[10px] p-[20px] border border-[#eee] rounded-[12px] bg-white/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[4px] before:h-full before:bg-[#ff9eb0] before:rounded-l-[4px]">
+                        class="post-copyright relative mt-[40px] mb-[10px] p-[20px] border border-[#eee] dark:border-gray-600 rounded-[12px] bg-white/80 dark:bg-gray-700/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[4px] before:h-full before:bg-[#ff9eb0] before:rounded-l-[4px]">
                         <div class="post-copyright-author">
                             <span class="post-copyright-meta text-[#ff6b93] font-bold mr-[8px]">文章作者:</span>
                             <span class="post-copyright-info">{{ props.article.author }}</span>

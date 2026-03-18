@@ -483,12 +483,20 @@ defineExpose({
     overflow: hidden;
 }
 
+:global(.dark) .search-container {
+    background: rgba(31, 41, 55, 0.95);
+}
+
 .search-header {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 16px 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global(.dark) .search-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-logo {
@@ -517,6 +525,14 @@ defineExpose({
     font-size: 15px;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
+    background: #fff;
+    color: #333;
+}
+
+:global(.dark) .search-input {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(55, 65, 81, 1);
+    color: #e5e7eb;
 }
 
 .search-input:focus {
@@ -528,9 +544,17 @@ defineExpose({
     color: #999;
 }
 
+:global(.dark) .search-input::placeholder {
+    color: #9ca3af;
+}
+
 .search-input:disabled {
     background: #f5f5f5;
     cursor: not-allowed;
+}
+
+:global(.dark) .search-input:disabled {
+    background: rgba(55, 65, 81, 0.5);
 }
 
 .search-lang-select {
@@ -545,6 +569,12 @@ defineExpose({
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
     flex-shrink: 0;
+}
+
+:global(.dark) .search-lang-select {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
+    background: rgba(55, 65, 81, 1);
 }
 
 .search-lang-select:focus {
@@ -569,6 +599,11 @@ defineExpose({
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
     flex-shrink: 0;
+}
+
+:global(.dark) .search-close {
+    background: rgba(255, 255, 255, 0.1);
+    color: #9ca3af;
 }
 
 .search-close:hover {
@@ -617,6 +652,10 @@ defineExpose({
     margin-bottom: 6px;
 }
 
+:global(.dark) .item-title {
+    color: #e5e7eb;
+}
+
 .item-meta {
     display: flex;
     gap: 12px;
@@ -636,6 +675,10 @@ defineExpose({
     color: #999;
 }
 
+:global(.dark) .item-date {
+    color: #9ca3af;
+}
+
 .item-desc {
     font-size: 13px;
     color: #666;
@@ -644,6 +687,10 @@ defineExpose({
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+}
+
+:global(.dark) .item-desc {
+    color: #9ca3af;
 }
 
 .item-context {
@@ -657,6 +704,10 @@ defineExpose({
     line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+:global(.dark) .item-context {
+    color: #9ca3af;
 }
 
 .item-context :deep(.highlight) {

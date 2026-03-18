@@ -153,17 +153,17 @@ onUnmounted(() => {
 
 <template>
     <div id="app"
-        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[#333] bg-[#f9f9f9] pt-[70px]">
+        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)] pt-[70px]">
         <div class="relative h-screen overflow-hidden flex flex-col items-center justify-center text-center">
             <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
-                class="relative z-10 text-white text-[4rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)] animate-fadeIn">
+                class="relative text-white text-[4rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)] animate-fadeIn">
                 Pamperのblog</h1>
-            <div class="relative z-10 text-[#ff9eb0] text-[2rem] tracking-[2px] flex items-center justify-center select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]"
+            <div class="relative text-[#ff9eb0] text-[2rem] tracking-[2px] flex items-center justify-center select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]"
                 ref="subtitleElement"></div>
             <div
-                class="absolute z-10 bottom-[30px] left-1/2 -translate-x-1/2 text-white text-[1.2rem] flex items-center justify-center select-none animate-bounceX">
+                class="absolute bottom-[30px] left-1/2 -translate-x-1/2 text-white text-[1.2rem] flex items-center justify-center select-none animate-bounceX">
                 向下滑动浏览内容</div>
         </div>
         <div class="flex flex-col">
@@ -172,15 +172,19 @@ onUnmounted(() => {
         <div class="max-w-[1200px] mx-auto p-[20px] flex flex-col md:flex-row gap-[30px]">
             <div class="flex-1 flex flex-col gap-[30px]">
                 <NuxtLink
-                    class="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-transform duration-300 ease cursor-pointer no-underline text-[inherit] hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
+                    class="flex flex-col bg-[var(--color-bg-primary)] rounded-[16px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-transform duration-300 ease cursor-pointer no-underline text-[inherit] hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
                     v-for="(article, index) in articleCards" :key="index" :to="article.to">
                     <img class="w-full h-[200px] object-cover" :src="article.cover" />
                     <div class="p-[20px] flex flex-col gap-[10px]">
-                        <div class="text-[1.4rem] font-bold text-[#2c3e50] leading-[1.3] flex items-center">{{
-                            article.title }}</div>
-                        <div class="text-[#666] leading-[1.5] flex items-center">{{ article.desc }}</div>
                         <div
-                            class="flex justify-between text-[0.85rem] text-[#888] border-t border-[#eee] pt-[15px] gap-[10px]">
+                            class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
+                            {{
+                                article.title }}</div>
+                        <div class="text-[var(--color-text-secondary)] leading-[1.5] flex items-center">{{ article.desc
+                            }}
+                        </div>
+                        <div
+                            class="flex justify-between text-[0.85rem] text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-[15px] gap-[10px]">
                             <span>作者: {{ article.author }}</span>
                             <span>{{ article.date }}</span>
                         </div>
@@ -200,7 +204,7 @@ onUnmounted(() => {
                         </span>
                         <!-- 可点击页码 -->
                         <NuxtLink v-else
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-white text-[#333] font-medium transition-all duration-200 hover:bg-[#f0f0f0] hover:-translate-y-[2px] active:translate-y-[0px] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
+                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] font-medium transition-all duration-200 hover:bg-[var(--color-bg-secondary)] hover:-translate-y-[2px] active:translate-y-[0px] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
                             :to="item === 1 ? '/' : `/page-${item}`">
                             {{ item }}
                         </NuxtLink>
