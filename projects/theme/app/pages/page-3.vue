@@ -13,7 +13,7 @@
     "hash": "6e8c5f0b",
     "relativePath": "/写作.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/af0e1cec4766b50bcf61b741cf78d77530c2a24019bc0ba3d17a88624e04ce34.jpg",
       "title": "写作",
       "menu": "test",
       "tags": [],
@@ -26,7 +26,6 @@
       "sticky": 0,
       "date": "2026-03-06"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
@@ -41,7 +40,7 @@
     "hash": "fddd58bb",
     "relativePath": "/生成器CLI.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
       "title": "生成器CLI",
       "menu": "test",
       "tags": [],
@@ -54,7 +53,6 @@
       "sticky": 0,
       "date": "2026-03-05"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
@@ -69,7 +67,7 @@
     "hash": "95bb100b",
     "relativePath": "/快速开始.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
       "title": "快速开始",
       "menu": "test",
       "tags": [],
@@ -82,7 +80,6 @@
       "sticky": 0,
       "date": "2026-03-04"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
@@ -97,7 +94,7 @@
     "hash": "493f5fa2",
     "relativePath": "/国际化处理.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
       "title": "国际化处理",
       "menu": "test",
       "tags": [],
@@ -110,7 +107,6 @@
       "sticky": 0,
       "date": "2026-03-03"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
@@ -125,7 +121,7 @@
     "hash": "43fc313b",
     "relativePath": "/贡献指南.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
       "title": "贡献指南",
       "menu": "test",
       "tags": [
@@ -143,7 +139,6 @@
       "sticky": 0,
       "date": "2026-03-02"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",

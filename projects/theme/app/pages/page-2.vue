@@ -6,15 +6,15 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "Kecare从这里开始喵",
+    "title": "Kecare从这里开始喵 copy",
     "isOriginalLang": true,
     "menu": "test",
     "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
-    "hash": "70e6923c",
-    "relativePath": "/Kecare从这里开始喵.md",
+    "hash": "6fb10743",
+    "relativePath": "/Kecare从这里开始喵 copy.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-      "title": "Kecare从这里开始喵",
+      "cover": "http://pichost.cloud/files/692abf1ec7e9825b7947c98c1bd8f62b0666e23750c56f7b8b1fb5196bf900e3.jpg",
+      "title": "Kecare从这里开始喵 copy",
       "menu": "test",
       "tags": [],
       "desc": "关于 Kecare：从这里开始 💡 写在前面：如果你觉得文档中有不清楚的地方，欢迎提 Issue 或 PR 帮助改进，非常感谢你的贡献！ Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是\"再做一个 Hexo\"，...",
@@ -26,11 +26,10 @@
       "sticky": 2,
       "date": "2026-03-10"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "urlPath": "articles/zh-CN/70e6923c"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6fb10743.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6fb10743",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6fb10743.vue",
+    "urlPath": "articles/zh-CN/6fb10743"
   },
   {
     "lang": "zh-CN",
@@ -41,7 +40,7 @@
     "hash": "95140e73",
     "relativePath": "/在已有项目上使用kecare.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
       "title": "在已有项目上使用kecare",
       "menu": "test",
       "tags": [],
@@ -54,7 +53,6 @@
       "sticky": 1,
       "date": "2026-03-11"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
@@ -69,7 +67,7 @@
     "hash": "b40d18d1",
     "relativePath": "/markdown扩展.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
       "title": "markdown扩展",
       "menu": "test",
       "tags": [],
@@ -82,7 +80,6 @@
       "sticky": 0,
       "date": "2026-03-09"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/b40d18d1",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
@@ -97,7 +94,7 @@
     "hash": "39f6b230",
     "relativePath": "/Github pages.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
       "title": "Github pages",
       "menu": "test",
       "tags": [],
@@ -110,7 +107,6 @@
       "sticky": 0,
       "date": "2026-03-08"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
@@ -125,7 +121,7 @@
     "hash": "5f065839",
     "relativePath": "/front-matter.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/692abf1ec7e9825b7947c98c1bd8f62b0666e23750c56f7b8b1fb5196bf900e3.jpg",
       "title": "front-matter",
       "menu": "test",
       "tags": [],
@@ -138,7 +134,6 @@
       "sticky": 0,
       "date": "2026-03-07"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f065839",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ArticlesRecord } from "kecare";
 import { ref, computed, onMounted, onUnmounted, nextTick } from "vue"
 // import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
@@ -9,7 +8,7 @@ import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import Footer from '~/components/Theme/Sidebar/Footer.vue'
 
 const props = defineProps<{
-    articles: ArticlesRecord;
+    articles: any[];
     currentPage?: number;
     totalPages?: number;
     totalArticles?: number;
@@ -57,34 +56,6 @@ const paginationItems = computed(() => {
     return items;
 });
 
-type ArticleCard = {
-    id: string;
-    title: string;
-    desc: string;
-    date?: string;
-    author?: string;
-    to: string;
-    lang: string;
-    cover?: string;
-};
-
-const articleCards = computed<ArticleCard[]>(() => {
-    const records = props.articles ?? [];
-    // 处理数组格式的文章数据
-    if (Array.isArray(records)) {
-        return records.map((article: any) => ({
-            id: article.hash ?? article.id ?? "",
-            title: article.title ?? "",
-            desc: article.desc ?? "",
-            date: article.date,
-            author: article.author,
-            to: article.urlPath ?? "#",
-            lang: article.lang ?? "",
-            cover: article.cover,
-        }));
-    }
-    return [];
-});
 
 // kecream~
 // function initSakanaWidget() {
@@ -174,20 +145,19 @@ onUnmounted(() => {
             <div class="flex-1 flex flex-col gap-[30px]">
                 <NuxtLink
                     class="flex flex-col bg-[var(--color-bg-primary)] rounded-[16px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-transform duration-300 ease cursor-pointer no-underline text-[inherit] hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
-                    v-for="(article, index) in articleCards" :key="index" :to="article.to">
-                    <img class="w-full h-[200px] object-cover" :src="article.cover" />
+                    v-for="(article, index) in articles" :key="index" :to="article.urlPath">
+                    <img class="w-full h-[200px] object-cover" :src="article.frontMatter.cover" />
                     <div class="p-[20px] flex flex-col gap-[10px]">
                         <div
                             class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
-                            {{
-                                article.title }}</div>
+                            {{ article.frontMatter.title }}</div>
                         <div class="text-[var(--color-text-secondary)] leading-[1.5] flex items-center">{{ article.desc
-                            }}
+                        }}
                         </div>
                         <div
                             class="flex justify-between text-[0.85rem] text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-[15px] gap-[10px]">
-                            <span>作者: {{ article.author }}</span>
-                            <span>{{ article.date }}</span>
+                            <span>作者: {{ article.frontMatter.author }}</span>
+                            <span>{{ article.frontMatter.date }}</span>
                         </div>
                     </div>
                 </NuxtLink>

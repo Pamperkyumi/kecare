@@ -4,6 +4,7 @@ import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import heroBg from '~/assets/bg1.jpg'
+import Footer from '~/components/Theme/Sidebar/Footer.vue'
 
 useHead({
     title: '友链喵',
@@ -67,7 +68,8 @@ onMounted(async () => {
 
                 <div
                     class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
-                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🏠 本站信息
                     </h2>
@@ -76,8 +78,10 @@ onMounted(async () => {
                         <img :src="siteInfo.image" :alt="siteInfo.name"
                             class="w-[80px] h-[80px] rounded-full object-cover border-[3px] border-[#ff9eb0]/50 shadow-[0_4px_12px_rgba(255,107,147,0.2)]" />
                         <div class="flex-1">
-                            <h3 class="text-[1.2rem] font-bold text-[var(--color-text-primary)] mb-[8px]">{{ siteInfo.name }}</h3>
-                            <p class="text-[var(--color-text-secondary)] text-[0.9rem] mb-[10px]">{{ siteInfo.desc }}</p>
+                            <h3 class="text-[1.2rem] font-bold text-[var(--color-text-primary)] mb-[8px]">{{
+                                siteInfo.name }}</h3>
+                            <p class="text-[var(--color-text-secondary)] text-[0.9rem] mb-[10px]">{{ siteInfo.desc }}
+                            </p>
                             <a :href="siteInfo.url" target="_blank"
                                 class="inline-flex items-center gap-[6px] text-[var(--color-accent)] text-[0.9rem] no-underline hover:text-[#ff4d7d] transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
@@ -94,7 +98,8 @@ onMounted(async () => {
 
                 <div
                     class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
-                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         📝 添加友链
                     </h2>
@@ -119,7 +124,8 @@ onMounted(async () => {
 
                 <div
                     class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
-                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🔗 友链列表
                     </h2>
@@ -133,7 +139,8 @@ onMounted(async () => {
                                     class="text-[1rem] font-bold text-[var(--color-text-primary)] truncate transition-colors duration-300 group-hover:text-[var(--color-accent)]">
                                     {{ link.name }}
                                 </h3>
-                                <p class="text-[var(--color-text-secondary)] text-[0.85rem] truncate mt-[4px]">{{ link.desc }}</p>
+                                <p class="text-[var(--color-text-secondary)] text-[0.85rem] truncate mt-[4px]">{{
+                                    link.desc }}</p>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -150,6 +157,7 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 
     <div id="sakana-widget" class="fixed right-0 bottom-0 z-[999]"></div>

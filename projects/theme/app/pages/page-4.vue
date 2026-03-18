@@ -13,7 +13,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
+      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
       "title": "菜单系统",
       "menu": "test",
       "tags": [
@@ -31,7 +31,6 @@
       "sticky": 0,
       "date": "2026-03-01"
     },
-    "cover": "https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp",
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",

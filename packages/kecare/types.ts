@@ -8,6 +8,10 @@ export type KecareConfig = {
     }
 }
 
+export type ThemeConfig = {
+    ImageUrl: string[];
+}
+
 export type KecareContext = {
     // 项目路径
     projectPath: string;

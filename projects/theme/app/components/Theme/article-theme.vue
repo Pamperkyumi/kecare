@@ -158,7 +158,7 @@ const wordCount = computed(() => {
                         props.article.title }}</h1>
                 <div
                     class="first-line mt-[10px] flex flex-wrap items-center justify-center gap-[8px] text-[0.95rem] text-[#666] dark:text-gray-400">
-                    <span class="post-created">发布于: {{ props.article.date }}</span>
+                    <span class="post-created">发布于: {{ props.article.frontMatter.date }}</span>
                     <span class="post-sparator text-[#ff9eb0]">|</span>
                     <span class="word-count">总字数:{{ wordCount }}</span>
                     <span class="post-sparator text-[#ff9eb0]">|</span>

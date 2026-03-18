@@ -11,6 +11,7 @@ import { useKecareConfig } from "../../utils/kecare-config";
 import { translator } from "./translator/translator";
 import GithubSlugger from 'github-slugger';
 import { parseDateString } from "kecare";
+import { useThemeConfig } from "../../utils/theme-config";
 
 export type MarkdownOriginalArticle = ArticleVariant & {
     fsPath: string;
@@ -44,12 +45,22 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         let rawFrontMatter = YAML.parse(frontMatterStr) as FrontMatter;
         if (!rawFrontMatter) throw new Error(`[markdown] ${fsPath} 中的 frontmatter 不能为空,请检查文档格式`);
         let rawMarkdown = frontMatterStr ? rawContent.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '') : rawContent;
-        const cover = rawFrontMatter.cover ?? 'https://pichost.cloud/files/944b71a32407dd671f9d09296c439efb3cfeb95341fd87cc9490470710bbbc76.webp'
+        const cover = rawFrontMatter.cover
+        let finalCover = cover;
+        if (!finalCover) {
+            const themeConfig = await useThemeConfig(context);
+            const images = themeConfig.ImageUrl;
+            if (images && images.length > 0) {
+                const randomIndex = Math.floor(Math.random() * images.length);
+                finalCover = images[randomIndex];
+                console.log(finalCover)
+            }
+        }
 
 
         // 元数据
         const frontMatter: FrontMatter = {
-            cover: cover,
+            cover: finalCover,
             layout: rawFrontMatter.layout ?? undefined,
             title: (rawFrontMatter.title ?? basename(fsPath, '.md')).trim(),
             menu: rawFrontMatter.menu ?? undefined,
@@ -71,7 +82,6 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         }
         if (typeof frontMatter.sticky !== 'number') throw new Error(`[markdown] ${fsPath} 中的 sticky 字段必须是数字`);
         if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
-
 
         // 开始处理翻译
         for (const language of frontMatter.translate) {

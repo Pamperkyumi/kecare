@@ -6,6 +6,7 @@ import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import heroBg from '~/assets/bg1.jpg'
 import type { ArchiveArticleData } from "kecare";
+import Footer from '~/components/Theme/Sidebar/Footer.vue'
 
 type YearGroup = {
     year: number;
@@ -174,6 +175,7 @@ function formatDate(dateStr: string): string {
                 <AuthorCard :totalArticles="totalArticles" />
             </aside>
         </div>
+        <Footer />
     </div>
 
     <!-- Sakana Widget -->

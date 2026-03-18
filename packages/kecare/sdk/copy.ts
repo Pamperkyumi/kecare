@@ -20,6 +20,7 @@ export async function onMountedCopy(articleElement: HTMLDivElement, title?: stri
     copyButton.addEventListener('click', async () => {
         try {
             const mdPath = `${basePath.replace(/\/$/, '')}/${encodeURIComponent(title!)}.md`;
+            console.log('111', mdPath);
             const response = await fetch(mdPath);
 
             if (!response.ok) {

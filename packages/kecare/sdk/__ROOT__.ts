@@ -18,10 +18,10 @@ async function createKecareSDK() {
     });
 
     const kecareSDK = {
-        mounted: async (title?: string, basePath: string = '/') => {
+        mounted: async (title?: string) => {
             await loaded;
             const articleElement = document.querySelector('.kecare')! as HTMLDivElement;
-            await onMountedCopy(articleElement, title, basePath);
+            await onMountedCopy(articleElement, title);
             await onMountedSidebar(articleElement);
             await onMountedTabs(articleElement);
             await onMountedSyntaxHighlight(articleElement);

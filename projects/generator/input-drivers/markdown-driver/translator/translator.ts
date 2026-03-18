@@ -1,4 +1,4 @@
-import type { TranslationConfigOptions } from '../../../types';
+import type { TranslationConfigOptions } from 'kecare';
 import consola from 'consola';
 import Bun from 'bun';
 import { join } from 'node:path';

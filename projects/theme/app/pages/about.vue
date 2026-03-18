@@ -5,6 +5,7 @@ import 'sakana-widget/lib/index.css';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import heroBg from '~/assets/bg1.jpg'
+import Footer from '~/components/Theme/Sidebar/Footer.vue'
 
 useHead({
     title: '关于我',
@@ -89,7 +90,8 @@ onMounted(async () => {
                 <!-- 个人介绍 -->
                 <div
                     class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
-                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         👋 嗨，我是 Pamper
                     </h2>
@@ -103,7 +105,8 @@ onMounted(async () => {
                 <!-- 技能展示 -->
                 <div
                     class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
-                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🛠️ 技能树
                     </h2>
@@ -153,7 +156,8 @@ onMounted(async () => {
                 <!-- 社交链接 -->
                 <div
                     class="bg-[var(--color-bg-primary)]/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] rounded-[16px] p-[30px] shadow-[0_10px_30px_var(--color-shadow)]">
-                    <h2 class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
+                    <h2
+                        class="text-[1.4rem] font-bold text-[var(--color-text-primary)] mb-[20px] flex items-center gap-[10px]">
                         <span class="w-[4px] h-[20px] bg-[var(--color-accent)] rounded-full"></span>
                         🔗 找到我
                     </h2>
@@ -171,6 +175,7 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 
     <!-- Sakana Widget -->
