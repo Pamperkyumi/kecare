@@ -1,0 +1,14 @@
+{
+  "title": "菜单系统",
+  "lang": "zh-CN",
+  "hash": "4ee23999",
+  "tags": [
+    "菜单",
+    "导航",
+    "测试",
+    "Kecare"
+  ],
+  "date": "2026-03-01",
+  "urlPath": "articles/zh-CN/4ee23999",
+  "content": "\n# 菜单系统\n\nKecare 提供统一的菜单配置方式，用于生成侧边导航栏。\n\n---\n\n## 创建菜单\n\n菜单文件存放在 `.kecare/menus/` 目录，命名格式为 `<名称>.menu.source.ts`：\n\n```ts\n// .kecare/menus/kecare-docs.menu.source.ts\nimport type { NavItem } from \"kecare\";\n\nexport const navItems: NavItem[] = [\n    {\n        text: \"分组名称\",\n        level: 1,\n        items: [\n            { text: \"菜单项\", link: \"./文章路径.md\", level: 2 },\n        ],\n    },\n    {\n        text: \"分组名称2\",\n        level: 1,\n        items: [\n            { text: \"菜单项2\", link: \"./文章路径2.md\", level: 2 },\n        ],\n    }\n];\n```\n\n> 文件名前缀（如 `kecare-docs`）是文章中引用的 `menu` 值。\n\n---\n\n## 在文章中启用\n\n在 Front Matter 中添加 `menu` 字段：\n\n```yaml\n---\ntitle: 快速开始\nmenu: kecare-docs\n---\n```\n\n`menu` 值对应菜单文件名前缀：`kecare-docs` → `kecare-docs.menu.source.ts`\n\n---\n\n## NavItem 结构\n\n```ts\ntype NavItem =\n    | { text: string; link: string; level: number; desc?: string; icon?: string }  // 叶子节点\n    | { text: string; items: NavItem[]; level: number };                           // 分组节点\n```\n\n- **叶子节点**：可点击跳转，`link` 为文章路径（如 `./快速开始`）\n- **分组节点**：仅作分类，包含 `items` 子数组\n\n"
+}

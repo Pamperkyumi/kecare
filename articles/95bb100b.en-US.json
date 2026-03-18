@@ -1,0 +1,9 @@
+{
+  "title": "Quick Start",
+  "lang": "en-US",
+  "hash": "95bb100b",
+  "tags": [],
+  "date": "2026-03-04",
+  "urlPath": "articles/en-US/95bb100b",
+  "content": "# Quick Start\n\nFollow these steps to run the Kecare blog locally in just a few minutes.\n\n## Prerequisites\n\n| Requirement | Description | Verification Command |\n| --- | --- | --- |\n| Node.js | Install dependencies, start development server | `node -v` |\n| Git | Clone theme repository | `git --version` |\n\n## Install CLI\n\n```bash\nnpm create kecare@beta\n```\n\nVerification of Installation:\n\n```bash\nkecare -version\n```\n\n## Get Topic\n\n```bash\ngit clone https://github.com/Pamperkyumi/Kecare-theme.git\ncd Kecare-theme\n```\n\n## Install Dependencies\n\n::: tabs\n\n@tab bun\n\n```bash\nbun install\n```\n\n@tab npm\n\n```bash\nnpm install \n```\n@tab pnpm\n\n```bash\npnpm install \n```\n\n:::\n\n## Run\n\n### Generate Site\n\n```bash\nkecare gen .\n```\n\n### Start Development Server\n\n::: tabs\n\n@tab bun\n\n```bash\nbun run dev \n```\n\n@tab npm\n\n```bash\nnpm run dev\n```\n\n@tab pnpm\n\n```bash\npnpm run dev\n```\n\n:::\n\nVisit http://localhost:3000 to view the site.\n\n## Update\n\n```bash\nnpm update kecare@beta\n```"
+}

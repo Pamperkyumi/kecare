@@ -1,0 +1,9 @@
+{
+  "title": "クイックスタート",
+  "lang": "ja-JP",
+  "hash": "95bb100b",
+  "tags": [],
+  "date": "2026-03-04",
+  "urlPath": "articles/ja-JP/95bb100b",
+  "content": "# クイックスタート\n\n以下の手順に従って、数分でローカルでKecareブログを実行できます。\n\n## 前提条件\n\n| 要件 | 説明 | 検証コマンド |\n| --- | --- | --- |\n| Node.js | 依存関係のインストール、開発サーバーの起動 | `node -v` |\n| Git | テーマリポジトリのクローン | `git --version` |\n\n## CLIのインストール\n\n```bash\nnpm create kecare@beta\n```\n\nインストールの確認：\n\n```bash\nkecare -version\n```\n\n## トピックの取得\n\n```bash\ngit clone https://github.com/Pamperkyumi/Kecare-theme.git\ncd Kecare-theme\n```\n\n## 依存関係のインストール\n\n::: tabs\n\n@tab bun\n\n```bash\nbun install\n```\n\n@tab npm\n\n```bash\nnpm install \n```\n@tab pnpm\n\n```bash\npnpm install \n```\n\n:::\n\n## 実行\n\n### サイト生成\n\n```bash\nkecare gen .\n```\n\n### 開発サーバーの起動\n\n::: tabs\n\n@tab bun\n\n```bash\nbun run dev \n```\n\n@tab npm\n\n```bash\nnpm run dev\n```\n\n@tab pnpm\n\n```bash\npnpm run dev\n```\n\n:::\n\nhttp://localhost:3000 にアクセスしてサイトを確認してください。\n\n## 更新\n\n```bash\nnpm update kecare@beta\n```"
+}
