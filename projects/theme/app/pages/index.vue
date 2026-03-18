@@ -13,7 +13,7 @@
     "hash": "552248be",
     "relativePath": "/什么是Kecare.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/692abf1ec7e9825b7947c98c1bd8f62b0666e23750c56f7b8b1fb5196bf900e3.jpg",
+      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
       "title": "什么是Kecare",
       "menu": "test",
       "tags": [],
@@ -40,7 +40,7 @@
     "hash": "70e6923c",
     "relativePath": "/Kecare从这里开始喵.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
+      "cover": "http://pichost.cloud/files/af0e1cec4766b50bcf61b741cf78d77530c2a24019bc0ba3d17a88624e04ce34.jpg",
       "title": "Kecare从这里开始喵",
       "menu": "test",
       "tags": [],
@@ -67,7 +67,7 @@
     "hash": "95140e73",
     "relativePath": "/在已有项目上使用kecare.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
+      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
       "title": "在已有项目上使用kecare",
       "menu": "test",
       "tags": [],
@@ -121,7 +121,7 @@
     "hash": "39f6b230",
     "relativePath": "/Github pages.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/af0e1cec4766b50bcf61b741cf78d77530c2a24019bc0ba3d17a88624e04ce34.jpg",
+      "cover": "http://pichost.cloud/files/852b35d10178459edcf216fdd842d331da8f390a56f8fda74f8d68b2ed3f4fc7.png",
       "title": "Github pages",
       "menu": "test",
       "tags": [],

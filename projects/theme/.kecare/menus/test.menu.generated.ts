@@ -33,8 +33,8 @@ export const navItems: NavItem[] = [
         "level": 2
       },
       {
-        "text": "frontmatter",
-        "link": "./709caab7",
+        "text": "Frontmatter",
+        "link": "./5f065839",
         "level": 2
       },
       {

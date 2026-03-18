@@ -13,7 +13,7 @@
     "hash": "43fc313b",
     "relativePath": "/贡献指南.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
+      "cover": "http://pichost.cloud/files/692abf1ec7e9825b7947c98c1bd8f62b0666e23750c56f7b8b1fb5196bf900e3.jpg",
       "title": "贡献指南",
       "menu": "test",
       "tags": [
@@ -45,7 +45,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/266842fa2fcf636088b4e3950f14c131a668c83981ebf8f582ae88c4ef719647.jpg",
+      "cover": "http://pichost.cloud/files/692abf1ec7e9825b7947c98c1bd8f62b0666e23750c56f7b8b1fb5196bf900e3.jpg",
       "title": "菜单系统",
       "menu": "test",
       "tags": [
