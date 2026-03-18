@@ -43,14 +43,14 @@ const timeline = [
     { year: '2021', event: '开始前端开发之旅' },
 ]
 
-function initSakanaWidget() {
-    const kecream = SakanaWidget.getCharacter('chisato');
-    if (kecream) {
-        kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
-        SakanaWidget.registerCharacter('kecream', kecream);
-    }
-    new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
-}
+// function initSakanaWidget() {
+//     const kecream = SakanaWidget.getCharacter('chisato');
+//     if (kecream) {
+//         kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
+//         SakanaWidget.registerCharacter('kecream', kecream);
+//     }
+//     new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
+// }
 
 function isUrlIcon(icon: string): boolean {
     return icon.startsWith('http://') || icon.startsWith('https://') || icon.startsWith('/');
@@ -62,7 +62,7 @@ function isSvgIcon(icon: string): boolean {
 
 onMounted(async () => {
     await nextTick();
-    initSakanaWidget();
+    // initSakanaWidget();
 });
 </script>
 
@@ -75,9 +75,9 @@ onMounted(async () => {
             <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
-                class="relative z-10 text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">
+                class="relative text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">
                 关于我</h1>
-            <p class="relative z-10 text-white/80 text-[1.1rem] mt-[10px]">Hello World! 👋</p>
+            <p class="relative text-white/80 text-[1.1rem] mt-[10px]">Hello World! 👋</p>
         </div>
 
         <Navbar />

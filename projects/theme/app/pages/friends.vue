@@ -30,32 +30,20 @@ const friendLinks: FriendLink[] = [
         desc: '关注可莉姆船长谢谢喵',
         image: 'https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif'
     },
-    {
-        name: 'TypeScript',
-        url: 'https://www.typescriptlang.org',
-        desc: 'JavaScript with syntax for types',
-        image: 'https://www.typescriptlang.org/favicon-32x32.png'
-    },
-    {
-        name: 'Tailwind CSS',
-        url: 'https://tailwindcss.com',
-        desc: 'A utility-first CSS framework',
-        image: 'https://tailwindcss.com/favicons/favicon-32x32.png'
-    },
 ]
 
-function initSakanaWidget() {
-    const kecream = SakanaWidget.getCharacter('chisato');
-    if (kecream) {
-        kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
-        SakanaWidget.registerCharacter('kecream', kecream);
-    }
-    new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
-}
+// function initSakanaWidget() {
+//     const kecream = SakanaWidget.getCharacter('chisato');
+//     if (kecream) {
+//         kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
+//         SakanaWidget.registerCharacter('kecream', kecream);
+//     }
+//     new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
+// }
 
 onMounted(async () => {
     await nextTick();
-    initSakanaWidget();
+    // initSakanaWidget();
 });
 </script>
 
@@ -67,9 +55,9 @@ onMounted(async () => {
             <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
-                class="relative z-10 text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">
+                class="relative text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">
                 友情链接</h1>
-            <p class="relative z-10 text-white/80 text-[1.1rem] mt-[10px]">Friends & Links</p>
+            <p class="relative text-white/80 text-[1.1rem] mt-[10px]">Friends & Links</p>
         </div>
 
         <Navbar />

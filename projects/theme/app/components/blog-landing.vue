@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ArticlesRecord } from "kecare";
 import { ref, computed, onMounted, onUnmounted, nextTick } from "vue"
-import SakanaWidget from 'sakana-widget';
+// import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
 import heroBg from '~/assets/bg1.jpg'
 import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
@@ -86,18 +86,18 @@ const articleCards = computed<ArticleCard[]>(() => {
 });
 
 // kecream~
-function initSakanaWidget() {
-    const kecream = SakanaWidget.getCharacter('chisato');
-    if (kecream) {
-        kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
-        SakanaWidget.registerCharacter('kecream', kecream);
-    }
-    new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
-}
-onMounted(async () => {
-    await nextTick();
-    initSakanaWidget();
-});
+// function initSakanaWidget() {
+//     const kecream = SakanaWidget.getCharacter('chisato');
+//     if (kecream) {
+//         kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
+//         SakanaWidget.registerCharacter('kecream', kecream);
+//     }
+//     new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
+// }
+// onMounted(async () => {
+//     await nextTick();
+//     initSakanaWidget();
+// });
 
 
 const typingTimer = ref<number | null>(null);

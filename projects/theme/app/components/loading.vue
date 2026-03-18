@@ -49,6 +49,8 @@ defineExpose({
     position: fixed;
     inset: 0;
     z-index: 9999;
+    width: 100%;
+    height: 100%;
 
     display: grid;
     place-items: center;
@@ -65,7 +67,7 @@ defineExpose({
 
     padding: 18px 20px;
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(0, 0, 0, 0.92);
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
     user-select: none;
 }

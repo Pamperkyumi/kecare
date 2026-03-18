@@ -88,7 +88,7 @@ function formatDate(dateStr: string): string {
             <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
-                class="relative z-10 text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">
+                class="relative text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">
                 文章归档</h1>
         </div>
 
