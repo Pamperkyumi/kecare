@@ -163,7 +163,7 @@ onMounted(async () => {
                     </h2>
                     <div class="flex flex-wrap gap-[12px]">
                         <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank"
-                            class="flex items-center gap-[8px] px-[18px] py-[10px] bg-[var(--color-bg-primary)]/80 border border-[rgba(169,169,169,0.15)] rounded-full text-[var(--color-text-primary)] no-underline transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-white hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(255,107,147,0.3)]">
+                            class="social-link flex items-center gap-[8px] px-[18px] py-[10px] bg-[var(--color-bg-primary)]/80 border border-[rgba(169,169,169,0.15)] rounded-full text-[var(--color-text-primary)] no-underline">
                             <img v-if="isUrlIcon(link.icon)" :src="link.icon" :alt="link.name"
                                 class="w-[18px] h-[18px] object-contain" />
                             <span v-else-if="isSvgIcon(link.icon)" v-html="link.icon"
@@ -194,5 +194,16 @@ onMounted(async () => {
 .skill-item:hover {
     background: white;
     box-shadow: 0 4px 12px rgba(255, 107, 147, 0.1);
+}
+
+.social-link {
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--color-accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 147, 0.3);
 }
 </style>

@@ -144,7 +144,7 @@ onUnmounted(() => {
         <div class="max-w-[1200px] mx-auto p-[20px] flex flex-col md:flex-row gap-[30px]">
             <div class="flex-1 flex flex-col gap-[30px]">
                 <NuxtLink
-                    class="flex flex-col bg-[var(--color-bg-primary)] rounded-[16px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-transform duration-300 ease cursor-pointer no-underline text-[inherit] hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
+                    class="article-card flex flex-col bg-[var(--color-bg-primary)] rounded-[16px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.08)] cursor-pointer no-underline text-[inherit]"
                     v-for="(article, index) in articles" :key="index" :to="article.urlPath">
                     <img class="w-full h-[200px] object-cover" :src="article.frontMatter.cover" />
                     <div class="p-[20px] flex flex-col gap-[10px]">
@@ -175,7 +175,7 @@ onUnmounted(() => {
                         </span>
                         <!-- 可点击页码 -->
                         <NuxtLink v-else
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] font-medium transition-all duration-200 hover:bg-[var(--color-bg-secondary)] hover:-translate-y-[2px] active:translate-y-[0px] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
+                            class="pagination-item w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] font-medium shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
                             :to="item === 1 ? '/' : `/page-${item}`">
                             {{ item }}
                         </NuxtLink>
@@ -188,3 +188,27 @@ onUnmounted(() => {
     </div>
     <div id="sakana-widget" class="fixed right-0 bottom-0 z-[999]"></div>
 </template>
+
+<style scoped>
+.article-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-item {
+    transition: all 0.2s ease;
+}
+
+.pagination-item:hover {
+    background-color: var(--color-bg-secondary);
+    transform: translateY(-2px);
+}
+
+.pagination-item:active {
+    transform: translateY(0);
+}
+</style>

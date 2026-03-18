@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@source "../../**/*.vue";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -25,6 +27,8 @@
 @theme {
     --animate-fadeIn: fadeIn 2s ease-in-out;
     --animate-bounceX: bounceX 2s infinite;
+    --animate-slide-in-right: slide-in-right 0.3s ease-out;
+    --animate-arrow-slide: arrow-slide 0.3s ease-out;
 
     --color-bg-primary: var(--color-bg-primary);
     --color-bg-secondary: var(--color-bg-secondary);
@@ -62,6 +66,30 @@
 
         60% {
             transform: translateY(-10px) translateX(-50%);
+        }
+    }
+
+    @keyframes slide-in-right {
+        from {
+            opacity: 0;
+            transform: translateX(-5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes arrow-slide {
+        from {
+            opacity: 0;
+            transform: translateX(-5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
         }
     }
 }

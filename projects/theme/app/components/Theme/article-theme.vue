@@ -183,7 +183,7 @@ const wordCount = computed(() => {
             class="sidebar flex-none w-[240px] max-w-[240px] sticky top-[85px] h-fit bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-[18px] px-[16px] max-[960px]:hidden"
             v-if="props.navItems !== null">
             <NuxtLink
-                class="sidebar-title inline-block text-[1.1rem] font-extrabold text-[#ff6b93] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(255,107,147,0.10)] border border-[rgba(255,107,147,0.18)] transition-transform duration-200 hover:-translate-y-[1px] hover:bg-[rgba(255,107,147,0.14)]"
+                class="sidebar-title inline-block text-[1.1rem] font-extrabold text-[#ff6b93] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(255,107,147,0.10)] border border-[rgba(255,107,147,0.18)]"
                 to="/">我是小菜单喵 </NuxtLink>
             <div class="sidebar-list max-h-[calc(100vh-140px)] overflow-auto pr-[6px]">
                 <template v-if="props.navItems?.length">
@@ -228,13 +228,13 @@ const wordCount = computed(() => {
                     <div
                         class="tags-shares flex justify-between items-center my-[30px] w-full max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-[20px]">
                         <div class="post-tag-list flex flex-wrap gap-[10px]">
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem] transition-all duration-300 ease hover:bg-[#ff6b93] hover:-translate-y-[2px]"
+                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵</a>
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem] transition-all duration-300 ease hover:bg-[#ff6b93] hover:-translate-y-[2px]"
+                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵喵</a>
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem] transition-all duration-300 ease hover:bg-[#ff6b93] hover:-translate-y-[2px]"
+                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵喵喵</a>
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem] transition-all duration-300 ease hover:bg-[#ff6b93] hover:-translate-y-[2px]"
+                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵喵喵喵</a>
                         </div>
                     </div>
@@ -263,5 +263,23 @@ const wordCount = computed(() => {
 
 .sidebar-list::-webkit-scrollbar-thumb:hover {
     background: #ff6b93;
+}
+
+.sidebar-title {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.sidebar-title:hover {
+    transform: translateY(-1px);
+    background-color: rgba(255, 107, 147, 0.14);
+}
+
+.post-tag {
+    transition: all 0.3s ease;
+}
+
+.post-tag:hover {
+    background-color: #ff6b93;
+    transform: translateY(-2px);
 }
 </style>

@@ -131,12 +131,11 @@ onMounted(async () => {
                     </h2>
                     <div v-if="friendLinks.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-[15px]">
                         <a v-for="link in friendLinks" :key="link.url" :href="link.url" target="_blank"
-                            class="group flex items-center gap-[15px] p-[15px] bg-[var(--color-bg-primary)]/50 rounded-[12px] border border-[rgba(169,169,169,0.1)] no-underline transition-all duration-300 hover:bg-[var(--color-bg-primary)] hover:shadow-[0_4px_12px_rgba(255,107,147,0.15)] hover:border-[var(--color-accent)]/30 hover:-translate-y-[2px]">
+                            class="friend-link flex items-center gap-[15px] p-[15px] bg-[var(--color-bg-primary)]/50 rounded-[12px] border border-[rgba(169,169,169,0.1)] no-underline">
                             <img :src="link.image" :alt="link.name"
-                                class="w-[50px] h-[50px] rounded-full object-cover border-[2px] border-[var(--color-accent)]/30 transition-all duration-300 group-hover:border-[var(--color-accent)]" />
+                                class="friend-avatar w-[50px] h-[50px] rounded-full object-cover border-[2px] border-[var(--color-accent)]/30" />
                             <div class="flex-1 min-w-0">
-                                <h3
-                                    class="text-[1rem] font-bold text-[var(--color-text-primary)] truncate transition-colors duration-300 group-hover:text-[var(--color-accent)]">
+                                <h3 class="friend-name text-[1rem] font-bold text-[var(--color-text-primary)] truncate">
                                     {{ link.name }}
                                 </h3>
                                 <p class="text-[var(--color-text-secondary)] text-[0.85rem] truncate mt-[4px]">{{
@@ -144,8 +143,7 @@ onMounted(async () => {
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="flex-shrink-0 text-[#ff9eb0] opacity-0 -translate-x-[5px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                                stroke-linejoin="round" class="friend-arrow flex-shrink-0 text-[#ff9eb0]">
                                 <path d="M7 7h10v10" />
                                 <path d="M7 17 17 7" />
                             </svg>
@@ -163,4 +161,42 @@ onMounted(async () => {
     <div id="sakana-widget" class="fixed right-0 bottom-0 z-[999]"></div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.friend-link {
+    transition: all 0.3s ease;
+}
+
+.friend-link:hover {
+    background-color: var(--color-bg-primary);
+    box-shadow: 0 4px 12px rgba(255, 107, 147, 0.15);
+    border-color: rgba(255, 107, 147, 0.3);
+    transform: translateY(-2px);
+}
+
+.friend-avatar {
+    transition: border-color 0.3s ease;
+}
+
+.friend-link:hover .friend-avatar {
+    border-color: var(--color-accent);
+}
+
+.friend-name {
+    transition: color 0.3s ease;
+}
+
+.friend-link:hover .friend-name {
+    color: var(--color-accent);
+}
+
+.friend-arrow {
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+
+.friend-link:hover .friend-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+</style>

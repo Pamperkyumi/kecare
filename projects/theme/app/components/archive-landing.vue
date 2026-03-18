@@ -140,18 +140,14 @@ function formatDate(dateStr: string): string {
                             <div class="space-y-[12px]">
                                 <NuxtLink v-for="article in group.articles" :key="article.hash"
                                     :to="article.urlPath ?? '/'"
-                                    class="group flex items-center gap-[15px] p-[12px] rounded-[10px] bg-white/50 dark:bg-gray-700/50 border border-[rgba(169,169,169,0.1)] dark:border-gray-600 no-underline transition-all duration-300 hover:bg-white dark:hover:bg-gray-700 hover:shadow-[0_4px_12px_rgba(255,107,147,0.15)] hover:border-[#ff9eb0]/30">
-                                    <!-- 日期 -->
+                                    class="article-link flex items-center gap-[15px] p-[12px] rounded-[10px] bg-white/50 dark:bg-gray-700/50 border border-[rgba(169,169,169,0.1)] dark:border-gray-600 no-underline">
                                     <span
                                         class="flex-shrink-0 w-[60px] text-[0.85rem] text-[#999] dark:text-gray-400 font-mono">{{
                                             formatDate(article.date) }}</span>
-                                    <!-- 标题 -->
                                     <span
-                                        class="flex-1 text-[1rem] text-[#2c3e50] dark:text-gray-200 font-medium truncate transition-colors duration-300 group-hover:text-[#ff6b93]">{{
+                                        class="article-title flex-1 text-[1rem] text-[#2c3e50] dark:text-gray-200 font-medium truncate">{{
                                             article.title }}</span>
-                                    <!-- 箭头 -->
-                                    <span
-                                        class="flex-shrink-0 text-[#ff9eb0] opacity-0 -translate-x-[5px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <span class="article-arrow flex-shrink-0 text-[#ff9eb0]">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round">
@@ -182,4 +178,37 @@ function formatDate(dateStr: string): string {
     <div id="sakana-widget" class="fixed right-0 bottom-0 z-[999]"></div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.article-link {
+    transition: all 0.3s ease;
+}
+
+.article-link:hover {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(255, 107, 147, 0.35);
+    border-color: rgba(255, 158, 176, 0.3);
+}
+
+.dark .article-link:hover {
+    background-color: #374151;
+}
+
+.article-title {
+    transition: color 0.3s ease;
+}
+
+.article-link:hover .article-title {
+    color: #ff6b93;
+}
+
+.article-arrow {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+}
+
+.article-link:hover .article-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+</style>

@@ -53,7 +53,7 @@ onUnmounted(() => {
             class="flex list-none m-0 p-0 flex-wrap justify-end items-center gap-[5px] md:gap-[10px] max-w-full box-border">
             <li class="flex">
                 <button
-                    class="relative inline-flex items-center leading-[1.2] text-[inherit] px-[5px] py-[5px] font-medium cursor-pointer bg-transparent border-none text-[18px] hover:scale-120 transition-transform"
+                    class="nav-btn relative inline-flex items-center leading-[1.2] text-[inherit] px-[5px] py-[5px] font-medium cursor-pointer bg-transparent border-none text-[18px]"
                     @click="openSearch">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" height="20"
                         fill="currentColor">
@@ -64,7 +64,7 @@ onUnmounted(() => {
             </li>
             <li class="flex">
                 <button
-                    class="relative inline-flex items-center leading-[1.2] text-[inherit] px-[5px] py-[5px] font-medium cursor-pointer bg-transparent border-none text-[18px] hover:scale-120 transition-transform"
+                    class="nav-btn relative inline-flex items-center leading-[1.2] text-[inherit] px-[5px] py-[5px] font-medium cursor-pointer bg-transparent border-none text-[18px]"
                     @click="toggleDark">
                     <svg v-if="!isDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" height="20"
                         fill="currentColor">
@@ -80,25 +80,57 @@ onUnmounted(() => {
             </li>
             <li class="flex">
                 <NuxtLink
-                    class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
+                    class="nav-link relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium"
                     to="/">首页</NuxtLink>
             </li>
             <li class="flex">
                 <NuxtLink
-                    class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
+                    class="nav-link relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium"
                     to="/archives">归档</NuxtLink>
             </li>
             <li class="flex">
                 <NuxtLink
-                    class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
+                    class="nav-link relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium"
                     to="/about">关于</NuxtLink>
             </li>
             <li class="flex">
                 <NuxtLink
-                    class="relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:after:scale-x-100 hover:after:origin-left"
+                    class="nav-link relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium"
                     to="/friends">友链</NuxtLink>
             </li>
         </ul>
     </div>
     <Search ref="searchRef" />
 </template>
+
+<style scoped>
+.nav-btn {
+    transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    transform: scale(1.2);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+</style>
