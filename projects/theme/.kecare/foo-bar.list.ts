@@ -4,7 +4,7 @@ import { parseDateString } from "kecare";
 
 export const type = 'article-detail';
 
-const ARTICLES_PER_PAGE = 2;
+const ARTICLES_PER_PAGE = 5;
 const TARGET_LANGUAGE = 'zh-CN';
 
 export function generator(context: KecareContext, articles: ArticlesRecord) {

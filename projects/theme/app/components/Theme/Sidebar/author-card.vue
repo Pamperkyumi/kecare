@@ -25,11 +25,6 @@ const props = defineProps<{
             </div>
         </div>
         <button class="follow" onclick="window.open('https://space.bilibili.com/422742655', '_blank')">灌注喵</button>
-        <div class="Music">
-            <div> 听会歌吧，这歌挺好听的捏</div>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=320 height=65
-                src="https://i.y.qq.com/n2/m/outchain/player/index.html?songid=360961445&songtype=0"></iframe>
-        </div>
     </div>
 </template>
 

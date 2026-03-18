@@ -3,6 +3,7 @@ import { useKecareSDK, } from 'kecare';
 import TocCard from '~/components/Theme/Sidebar/Toc-card.vue';
 import SidebarNavtree from '~/components/Theme/Sidebar/Sidebar-navtree.vue';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue';
+import Footer from '~/components/Theme/Sidebar/Footer.vue';
 import bgImage from '~/assets/bg2.webp'
 import type { ArticleVariant, NavItem } from "kecare";
 
@@ -210,8 +211,8 @@ const wordCount = computed(() => {
                         <div class="post-copyright-type">
                             <span class="post-copyright-meta text-[#ff6b93] font-bold mr-[8px]">文章链接:</span>
                             <span class="post-copyright-info"><a class="text-[#3498db] no-underline hover:underline"
-                                    :href="`https://www.kecare.me/articles/${props.article.id} `" targe="_blank"
-                                    rel="noopener noreferrer">kecare.me/articles/{{ props.article.id }}</a></span>
+                                    :href="`https://www.kecare.me/articles/${props.article.hash} `" targe="_blank"
+                                    rel="noopener noreferrer">kecare.me/articles/{{ props.article.hash }}</a></span>
                         </div>
                         <div class="post-copyright-notice">
                             <span class="post-copyright-meta text-[#ff6b93] font-bold mr-[8px]">版权声明:</span>

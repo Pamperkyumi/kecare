@@ -22,7 +22,7 @@ async function createSearchModuleHandler(context: KecareContext) {
     const files: string[] = [];
 
     const articlesPath = join(context.projectPath, '.kecare', 'articles');
-    const publicPath = join(context.projectPath, 'public');
+    const publicPath = join(context.projectPath, 'public', 'articles');
 
     await mkdir(publicPath, { recursive: true });
 

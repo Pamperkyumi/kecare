@@ -6,6 +6,7 @@ import 'sakana-widget/lib/index.css';
 import heroBg from '~/assets/bg1.jpg'
 import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
+import Footer from '~/components/Theme/Sidebar/Footer.vue'
 
 const props = defineProps<{
     articles: ArticlesRecord;
@@ -213,6 +214,7 @@ onUnmounted(() => {
             </div>
             <AuthorCard :totalArticles="totalArticles" />
         </div>
+        <Footer />
     </div>
     <div id="sakana-widget" class="fixed right-0 bottom-0 z-[999]"></div>
 </template>

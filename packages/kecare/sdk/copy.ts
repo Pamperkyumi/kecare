@@ -1,4 +1,4 @@
-export async function onMountedCopy(articleElement: HTMLDivElement, title?: string, basePath: string = '/') {
+export async function onMountedCopy(articleElement: HTMLDivElement, title?: string, basePath: string = '/articles') {
     if (!articleElement) return;
 
     if (!title) return;
