@@ -85,8 +85,8 @@ function keyOf(item: NavItem) {
 /* 激活态：简约但明显 */
 .side-nav-link.active {
     color: rgba(255, 255, 255, 0.92);
-    background: rgba(255, 107, 147, 0.14);
-    border-color: rgba(255, 107, 147, 0.22);
+    background: rgba(79, 195, 247, 0.14);
+    border-color: rgba(79, 195, 247, 0.22);
     font-weight: 650;
 }
 </style>

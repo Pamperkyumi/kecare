@@ -513,7 +513,7 @@ defineExpose({
 .logo-text {
     font-size: 16px;
     font-weight: 600;
-    color: #ff6b93;
+    color: #4fc3f7;
 }
 
 .search-input {
@@ -536,8 +536,8 @@ defineExpose({
 }
 
 .search-input:focus {
-    border-color: #ff6b93;
-    box-shadow: 0 0 0 3px rgba(255, 107, 147, 0.15);
+    border-color: #4fc3f7;
+    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.15);
 }
 
 .search-input::placeholder {
@@ -578,12 +578,12 @@ defineExpose({
 }
 
 .search-lang-select:focus {
-    border-color: #ff6b93;
-    box-shadow: 0 0 0 3px rgba(255, 107, 147, 0.15);
+    border-color: #4fc3f7;
+    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.15);
 }
 
 .search-lang-select:hover {
-    border-color: rgba(255, 107, 147, 0.3);
+    border-color: rgba(79, 195, 247, 0.3);
 }
 
 .search-close {
@@ -607,8 +607,8 @@ defineExpose({
 }
 
 .search-close:hover {
-    background: rgba(255, 107, 147, 0.15);
-    color: #ff6b93;
+    background: rgba(79, 195, 247, 0.15);
+    color: #4fc3f7;
 }
 
 .search-results {
@@ -642,7 +642,7 @@ defineExpose({
 }
 
 .search-item:hover {
-    background: rgba(255, 107, 147, 0.08);
+    background: rgba(79, 195, 247, 0.08);
 }
 
 .item-title {
@@ -664,8 +664,8 @@ defineExpose({
 
 .item-lang {
     font-size: 12px;
-    color: #ff6b93;
-    background: rgba(255, 107, 147, 0.1);
+    color: #4fc3f7;
+    background: rgba(79, 195, 247, 0.1);
     padding: 2px 8px;
     border-radius: 4px;
 }
@@ -711,16 +711,16 @@ defineExpose({
 }
 
 .item-context :deep(.highlight) {
-    background: rgba(255, 107, 147, 0.25);
-    color: #ff6b93;
+    background: rgba(79, 195, 247, 0.25);
+    color: #4fc3f7;
     padding: 0 2px;
     border-radius: 2px;
     font-weight: 500;
 }
 
 .item-title :deep(.highlight) {
-    background: rgba(255, 107, 147, 0.25);
-    color: #ff6b93;
+    background: rgba(79, 195, 247, 0.25);
+    color: #4fc3f7;
     padding: 0 2px;
     border-radius: 2px;
 }

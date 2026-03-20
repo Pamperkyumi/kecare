@@ -358,7 +358,7 @@ const ecosystemCards = [
     padding: 16px 24px;
     background: rgba(9, 9, 14, 0.72);
     backdrop-filter: blur(22px);
-    border-bottom: 1px solid rgba(255, 112, 173, 0.14);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.14);
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
 }
 
@@ -401,7 +401,7 @@ const ecosystemCards = [
 
 .nav-menu a:hover,
 .footer-links a:hover {
-    color: #ff78b5;
+    color: #38bdf8;
 }
 
 .nav-actions {
@@ -430,13 +430,13 @@ const ecosystemCards = [
 
 .solid-button {
     color: #fff8fc;
-    background: linear-gradient(135deg, #ff4f9f 0%, #ff7dbd 100%);
-    box-shadow: 0 18px 36px rgba(255, 79, 159, 0.24);
+    background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+    box-shadow: 0 18px 36px rgba(14, 165, 233, 0.24);
 }
 
 .ghost-button {
-    color: #ffd3e8;
-    border: 1px solid rgba(255, 120, 181, 0.2);
+    color: #bae6fd;
+    border: 1px solid rgba(56, 189, 248, 0.2);
     background: rgba(255, 255, 255, 0.04);
 }
 
@@ -446,12 +446,12 @@ const ecosystemCards = [
 }
 
 .solid-button:hover {
-    box-shadow: 0 22px 44px rgba(255, 79, 159, 0.32);
+    box-shadow: 0 22px 44px rgba(14, 165, 233, 0.32);
 }
 
 .ghost-button:hover {
     background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 120, 181, 0.3);
+    border-color: rgba(56, 189, 248, 0.3);
 }
 
 .hero-section {
@@ -476,8 +476,8 @@ const ecosystemCards = [
 
 .hero-copy h1 span {
     display: block;
-    color: #ff70b3;
-    text-shadow: 0 14px 36px rgba(255, 88, 163, 0.22);
+    color: #38bdf8;
+    text-shadow: 0 14px 36px rgba(56, 189, 248, 0.22);
 }
 
 .hero-desc,
@@ -500,9 +500,9 @@ const ecosystemCards = [
     min-height: 34px;
     padding: 0 14px;
     border-radius: 999px;
-    background: rgba(255, 111, 175, 0.1);
-    border: 1px solid rgba(255, 111, 175, 0.16);
-    color: #ff94c7;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    color: #7dd3fc;
     font-size: 0.88rem;
     font-weight: 700;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -520,7 +520,7 @@ const ecosystemCards = [
 .ecosystem-card,
 .cta-panel,
 .preview-window {
-    border: 1px solid rgba(255, 122, 183, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.12);
     background: linear-gradient(180deg, rgba(24, 24, 34, 0.88), rgba(15, 15, 23, 0.84));
     backdrop-filter: blur(18px);
     box-shadow:
@@ -567,15 +567,15 @@ const ecosystemCards = [
     width: 10px;
     height: 10px;
     border-radius: 999px;
-    background: #ff89c0;
-    box-shadow: 0 0 18px rgba(255, 137, 192, 0.35);
+    background: #38bdf8;
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
 }
 
 .preview-content {
     padding: 18px;
     border-radius: 24px;
     background: linear-gradient(180deg, rgba(19, 19, 28, 0.96), rgba(10, 10, 16, 0.92));
-    border: 1px solid rgba(255, 126, 187, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.12);
 }
 
 .preview-content h2 {
@@ -595,8 +595,8 @@ const ecosystemCards = [
     padding: 16px;
     border-radius: 18px;
     background: linear-gradient(180deg, #0d0d14, #13131b);
-    color: #ffe7f1;
-    border: 1px solid rgba(255, 120, 181, 0.12);
+    color: #e0f2fe;
+    border: 1px solid rgba(56, 189, 248, 0.12);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
@@ -605,7 +605,7 @@ const ecosystemCards = [
 }
 
 .code-dim {
-    color: #ff8fbe;
+    color: #7dd3fc;
     margin-right: 8px;
 }
 
@@ -623,7 +623,7 @@ const ecosystemCards = [
     padding: 16px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 125, 185, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.1);
 }
 
 .mini-card-title {
@@ -739,7 +739,7 @@ const ecosystemCards = [
     justify-content: space-between;
     gap: 20px;
     padding-top: 18px;
-    border-top: 1px solid rgba(255, 118, 181, 0.12);
+    border-top: 1px solid rgba(56, 189, 248, 0.12);
 }
 
 .footer-brand {

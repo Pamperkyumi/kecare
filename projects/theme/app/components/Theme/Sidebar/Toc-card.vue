@@ -10,7 +10,7 @@
 </template>
 <style>
 .toc {
-    border-left: 4px solid #ff9eb0;
+    border-left: 4px solid #87ceeb;
     padding-left: 12px;
     background: transparent;
 }
@@ -18,7 +18,7 @@
 .toc-title {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #ff6b93;
+    color: #4fc3f7;
     margin: 0 0 10px;
 }
 
@@ -53,7 +53,7 @@
 
 .toc-link:hover,
 .toc-sublink:hover {
-    background: rgba(255, 158, 176, 0.18);
+    background: rgba(135, 206, 235, 0.18);
     transform: translateX(2px);
 }
 
@@ -61,7 +61,7 @@
     margin-top: 6px;
     margin-left: 10px;
     padding-left: 12px;
-    border-left: 2px dashed rgba(255, 0, 0, 0.55);
+    border-left: 2px dashed rgba(79, 195, 247, 0.55);
 }
 
 .toc-subitem {

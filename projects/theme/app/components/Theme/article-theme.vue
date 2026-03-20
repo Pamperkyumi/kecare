@@ -160,22 +160,22 @@ const wordCount = computed(() => {
                 <div
                     class="first-line mt-[10px] flex flex-wrap items-center justify-center gap-[8px] text-[0.95rem] text-[#666] dark:text-gray-400">
                     <span class="post-created">发布于: {{ props.article.frontMatter.date }}</span>
-                    <span class="post-sparator text-[#ff9eb0]">|</span>
+                    <span class="post-sparator text-[#87ceeb]">|</span>
                     <span class="word-count">总字数:{{ wordCount }}</span>
-                    <span class="post-sparator text-[#ff9eb0]">|</span>
+                    <span class="post-sparator text-[#87ceeb]">|</span>
                     <span class="reading-time">阅读时长: {{ readingTimeLabel }}</span>
                 </div>
                 <span class="post-languages inline-flex items-center gap-[20px] text-[20px] leading-none mt-[12px]">
                     <NuxtLink
-                        class="text-[#ff6b93] font-bold no-underline px-[8px] py-[4px] rounded-[8px] hover:underline"
+                        class="text-[#4fc3f7] font-bold no-underline px-[8px] py-[4px] rounded-[8px] hover:underline"
                         :to="`/articles/en-US/${props.article.hash}`">English</NuxtLink>
-                    <span class="post-sparator text-[#ff9eb0]">|</span>
+                    <span class="post-sparator text-[#87ceeb]">|</span>
                     <NuxtLink
-                        class="text-[#ff6b93] font-bold no-underline px-[8px] py-[4px] rounded-[8px] hover:underline"
+                        class="text-[#4fc3f7] font-bold no-underline px-[8px] py-[4px] rounded-[8px] hover:underline"
                         :to="`/articles/zh-CN/${props.article.hash}`">简体中文</NuxtLink>
-                    <span class="post-sparator text-[#ff9eb0]">|</span>
+                    <span class="post-sparator text-[#87ceeb]">|</span>
                     <NuxtLink
-                        class="text-[#ff6b93] font-bold no-underline px-[8px] py-[4px] rounded-[8px] hover:underline"
+                        class="text-[#4fc3f7] font-bold no-underline px-[8px] py-[4px] rounded-[8px] hover:underline"
                         :to="`/articles/ja-JP/${props.article.hash}`">日本語</NuxtLink>
                 </span>
             </div>
@@ -184,7 +184,7 @@ const wordCount = computed(() => {
             class="sidebar flex-none w-[240px] max-w-[240px] sticky top-[85px] h-fit bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-[18px] px-[16px] max-[960px]:hidden"
             v-if="props.navItems !== null">
             <NuxtLink
-                class="sidebar-title inline-block text-[1.1rem] font-extrabold text-[#ff6b93] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(255,107,147,0.10)] border border-[rgba(255,107,147,0.18)]"
+                class="sidebar-title inline-block text-[1.1rem] font-extrabold text-[#4fc3f7] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(79,195,247,0.10)] border border-[rgba(79,195,247,0.18)]"
                 to="/">我是小菜单喵 </NuxtLink>
             <div class="sidebar-list max-h-[calc(100vh-140px)] overflow-auto pr-[6px]">
                 <template v-if="props.navItems?.length">
@@ -204,19 +204,19 @@ const wordCount = computed(() => {
                         ref="articleRef" v-html="props.article.html"></div>
 
                     <div
-                        class="post-copyright relative mt-[40px] mb-[10px] p-[20px] border border-[#eee] dark:border-gray-600 rounded-[12px] bg-white/80 dark:bg-gray-700/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[4px] before:h-full before:bg-[#ff9eb0] before:rounded-l-[4px]">
+                        class="post-copyright relative mt-[40px] mb-[10px] p-[20px] border border-[#eee] dark:border-gray-600 rounded-[12px] bg-white/80 dark:bg-gray-700/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[4px] before:h-full before:bg-[#87ceeb] before:rounded-l-[4px]">
                         <div class="post-copyright-author">
-                            <span class="post-copyright-meta text-[#ff6b93] font-bold mr-[8px]">文章作者:</span>
+                            <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">文章作者:</span>
                             <span class="post-copyright-info">{{ props.article.author }}</span>
                         </div>
                         <div class="post-copyright-type">
-                            <span class="post-copyright-meta text-[#ff6b93] font-bold mr-[8px]">文章链接:</span>
+                            <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">文章链接:</span>
                             <span class="post-copyright-info"><a class="text-[#3498db] no-underline hover:underline"
                                     :href="`https://www.kecare.me/articles/${props.article.hash} `" targe="_blank"
                                     rel="noopener noreferrer">kecare.me/articles/{{ props.article.hash }}</a></span>
                         </div>
                         <div class="post-copyright-notice">
-                            <span class="post-copyright-meta text-[#ff6b93] font-bold mr-[8px]">版权声明:</span>
+                            <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">版权声明:</span>
                             <span class="post-copyright-info">
                                 博客所有文章除特别声明外，均采用
                                 <a class="text-[#3498db] no-underline hover:underline"
@@ -229,18 +229,18 @@ const wordCount = computed(() => {
                     <div
                         class="tags-shares flex justify-between items-center my-[30px] w-full max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-[20px]">
                         <div class="post-tag-list flex flex-wrap gap-[10px]">
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
+                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵</a>
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
+                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵喵</a>
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
+                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵喵喵</a>
-                            <a class="post-tag bg-[#ff9eb0] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
+                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
                                 href="#">喵喵喵喵</a>
                         </div>
                     </div>
                     <hr
-                        class="post-hr my-[40px] h-[2px] w-full border-0 bg-gradient-to-r from-transparent via-[#ffe1e6] to-transparent" />
+                        class="post-hr my-[40px] h-[2px] w-full border-0 bg-gradient-to-r from-transparent via-[#e1f5fe] to-transparent" />
                 </div>
             </div>
             <aside
@@ -259,12 +259,12 @@ const wordCount = computed(() => {
 }
 
 .sidebar-list::-webkit-scrollbar-thumb {
-    background: #ff9eb0;
+    background: #87ceeb;
     border-radius: 4px;
 }
 
 .sidebar-list::-webkit-scrollbar-thumb:hover {
-    background: #ff6b93;
+    background: #4fc3f7;
 }
 
 .sidebar-title {
@@ -273,7 +273,7 @@ const wordCount = computed(() => {
 
 .sidebar-title:hover {
     transform: translateY(-1px);
-    background-color: rgba(255, 107, 147, 0.14);
+    background-color: rgba(79, 195, 247, 0.14);
 }
 
 .post-tag {
@@ -281,7 +281,7 @@ const wordCount = computed(() => {
 }
 
 .post-tag:hover {
-    background-color: #ff6b93;
+    background-color: #4fc3f7;
     transform: translateY(-2px);
 }
 </style>

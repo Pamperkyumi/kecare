@@ -47,7 +47,7 @@ const props = defineProps<{
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 14px;
-    border: 3px solid #ff9eb0;
+    border: 3px solid #87ceeb;
     background-color: #f0f0f0;
     display: flex;
     align-items: center;
@@ -91,7 +91,7 @@ const props = defineProps<{
 .stat-num {
     font-weight: bold;
     font-size: 1.15rem;
-    color: #ff6b93;
+    color: #4fc3f7;
     user-select: none;
 }
 
@@ -103,7 +103,7 @@ const props = defineProps<{
 
 .follow {
     width: 100%;
-    background: linear-gradient(135deg, #ff9eb0, #ff6b93);
+    background: linear-gradient(135deg, #87ceeb, #4fc3f7);
     color: white;
     border: none;
     padding: 10px 0;
@@ -116,6 +116,6 @@ const props = defineProps<{
 
 .follow:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 107, 147, 0.5);
+    box-shadow: 0 10px 20px rgba(79, 195, 247, 0.5);
 }
 </style>

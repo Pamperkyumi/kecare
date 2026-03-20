@@ -134,7 +134,7 @@ onUnmounted(() => {
             <h1
                 class="relative text-white text-[4rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)] animate-fadeIn">
                 Pamperのblog</h1>
-            <div class="relative text-[#ff9eb0] text-[2rem] tracking-[2px] flex items-center justify-center select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]"
+            <div class="relative text-[#87ceeb] text-[2rem] tracking-[2px] flex items-center justify-center select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]"
                 ref="subtitleElement"></div>
             <div
                 class="absolute bottom-[30px] left-1/2 -translate-x-1/2 text-white text-[1.2rem] flex items-center justify-center select-none animate-bounceX">
@@ -167,7 +167,7 @@ onUnmounted(() => {
                     <template v-for="(item, index) in paginationItems" :key="index">
                         <!-- 当前页码（高亮） -->
                         <span v-if="item === page"
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-[#ff9eb0] text-white font-medium cursor-default">
+                            class="w-[36px] h-[36px] flex items-center justify-center rounded-[8px] bg-[#87ceeb] text-white font-medium cursor-default">
                             {{ item }}
                         </span>
                         <!-- 省略号 -->

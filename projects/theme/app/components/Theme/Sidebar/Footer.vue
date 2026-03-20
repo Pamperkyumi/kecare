@@ -22,7 +22,7 @@ const currentYear = new Date().getFullYear()
 .footer-line {
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-accent, #ff9eb0), transparent);
+    background: linear-gradient(90deg, transparent, var(--color-accent, #87ceeb), transparent);
 }
 
 .footer-bottom {
@@ -44,7 +44,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer-bottom a {
-    color: var(--color-accent, #ff9eb0);
+    color: var(--color-accent, #87ceeb);
     text-decoration: none;
     transition: opacity 0.2s ease;
 }

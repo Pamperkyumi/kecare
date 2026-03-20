@@ -104,12 +104,12 @@ function formatDate(dateStr: string): string {
                     class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
                     <h2
                         class="text-[1.4rem] font-bold text-[#2c3e50] dark:text-gray-100 mb-[20px] flex items-center gap-[10px]">
-                        <span class="w-[4px] h-[20px] bg-[#ff6b93] rounded-full"></span>
+                        <span class="w-[4px] h-[20px] bg-[#4fc3f7] rounded-full"></span>
                         标签云
                     </h2>
                     <div v-if="allTags.length > 0" class="flex flex-wrap gap-[10px]">
                         <span v-for="tag in allTags" :key="tag"
-                            class="bg-[#ff9eb0]/20 text-[#ff6b93] px-[14px] py-[8px] rounded-full text-[0.9rem] font-medium cursor-pointer transition-all duration-300 hover:bg-[#ff6b93] hover:text-white hover:-translate-y-[2px]">
+                            class="bg-[#87ceeb]/20 text-[#4fc3f7] px-[14px] py-[8px] rounded-full text-[0.9rem] font-medium cursor-pointer transition-all duration-300 hover:bg-[#4fc3f7] hover:text-white hover:-translate-y-[2px]">
                             {{ tag }}
                         </span>
                     </div>
@@ -129,12 +129,12 @@ function formatDate(dateStr: string): string {
 
                     <div v-if="yearGroups.length > 0" class="space-y-[30px]">
                         <div v-for="group in yearGroups" :key="group.year"
-                            class="relative pl-[20px] border-l-[2px] border-[#ff9eb0]/50">
+                            class="relative pl-[20px] border-l-[2px] border-[#87ceeb]/50">
                             <!-- 年份标记 -->
                             <div
-                                class="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#ff6b93] border-[3px] border-white dark:border-gray-800 shadow-[0_0_0_2px_#ff9eb0]">
+                                class="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#4fc3f7] border-[3px] border-white dark:border-gray-800 shadow-[0_0_0_2px_#87ceeb]">
                             </div>
-                            <h3 class="text-[1.3rem] font-bold text-[#ff6b93] mb-[15px]">{{ group.year }} 年</h3>
+                            <h3 class="text-[1.3rem] font-bold text-[#4fc3f7] mb-[15px]">{{ group.year }} 年</h3>
 
                             <!-- 该年份的文章列表 -->
                             <div class="space-y-[12px]">
@@ -147,7 +147,7 @@ function formatDate(dateStr: string): string {
                                     <span
                                         class="article-title flex-1 text-[1rem] text-[#2c3e50] dark:text-gray-200 font-medium truncate">{{
                                             article.title }}</span>
-                                    <span class="article-arrow flex-shrink-0 text-[#ff9eb0]">
+                                    <span class="article-arrow flex-shrink-0 text-[#87ceeb]">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round">
@@ -185,8 +185,8 @@ function formatDate(dateStr: string): string {
 
 .article-link:hover {
     background-color: white;
-    box-shadow: 0 4px 12px rgba(255, 107, 147, 0.35);
-    border-color: rgba(255, 158, 176, 0.3);
+    box-shadow: 0 4px 12px rgba(79, 195, 247, 0.35);
+    border-color: rgba(135, 206, 235, 0.3);
 }
 
 .dark .article-link:hover {
@@ -198,7 +198,7 @@ function formatDate(dateStr: string): string {
 }
 
 .article-link:hover .article-title {
-    color: #ff6b93;
+    color: #4fc3f7;
 }
 
 .article-arrow {
