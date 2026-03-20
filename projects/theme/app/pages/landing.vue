@@ -326,10 +326,7 @@ const ecosystemCards = [
     position: relative;
     min-height: 100vh;
     overflow: hidden;
-    background:
-        radial-gradient(circle at top, rgba(255, 84, 148, 0.16), transparent 34%),
-        radial-gradient(circle at 80% 18%, rgba(255, 115, 175, 0.12), transparent 20%),
-        linear-gradient(180deg, #0a0a0f 0%, #0d0d14 38%, #12121a 100%);
+    background: #000;
     color: #f6edf4;
 }
 
@@ -337,35 +334,12 @@ const ecosystemCards = [
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-image:
-        linear-gradient(rgba(8, 8, 12, 0.42), rgba(8, 8, 12, 0.78)),
-        radial-gradient(circle at 20% 20%, rgba(255, 103, 163, 0.12), transparent 18%),
-        radial-gradient(circle at 82% 16%, rgba(255, 133, 187, 0.1), transparent 16%),
-        radial-gradient(circle at 50% 60%, rgba(255, 87, 151, 0.08), transparent 24%);
+    background: #000;
     z-index: 0;
 }
 
 .landing-glow {
-    position: fixed;
-    z-index: 0;
-    width: 420px;
-    height: 420px;
-    border-radius: 999px;
-    filter: blur(110px);
-    opacity: 0.48;
-    pointer-events: none;
-}
-
-.landing-glow-left {
-    top: 72px;
-    left: -120px;
-    background: rgba(255, 72, 145, 0.26);
-}
-
-.landing-glow-right {
-    right: -120px;
-    top: 260px;
-    background: rgba(255, 124, 184, 0.24);
+    display: none;
 }
 
 .container {
@@ -745,9 +719,7 @@ const ecosystemCards = [
     gap: 26px;
     padding: 32px;
     border-radius: 32px;
-    background:
-        radial-gradient(circle at top right, rgba(255, 90, 160, 0.12), transparent 28%),
-        linear-gradient(180deg, rgba(24, 24, 34, 0.9), rgba(14, 14, 22, 0.92));
+    background: linear-gradient(180deg, rgba(24, 24, 34, 0.9), rgba(14, 14, 22, 0.92));
 }
 
 .cta-actions {
