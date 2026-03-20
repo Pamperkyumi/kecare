@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import landing from '~/pages/landing.vue'
+
 const loading = ref(false)
 
-const MIN_DURATION = 200
+const MIN_DURATION = 300
 let shownAt = 0
 let hideTimer: ReturnType<typeof setTimeout> | null = null
 

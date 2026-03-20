@@ -1,17 +1,7 @@
-import type { ArticleVariant, KecareContext } from "kecare";
+import type { ArticleVariant, KecareContext, SearchArticleData } from "kecare";
 import { Glob, write } from "bun";
-import { join, basename, parse } from "node:path";
-import { copyFile, mkdir } from "node:fs/promises";
-
-interface SearchArticleData {
-    title: string;
-    lang: string;
-    hash: string;
-    tags: Array<string>;
-    date: string;
-    urlPath: string;
-    content: string;
-}
+import { join, basename, } from "node:path";
+import { copyFile, mkdir, rm } from "node:fs/promises";
 
 interface SearchIndex {
     files: string[];
@@ -24,7 +14,9 @@ async function createSearchModuleHandler(context: KecareContext) {
     const articlesPath = join(context.projectPath, '.kecare', 'articles');
     const publicPath = join(context.projectPath, 'public', 'articles');
 
+    await rm(publicPath, { recursive: true, force: true });
     await mkdir(publicPath, { recursive: true });
+
 
     const module = {
         async handle(article: ArticleVariant) {

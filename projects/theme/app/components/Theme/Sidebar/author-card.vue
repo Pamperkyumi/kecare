@@ -12,7 +12,8 @@ const props = defineProps<{
         </div>
 
         <h3 class="author-name">Pamper</h3>
-        <p class="author-about">喵喵喵喵喵喵喵！喵喵。</p>
+        <NuxtLink to="https://github.com/Pamperkyumi/kecare" target="_blank" class="author-about">Github仓库，求Star⭐喵
+        </NuxtLink>
 
         <div class="author-stats">
             <div class="stat-item">

@@ -1,20 +1,12 @@
 <script lang="ts" setup>
 const currentYear = new Date().getFullYear()
-
-const footercontent = [
-    { name: '首页', path: '/' },
-    { name: '归档', path: '/archives' },
-    { name: '关于', path: '/about' },
-    { name: '友链', path: '/friends' },
-]
-
 </script>
 
 <template>
     <footer class="footer">
         <div class="footer-line"></div>
         <div class="footer-bottom">
-            <p>&copy;2020-{{ currentYear }} Pamper. All rights reserved.</p>
+            <p>&copy;2020-{{ currentYear }} Kecare. All rights reserved.</p>
             <p>Powered by <a href="https://kecare.kecream.cn" target="_blank" rel="noopener noreferrer">Kecare</a></p>
         </div>
     </footer>

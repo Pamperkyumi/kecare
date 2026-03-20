@@ -127,7 +127,9 @@ onUnmounted(() => {
     <div id="app"
         class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)] pt-[70px]">
         <div class="relative h-screen overflow-hidden flex flex-col items-center justify-center text-center">
-            <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
+            <div class="absolute inset-0 bg-center bg-cover"
+                :style="{ backgroundImage: `url(http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg)` }">
+            </div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
                 class="relative text-white text-[4rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)] animate-fadeIn">
@@ -146,7 +148,7 @@ onUnmounted(() => {
                 <NuxtLink
                     class="article-card flex flex-col bg-[var(--color-bg-primary)] rounded-[16px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.08)] cursor-pointer no-underline text-[inherit]"
                     v-for="(article, index) in articles" :key="index" :to="article.urlPath">
-                    <img class="w-full h-[200px] object-cover" :src="article.frontMatter.cover" />
+                    <img class="w-full h-[250px] object-cover" :src="article.frontMatter.cover" />
                     <div class="p-[20px] flex flex-col gap-[10px]">
                         <div
                             class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
@@ -191,8 +193,9 @@ onUnmounted(() => {
 
 <style scoped>
 .article-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+
 
 .article-card:hover {
     transform: translateY(-5px);

@@ -109,6 +109,16 @@ export type TranslationConfigOptions = {
     title?: string;
     lang?: string;
 }
+// 搜索文章数据
+export type SearchArticleData = {
+    title: string;
+    lang: string;
+    hash: string;
+    tags: Array<string>;
+    date: string;
+    urlPath: string;
+    content: string;
+}
 
 // 导航
 export type NavItem =

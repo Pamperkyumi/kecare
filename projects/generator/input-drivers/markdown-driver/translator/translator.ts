@@ -3,7 +3,7 @@ import consola from 'consola';
 import Bun from 'bun';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
-import { readFile, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import OpenAI from 'openai';
 
 export async function translator(options: TranslationConfigOptions): Promise<[string, string]> {
@@ -98,8 +98,9 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
 
     // Load cache
     try {
-        const cacheData = await readFile(cacheFilePath, "utf-8");
-        Object.assign(allTranslationTemp, JSON.parse(cacheData));
+        const cacheData = await Bun.file(cacheFilePath);
+        const cacheDataJson = await cacheData.json();
+        Object.assign(allTranslationTemp, cacheDataJson);
         // consola.info(`Loaded cached translations from ${cacheFilePath}`);
     } catch {
         // consola.info(`No cached translations found for ${title}.`);

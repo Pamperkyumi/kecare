@@ -145,7 +145,8 @@ const wordCount = computed(() => {
     </div>
 
     <div class="post-bg fixed inset-0 -z-[999] bg-no-repeat bg-center bg-cover"
-        :style="{ 'background-image': `url(${bgImage})` }"></div>
+        :style="{ 'background-image': `url(http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg)` }">
+    </div>
 
     <div
         class="layout max-w-[1600px] mx-auto pt-[100px] px-[16px] flex flex-wrap items-start gap-[30px] max-[960px]:flex-col max-[960px]:flex-nowrap max-[960px]:gap-[20px]">
@@ -242,7 +243,8 @@ const wordCount = computed(() => {
                         class="post-hr my-[40px] h-[2px] w-full border-0 bg-gradient-to-r from-transparent via-[#ffe1e6] to-transparent" />
                 </div>
             </div>
-            <aside class="aside flex-none w-[280px] max-w-[280px] sticky top-[65px] h-fit max-[960px]:order-3">
+            <aside
+                class="aside flex-none w-[280px] max-w-[280px] sticky top-[65px] h-fit max-[960px]:order-3 hidden md:block">
                 <TocCard />
             </aside>
         </div>
