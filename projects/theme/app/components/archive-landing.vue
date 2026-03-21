@@ -15,8 +15,6 @@ type YearGroup = {
 
 const props = defineProps<{
     articles: ArchiveArticleData[];
-    currentPage?: number;
-    totalPages?: number;
     totalArticles?: number;
 }>();
 
@@ -36,10 +34,8 @@ const yearGroups = computed<YearGroup[]>(() => {
     const result: YearGroup[] = [];
     const sortedYears = Array.from(groups.keys()).sort((a, b) => b - a);
     for (const year of sortedYears) {
-        const articles = groups.get(year) ?? [];
-        // 每篇文章按日期降序排列
-        articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        result.push({ year, articles });
+        // 文章已在 generator 中按日期降序排序
+        result.push({ year, articles: groups.get(year) ?? [] });
     }
 
     return result;

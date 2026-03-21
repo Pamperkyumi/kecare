@@ -94,24 +94,43 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
 </script>
 
 <template>
+    <!-- 侧边栏导航列表容器 -->
+    <!-- paddingStyle: 根据层级(level)计算左侧缩进，每层缩进12px，实现视觉层级效果 -->
     <ul class="side-nav" :style="paddingStyle">
+        <!-- 遍历所有导航项 -->
+        <!-- keyOf(item): 为每个项生成唯一key，链接项用"l:路径"，分组项用"g:标题:层级" -->
         <li v-for="item in props.items" :key="keyOf(item)" class="side-nav-item">
+            <!-- 情况1: 链接项 - 直接渲染为可点击的导航链接 -->
+            <!-- isLinkItem(item): 类型守卫函数，判断item是否包含link属性 -->
             <NuxtLink v-if="isLinkItem(item)" class="side-nav-link" :class="{ active: isActiveLink(item.link) }"
                 :to="item.link">
+                <!-- 显示链接文本 -->
                 {{ item.text }}
             </NuxtLink>
 
+            <!-- 情况2: 分组项 - 渲染为可展开/折叠的导航组 -->
             <div v-else class="side-nav-group">
+                <!-- 分组头部: 点击可切换展开/折叠状态 -->
                 <div class="side-nav-group-header" @click="toggleGroup(item)">
+                    <!-- 分组标题文本 -->
                     <span class="side-nav-group-title">{{ item.text }}</span>
+                    <!-- 展开/折叠图标 -->
+                    <!-- isGroupExpanded(item): 判断当前分组是否处于展开状态 -->
+                    <!-- expanded类名触发CSS旋转动画，使箭头从向右变为向下 -->
                     <span class="side-nav-toggle-icon" :class="{ expanded: isGroupExpanded(item) }">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <!-- 箭头图标路径: 默认向右，展开时旋转90度向下 -->
                             <path d="M6 4l4 4-4 4V4z" />
                         </svg>
                     </span>
                 </div>
 
+                <!-- 分组内容区域: 包含子导航项 -->
+                <!-- collapsed类名控制内容区域的显示/隐藏动画 -->
                 <div class="side-nav-group-content" :class="{ collapsed: !isGroupExpanded(item) }">
+                    <!-- 递归渲染子导航项 -->
+                    <!-- 关键点: 组件递归调用自身，传入子项列表和层级+1 -->
+                    <!-- 这使得导航树可以无限层级嵌套 -->
                     <SidebarNavTree v-if="item.items && item.items.length > 0" :items="item.items"
                         :level="props.level + 1" />
                 </div>

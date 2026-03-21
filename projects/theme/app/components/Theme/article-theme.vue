@@ -10,9 +10,6 @@ const kecareSDK = await useKecareSDK(); // 这样就加载了你的 js 代码
 
 const route = useRoute()
 
-console.log(route.path)
-
-
 onMounted(async () => {
     await nextTick();
     await kecareSDK!.mounted(props.article.hash, route.path);

@@ -1,4 +1,5 @@
 {
+  "12210819": "The sidebar consists of the **navigation bar** and the **table of contents** for the article structure. Let's go through them one by one.",
   "a40dd7b2": "# Article Page",
   "dffc46ee": "Whether it's a blog or a documentation site, we all need a page to display article content, and this page is the article page.",
   "28b6e40d": "## Article Page Template",
@@ -10,5 +11,25 @@
   "634f748f": "## Page Components",
   "7d1e5d0d": "We have invoked the `<ArticleTheme/>` component in the template, so next we should proceed to write the page component.",
   "a9fa17cb": "__CODE_BLOCK_1__",
-  "f9eb6cc2": "In Vue, data is used in the form of text interpolation, such as `<span>Article Title: {{ article.title }}</span>`. `article.html` contains the HTML content converted from Markdown, rendered using the `v-html` directive. The specific styling is up to your imagination."
+  "f9eb6cc2": "In Vue, data is used in the form of text interpolation, such as `<span>Article Title: {{ article.title }}</span>`. `article.html` contains the HTML content converted from Markdown, rendered using the `v-html` directive. The specific styling is up to your imagination.",
+  "a55ecf4a": "## Styles",
+  "afe5f356": "Since the article content is directly generated via `v-html`, if we want to control the generated content, we need to write a lot of CSS code. However, it's not a big problem. I can provide a template for most HTML tags here, which you can modify based on my version. You can then import it in the `<style scoped>` section of the article page.",
+  "6e598c92": "__CODE_BLOCK_2__",
+  "c56b4a9f": "## Sidebar",
+  "e57ef700": "### Navigation Bar",
+  "ab6af9ef": "We need to write the structure in the `.kecare/menus/` directory now.",
+  "c6d73376": "You can view the [Menu System](https://kecare.kecream.cn/articles/zh-CN/4ee23999) here. After writing the corresponding structure, when running the generator, it will traverse the `*.menu.source.ts` files in the directory, modify the `link` within them to the correct article paths, and generate a `*.menu.generated.ts` file.",
+  "4fc97054": "Let's create a Sidebar template for a navigation bar",
+  "1e53a03a": "__CODE_BLOCK_3__",
+  "120206b2": "Next, you can add div elements for additional beautification~ Then call it in the article page.",
+  "78240cb4": "__CODE_BLOCK_4__",
+  "eefc1f58": "It's very simple, isn't it meow.",
+  "5e9ccee4": "### Table of Contents",
+  "695ead1b": "Kecare has already handled the structure of the table of contents for you when processing markdown articles.",
+  "4b17d9d6": "Simply add class=\"kecare-sidebar\" where you want the table of contents to appear.",
+  "db381e8d": "__CODE_BLOCK_5__",
+  "98d64046": "That's all set meow, but you'll need to add the CSS styles yourself meow. The directory structure we generated looks like this meow.",
+  "db6abd70": "__CODE_BLOCK_6__",
+  "59a2f906": "### All components of the article page have been covered. Now, it's time to contribute your theme!",
+  "fa2f7591": "A page may have multiple navigation bars, so theme authors need to adapt accordingly."
 }

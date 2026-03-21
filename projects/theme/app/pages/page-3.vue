@@ -6,6 +6,33 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "生成器CLI",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "生成器 CLI 命令 | 命令 | 说明 | |------|------| | kecare gen | 构建站点，生成页面文件 | | kecare -version | 查看当前版本 | 使用示例 执行流程 扫描 .kecare/ar...",
+    "hash": "fddd58bb",
+    "relativePath": "/生成器CLI.md",
+    "frontMatter": {
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "title": "生成器CLI",
+      "menu": "test",
+      "tags": [],
+      "desc": "生成器 CLI 命令 | 命令 | 说明 | |------|------| | kecare gen | 构建站点，生成页面文件 | | kecare -version | 查看当前版本 | 使用示例 执行流程 扫描 .kecare/ar...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-05"
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "urlPath": "articles/zh-CN/fddd58bb"
+  },
+  {
+    "lang": "zh-CN",
     "title": "快速开始",
     "isOriginalLang": true,
     "menu": "test",
@@ -13,7 +40,7 @@
     "hash": "95bb100b",
     "relativePath": "/快速开始.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "快速开始",
       "menu": "test",
       "tags": [],
@@ -99,7 +126,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "菜单系统",
       "menu": "test",
       "tags": [
@@ -125,7 +152,7 @@
 ]
                 const currentPage = 3
                 const totalPages = 3
-                const totalArticles = 14
+                const totalArticles = 15
 
                 </script>
                 <template>
