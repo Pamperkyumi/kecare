@@ -14,7 +14,6 @@ export const navItems: NavItem[] = [
         level: 1,
         items: [
             { text: '写作', link: './写作.md', level: 2 },
-            { text: 'Frontmatter', link: './front-matter.md', level: 2 },
             { text: 'Markdown扩展', link: './markdown扩展.md', level: 2 },
             { text: '菜单系统', link: './菜单系统.md', level: 2 },
             { text: '国际化处理', link: './国际化处理.md', level: 2 },

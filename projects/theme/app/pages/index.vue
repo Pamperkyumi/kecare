@@ -67,7 +67,7 @@
     "hash": "95140e73",
     "relativePath": "/在已有项目上使用kecare.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "在已有项目上使用kecare",
       "menu": "test",
       "tags": [],
@@ -84,37 +84,6 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "urlPath": "articles/zh-CN/95140e73"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "主题开发前言",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
-    "hash": "e5dbc117",
-    "relativePath": "/主题开发前言.md",
-    "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
-      "title": "主题开发前言",
-      "menu": "test",
-      "tags": [
-        "主题开发",
-        "落地页",
-        "列表页"
-      ],
-      "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-21"
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
     "lang": "zh-CN",
@@ -146,6 +115,37 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "主题开发前言",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
+    "hash": "e5dbc117",
+    "relativePath": "/主题开发前言.md",
+    "frontMatter": {
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "title": "主题开发前言",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-21"
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
   }
 ]
                 const currentPage = 1
