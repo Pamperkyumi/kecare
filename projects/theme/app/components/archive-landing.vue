@@ -85,8 +85,10 @@ function formatDate(dateStr: string): string {
         class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[#333] dark:text-gray-200 bg-[#f9f9f9] dark:bg-gray-900">
         <!-- Hero 区域，带背景壁纸 -->
         <div
-            class="relative h-[40vh] min-h-[300px] overflow-hidden flex flex-col items-center justify-center text-center">
-            <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }"></div>
+            class="relative h-[40vh] min-h-[300px] overflow-hidden flex flex-col items-center justify-center text-center mt-[60px]">
+            <div class="absolute inset-0 bg-center bg-cover"
+                :style="{ backgroundImage: `url('http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg')` }">
+            </div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
                 class="relative text-white text-[3rem] font-bold tracking-[2px] select-none [text-shadow:2px_2px_10px_rgba(0,0,0,0.5)]">

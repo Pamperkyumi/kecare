@@ -3,14 +3,19 @@ import { useKecareSDK, } from 'kecare';
 import TocCard from '~/components/Theme/Sidebar/Toc-card.vue';
 import SidebarNavtree from '~/components/Theme/Sidebar/Sidebar-navtree.vue';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue';
-import Footer from '~/components/Theme/Sidebar/Footer.vue';
 import bgImage from '~/assets/bg2.webp'
 import type { ArticleVariant, NavItem } from "kecare";
 
 const kecareSDK = await useKecareSDK(); // 这样就加载了你的 js 代码
+
+const route = useRoute()
+
+console.log(route.path)
+
+
 onMounted(async () => {
     await nextTick();
-    await kecareSDK!.mounted(props.article.title);
+    await kecareSDK!.mounted(props.article.hash, route.path);
 });
 
 const props = defineProps<{
@@ -18,10 +23,6 @@ const props = defineProps<{
     navItems: NavItem[];
 }>()
 
-const res = estimateReadingTimeFromHtml(props.article.html, { wordsPerMinute: 220, round: 'ceil' });
-
-
-// Reading Time
 type ReadingOptions = {
     wordsPerMinute?: number;
     round?: 'ceil' | 'floor' | 'round';
@@ -39,20 +40,9 @@ type ReadingResult = {
     images: number;
 };
 
-const READING_DEFAULTS: Required<ReadingOptions> = {
-    wordsPerMinute: 200,
-    round: 'round',
-    imageSeconds: 12,
-    codeWordsMultiplier: 0.6,
-    minMinutes: 0,
-};
-
-function stripHtmlKeepImg(html: string): { text: string; images: number } {
-    if (!html) return { text: '', images: 0 };
-    const imgMatches = html.match(/<img\b[^>]*>/gi);
-    const images = imgMatches ? imgMatches.length : 0;
-    const text = html.replace(/<\/?[^>]+(>|$)/g, ' ').replace(/\s+/g, ' ').trim();
-    return { text, images }; estimateReadingTimeFromHtml
+function stripHtml(html: string): string {
+    if (!html) return '';
+    return html.replace(/<\/?[^>]+(>|$)/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 function countWords(text: string): number {
@@ -72,24 +62,29 @@ function estimateReadingTimeFromHtml(
         codeWordsMultiplier: 0.6,
         minMinutes: 0, ...opts
     };
-    const { text, images } = stripHtmlKeepImg(htmlOrText);
 
-    const codeRegex = /```[\s\S]*?```|<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>/gi;
+    // 1. 先提取并移除代码块（只处理 ```...``` 和 <pre>，不处理行内 <code>）
+    const codeBlockRegex = /```[\s\S]*?```|<pre[\s\S]*?<\/pre>/gi;
     let codeWords = 0;
-    let remainingText = text;
-    const codeMatches = htmlOrText.match(codeRegex);
+    const codeMatches = htmlOrText.match(codeBlockRegex);
 
     if (codeMatches) {
         for (const cm of codeMatches) {
-            const codeOnly = cm.replace(/<\/?[^>]+(>|$)/g, ' ').replace(/[`]/g, ' ');
+            const codeOnly = stripHtml(cm).replace(/[`]/g, ' ');
             codeWords += countWords(codeOnly);
         }
-        const htmlWithoutCode = htmlOrText.replace(codeRegex, ' ');
-        const stripped = stripHtmlKeepImg(htmlWithoutCode);
-        remainingText = stripped.text;
     }
+    const htmlWithoutCode = htmlOrText.replace(codeBlockRegex, ' ');
 
-    const normalWords = countWords(remainingText);
+    // 2. 再统计图片数量（代码块已移除，不会误计代码块中的 img 示例）
+    const imgMatches = htmlWithoutCode.match(/<img\b[^>]*>/gi);
+    const images = imgMatches ? imgMatches.length : 0;
+
+    // 3. 统计普通文字
+    const text = stripHtml(htmlWithoutCode);
+    const normalWords = countWords(text);
+
+    // 4. 计算有效字数和阅读时间
     const effectiveWords = Math.round(normalWords + codeWords * o.codeWordsMultiplier);
     const wordsPerSecond = o.wordsPerMinute / 60;
     const secondsForWords = effectiveWords / wordsPerSecond;

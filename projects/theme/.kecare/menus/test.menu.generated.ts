@@ -8,12 +8,12 @@ import type { NavItem } from 'kecare';
 
 export const navItems: NavItem[] = [
   {
-    "text": "入门指南",
+    "text": "Hello World",
     "level": 1,
     "items": [
       {
-        "text": "什么是Kecare",
-        "link": "./552248be",
+        "text": "关于我",
+        "link": "./2f0fd1f2",
         "level": 2
       },
       {
@@ -51,15 +51,9 @@ export const navItems: NavItem[] = [
         "text": "国际化处理",
         "link": "./493f5fa2",
         "level": 2
-      }
-    ]
-  },
-  {
-    "text": "部署",
-    "level": 1,
-    "items": [
+      },
       {
-        "text": "GitHub Pages",
+        "text": "部署到GitHub Pages",
         "link": "./39f6b230",
         "level": 2
       }
@@ -72,6 +66,22 @@ export const navItems: NavItem[] = [
       {
         "text": "在已有项目上使用kecare",
         "link": "./95140e73",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "text": "主题开发",
+    "level": 1,
+    "items": [
+      {
+        "text": "前言",
+        "link": "./e5dbc117",
+        "level": 2
+      },
+      {
+        "text": "落地页",
+        "link": "./e52553ad",
         "level": 2
       }
     ]

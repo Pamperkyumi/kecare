@@ -101,5 +101,11 @@
   "6080737d": "Language codes follow the BCP 47 standard: `language-region` (e.g., `en-GB`, `pt-BR`).",
   "e132d898": "## Caching and Incremental Updates",
   "863fec89": "The translation results are cached in the `.kecare/.tmp` directory, and only modified parts will be translated during the next build.",
-  "7e6bf199": "Clear Cache:"
+  "7e6bf199": "Clear Cache:",
+  "e07c0a02": "Kecare can use AI to translate your articles into multiple languages, enabling your content to reach a multilingual readership.",
+  "7654c173": "Using translation in Kecare is also very simple. Just add the `translate` field to the Front Matter of the article you want to translate:",
+  "18f36207": "In the `.kecare` directory, create a new `kecare.config.ts` file.",
+  "2dd3bae3": "Then configure LLM in `.kecare/kecare.config.ts`:",
+  "44b4303f": "The translation results are cached in the `.kecare/.tmp` directory, and only modified parts will be translated during the next build to maximize token cost savings.",
+  "8327a5bf": "To clear the cache, simply delete the `.tmp` directory."
 }

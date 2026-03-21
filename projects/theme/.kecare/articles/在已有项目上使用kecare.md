@@ -13,7 +13,7 @@ sticky: 1
 
 ```txt
 your-project/
-├── .kecare/
+├─- .kecare/
 │   ├── articles/           # 存放文章
 │   ├── foo-bar.article.ts  # 文章详情页生成器
 │   └── foo-bar.list.ts     # 文章列表页生成器

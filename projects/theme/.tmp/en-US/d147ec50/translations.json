@@ -93,5 +93,6 @@
   "6fb59e80": "__CODE_BLOCK_12__",
   "424dbade": "You can also use inline comments by adding `// [!code highlight]` to the line to achieve highlighting",
   "b2efe380": "Using the focus feature allows a specific line to be highlighted while blurring other lines.\nAdd the `// [!code focus]` comment to the target line:",
-  "fbab0b06": "Adding a `// [!code --]` or `// [!code ++]` comment on a line will create a diff for that line while preserving the color of the code block."
+  "fbab0b06": "Adding a `// [!code --]` or `// [!code ++]` comment on a line will create a diff for that line while preserving the color of the code block.",
+  "f101dc1e": "These data will be passed to the theme components for use on the page. For more details, please refer to the [Writing](./写作.md) documentation."
 }

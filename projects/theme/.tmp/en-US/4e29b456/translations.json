@@ -1,0 +1,14 @@
+{
+  "66836616": "When using Kecare as a blog, we need a landing page (i.e., the homepage) to display the list of blog articles.",
+  "20ea70bc": "# Landing Page",
+  "c4c805df": "## What is a Landing Page Template",
+  "1d7a2d00": "The landing page template is a `.list.ts` file, stored in the `.kecare/` directory. The generator will call it after processing all articles to generate the article list page.",
+  "8c20bc0a": "## A Runnable Template",
+  "e509d91f": "Create file `.kecare/foo-bar.list.ts`:",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "c56f878b": "In summary, `.list.ts` only requires you to return an array containing `fsPath` and `template`. The generator can then correctly call the template for page generation. Because pagination design is needed, theme authors must write the pagination logic here. The array can also contain a single item (if you are not implementing pagination design, you can directly return `fsPath: xxx, template: xxx`).",
+  "634f748f": "## Page Components",
+  "d8c09892": "We have called `<Landing/>` in the template, so next we should proceed to writing the page component.",
+  "a9fa17cb": "__CODE_BLOCK_1__",
+  "7767d2ce": "In Vue, the way to use data is through text interpolation, like `<span>Article Title: {{ article.frontMatter.title }}</span>`. It's quite simple, and that's pretty much it. As for the specific styling, you'll have to use your imagination."
+}

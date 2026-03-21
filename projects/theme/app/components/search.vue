@@ -6,7 +6,6 @@ interface ArticleData {
     tags: string[]
     date: string
     urlPath: string
-    desc: string
     content: string
 }
 
@@ -14,25 +13,28 @@ interface SearchResult {
     article: ArticleData
     score: number
     contexts: string[]
+    contentSearched: boolean
+}
+
+interface SearchIndexArticle {
+    title: string
+    lang: string
+    hash: string
+    tags: string[]
+    date: string
+    urlPath: string
+    file: string
 }
 
 interface SearchIndexPayload {
-    files: string[]
-}
-
-interface PreparedArticle {
-    article: ArticleData
-    tf: Map<string, number>
-    docLength: number
-    titleText: string
-    descText: string
-    tagsText: string
+    articles: SearchIndexArticle[]
 }
 
 const visible = ref(false)
 const keyword = ref('')
 const results = ref<SearchResult[]>([])
 const loading = ref(false)
+const contentSearching = ref(false)
 const errorMessage = ref('')
 const selectedLang = ref<string>('all')
 
@@ -43,34 +45,80 @@ const LANG_OPTIONS = [
     { value: 'ja-JP', label: '日本語' },
 ]
 
-const preparedArticles = shallowRef<PreparedArticle[]>([])
+const indexArticles = shallowRef<SearchIndexArticle[]>([])
+const contentCache = new Map<string, ArticleData>()
 
-let avgDocLength = 1
 let initialized = false
 let initPromise: Promise<void> | null = null
 let searchTimer: ReturnType<typeof setTimeout> | null = null
 let searchVersion = 0
 
-const idfMap = new Map<string, number>()
-
-const K1 = 1.2
-const B = 0.75
 const MAX_RESULTS = 10
 const SEARCH_DELAY = 180
-
-const FIELD_WEIGHT = {
-    title: 4,
-    tags: 3,
-    desc: 2,
-    content: 1,
-} as const
+const BATCH_SIZE = 20
 
 const normalizeText = (text: string): string => {
     return text
+        .normalize('NFKC')
         .toLowerCase()
-        .replace(/[^\w\u4e00-\u9fa5\s]/g, ' ')
+        .replace(/[^\p{L}\p{N}\s]/gu, ' ')
         .replace(/\s+/g, ' ')
         .trim()
+}
+
+const tokenize = (text: string): string[] => {
+    const normalized = normalizeText(text)
+    if (!normalized) return []
+
+    const tokens: string[] = []
+    const words = normalized.split(/\s+/)
+
+    for (const word of words) {
+        if (!word) continue
+
+        // CJK（中日汉字）或日文假名，拆字 + 2gram
+        if (/[\u3040-\u30ff\u3400-\u9fff]/u.test(word)) {
+            for (let i = 0; i < word.length; i++) {
+                tokens.push(word[i]!)
+            }
+            for (let i = 0; i < word.length - 1; i++) {
+                tokens.push(word.slice(i, i + 2))
+            }
+            continue
+        }
+
+        if (word.length >= 2) {
+            tokens.push(word)
+        }
+    }
+
+    return uniqueTokens(tokens)
+}
+
+const uniqueTokens = (tokens: string[]): string[] => {
+    return [...new Set(tokens)]
+}
+
+const escapeRegExp = (str: string): string => {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+const highlightKeyword = (text: string, query: string): string => {
+    if (!query.trim() || !text) return text
+
+    const tokens = uniqueTokens(tokenize(query))
+    if (tokens.length === 0) return text
+
+    let result = text
+
+    const sortedTokens = [...tokens].sort((a, b) => b.length - a.length)
+
+    for (const token of sortedTokens) {
+        const regex = new RegExp(`(${escapeRegExp(token)})`, 'gi')
+        result = result.replace(regex, '<mark class="highlight">$1</mark>')
+    }
+
+    return result
 }
 
 const extractAllContexts = (content: string, query: string, contextLength: number = 100, maxContexts: number = 2): string[] => {
@@ -114,97 +162,110 @@ const extractAllContexts = (content: string, query: string, contextLength: numbe
     return contexts
 }
 
-const highlightKeyword = (text: string, query: string): string => {
-    if (!query.trim() || !text) return text
+const calculateTitleScore = (query: string, article: SearchIndexArticle): number => {
+    const normalizedQuery = normalizeText(query)
+    const titleText = normalizeText(article.title)
+    const tagsText = normalizeText((article.tags || []).join(' '))
 
-    const tokens = uniqueTokens(tokenize(query))
-    if (tokens.length === 0) return text
+    let score = 0
 
-    let result = text
-
-    const sortedTokens = [...tokens].sort((a, b) => b.length - a.length)
-
-    for (const token of sortedTokens) {
-        const regex = new RegExp(`(${escapeRegExp(token)})`, 'gi')
-        result = result.replace(regex, '<mark class="highlight">$1</mark>')
-    }
-
-    return result
-}
-
-const escapeRegExp = (str: string): string => {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
-const tokenize = (text: string): string[] => {
-    const normalized = normalizeText(text)
-    if (!normalized) return []
-
-    const tokens: string[] = []
-    const words = normalized.split(' ')
-
-    for (const word of words) {
-        if (!word) continue
-
-        // 中文：单字 + 双字切片
-        if (/[\u4e00-\u9fa5]/.test(word)) {
-            for (let i = 0; i < word.length; i++) {
-                tokens.push(word[i]!)
-            }
-            for (let i = 0; i < word.length - 1; i++) {
-                tokens.push(word.slice(i, i + 2))
-            }
-            continue
-        }
-
-        // 英文 / 数字
-        if (word.length >= 2) {
-            tokens.push(word)
+    if (titleText.includes(normalizedQuery)) {
+        score += 10
+        if (titleText.startsWith(normalizedQuery)) {
+            score += 5
         }
     }
 
-    return tokens
+    if (tagsText.includes(normalizedQuery)) {
+        score += 5
+    }
+
+    const queryTokens = uniqueTokens(tokenize(query))
+    for (const token of queryTokens) {
+        if (titleText.includes(token)) {
+            score += 3
+        }
+        if (tagsText.includes(token)) {
+            score += 2
+        }
+    }
+
+    return score
+}
+const getFilteredArticles = (): SearchIndexArticle[] => {
+    return indexArticles.value.filter((article) => {
+        if (selectedLang.value === 'all') return true
+        return article.lang === selectedLang.value
+    })
 }
 
-const uniqueTokens = (tokens: string[]): string[] => {
-    return [...new Set(tokens)]
-}
-
-const addWeightedTokens = (
-    tf: Map<string, number>,
-    tokens: string[],
-    weight: number,
-) => {
-    for (const token of tokens) {
-        tf.set(token, (tf.get(token) || 0) + weight)
+const buildArticleDataFromIndex = (article: SearchIndexArticle): ArticleData => {
+    return {
+        title: article.title,
+        lang: article.lang,
+        hash: article.hash,
+        tags: article.tags,
+        date: article.date,
+        urlPath: article.urlPath,
+        content: ''
     }
 }
 
-const buildPreparedArticle = (article: ArticleData): PreparedArticle => {
-    const titleTokens = tokenize(article.title)
-    const tagsTokens = tokenize((article.tags || []).join(' '))
-    const descTokens = tokenize(article.desc || '')
-    const contentTokens = tokenize(article.content || '')
+const getCacheKey = (article: SearchIndexArticle): string => {
+    return `${article.hash}.${article.lang}`
+}
 
-    const tf = new Map<string, number>()
+const loadArticleData = async (indexArticle: SearchIndexArticle): Promise<ArticleData | null> => {
+    const cacheKey = getCacheKey(indexArticle)
 
-    addWeightedTokens(tf, titleTokens, FIELD_WEIGHT.title)
-    addWeightedTokens(tf, tagsTokens, FIELD_WEIGHT.tags)
-    addWeightedTokens(tf, descTokens, FIELD_WEIGHT.desc)
-    addWeightedTokens(tf, contentTokens, FIELD_WEIGHT.content)
+    if (contentCache.has(cacheKey)) {
+        return contentCache.get(cacheKey)!
+    }
 
-    let docLength = 0
-    for (const value of tf.values()) {
-        docLength += value
+    try {
+        const response = await fetch(`/articles/${indexArticle.file}`)
+        if (!response.ok) {
+            return null
+        }
+
+        const articleData = await response.json() as ArticleData
+
+        // 无论是否命中搜索，都缓存正文，避免重复请求
+        contentCache.set(cacheKey, articleData)
+        return articleData
+    } catch (error) {
+        console.warn(`[search] Failed to load ${indexArticle.file}:`, error)
+        return null
+    }
+}
+
+const calculateContentScore = (
+    query: string,
+    content: string
+): { score: number; contexts: string[] } => {
+    const normalizedQuery = normalizeText(query)
+    const contentText = normalizeText(content || '')
+    const queryTokens = uniqueTokens(tokenize(query))
+
+    let score = 0
+    let matched = false
+
+    if (normalizedQuery && contentText.includes(normalizedQuery)) {
+        score += 8
+        matched = true
+    }
+
+    for (const token of queryTokens) {
+        if (!token) continue
+        if (contentText.includes(token)) {
+            score += token.length >= 2 ? 2 : 1
+            matched = true
+        }
     }
 
     return {
-        article,
-        tf,
-        docLength,
-        titleText: normalizeText(article.title),
-        descText: normalizeText(article.desc || ''),
-        tagsText: normalizeText((article.tags || []).join(' ')),
+        score,
+        contexts: matched ? extractAllContexts(content, query) : []
     }
 }
 
@@ -223,51 +284,13 @@ const initializeIndex = async () => {
             }
 
             const payload = await response.json() as SearchIndexPayload
-            const files = Array.isArray(payload.files) ? payload.files : []
-
-            const articles: ArticleData[] = []
-            for (const file of files) {
-                try {
-                    const articleResponse = await fetch(`/articles/${file}`)
-                    if (articleResponse.ok) {
-                        const articleData = await articleResponse.json() as ArticleData
-                        articles.push(articleData)
-                    }
-                } catch (e) {
-                    console.warn(`[search] Failed to load ${file}:`, e)
-                }
-            }
-
-            const tempPrepared = articles.map(buildPreparedArticle)
-
-            const documentFrequency = new Map<string, number>()
-            let totalLength = 0
-
-            for (const doc of tempPrepared) {
-                totalLength += doc.docLength
-
-                for (const token of doc.tf.keys()) {
-                    documentFrequency.set(token, (documentFrequency.get(token) || 0) + 1)
-                }
-            }
-
-            preparedArticles.value = tempPrepared
-            avgDocLength = tempPrepared.length > 0 ? totalLength / tempPrepared.length : 1
-
-            idfMap.clear()
-            const N = tempPrepared.length || 1
-
-            for (const [token, n] of documentFrequency) {
-                const idf = Math.log(1 + (N - n + 0.5) / (n + 0.5))
-                idfMap.set(token, idf)
-            }
+            indexArticles.value = Array.isArray(payload.articles) ? payload.articles : []
 
             initialized = true
         } catch (error) {
             console.error('[search] Failed to initialize index:', error)
             errorMessage.value = '搜索索引加载失败,对不起对不起对不起！'
-            preparedArticles.value = []
-            avgDocLength = 1
+            indexArticles.value = []
         } finally {
             loading.value = false
         }
@@ -280,47 +303,6 @@ const initializeIndex = async () => {
     }
 }
 
-const calculateBM25Score = (
-    queryTokens: string[],
-    normalizedQuery: string,
-    doc: PreparedArticle,
-): number => {
-    let score = 0
-    let matchedTerms = 0
-
-    for (const token of queryTokens) {
-        const f = doc.tf.get(token) || 0
-        if (f <= 0) continue
-
-        matchedTerms++
-
-        const idf = idfMap.get(token) || 0
-        const numerator = f * (K1 + 1)
-        const denominator = f + K1 * (1 - B + B * (doc.docLength / avgDocLength))
-
-        score += idf * (numerator / denominator)
-    }
-
-    if (matchedTerms === 0) return 0
-
-    // 多词查询时，命中词越全越加分
-    if (queryTokens.length > 1) {
-        score *= matchedTerms / queryTokens.length
-    }
-
-    // 精确包含加分
-    if (normalizedQuery) {
-        if (doc.titleText.includes(normalizedQuery)) {
-            score += 8
-        } else if (doc.tagsText.includes(normalizedQuery)) {
-            score += 5
-        } else if (doc.descText.includes(normalizedQuery)) {
-            score += 2
-        }
-    }
-
-    return score
-}
 
 const searchNow = async () => {
     const currentVersion = ++searchVersion
@@ -328,39 +310,111 @@ const searchNow = async () => {
 
     if (!query) {
         results.value = []
+        contentSearching.value = false
         return
     }
 
     await initializeIndex()
 
-    // 如果这次搜索已经过时，就直接丢弃
     if (currentVersion !== searchVersion) return
 
-    const normalizedQuery = normalizeText(query)
-    const queryTokens = uniqueTokens(tokenize(query))
+    const filteredArticles = getFilteredArticles()
 
-    if (queryTokens.length === 0) {
-        results.value = []
-        return
-    }
-
-    const ranked = preparedArticles.value
-        .filter((doc) => {
-            if (selectedLang.value === 'all') return true
-            return doc.article.lang === selectedLang.value
+    // 先快速给一个标题 / 标签命中的预览结果
+    const previewResults = filteredArticles
+        .map((article) => {
+            const score = calculateTitleScore(query, article)
+            return { article, score }
         })
-        .map((doc) => ({
-            article: doc.article,
-            score: calculateBM25Score(queryTokens, normalizedQuery, doc),
-            contexts: extractAllContexts(doc.article.content, query),
-        }))
         .filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score)
         .slice(0, MAX_RESULTS)
 
-    if (currentVersion !== searchVersion) return
+    const resultMap = new Map<string, SearchResult>()
 
-    results.value = ranked
+    for (const item of previewResults) {
+        const key = `${item.article.hash}.${item.article.lang}`
+        resultMap.set(key, {
+            article: buildArticleDataFromIndex(item.article),
+            score: item.score,
+            contexts: [],
+            contentSearched: false
+        })
+    }
+
+    results.value = [...resultMap.values()]
+    contentSearching.value = true
+
+    for (let i = 0; i < filteredArticles.length; i += BATCH_SIZE) {
+        if (currentVersion !== searchVersion) {
+            contentSearching.value = false
+            return
+        }
+
+        const batch = filteredArticles.slice(i, i + BATCH_SIZE)
+
+        const batchResults = await Promise.all(
+            batch.map(async (indexArticle) => {
+                const titleScore = calculateTitleScore(query, indexArticle)
+                const articleData = await loadArticleData(indexArticle)
+
+                if (!articleData) {
+                    return {
+                        indexArticle,
+                        articleData: null,
+                        totalScore: titleScore,
+                        contexts: [],
+                        matched: titleScore > 0
+                    }
+                }
+
+                const contentMatch = calculateContentScore(query, articleData.content || '')
+                const totalScore = titleScore + contentMatch.score
+
+                return {
+                    indexArticle,
+                    articleData,
+                    totalScore,
+                    contexts: contentMatch.contexts,
+                    matched: totalScore > 0
+                }
+            })
+        )
+
+        for (const item of batchResults) {
+            const key = `${item.indexArticle.hash}.${item.indexArticle.lang}`
+            const existing = resultMap.get(key)
+
+            if (!item.matched) {
+                if (existing) {
+                    existing.contentSearched = true
+                }
+                continue
+            }
+
+            const baseArticle = item.articleData ?? buildArticleDataFromIndex(item.indexArticle)
+
+            if (existing) {
+                existing.article = baseArticle
+                existing.score = item.totalScore
+                existing.contexts = item.contexts
+                existing.contentSearched = true
+            } else {
+                resultMap.set(key, {
+                    article: baseArticle,
+                    score: item.totalScore,
+                    contexts: item.contexts,
+                    contentSearched: true
+                })
+            }
+        }
+
+        results.value = [...resultMap.values()]
+            .sort((a, b) => b.score - a.score)
+            .slice(0, MAX_RESULTS)
+    }
+
+    contentSearching.value = false
 }
 
 const scheduleSearch = () => {
@@ -448,6 +502,8 @@ defineExpose({
                         <div class="item-meta">
                             <span class="item-lang">{{ result.article.lang }}</span>
                             <span class="item-date">{{ result.article.date }}</span>
+                            <span v-if="contentSearching && !result.contentSearched"
+                                class="item-searching">搜索内容中...</span>
                         </div>
                         <div v-for="(ctx, idx) in result.contexts" :key="idx" class="item-context"
                             v-html="highlightKeyword(ctx, keyword)">
@@ -677,6 +733,14 @@ defineExpose({
 
 :global(.dark) .item-date {
     color: #9ca3af;
+}
+
+.item-searching {
+    font-size: 12px;
+    color: #ffa726;
+    background: rgba(255, 167, 38, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
 }
 
 .item-desc {

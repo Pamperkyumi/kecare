@@ -2,10 +2,10 @@ import type { NavItem } from "kecare";
 
 export const navItems: NavItem[] = [
     {
-        text: '入门指南',
+        text: 'Hello World',
         level: 1,
         items: [
-            { text: '什么是Kecare', link: './什么是Kecare.md', level: 2 },
+            { text: '关于我', link: './关于我.md', level: 2 },
             { text: '快速开始', link: './快速开始.md', level: 2 },
         ],
     },
@@ -18,12 +18,8 @@ export const navItems: NavItem[] = [
             { text: 'Markdown扩展', link: './markdown扩展.md', level: 2 },
             { text: '菜单系统', link: './菜单系统.md', level: 2 },
             { text: '国际化处理', link: './国际化处理.md', level: 2 },
+            { text: '部署到GitHub Pages', link: './Github pages.md', level: 2 },
         ],
-    },
-    {
-        text: '部署',
-        level: 1,
-        items: [{ text: 'GitHub Pages', link: './Github pages.md', level: 2 }],
     },
     {
         text: '进阶',
@@ -34,6 +30,14 @@ export const navItems: NavItem[] = [
                 link: './在已有项目上使用kecare.md',
                 level: 2,
             },
+        ],
+    },
+    {
+        text: '主题开发',
+        level: 1,
+        items: [
+            { text: '前言', link: './主题开发前言.md', level: 2 },
+            { text: '落地页', link: './主题开发落地页.md', level: 2 }
         ],
     },
     {

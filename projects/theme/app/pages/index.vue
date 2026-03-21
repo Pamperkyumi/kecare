@@ -6,18 +6,18 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "什么是Kecare",
+    "title": "关于我",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "什么是Kecare 面向多语言内容站的现代静态内容生成器 Kecare 不只是把 Markdown 渲染成网页。 它把内容编译、文章翻译、页面生成和阅读体验放进了一条完整流程里，让你用更少的重复工作，做出更灵活、更现代的内容站。 如果你想要...",
-    "hash": "552248be",
-    "relativePath": "/什么是Kecare.md",
+    "desc": "👋Hello Kecare 简介 Kecare是一个开源的的静态网站生成器，它与框架无关，核心特点是非侵入式设计——把内容系统从主题/框架中解耦。只需要了解少量 TypeScript，编写对应的页面生成模板，就可以基于组件自由组合页面，在...",
+    "hash": "2f0fd1f2",
+    "relativePath": "/关于我.md",
     "frontMatter": {
       "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
-      "title": "什么是Kecare",
+      "title": "关于我",
       "menu": "test",
       "tags": [],
-      "desc": "什么是Kecare 面向多语言内容站的现代静态内容生成器 Kecare 不只是把 Markdown 渲染成网页。 它把内容编译、文章翻译、页面生成和阅读体验放进了一条完整流程里，让你用更少的重复工作，做出更灵活、更现代的内容站。 如果你想要...",
+      "desc": "👋Hello Kecare 简介 Kecare是一个开源的的静态网站生成器，它与框架无关，核心特点是非侵入式设计——把内容系统从主题/框架中解耦。只需要了解少量 TypeScript，编写对应的页面生成模板，就可以基于组件自由组合页面，在...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -26,10 +26,10 @@
       "sticky": 3,
       "date": "2026-03-10"
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\552248be.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/552248be",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\552248be.vue",
-    "urlPath": "articles/zh-CN/552248be"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/2f0fd1f2",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
+    "urlPath": "articles/zh-CN/2f0fd1f2"
   },
   {
     "lang": "zh-CN",
@@ -40,7 +40,7 @@
     "hash": "70e6923c",
     "relativePath": "/Kecare从这里开始喵.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "Kecare从这里开始喵",
       "menu": "test",
       "tags": [],
@@ -67,7 +67,7 @@
     "hash": "95140e73",
     "relativePath": "/在已有项目上使用kecare.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "在已有项目上使用kecare",
       "menu": "test",
       "tags": [],
@@ -87,62 +87,70 @@
   },
   {
     "lang": "zh-CN",
-    "title": "markdown扩展",
+    "title": "主题开发前言",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "Markdown 扩展 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。 Front Matter YAML Front Matter 开箱即用，你可以在文章开头添加元数据： 这些数据将...",
-    "hash": "b40d18d1",
-    "relativePath": "/markdown扩展.md",
+    "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
+    "hash": "e5dbc117",
+    "relativePath": "/主题开发前言.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
-      "title": "markdown扩展",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "title": "主题开发前言",
       "menu": "test",
-      "tags": [],
-      "desc": "Markdown 扩展 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。 Front Matter YAML Front Matter 开箱即用，你可以在文章开头添加元数据： 这些数据将...",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
       ],
       "sticky": 0,
-      "date": "2026-03-09"
+      "date": "2026-03-21"
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/b40d18d1",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
-    "urlPath": "articles/zh-CN/b40d18d1"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
     "lang": "zh-CN",
-    "title": "Github pages",
+    "title": "主题开发落地页",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "部署到 GitHub Pages 将 Kecare 博客部署到 GitHub Pages 前置准备 在开始部署之前，请确保你已经准备好以下内容： Github账号 Git 和 Node.js 创建 GitHub 仓库 在 GitHub 创建...",
-    "hash": "39f6b230",
-    "relativePath": "/Github pages.md",
+    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 什么是落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表...",
+    "hash": "e52553ad",
+    "relativePath": "/主题开发落地页.md",
     "frontMatter": {
       "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
-      "title": "Github pages",
+      "title": "主题开发落地页",
       "menu": "test",
-      "tags": [],
-      "desc": "部署到 GitHub Pages 将 Kecare 博客部署到 GitHub Pages 前置准备 在开始部署之前，请确保你已经准备好以下内容： Github账号 Git 和 Node.js 创建 GitHub 仓库 在 GitHub 创建...",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 什么是落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
       ],
       "sticky": 0,
-      "date": "2026-03-08"
+      "date": "2026-03-21"
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "urlPath": "articles/zh-CN/39f6b230"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "urlPath": "articles/zh-CN/e52553ad"
   }
 ]
                 const currentPage = 1
                 const totalPages = 3
-                const totalArticles = 12
+                const totalArticles = 13
 
                 </script>
                 <template>

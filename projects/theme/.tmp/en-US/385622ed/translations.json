@@ -41,5 +41,11 @@
   "ab3dc717": "1. Create `.md` files in the `.kecare/articles/` directory\n2. Write content",
   "33d22cc4": "> It is recommended to use lowercase letters and hyphens for file names, such as `getting-started.md`. Avoid frequently changing file names, as this may cause old links to become invalid.",
   "1d5cf636": "The article consists of **Front Matter** and **Body Content**:",
-  "2b4353a7": "After writing, run the generator to preview it in the browser."
+  "2b4353a7": "After writing, run the generator to preview it in the browser.",
+  "8fe1eb0a": "# Front Matter",
+  "d098603a": "Each article can include a **Front Matter** (in YAML format) at the beginning, which is used to provide metadata for the article, such as: title, date, tags, description, author, cover image, pinning, menu, etc.",
+  "1619fb92": "Front Matter is a YAML-formatted metadata block located at the beginning of a Markdown file, separated by `---`. Kecare parses this metadata and passes it to theme components for use.",
+  "68fccb0f": "## Complete Example",
+  "aaa68bfb": "Here is an example of all currently supported Front Matter fields in Kecare:",
+  "e10755e6": "You don't need to include all Front Matter fields for every article. Currently, only the `date` field is mandatory. For other fields, if you don't provide a value, Kecare will use the default value."
 }

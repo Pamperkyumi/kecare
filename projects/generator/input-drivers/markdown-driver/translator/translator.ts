@@ -108,9 +108,9 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
 
     // Translate each part (use cache if hit)
     for (const [index, part] of parts.entries()) {
-        // if ((index + 1) % 5 === 0) {
-        //     consola.info(`Processing content part ${index + 1}/${parts.length}`);
-        // }
+        if ((index + 1) % 5 === 0) {
+            consola.info(`Processing content part ${index + 1}/${parts.length}`);
+        }
         const partHash = Bun.hash.xxHash3(part, 1234n).toString(16).slice(0, 8);
 
         if (allTranslationTemp[partHash]) {

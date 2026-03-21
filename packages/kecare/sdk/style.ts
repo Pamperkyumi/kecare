@@ -13,7 +13,7 @@ export const __STYLE__ = `
   right: 12px;
   padding: 6px;
   background: rgba(255, 255, 255, 0.92);
-  color: #ff6b93;
+  color: #4fc3f7;
   border: 1px solid #ffd2dc;
   border-radius: 10px;
   cursor: pointer;

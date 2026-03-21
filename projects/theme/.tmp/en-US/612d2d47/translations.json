@@ -79,5 +79,17 @@
   "ac70d684": "@tab npm",
   "71a813df": "__CODE_BLOCK_4__\n@tab pnpm",
   "dedd478f": ":::",
-  "f21df10a": "@tab pnpm"
+  "f21df10a": "@tab pnpm",
+  "15c627e2": "According to Kecare, it's quite simple. You only need to install the Kecare CLI to help you start a Kecare project from scratch. It will guide you through every step of setting up a new project and allow you to choose from several different official starter templates. If you just want to quickly integrate a blog/documentation site into your existing project, please read",
+  "b8f977f6": "## Prerequisites",
+  "5cd5c727": "- Node.js\n- Terminal\n- Git",
+  "f5f99414": "You can run `create kecare` anywhere on your machine, and it will install the Kecare Generator CLI for you.",
+  "44e4a5c7": "If everything goes well, you will see a success message.",
+  "e0711b3f": "## Get Theme or Starter Template",
+  "d857872a": "> [!NOTE]\n>\n> Currently, Kecare is still in its early stages, so there aren't many themes available to choose from. We appreciate everyone's contributions to Kecare by creating themes to enrich the ecosystem. For now, you can use the theme we provide to experience the advantages that Kecare brings.",
+  "c9a948a6": "__CODE_BLOCK_5__\n@tab pnpm",
+  "2c304bdb": "If everything goes smoothly, you will receive a theme with the following main directory structure,",
+  "20af8b3b": "Our theme is built with Nuxt, but in practice, Kecare does not restrict your choice of framework, so we won't delve too much into the Nuxt directory structure.",
+  "b8eb84bf": "You can write your markdown articles in `.kecare/articls/`, and then use `kecare gen .` to generate the corresponding pages.",
+  "e3870281": "After the generator has finished generating all the required pages, you can use `npm run dev` to start your development server."
 }

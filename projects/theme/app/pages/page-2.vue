@@ -6,45 +6,72 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "front-matter",
+    "title": "markdown扩展",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "Front Matter 每篇文章都可以在开头写一段 Front Matter（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 什么是 Front Matter Front Matter 是...",
-    "hash": "5f065839",
-    "relativePath": "/front-matter.md",
+    "desc": "Markdown 扩展 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。 Front Matter YAML Front Matter 开箱即用，你可以在文章开头添加元数据： 这些数据将...",
+    "hash": "b40d18d1",
+    "relativePath": "/markdown扩展.md",
     "frontMatter": {
       "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
-      "title": "front-matter",
+      "title": "markdown扩展",
       "menu": "test",
       "tags": [],
-      "desc": "Front Matter 每篇文章都可以在开头写一段 Front Matter（YAML 格式），用于提供文章的元信息，例如：标题、日期、标签、描述、作者、封面、置顶、菜单等。 什么是 Front Matter Front Matter 是...",
+      "desc": "Markdown 扩展 Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。 Front Matter YAML Front Matter 开箱即用，你可以在文章开头添加元数据： 这些数据将...",
       "translate": [
         "zh-CN",
         "en-US",
         "ja-JP"
       ],
       "sticky": 0,
-      "date": "2026-03-07"
+      "date": "2026-03-09"
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f065839",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f065839.vue",
-    "urlPath": "articles/zh-CN/5f065839"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/b40d18d1",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
+    "urlPath": "articles/zh-CN/b40d18d1"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "Github pages",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "部署到 GitHub Pages 将 Kecare 博客部署到 GitHub Pages 前置准备 在开始部署之前，请确保你已经准备好以下内容： Github账号 Git 和 Node.js 创建 GitHub 仓库 在 GitHub 创建...",
+    "hash": "39f6b230",
+    "relativePath": "/Github pages.md",
+    "frontMatter": {
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "title": "Github pages",
+      "menu": "test",
+      "tags": [],
+      "desc": "部署到 GitHub Pages 将 Kecare 博客部署到 GitHub Pages 前置准备 在开始部署之前，请确保你已经准备好以下内容： Github账号 Git 和 Node.js 创建 GitHub 仓库 在 GitHub 创建...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-08"
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "urlPath": "articles/zh-CN/39f6b230"
   },
   {
     "lang": "zh-CN",
     "title": "写作",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件 编写内容 文件名建议使用小写字母...",
+    "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件 编写内容 文章结构 文章由 Fr...",
     "hash": "6e8c5f0b",
     "relativePath": "/写作.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "写作",
       "menu": "test",
       "tags": [],
-      "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件 编写内容 文件名建议使用小写字母...",
+      "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件 编写内容 文章结构 文章由 Fr...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -67,7 +94,7 @@
     "hash": "fddd58bb",
     "relativePath": "/生成器CLI.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "生成器CLI",
       "menu": "test",
       "tags": [],
@@ -90,7 +117,7 @@
     "title": "快速开始",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "快速开始 按照以下步骤，几分钟内即可在本地运行 Kecare 博客。 前置要求 | 要求 | 说明 | 验证命令 | | --- | --- | --- | | Node.js | 安装依赖、启动开发服务器 | node -v | | Gi...",
+    "desc": "快速开始 按照Kecare相当简单，仅需安装Kecare CLI 即可帮你从0开始一个 Kecare 项目。它将引导你完成设置新项目的每一步，并允许你从几个不同的官方入门模板中进行选择。如果你只是想为你的已有项目中快速接入一个博客/文档站，...",
     "hash": "95bb100b",
     "relativePath": "/快速开始.md",
     "frontMatter": {
@@ -98,7 +125,7 @@
       "title": "快速开始",
       "menu": "test",
       "tags": [],
-      "desc": "快速开始 按照以下步骤，几分钟内即可在本地运行 Kecare 博客。 前置要求 | 要求 | 说明 | 验证命令 | | --- | --- | --- | | Node.js | 安装依赖、启动开发服务器 | node -v | | Gi...",
+      "desc": "快速开始 按照Kecare相当简单，仅需安装Kecare CLI 即可帮你从0开始一个 Kecare 项目。它将引导你完成设置新项目的每一步，并允许你从几个不同的官方入门模板中进行选择。如果你只是想为你的已有项目中快速接入一个博客/文档站，...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -111,38 +138,11 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
     "urlPath": "articles/zh-CN/95bb100b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "国际化处理",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "国际化处理 Kecare 支持 AI 自动翻译，让文章触达多语言读者。 启用翻译 在文章 Front Matter 中添加 translate 字段： 第一个语言代码必须是文章的原始语言。 配置翻译服务 在 .kecare/kecare.c...",
-    "hash": "493f5fa2",
-    "relativePath": "/国际化处理.md",
-    "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
-      "title": "国际化处理",
-      "menu": "test",
-      "tags": [],
-      "desc": "国际化处理 Kecare 支持 AI 自动翻译，让文章触达多语言读者。 启用翻译 在文章 Front Matter 中添加 translate 字段： 第一个语言代码必须是文章的原始语言。 配置翻译服务 在 .kecare/kecare.c...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-03"
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "urlPath": "articles/zh-CN/493f5fa2"
   }
 ]
                 const currentPage = 2
                 const totalPages = 3
-                const totalArticles = 12
+                const totalArticles = 13
 
                 </script>
                 <template>
