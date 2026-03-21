@@ -1,0 +1,14 @@
+{
+  "a40dd7b2": "# Article Page",
+  "dffc46ee": "Whether it's a blog or a documentation site, we all need a page to display article content, and this page is the article page.",
+  "28b6e40d": "## Article Page Template",
+  "60c16e87": "The article page template is a `.article.ts` file located in the `.kecare/` directory. The generator will call it when processing each article to generate the article detail page.",
+  "8c20bc0a": "## A Runnable Template",
+  "2c40c1d0": "Create file `.kecare/foo-bar.article.ts`:",
+  "b44396ce": "__CODE_BLOCK_0__",
+  "9f11a481": "In summary, `.article.ts` only requires you to return an object containing `urlPath`, `fsPath`, and `template`. The generator can then correctly invoke the template for page generation. `urlPath` is the access path for the article, `fsPath` is the physical path where the file is generated, and `template` is the template string for the Vue component.",
+  "634f748f": "## Page Components",
+  "7d1e5d0d": "We have invoked the `<ArticleTheme/>` component in the template, so next we should proceed to write the page component.",
+  "a9fa17cb": "__CODE_BLOCK_1__",
+  "f9eb6cc2": "In Vue, data is used in the form of text interpolation, such as `<span>Article Title: {{ article.title }}</span>`. `article.html` contains the HTML content converted from Markdown, rendered using the `v-html` directive. The specific styling is up to your imagination."
+}

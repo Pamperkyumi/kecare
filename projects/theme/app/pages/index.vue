@@ -40,7 +40,7 @@
     "hash": "70e6923c",
     "relativePath": "/Kecare从这里开始喵.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "Kecare从这里开始喵",
       "menu": "test",
       "tags": [],
@@ -90,7 +90,7 @@
     "title": "主题开发落地页",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 什么是落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表...",
+    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
     "hash": "e52553ad",
     "relativePath": "/主题开发落地页.md",
     "frontMatter": {
@@ -102,7 +102,7 @@
         "落地页",
         "列表页"
       ],
-      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 什么是落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表...",
+      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -125,7 +125,7 @@
     "hash": "e5dbc117",
     "relativePath": "/主题开发前言.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "主题开发前言",
       "menu": "test",
       "tags": [
@@ -150,7 +150,7 @@
 ]
                 const currentPage = 1
                 const totalPages = 3
-                const totalArticles = 13
+                const totalArticles = 14
 
                 </script>
                 <template>

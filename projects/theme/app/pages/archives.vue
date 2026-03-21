@@ -1,16 +1,7 @@
-<!-- Generated: 2026-03-21T15:32:36.580Z -->
+<!-- Generated: 2026-03-21T15:52:46.733Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
-  {
-    "title": "国际化处理",
-    "lang": "zh-CN",
-    "hash": "493f5fa2",
-    "tags": [],
-    "date": "2026-03-03",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "urlPath": "articles/zh-CN/493f5fa2"
-  },
   {
     "title": "Kecare从这里开始喵",
     "lang": "zh-CN",
@@ -21,13 +12,13 @@
     "urlPath": "articles/zh-CN/70e6923c"
   },
   {
-    "title": "写作",
+    "title": "Github pages",
     "lang": "zh-CN",
-    "hash": "6e8c5f0b",
+    "hash": "39f6b230",
     "tags": [],
-    "date": "2026-03-06",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
-    "urlPath": "articles/zh-CN/6e8c5f0b"
+    "date": "2026-03-08",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "urlPath": "articles/zh-CN/39f6b230"
   },
   {
     "title": "主题开发落地页",
@@ -41,28 +32,6 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
-  },
-  {
-    "title": "快速开始",
-    "lang": "zh-CN",
-    "hash": "95bb100b",
-    "tags": [],
-    "date": "2026-03-04",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "urlPath": "articles/zh-CN/95bb100b"
-  },
-  {
-    "title": "主题开发前言",
-    "lang": "zh-CN",
-    "hash": "e5dbc117",
-    "tags": [
-      "主题开发",
-      "落地页",
-      "列表页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
     "title": "markdown扩展",
@@ -83,31 +52,55 @@
     "urlPath": "articles/zh-CN/2f0fd1f2"
   },
   {
-    "title": "在已有项目上使用kecare",
+    "title": "主题开发前言",
     "lang": "zh-CN",
-    "hash": "95140e73",
-    "tags": [],
-    "date": "2026-03-11",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
-    "urlPath": "articles/zh-CN/95140e73"
+    "hash": "e5dbc117",
+    "tags": [
+      "主题开发",
+      "落地页",
+      "列表页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
-    "title": "Github pages",
+    "title": "写作",
     "lang": "zh-CN",
-    "hash": "39f6b230",
+    "hash": "6e8c5f0b",
     "tags": [],
-    "date": "2026-03-08",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
-    "urlPath": "articles/zh-CN/39f6b230"
+    "date": "2026-03-06",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
+    "urlPath": "articles/zh-CN/6e8c5f0b"
   },
   {
-    "title": "生成器CLI",
+    "title": "快速开始",
     "lang": "zh-CN",
-    "hash": "fddd58bb",
+    "hash": "95bb100b",
     "tags": [],
-    "date": "2026-03-05",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "urlPath": "articles/zh-CN/fddd58bb"
+    "date": "2026-03-04",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "urlPath": "articles/zh-CN/95bb100b"
+  },
+  {
+    "title": "主题开发文章页",
+    "lang": "zh-CN",
+    "hash": "989b9235",
+    "tags": [
+      "主题开发"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
+  },
+  {
+    "title": "国际化处理",
+    "lang": "zh-CN",
+    "hash": "493f5fa2",
+    "tags": [],
+    "date": "2026-03-03",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "urlPath": "articles/zh-CN/493f5fa2"
   },
   {
     "title": "贡献指南",
@@ -124,6 +117,15 @@
     "urlPath": "articles/zh-CN/43fc313b"
   },
   {
+    "title": "在已有项目上使用kecare",
+    "lang": "zh-CN",
+    "hash": "95140e73",
+    "tags": [],
+    "date": "2026-03-11",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
+    "urlPath": "articles/zh-CN/95140e73"
+  },
+  {
     "title": "菜单系统",
     "lang": "zh-CN",
     "hash": "4ee23999",
@@ -136,9 +138,18 @@
     "date": "2026-03-01",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
     "urlPath": "articles/zh-CN/4ee23999"
+  },
+  {
+    "title": "生成器CLI",
+    "lang": "zh-CN",
+    "hash": "fddd58bb",
+    "tags": [],
+    "date": "2026-03-05",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "urlPath": "articles/zh-CN/fddd58bb"
   }
 ]
-        const totalArticles = 13
+        const totalArticles = 14
         useHead({
             title: '归档喵',
         })

@@ -6,6 +6,35 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "主题开发文章页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+    "hash": "989b9235",
+    "relativePath": "/主题开发文章页.md",
+    "frontMatter": {
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "title": "主题开发文章页",
+      "menu": "test",
+      "tags": [
+        "主题开发"
+      ],
+      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "date": "2026-03-21"
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
+  },
+  {
+    "lang": "zh-CN",
     "title": "markdown扩展",
     "isOriginalLang": true,
     "menu": "test",
@@ -40,7 +69,7 @@
     "hash": "39f6b230",
     "relativePath": "/Github pages.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "Github pages",
       "menu": "test",
       "tags": [],
@@ -67,7 +96,7 @@
     "hash": "6e8c5f0b",
     "relativePath": "/写作.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "写作",
       "menu": "test",
       "tags": [],
@@ -94,7 +123,7 @@
     "hash": "fddd58bb",
     "relativePath": "/生成器CLI.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "生成器CLI",
       "menu": "test",
       "tags": [],
@@ -111,38 +140,11 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
     "urlPath": "articles/zh-CN/fddd58bb"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "快速开始",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "快速开始 按照Kecare相当简单，仅需安装Kecare CLI 即可帮你从0开始一个 Kecare 项目。它将引导你完成设置新项目的每一步，并允许你从几个不同的官方入门模板中进行选择。如果你只是想为你的已有项目中快速接入一个博客/文档站，...",
-    "hash": "95bb100b",
-    "relativePath": "/快速开始.md",
-    "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
-      "title": "快速开始",
-      "menu": "test",
-      "tags": [],
-      "desc": "快速开始 按照Kecare相当简单，仅需安装Kecare CLI 即可帮你从0开始一个 Kecare 项目。它将引导你完成设置新项目的每一步，并允许你从几个不同的官方入门模板中进行选择。如果你只是想为你的已有项目中快速接入一个博客/文档站，...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-04"
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "urlPath": "articles/zh-CN/95bb100b"
   }
 ]
                 const currentPage = 2
                 const totalPages = 3
-                const totalArticles = 13
+                const totalArticles = 14
 
                 </script>
                 <template>

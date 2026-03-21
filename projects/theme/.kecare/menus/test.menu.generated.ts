@@ -78,6 +78,11 @@ export const navItems: NavItem[] = [
         "text": "落地页",
         "link": "./e52553ad",
         "level": 2
+      },
+      {
+        "text": "文章页",
+        "link": "./989b9235",
+        "level": 2
       }
     ]
   },

@@ -179,7 +179,7 @@ const wordCount = computed(() => {
             class="sidebar flex-none w-[240px] max-w-[240px] sticky top-[85px] h-fit bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-[18px] px-[16px] max-[960px]:hidden"
             v-if="props.navItems !== null">
             <NuxtLink
-                class="sidebar-title inline-block text-[1.1rem] font-extrabold text-[#4fc3f7] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(79,195,247,0.10)] border border-[rgba(79,195,247,0.18)]"
+                class="sidebar-title block mx-auto text-[1.1rem] font-extrabold text-[#4fc3f7] no-underline mb-[12px] px-[10px] py-[6px] rounded-[10px] bg-[rgba(79,195,247,0.10)] border border-[rgba(79,195,247,0.18)]"
                 to="/">我是小菜单喵 </NuxtLink>
             <div class="sidebar-list max-h-[calc(100vh-140px)] overflow-auto pr-[6px]">
                 <template v-if="props.navItems?.length">

@@ -120,16 +120,56 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
     </ul>
 </template>
 <style scoped>
+/* 侧边栏列表样式 */
 .side-nav {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
+/* 侧边栏列表项样式 */
 .side-nav-item {
-    margin: 2px 0;
+    margin: 6px 0;
+    line-height: 1.5;
 }
 
+/* 侧边栏嵌套列表样式 */
+.side-nav .side-nav {
+    margin-top: 6px;
+    padding-left: 14px;
+    border-left: 2px solid rgba(79, 195, 247, 0.18);
+}
+
+/* 侧边栏链接样式 */
+.side-nav-link {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #2c3e50;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+/* 侧边栏链接悬停样式 */
+.side-nav-link:hover {
+    background: rgba(79, 195, 247, 0.12);
+    border-color: rgba(79, 195, 247, 0.18);
+    color: #4fc3f7;
+    transform: translateY(-1px);
+}
+
+/* 侧边栏激活状态样式 */
+.side-nav-link.active {
+    background: rgba(79, 195, 247, 0.16);
+    border-color: rgba(79, 195, 247, 0.22);
+    color: #4fc3f7;
+    font-weight: 700;
+}
+
+/* 侧边栏分组头部样式 */
 .side-nav-group-header {
     display: flex;
     align-items: center;
@@ -145,6 +185,7 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
     background: rgba(255, 255, 255, 0.06);
 }
 
+/* 侧边栏分组标题样式 */
 .side-nav-group-title {
     display: block;
     margin: 0;
@@ -154,6 +195,7 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
     color: rgba(0, 0, 0, 0.85);
 }
 
+/* 侧边栏展开图标样式 */
 .side-nav-toggle-icon {
     display: flex;
     align-items: center;
@@ -167,6 +209,7 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
     transform: rotate(90deg);
 }
 
+/* 侧边栏分组内容样式 */
 .side-nav-group-content {
     overflow: hidden;
     max-height: 2000px;
@@ -177,29 +220,5 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
 .side-nav-group-content.collapsed {
     max-height: 0;
     opacity: 0;
-}
-
-.side-nav-link {
-    display: block;
-    padding: 8px 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: rgba(255, 0, 0, 0.66);
-    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-    border: 1px solid transparent;
-    line-height: 1.3;
-    word-break: break-word;
-}
-
-.side-nav-link:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(0, 0, 0, 0.9);
-}
-
-.side-nav-link.active {
-    color: rgba(255, 255, 255, 0.92);
-    background: rgba(79, 195, 247, 0.14);
-    border-color: rgba(79, 195, 247, 0.22);
-    font-weight: 650;
 }
 </style>
