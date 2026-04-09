@@ -1,9 +1,0 @@
-{
-  "title": "Generator CLI",
-  "lang": "en-US",
-  "hash": "fddd58bb",
-  "tags": [],
-  "date": "2026-03-05",
-  "urlPath": "articles/en-US/fddd58bb",
-  "content": "# Generator CLI\n\n---\n\n## Commands\n\n| Command | Description |\n|------|------|\n| `kecare gen <path>` | Build the site and generate page files |\n| `kecare -version` | Check the current version |\n\n---\n\n## Usage Examples\n\n```bash\nkecare gen .                    # 当前目录\nkecare gen ./Kecare-theme       # 相对路径\nkecare gen /home/user/theme     # 绝对路径\n```\n\n---\n\n## Execution Flow\n\n1. Scan Markdown files under `.kecare/articles/`\n2. Parse Front Matter and main content\n3. Execute translation (if `translate` is configured)\n4. Run `*.article.ts` and `*.list.ts` to generate pages\n5. Output files to the specified directory"
-}

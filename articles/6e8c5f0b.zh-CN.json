@@ -1,9 +1,0 @@
-{
-  "title": "写作",
-  "lang": "zh-CN",
-  "hash": "6e8c5f0b",
-  "tags": [],
-  "date": "2026-03-06",
-  "urlPath": "articles/zh-CN/6e8c5f0b",
-  "content": "\r\n# 写作\r\n\r\n在 Kecare 中，文章存放在 `主题目录/.kecare/articles/` 目录下，目前仅支持 Markdown 文件。\r\n\r\n## 创建文章\r\n\r\n1. 在 `.kecare/articles/` 目录下创建 `.md` 文件\r\n2. 编写内容\r\n\r\n> 文件名建议使用小写字母 + 连字符，如 `getting-started.md`。避免频繁更改文件名，否则可能导致旧链接失效。\r\n\r\n## 文章结构\r\n\r\n文章由 **Front Matter** 和 **正文内容** 组成：\r\n\r\n```markdown\r\n---\r\ntitle: Hello Kecare\r\ndate: 2026-01-22 12:00:00\r\ntags:\r\n  - kecare\r\n  - blog\r\ndesc: 文章摘要\r\nauthor: Pamper\r\nmenu: test\r\ntranslate: ['zh-CN', 'en-US', 'ja-JP']\r\n---\r\n\r\n# Hello Kecare\r\n\r\n正文内容...\r\n```\r\n\r\n## 运行生成器\r\n\r\n写完后运行生成器即可在浏览器中预览。\r\n"
-}

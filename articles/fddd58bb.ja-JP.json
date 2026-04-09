@@ -1,9 +1,0 @@
-{
-  "title": "ジェネレーターCLI",
-  "lang": "ja-JP",
-  "hash": "fddd58bb",
-  "tags": [],
-  "date": "2026-03-05",
-  "urlPath": "articles/ja-JP/fddd58bb",
-  "content": "# ジェネレーター CLI\n\n---\n\n## コマンド\n\n| コマンド | 説明 |\n|------|------|\n| `kecare gen <path>` | サイトを構築し、ページファイルを生成します |\n| `kecare -version` | 現在のバージョンを確認します |\n\n---\n\n## 使用例\n\n```bash\nkecare gen .                    # 当前目录\nkecare gen ./Kecare-theme       # 相对路径\nkecare gen /home/user/theme     # 绝对路径\n```\n\n---\n\n## 実行フロー\n\n1. `.kecare/articles/` ディレクトリ内の Markdown ファイルをスキャン\n2. Front Matter と本文を解析\n3. 翻訳を実行（`translate` が設定されている場合）\n4. `*.article.ts` と `*.list.ts` を実行してページを生成\n5. 指定ディレクトリにファイルを出力"
-}
