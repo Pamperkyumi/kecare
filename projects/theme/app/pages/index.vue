@@ -67,7 +67,7 @@
     "hash": "95140e73",
     "relativePath": "/在已有项目上使用kecare.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
       "title": "在已有项目上使用kecare",
       "menu": "test",
       "tags": [],
@@ -94,7 +94,7 @@
     "hash": "e5dbc117",
     "relativePath": "/主题开发前言.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
       "title": "主题开发前言",
       "menu": "test",
       "tags": [],
