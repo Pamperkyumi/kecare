@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted, nextTick } from "vue"
 // import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
-import heroBg from '~/assets/bg1.jpg'
+import heroBg from '~/assets/bg3.jpg'
 import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import Footer from '~/components/Theme/Sidebar/Footer.vue'
@@ -126,10 +126,9 @@ onUnmounted(() => {
 
 <template>
     <div id="app"
-        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)] pt-[70px] select-none">
+        class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)] select-none">
         <div class="relative h-screen overflow-hidden flex flex-col items-center justify-center text-center">
-            <div class="absolute inset-0 bg-center bg-cover"
-                :style="{ backgroundImage: `url(http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg)` }">
+            <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${heroBg})` }">
             </div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1
@@ -155,7 +154,7 @@ onUnmounted(() => {
                             class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
                             {{ article.frontMatter.title }}</div>
                         <div class="text-[var(--color-text-secondary)] leading-[1.5] flex items-center">{{ article.desc
-                            }}
+                        }}
                         </div>
                         <div
                             class="flex justify-between text-[0.85rem] text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-[15px] gap-[10px]">

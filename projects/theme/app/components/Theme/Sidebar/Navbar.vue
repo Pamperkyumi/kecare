@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import { useColorMode } from '@vueuse/core'
 const navbar = ref<HTMLElement | null>(null)
 const searchRef = ref<{ open: () => void } | null>(null)
-const isDark = ref(false)
+const colorMode = useColorMode()
+const isDark = computed(() => colorMode.value === 'dark')
 
 let lastScrollTop = 0
 
@@ -23,12 +25,7 @@ const openSearch = () => {
 }
 
 const toggleDark = () => {
-    isDark.value = !isDark.value
-    if (isDark.value) {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
+    colorMode.value = isDark.value ? 'light' : 'dark'
 }
 
 onMounted(() => {
@@ -36,8 +33,6 @@ onMounted(() => {
         navbar.value.style.transform = 'translateY(0)'
     }
     window.addEventListener('scroll', scrollHandler, { passive: true })
-
-    isDark.value = document.documentElement.classList.contains('dark')
 })
 
 onUnmounted(() => {
@@ -47,7 +42,7 @@ onUnmounted(() => {
 
 <template>
     <div ref="navbar"
-        class="fixed top-0 left-0 w-full bg-white/95 dark:bg-gray-900/95 shadow-[0_2px_15px_var(--color-shadow)] text-[16px] leading-normal flex items-center justify-between px-[20px] md:px-[5%] py-[15px] z-[1000] transition-transform duration-[400ms]">
+        class="fixed top-0 left-0 w-full bg-transparent dark:bg-transparent shadow-none text-[16px] leading-normal flex items-center justify-between px-[20px] md:px-[5%] py-[15px] z-[1000] transition-transform duration-[400ms]">
         <div class="text-[1.5rem] font-bold text-[var(--color-accent)]">Pamper</div>
         <ul
             class="flex list-none m-0 p-0 flex-wrap justify-end items-center gap-[5px] md:gap-[10px] max-w-full box-border">

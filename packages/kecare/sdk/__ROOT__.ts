@@ -3,6 +3,7 @@ import { style } from './style';
 import { onMountedSyntaxHighlight } from './syntax-highlight';
 import { onMountedTabs } from './tabs';
 import { onMountedCopy } from './copy';
+import { onMountedLanguageSwitcher } from './language-switcher';
 
 let instancePromise: ReturnType<typeof createKecareSDK> | null = null; // 缓存 Promise
 
@@ -22,6 +23,7 @@ async function createKecareSDK() {
             await loaded;
             const articleElement = document.querySelector('.kecare')! as HTMLDivElement;
             await onMountedCopy(articleElement, hash, path);
+            await onMountedLanguageSwitcher(articleElement, hash, path);
             await onMountedSidebar(articleElement);
             await onMountedTabs(articleElement);
             await onMountedSyntaxHighlight(articleElement);

@@ -12,7 +12,17 @@
 .toc {
     border-left: 4px solid #87ceeb;
     padding-left: 12px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid rgba(169, 169, 169, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+:global(.dark) .toc {
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(55, 65, 81, 0.7);
 }
 
 .toc-title {

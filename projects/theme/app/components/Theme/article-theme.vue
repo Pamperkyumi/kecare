@@ -3,7 +3,7 @@ import { useKecareSDK, } from 'kecare';
 import TocCard from '~/components/Theme/Sidebar/Toc-card.vue';
 import SidebarNavtree from '~/components/Theme/Sidebar/Sidebar-navtree.vue';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue';
-import bgImage from '~/assets/bg2.webp'
+import bgImage from '~/assets/bg3.jpg'
 import type { ArticleVariant, NavItem } from "kecare";
 
 const kecareSDK = await useKecareSDK(); // 这样就加载了你的 js 代码
@@ -137,13 +137,13 @@ const wordCount = computed(() => {
     </div>
 
     <div class="post-bg fixed inset-0 -z-[999] bg-no-repeat bg-center bg-cover"
-        :style="{ 'background-image': `url(http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg)` }">
+        :style="{ 'background-image': `url(${bgImage})` }">
     </div>
 
     <div
-        class="layout max-w-[1600px] mx-auto pt-[100px] px-[16px] flex flex-wrap items-start gap-[30px] max-[960px]:flex-col max-[960px]:flex-nowrap max-[960px]:gap-[20px]">
+        class="layout max-w-[1600px] mx-auto pt-[300px] px-[16px] flex flex-wrap items-start gap-[30px] max-[960px]:flex-col max-[960px]:flex-nowrap max-[960px]:gap-[20px]">
         <!-- 文章信息 -->
-        <div class="hero w-full flex items-center justify-center min-h-[30vh] max-[960px]:min-h-[38vh]">
+        <!-- <div class="hero w-full flex items-center justify-center min-h-[30vh] max-[960px]:min-h-[38vh]">
             <div class="post-info text-center">
                 <h1
                     class="post-title text-[2.4rem] max-[768px]:text-[1.9rem] font-bold text-[#2c3e50] dark:text-gray-100 leading-tight">
@@ -171,7 +171,7 @@ const wordCount = computed(() => {
                         :to="`/articles/ja-JP/${props.article.hash}`">日本語</NuxtLink>
                 </span>
             </div>
-        </div>
+        </div> -->
         <aside
             class="sidebar flex-none w-[240px] max-w-[240px] sticky top-[85px] h-fit bg-white/70 dark:bg-gray-800/70 backdrop-blur-[10px] backdrop-saturate-150 border border-[rgba(169,169,169,0.2)] dark:border-gray-700 rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-[18px] px-[16px] max-[960px]:hidden"
             v-if="props.navItems !== null">

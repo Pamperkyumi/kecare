@@ -13,7 +13,7 @@
     "hash": "fddd58bb",
     "relativePath": "/生成器CLI.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
       "title": "生成器CLI",
       "menu": "test",
       "tags": [],
@@ -40,7 +40,7 @@
     "hash": "95bb100b",
     "relativePath": "/快速开始.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
       "title": "快速开始",
       "menu": "test",
       "tags": [],
@@ -67,7 +67,7 @@
     "hash": "493f5fa2",
     "relativePath": "/国际化处理.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/874a924352100b2931c947d68c92dac886c5b02bde9ed6cc1cfcd4c5076b03a3.jpg",
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
       "title": "国际化处理",
       "menu": "test",
       "tags": [],
@@ -94,7 +94,7 @@
     "hash": "43fc313b",
     "relativePath": "/贡献指南.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
       "title": "贡献指南",
       "menu": "test",
       "tags": [
@@ -126,7 +126,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg",
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
       "title": "菜单系统",
       "menu": "test",
       "tags": [
