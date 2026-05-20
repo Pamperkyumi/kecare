@@ -40,6 +40,83 @@ export const __STYLE__ = `
   border-color: rgba(224, 49, 49, 0.35);
 }
 
+.kecare-language-switcher {
+  position: absolute;
+  top: -40px;
+  right: 180px;
+  z-index: 2;
+}
+
+.kecare-language-switcher-button {
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #4fc3f7;
+  border: 1px solid #ffd2dc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kecare-language-switcher-button:hover {
+  background: #fff2f6;
+}
+
+.kecare-language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #ffd2dc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 100px;
+}
+
+.kecare-language-item {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: #2c3e50;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.kecare-language-item:hover {
+  background: rgba(79, 195, 247, 0.1);
+}
+
+.kecare-language-item {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: #2c3e50;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+
+.kecare-language-item:hover {
+  background: rgba(79, 195, 247, 0.1);
+}
+
+.kecare-language-item.active {
+  color: #4fc3f7;
+  font-weight: 600;
+}
+
 .code-copy-button {
   position: absolute;
   top: 8px;

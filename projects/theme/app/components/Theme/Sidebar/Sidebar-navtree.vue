@@ -122,7 +122,7 @@ watch(() => props.items, initializeExpandedState, { immediate: true, deep: true 
                             <!-- 箭头图标路径: 默认向右，展开时旋转90度向下 -->
                             <path d="M6 4l4 4-4 4V4z" />
                         </svg>
-                    </span>
+                    </span> c
                 </div>
 
                 <!-- 分组内容区域: 包含子导航项 -->
