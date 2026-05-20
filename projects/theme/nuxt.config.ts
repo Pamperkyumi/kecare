@@ -1,12 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    nitro: {
-        esbuild: {
-            options: {
-                platform: 'node',
-            },
-        },
-    },
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
     modules: ['@nuxtjs/color-mode'],

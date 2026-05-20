@@ -16,7 +16,7 @@ export async function generator(context: KecareContext, article: ArticleVariant)
         const article = \`${encodeURIComponent(JSON.stringify(article))}\`
         const navItems:NavItem[] = ${JSON.stringify(navItems)}
         useHead({
-            title: \'${article.title}\',
+            title: ${JSON.stringify(article.title)},
         })
         </script>
         <template>

@@ -6,6 +6,29 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "顺颂时祺，秋绥冬禧",
+    "isOriginalLang": true,
+    "desc": "顺颂时祺，秋绥冬禧 我想对你说一声抱歉。 回想这些日子，我知道自己始终没能做到你心中理想的样子，也常常任性、无理取闹。你对我太好太好了，耐心教我，包容我的脾气，可我却常常因为小事对你发脾气，让我们的相处变得不愉快。 现实总是事与愿违，我也总...",
+    "hash": "5f2bcc5d",
+    "relativePath": "/顺颂时祺，秋绥冬禧.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "顺颂时祺，秋绥冬禧",
+      "tags": [],
+      "desc": "顺颂时祺，秋绥冬禧 我想对你说一声抱歉。 回想这些日子，我知道自己始终没能做到你心中理想的样子，也常常任性、无理取闹。你对我太好太好了，耐心教我，包容我的脾气，可我却常常因为小事对你发脾气，让我们的相处变得不愉快。 现实总是事与愿违，我也总...",
+      "translate": [
+        "zh-CN"
+      ],
+      "sticky": 999,
+      "date": "2026-05-20"
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f2bcc5d.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f2bcc5d",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f2bcc5d.vue",
+    "urlPath": "articles/zh-CN/5f2bcc5d"
+  },
+  {
+    "lang": "zh-CN",
     "title": "关于我",
     "isOriginalLang": true,
     "menu": "test",
@@ -87,21 +110,18 @@
   },
   {
     "lang": "zh-CN",
-    "title": "主题开发归档页",
+    "title": "主题开发前言",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
-    "hash": "93b7f9a7",
-    "relativePath": "/主题开发归档页.md",
+    "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
+    "hash": "e5dbc117",
+    "relativePath": "/主题开发前言.md",
     "frontMatter": {
       "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发归档页",
+      "title": "主题开发前言",
       "menu": "test",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+      "tags": [],
+      "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -110,44 +130,15 @@
       "sticky": 0,
       "date": "2026-03-21"
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "主题开发文章页",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-    "hash": "989b9235",
-    "relativePath": "/主题开发文章页.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发文章页",
-      "menu": "test",
-      "tags": [
-        "主题开发"
-      ],
-      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "date": "2026-03-21"
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
   }
 ]
                 const currentPage = 1
-                const totalPages = 3
-                const totalArticles = 15
+                const totalPages = 4
+                const totalArticles = 16
 
                 </script>
                 <template>
