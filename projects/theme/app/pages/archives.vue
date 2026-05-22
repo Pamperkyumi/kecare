@@ -1,4 +1,4 @@
-<!-- Generated: 2026-05-20T17:26:31.478Z -->
+<!-- Generated: 2026-05-22T17:20:06.685Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -21,15 +21,16 @@
     "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
-    "title": "主题开发文章页",
+    "title": "主题开发归档页",
     "lang": "zh-CN",
-    "hash": "989b9235",
+    "hash": "93b7f9a7",
     "tags": [
-      "主题开发"
+      "主题开发",
+      "归档页"
     ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
     "title": "主题开发落地页",
@@ -45,16 +46,16 @@
     "urlPath": "articles/zh-CN/e52553ad"
   },
   {
-    "title": "主题开发归档页",
+    "title": "主题开发文章页",
     "lang": "zh-CN",
-    "hash": "93b7f9a7",
+    "hash": "989b9235",
     "tags": [
       "主题开发",
-      "归档页"
+      "文章页"
     ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "title": "在已有项目上使用kecare",
@@ -66,15 +67,6 @@
     "urlPath": "articles/zh-CN/95140e73"
   },
   {
-    "title": "关于我",
-    "lang": "zh-CN",
-    "hash": "2f0fd1f2",
-    "tags": [],
-    "date": "2026-03-10",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
-    "urlPath": "articles/zh-CN/2f0fd1f2"
-  },
-  {
     "title": "Kecare从这里开始喵",
     "lang": "zh-CN",
     "hash": "70e6923c",
@@ -82,6 +74,15 @@
     "date": "2026-03-10",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
     "urlPath": "articles/zh-CN/70e6923c"
+  },
+  {
+    "title": "关于我",
+    "lang": "zh-CN",
+    "hash": "2f0fd1f2",
+    "tags": [],
+    "date": "2026-03-10",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
+    "urlPath": "articles/zh-CN/2f0fd1f2"
   },
   {
     "title": "markdown扩展",

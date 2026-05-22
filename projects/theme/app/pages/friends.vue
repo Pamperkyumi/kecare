@@ -3,8 +3,10 @@ import { onMounted, nextTick } from "vue"
 import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
-import heroBg from '~/assets/bg1.jpg'
 import Footer from '~/components/Theme/Sidebar/Footer.vue'
+import bg from '~/assets/bg3.jpg'
+import avatar from '~/assets/avatar.webp'
+import kecreamAvatar from '~/assets/kecream.avif'
 
 useHead({
     title: '友链喵',
@@ -19,9 +21,9 @@ type FriendLink = {
 
 const siteInfo: FriendLink = {
     name: '避难所呜呜呜',
-    url: 'https://kecare.kecream.cn',
+    url: 'https://kecare.me',
     desc: '小咸鱼小咸鱼小咸鱼',
-    image: 'http://pichost.cloud/files/590783c0506243ffea1fea8981b5850a8e86f02a8bc4f49441e4f0312d1034ff.webp'
+    image: avatar,
 }
 
 const friendLinks: FriendLink[] = [
@@ -29,7 +31,7 @@ const friendLinks: FriendLink[] = [
         name: '可莉姆船长',
         url: 'https://kecream.cn',
         desc: '关注可莉姆船长谢谢喵',
-        image: 'https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif'
+        image: kecreamAvatar,
     },
 ]
 
@@ -53,8 +55,7 @@ onMounted(async () => {
         class="min-h-screen flex flex-col font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif] leading-[1.6] text-[var(--color-text-primary)] bg-[var(--color-bg-secondary)] select-none">
         <div
             class="relative h-[40vh] min-h-[300px] overflow-hidden flex flex-col items-center justify-center text-center mt-[60px]">
-            <div class="absolute inset-0 bg-center bg-cover"
-                :style="{ backgroundImage: `url('http://pichost.cloud/files/d409bed9b5cb6706b27a548332ead440da1bdfa23428561a66d59b753c190ac2.jpg')` }">
+            <div class="absolute inset-0 bg-center bg-cover" :style="{ backgroundImage: `url(${bg})` }">
             </div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
             <h1

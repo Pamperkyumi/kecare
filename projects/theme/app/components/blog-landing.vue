@@ -9,11 +9,13 @@ import Footer from '~/components/Theme/Sidebar/Footer.vue'
 import type { ArticleVariant } from "kecare";
 
 const props = defineProps<{
-    articles: ArticleVariant;
+    articles: ArticleVariant[];
     currentPage?: number;
     totalPages?: number;
     totalArticles?: number;
 }>();
+
+console.log(props.articles)
 
 const page = computed(() => props.currentPage ?? 1);
 const totalPageCount = computed(() => props.totalPages ?? 1);
@@ -154,7 +156,7 @@ onUnmounted(() => {
                             class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
                             {{ article.frontMatter.title }}</div>
                         <div class="text-[var(--color-text-secondary)] leading-[1.5] flex items-center">{{ article.desc
-                        }}
+                            }}
                         </div>
                         <div
                             class="flex justify-between text-[0.85rem] text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-[15px] gap-[10px]">

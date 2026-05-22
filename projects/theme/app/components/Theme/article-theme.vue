@@ -199,7 +199,7 @@ const wordCount = computed(() => {
                         class="post-copyright relative mt-[40px] mb-[10px] p-[20px] border border-[#eee] dark:border-gray-600 rounded-[12px] bg-white/80 dark:bg-gray-700/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[4px] before:h-full before:bg-[#87ceeb] before:rounded-l-[4px]">
                         <div class="post-copyright-author">
                             <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">文章作者:</span>
-                            <span class="post-copyright-info">{{ props.article.author }}</span>
+                            <span class="post-copyright-info">{{ props.article.frontMatter.author }}</span>
                         </div>
                         <div class="post-copyright-type">
                             <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">文章链接:</span>

@@ -68,6 +68,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             desc: rawFrontMatter.desc ?? extraDescFromHtml(rawMarkdown, 120),
             translate: rawFrontMatter.translate ?? ['en-US'], // 翻译数组中的第一个元素，默认为文档自身的语言
             sticky: rawFrontMatter.sticky ?? 0,
+            author: rawFrontMatter.author ?? undefined,
             date: rawFrontMatter.date ?? undefined,
         }
 
@@ -80,6 +81,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         for (const lang of frontMatter.translate) {
             if (typeof lang !== 'string' || !/^[a-z]{2,3}(-[A-Z]{0,3})?$/.test(lang)) throw new Error(`[markdown] ${fsPath} 中的 translate 字段包含无效的语言代码 "${lang}"，期望格式如 "en-US" 或 "zh-CN"`);
         }
+        if (frontMatter.author !== undefined && typeof frontMatter.author !== 'string') throw new Error(`[markdown] ${fsPath} 中的 author 字段必须是字符串`);
         if (typeof frontMatter.sticky !== 'number') throw new Error(`[markdown] ${fsPath} 中的 sticky 字段必须是数字`);
         if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
 

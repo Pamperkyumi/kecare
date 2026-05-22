@@ -24,6 +24,7 @@
         "ja-JP"
       ],
       "sticky": 0,
+      "author": "Pamper",
       "date": "2026-03-06"
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
@@ -51,6 +52,7 @@
         "ja-JP"
       ],
       "sticky": 0,
+      "author": "Pamper",
       "date": "2026-03-05"
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
@@ -78,6 +80,7 @@
         "ja-JP"
       ],
       "sticky": 0,
+      "author": "Pamper",
       "date": "2026-03-04"
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
@@ -105,6 +108,7 @@
         "ja-JP"
       ],
       "sticky": 0,
+      "author": "Pamper",
       "date": "2026-03-03"
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
@@ -137,6 +141,7 @@
         "ja-JP"
       ],
       "sticky": 0,
+      "author": "Pamper",
       "date": "2026-03-02"
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",

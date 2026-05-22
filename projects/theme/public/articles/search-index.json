@@ -10,15 +10,13 @@
       "file": "e5dbc117.zh-CN.json"
     },
     {
-      "title": "主题开发文章页",
+      "title": "markdown扩展",
       "lang": "zh-CN",
-      "hash": "989b9235",
-      "tags": [
-        "主题开发"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/zh-CN/989b9235",
-      "file": "989b9235.zh-CN.json"
+      "hash": "b40d18d1",
+      "tags": [],
+      "date": "2026-03-09",
+      "urlPath": "articles/zh-CN/b40d18d1",
+      "file": "b40d18d1.zh-CN.json"
     },
     {
       "title": "Github pages",
@@ -30,15 +28,6 @@
       "file": "39f6b230.zh-CN.json"
     },
     {
-      "title": "关于我",
-      "lang": "zh-CN",
-      "hash": "2f0fd1f2",
-      "tags": [],
-      "date": "2026-03-10",
-      "urlPath": "articles/zh-CN/2f0fd1f2",
-      "file": "2f0fd1f2.zh-CN.json"
-    },
-    {
       "title": "Kecare从这里开始喵",
       "lang": "zh-CN",
       "hash": "70e6923c",
@@ -48,22 +37,25 @@
       "file": "70e6923c.zh-CN.json"
     },
     {
-      "title": "markdown扩展",
+      "title": "关于我",
       "lang": "zh-CN",
-      "hash": "b40d18d1",
+      "hash": "2f0fd1f2",
       "tags": [],
-      "date": "2026-03-09",
-      "urlPath": "articles/zh-CN/b40d18d1",
-      "file": "b40d18d1.zh-CN.json"
+      "date": "2026-03-10",
+      "urlPath": "articles/zh-CN/2f0fd1f2",
+      "file": "2f0fd1f2.zh-CN.json"
     },
     {
-      "title": "生成器CLI",
+      "title": "主题开发归档页",
       "lang": "zh-CN",
-      "hash": "fddd58bb",
-      "tags": [],
-      "date": "2026-03-05",
-      "urlPath": "articles/zh-CN/fddd58bb",
-      "file": "fddd58bb.zh-CN.json"
+      "hash": "93b7f9a7",
+      "tags": [
+        "主题开发",
+        "归档页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/zh-CN/93b7f9a7",
+      "file": "93b7f9a7.zh-CN.json"
     },
     {
       "title": "主题开发落地页",
@@ -77,6 +69,18 @@
       "date": "2026-03-21",
       "urlPath": "articles/zh-CN/e52553ad",
       "file": "e52553ad.zh-CN.json"
+    },
+    {
+      "title": "主题开发文章页",
+      "lang": "zh-CN",
+      "hash": "989b9235",
+      "tags": [
+        "主题开发",
+        "文章页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/zh-CN/989b9235",
+      "file": "989b9235.zh-CN.json"
     },
     {
       "title": "写作",
@@ -97,15 +101,6 @@
       "file": "493f5fa2.zh-CN.json"
     },
     {
-      "title": "在已有项目上使用kecare",
-      "lang": "zh-CN",
-      "hash": "95140e73",
-      "tags": [],
-      "date": "2026-03-11",
-      "urlPath": "articles/zh-CN/95140e73",
-      "file": "95140e73.zh-CN.json"
-    },
-    {
       "title": "快速开始",
       "lang": "zh-CN",
       "hash": "95bb100b",
@@ -115,16 +110,13 @@
       "file": "95bb100b.zh-CN.json"
     },
     {
-      "title": "主题开发归档页",
+      "title": "在已有项目上使用kecare",
       "lang": "zh-CN",
-      "hash": "93b7f9a7",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/zh-CN/93b7f9a7",
-      "file": "93b7f9a7.zh-CN.json"
+      "hash": "95140e73",
+      "tags": [],
+      "date": "2026-03-11",
+      "urlPath": "articles/zh-CN/95140e73",
+      "file": "95140e73.zh-CN.json"
     },
     {
       "title": "菜单系统",
@@ -141,71 +133,13 @@
       "file": "4ee23999.zh-CN.json"
     },
     {
-      "title": "markdown extension",
-      "lang": "en-US",
-      "hash": "b40d18d1",
-      "tags": [],
-      "date": "2026-03-09",
-      "urlPath": "articles/en-US/b40d18d1",
-      "file": "b40d18d1.en-US.json"
-    },
-    {
-      "title": "Topic Development Landing Page",
-      "lang": "en-US",
-      "hash": "e52553ad",
-      "tags": [
-        "主题开发",
-        "落地页",
-        "列表页"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/en-US/e52553ad",
-      "file": "e52553ad.en-US.json"
-    },
-    {
-      "title": "Github pages",
-      "lang": "en-US",
-      "hash": "39f6b230",
-      "tags": [],
-      "date": "2026-03-08",
-      "urlPath": "articles/en-US/39f6b230",
-      "file": "39f6b230.en-US.json"
-    },
-    {
-      "title": "About Me",
-      "lang": "en-US",
-      "hash": "2f0fd1f2",
-      "tags": [],
-      "date": "2026-03-10",
-      "urlPath": "articles/en-US/2f0fd1f2",
-      "file": "2f0fd1f2.en-US.json"
-    },
-    {
-      "title": "CLI Generator",
-      "lang": "en-US",
+      "title": "生成器CLI",
+      "lang": "zh-CN",
       "hash": "fddd58bb",
       "tags": [],
       "date": "2026-03-05",
-      "urlPath": "articles/en-US/fddd58bb",
-      "file": "fddd58bb.en-US.json"
-    },
-    {
-      "title": "Kecare starts here meow.",
-      "lang": "en-US",
-      "hash": "70e6923c",
-      "tags": [],
-      "date": "2026-03-10",
-      "urlPath": "articles/en-US/70e6923c",
-      "file": "70e6923c.en-US.json"
-    },
-    {
-      "title": "Preface to Theme Development",
-      "lang": "en-US",
-      "hash": "e5dbc117",
-      "tags": [],
-      "date": "2026-03-21",
-      "urlPath": "articles/en-US/e5dbc117",
-      "file": "e5dbc117.en-US.json"
+      "urlPath": "articles/zh-CN/fddd58bb",
+      "file": "fddd58bb.zh-CN.json"
     },
     {
       "title": "Theme Development Archive Page",
@@ -220,51 +154,22 @@
       "file": "93b7f9a7.en-US.json"
     },
     {
-      "title": "Using kecare on an existing project",
+      "title": "Generator CLI",
       "lang": "en-US",
-      "hash": "95140e73",
+      "hash": "fddd58bb",
       "tags": [],
-      "date": "2026-03-11",
-      "urlPath": "articles/en-US/95140e73",
-      "file": "95140e73.en-US.json"
+      "date": "2026-03-05",
+      "urlPath": "articles/en-US/fddd58bb",
+      "file": "fddd58bb.en-US.json"
     },
     {
-      "title": "Theme Development Article Page",
+      "title": "Kecare starts here meow",
       "lang": "en-US",
-      "hash": "989b9235",
-      "tags": [
-        "主题开发"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/en-US/989b9235",
-      "file": "989b9235.en-US.json"
-    },
-    {
-      "title": "Writing",
-      "lang": "en-US",
-      "hash": "6e8c5f0b",
+      "hash": "70e6923c",
       "tags": [],
-      "date": "2026-03-06",
-      "urlPath": "articles/en-US/6e8c5f0b",
-      "file": "6e8c5f0b.en-US.json"
-    },
-    {
-      "title": "Quick Start",
-      "lang": "en-US",
-      "hash": "95bb100b",
-      "tags": [],
-      "date": "2026-03-04",
-      "urlPath": "articles/en-US/95bb100b",
-      "file": "95bb100b.en-US.json"
-    },
-    {
-      "title": "Internationalization handling",
-      "lang": "en-US",
-      "hash": "493f5fa2",
-      "tags": [],
-      "date": "2026-03-03",
-      "urlPath": "articles/en-US/493f5fa2",
-      "file": "493f5fa2.en-US.json"
+      "date": "2026-03-10",
+      "urlPath": "articles/en-US/70e6923c",
+      "file": "70e6923c.en-US.json"
     },
     {
       "title": "Menu System",
@@ -281,22 +186,74 @@
       "file": "4ee23999.en-US.json"
     },
     {
-      "title": "CLI ジェネレーター",
-      "lang": "ja-JP",
-      "hash": "fddd58bb",
+      "title": "Using kecare on an existing project",
+      "lang": "en-US",
+      "hash": "95140e73",
       "tags": [],
-      "date": "2026-03-05",
-      "urlPath": "articles/ja-JP/fddd58bb",
-      "file": "fddd58bb.ja-JP.json"
+      "date": "2026-03-11",
+      "urlPath": "articles/en-US/95140e73",
+      "file": "95140e73.en-US.json"
     },
     {
-      "title": "テーマ開発の序文",
-      "lang": "ja-JP",
+      "title": "Writing",
+      "lang": "en-US",
+      "hash": "6e8c5f0b",
+      "tags": [],
+      "date": "2026-03-06",
+      "urlPath": "articles/en-US/6e8c5f0b",
+      "file": "6e8c5f0b.en-US.json"
+    },
+    {
+      "title": "Preface to Theme Development",
+      "lang": "en-US",
       "hash": "e5dbc117",
       "tags": [],
       "date": "2026-03-21",
-      "urlPath": "articles/ja-JP/e5dbc117",
-      "file": "e5dbc117.ja-JP.json"
+      "urlPath": "articles/en-US/e5dbc117",
+      "file": "e5dbc117.en-US.json"
+    },
+    {
+      "title": "Theme Development Landing Page",
+      "lang": "en-US",
+      "hash": "e52553ad",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/en-US/e52553ad",
+      "file": "e52553ad.en-US.json"
+    },
+    {
+      "title": "Theme Development Article Page",
+      "lang": "en-US",
+      "hash": "989b9235",
+      "tags": [
+        "主题开发",
+        "文章页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/en-US/989b9235",
+      "file": "989b9235.en-US.json"
+    },
+    {
+      "title": "Internationalization handling",
+      "lang": "en-US",
+      "hash": "493f5fa2",
+      "tags": [],
+      "date": "2026-03-03",
+      "urlPath": "articles/en-US/493f5fa2",
+      "file": "493f5fa2.en-US.json"
+    },
+    {
+      "title": "GitHub Pages",
+      "lang": "en-US",
+      "hash": "39f6b230",
+      "tags": [],
+      "date": "2026-03-08",
+      "urlPath": "articles/en-US/39f6b230",
+      "file": "39f6b230.en-US.json"
     },
     {
       "title": "テーマ開発アーカイブページ",
@@ -311,31 +268,13 @@
       "file": "93b7f9a7.ja-JP.json"
     },
     {
-      "title": "私について",
-      "lang": "ja-JP",
-      "hash": "2f0fd1f2",
-      "tags": [],
-      "date": "2026-03-10",
-      "urlPath": "articles/ja-JP/2f0fd1f2",
-      "file": "2f0fd1f2.ja-JP.json"
-    },
-    {
-      "title": "マークダウン拡張",
-      "lang": "ja-JP",
+      "title": "Markdown Extension",
+      "lang": "en-US",
       "hash": "b40d18d1",
       "tags": [],
       "date": "2026-03-09",
-      "urlPath": "articles/ja-JP/b40d18d1",
-      "file": "b40d18d1.ja-JP.json"
-    },
-    {
-      "title": "既存のプロジェクトでkecareを使用する",
-      "lang": "ja-JP",
-      "hash": "95140e73",
-      "tags": [],
-      "date": "2026-03-11",
-      "urlPath": "articles/ja-JP/95140e73",
-      "file": "95140e73.ja-JP.json"
+      "urlPath": "articles/en-US/b40d18d1",
+      "file": "b40d18d1.en-US.json"
     },
     {
       "title": "写作",
@@ -345,57 +284,6 @@
       "date": "2026-03-06",
       "urlPath": "articles/ja-JP/6e8c5f0b",
       "file": "6e8c5f0b.ja-JP.json"
-    },
-    {
-      "title": "テーマ開発記事ページ",
-      "lang": "ja-JP",
-      "hash": "989b9235",
-      "tags": [
-        "主题开发"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/ja-JP/989b9235",
-      "file": "989b9235.ja-JP.json"
-    },
-    {
-      "title": "クイックスタート",
-      "lang": "ja-JP",
-      "hash": "95bb100b",
-      "tags": [],
-      "date": "2026-03-04",
-      "urlPath": "articles/ja-JP/95bb100b",
-      "file": "95bb100b.ja-JP.json"
-    },
-    {
-      "title": "テーマ開発ランディングページ",
-      "lang": "ja-JP",
-      "hash": "e52553ad",
-      "tags": [
-        "主题开发",
-        "落地页",
-        "列表页"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/ja-JP/e52553ad",
-      "file": "e52553ad.ja-JP.json"
-    },
-    {
-      "title": "Github pages",
-      "lang": "ja-JP",
-      "hash": "39f6b230",
-      "tags": [],
-      "date": "2026-03-08",
-      "urlPath": "articles/ja-JP/39f6b230",
-      "file": "39f6b230.ja-JP.json"
-    },
-    {
-      "title": "Kecareはここから始まるにゃ",
-      "lang": "ja-JP",
-      "hash": "70e6923c",
-      "tags": [],
-      "date": "2026-03-10",
-      "urlPath": "articles/ja-JP/70e6923c",
-      "file": "70e6923c.ja-JP.json"
     },
     {
       "title": "メニューシステム",
@@ -412,13 +300,128 @@
       "file": "4ee23999.ja-JP.json"
     },
     {
-      "title": "抱歉，根据您的要求，需要先提供需要翻译的原文内容。请您补充以下信息：\n\n1. **待翻译的文章或句子**（请直接粘贴需要翻译为日语的文本）\n2. 若包含HTML/代码块请标注清楚\n\n当前您只给出了\"国际化处理\"这一短语，是否需要直接翻译此短语？",
+      "title": "テーマ開発の序文",
+      "lang": "ja-JP",
+      "hash": "e5dbc117",
+      "tags": [],
+      "date": "2026-03-21",
+      "urlPath": "articles/ja-JP/e5dbc117",
+      "file": "e5dbc117.ja-JP.json"
+    },
+    {
+      "title": "```html\n<p>テーマ開発 記事ページ</p>\n```",
+      "lang": "ja-JP",
+      "hash": "989b9235",
+      "tags": [
+        "主题开发",
+        "文章页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/ja-JP/989b9235",
+      "file": "989b9235.ja-JP.json"
+    },
+    {
+      "title": "Kecareはここから始まるにゃ",
+      "lang": "ja-JP",
+      "hash": "70e6923c",
+      "tags": [],
+      "date": "2026-03-10",
+      "urlPath": "articles/ja-JP/70e6923c",
+      "file": "70e6923c.ja-JP.json"
+    },
+    {
+      "title": "ジェネレーターCLI",
+      "lang": "ja-JP",
+      "hash": "fddd58bb",
+      "tags": [],
+      "date": "2026-03-05",
+      "urlPath": "articles/ja-JP/fddd58bb",
+      "file": "fddd58bb.ja-JP.json"
+    },
+    {
+      "title": "国際化処理",
       "lang": "ja-JP",
       "hash": "493f5fa2",
       "tags": [],
       "date": "2026-03-03",
       "urlPath": "articles/ja-JP/493f5fa2",
       "file": "493f5fa2.ja-JP.json"
+    },
+    {
+      "title": "Quick Start",
+      "lang": "en-US",
+      "hash": "95bb100b",
+      "tags": [],
+      "date": "2026-03-04",
+      "urlPath": "articles/en-US/95bb100b",
+      "file": "95bb100b.en-US.json"
+    },
+    {
+      "title": "テーマ開発ランディングページ",
+      "lang": "ja-JP",
+      "hash": "e52553ad",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/ja-JP/e52553ad",
+      "file": "e52553ad.ja-JP.json"
+    },
+    {
+      "title": "About Me",
+      "lang": "en-US",
+      "hash": "2f0fd1f2",
+      "tags": [],
+      "date": "2026-03-10",
+      "urlPath": "articles/en-US/2f0fd1f2",
+      "file": "2f0fd1f2.en-US.json"
+    },
+    {
+      "title": "既存プロジェクトでkecareを使用する",
+      "lang": "ja-JP",
+      "hash": "95140e73",
+      "tags": [],
+      "date": "2026-03-11",
+      "urlPath": "articles/ja-JP/95140e73",
+      "file": "95140e73.ja-JP.json"
+    },
+    {
+      "title": "Github ページ",
+      "lang": "ja-JP",
+      "hash": "39f6b230",
+      "tags": [],
+      "date": "2026-03-08",
+      "urlPath": "articles/ja-JP/39f6b230",
+      "file": "39f6b230.ja-JP.json"
+    },
+    {
+      "title": "私について",
+      "lang": "ja-JP",
+      "hash": "2f0fd1f2",
+      "tags": [],
+      "date": "2026-03-10",
+      "urlPath": "articles/ja-JP/2f0fd1f2",
+      "file": "2f0fd1f2.ja-JP.json"
+    },
+    {
+      "title": "クイックスタート",
+      "lang": "ja-JP",
+      "hash": "95bb100b",
+      "tags": [],
+      "date": "2026-03-04",
+      "urlPath": "articles/ja-JP/95bb100b",
+      "file": "95bb100b.ja-JP.json"
+    },
+    {
+      "title": "申し訳ありませんが、「markdown拡張」という用語についての説明や翻訳が必要でしたら、具体的な内容をご提供いただけますでしょうか。または、マークダウン拡張機能に関する一般的な日本語訳が必要でしたら、以下のようになります：\n\nMarkdownの拡張機能 / Markdown拡張\n\nもし特定の記事や文章の翻訳が必要でしたら、全文をお送りください。",
+      "lang": "ja-JP",
+      "hash": "b40d18d1",
+      "tags": [],
+      "date": "2026-03-09",
+      "urlPath": "articles/ja-JP/b40d18d1",
+      "file": "b40d18d1.ja-JP.json"
     },
     {
       "title": "贡献指南",
@@ -458,7 +461,7 @@
       "file": "43fc313b.en-US.json"
     },
     {
-      "title": "コントリビューションガイド",
+      "title": "## コントリビューションガイド",
       "lang": "ja-JP",
       "hash": "43fc313b",
       "tags": [

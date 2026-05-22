@@ -29,6 +29,7 @@
         "ja-JP"
       ],
       "sticky": 0,
+      "author": "Pamper",
       "date": "2026-03-01"
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",

@@ -38,6 +38,7 @@ export type FrontMatter = {
     tags: Array<string>;
     translate: Array<string>;
     sticky: number;
+    author: string | undefined;
 };
 
 // 生成文章详情
