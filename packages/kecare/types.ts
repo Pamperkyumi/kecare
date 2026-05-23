@@ -1,10 +1,12 @@
 export type KecareConfig = {
     // 字段你可以自己写..
     llm: {
+        provider: 'OpenAI' | 'Anthropic';
         model: string;
         apiKey: string;
         apiBaseUrl: string;
         prompt: string;
+        max_tokens?: number;
     }
 }
 

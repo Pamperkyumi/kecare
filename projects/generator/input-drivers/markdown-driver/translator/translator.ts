@@ -5,26 +5,46 @@ import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 import OpenAI from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
 
 export async function translator(options: TranslationConfigOptions): Promise<[string, string]> {
+
     const { llm, text, title, lang, KecareContext } = options;
-    const { apiKey, apiBaseUrl, model, prompt } = llm;
+    const { apiKey, apiBaseUrl, model, prompt, provider, max_tokens } = llm;
 
     if (!lang) {
         consola.warn(`${lang}.trans.ts is not provided, skipping translation`);
         process.exit(1);
     }
 
-    const openaiClient = new OpenAI({
-        baseURL: apiBaseUrl,
-        apiKey,
-    });
+    if (!['OpenAI', 'Anthropic'].includes(provider)) {
+        consola.warn(`Provider ${provider} is not supported. Only OpenAI and Anthropic are supported.`);
+        process.exit(1);
+    }
+    let openaiClient: OpenAI | null = null;
+    let anthropicClient: Anthropic | null = null;
+
+    if (provider === 'OpenAI') {
+        openaiClient = new OpenAI({
+            baseURL: apiBaseUrl,
+            apiKey,
+        });
+    } else if (provider === 'Anthropic') {
+        anthropicClient = new Anthropic({
+            baseURL: apiBaseUrl,
+            apiKey,
+        });
+    }
 
     const Prompt = `你是一个很好用的翻译助手，请帮我将下面的文章翻译成${lang}，注意：千万不要增删任何 HTML标签/属性和markdown标签/属性,你如果看到markdown标签，如果是代码块的内容，请不要翻译，只翻译文本节点,如果是代码内容，请不要翻译，原样放回。保留链接 href、图片 src、id、class 不动。注意：代码块占位符（如 __CODE_BLOCK_0__）不要翻译，原样保留。`
     const systemPrompt = Prompt + prompt
 
     let translatedTitle = title || "";
 
+
+    // =========================
+    // 1) Translate Title 
+    // =========================
     if (!title || title.trim().length === 0) {
         // consola.warn("Empty title provided for translation");
         translatedTitle = title || "";
@@ -42,26 +62,54 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
             }
         );
 
-        try {
-            const completion = await openaiClient.chat.completions.create({
-                messages: [
-                    { role: "system", content: systemPrompt },
-                    { role: "user", content: titleWithPlaceholders },
-                ],
-                model: model || "deepseek-chat",
-            });
 
-            translatedTitle = completion.choices[0]?.message.content || titleWithPlaceholders;
+        if (provider === 'OpenAI') {
+            try {
+                const completion = await openaiClient!.chat.completions.create({
+                    messages: [
+                        { role: "system", content: systemPrompt },
+                        { role: "user", content: titleWithPlaceholders },
+                    ],
+                    model: model || "deepseek-v4-flash",
+                });
 
-            // Restore title code blocks
-            for (const block of titleCodeBlocks) {
-                translatedTitle = translatedTitle.replace(block.id, block.content);
+                translatedTitle = completion.choices[0]?.message.content || titleWithPlaceholders;
+
+                // Restore title code blocks
+                for (const block of titleCodeBlocks) {
+                    translatedTitle = translatedTitle.replace(block.id, block.content);
+                }
+            } catch (error) {
+                consola.error("Translation failed (title):", error);
+                translatedTitle = title;
             }
-        } catch (error) {
-            consola.error("Translation failed (title):", error);
-            translatedTitle = title;
+        } else if (provider === 'Anthropic') {
+            try {
+                const completion = await anthropicClient!.messages.create({
+                    model: model || "deepseek-v4-flash",
+                    max_tokens: max_tokens || 1024,
+                    system: systemPrompt,
+                    messages: [
+                        { role: "user", content: titleWithPlaceholders },
+                    ],
+                });
+
+                const firstBlock = completion.content[0];
+
+                translatedTitle = firstBlock?.type === 'text' ? firstBlock.text : titleWithPlaceholders;
+
+                // Restore title code blocks
+                for (const block of titleCodeBlocks) {
+                    translatedTitle = translatedTitle.replace(block.id, block.content);
+                }
+            } catch (error) {
+                consola.error("Translation failed (title):", error);
+                translatedTitle = title;
+            }
         }
     }
+
+
 
     // =========================
     // 2) Translate Content 
@@ -121,24 +169,45 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
 
         // consola.info(`Translating content part ${index + 1}/${parts.length}`);
 
-        try {
-            // Inline translateText(part)
-            const completion = await openaiClient.chat.completions.create({
-                messages: [
-                    { role: "system", content: systemPrompt! },
-                    { role: "user", content: part },
-                ],
-                model: model
-            });
+        if (provider === 'OpenAI') {
+            try {
+                // Inline translateText(part)
+                const completion = await openaiClient!.chat.completions.create({
+                    messages: [
+                        { role: "system", content: systemPrompt! },
+                        { role: "user", content: part },
+                    ],
+                    model: model || "deepseek-v4-flash",
+                });
 
-            const translatedPart = completion.choices[0]?.message.content || part;
+                const translatedPart = completion.choices[0]?.message.content || part;
 
-            allTranslationTemp[partHash] = translatedPart;
-            translatedParts.push(translatedPart);
-        } catch (error) {
-            consola.error(`Failed to translate part ${index + 1}:`, error);
-            translatedParts.push(part);
-            allTranslationTemp[partHash] = part;
+                allTranslationTemp[partHash] = translatedPart;
+                translatedParts.push(translatedPart);
+            } catch (error) {
+                consola.error(`Failed to translate part ${index + 1}:`, error);
+                translatedParts.push(part);
+                allTranslationTemp[partHash] = part;
+            }
+        } else if (provider === 'Anthropic') {
+            try {
+                const completion = await anthropicClient!.messages.create({
+                    model: model || "deepseek-v4-flash",
+                    max_tokens: max_tokens || 1024,
+                    system: systemPrompt,
+                    messages: [
+                        { role: "user", content: part },
+                    ],
+                });
+                const firstBlock = completion.content[0];
+                const translatedPart = firstBlock?.type === 'text' ? firstBlock.text : part;
+                allTranslationTemp[partHash] = translatedPart;
+                translatedParts.push(translatedPart);
+            } catch (error) {
+                consola.error(`Failed to translate part ${index + 1}:`, error);
+                translatedParts.push(part);
+                allTranslationTemp[partHash] = part;
+            }
         }
     }
 
@@ -156,6 +225,6 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
         translatedContent = translatedContent.replace(block.id, block.content);
     }
 
+
     return [translatedTitle, translatedContent];
 }
-

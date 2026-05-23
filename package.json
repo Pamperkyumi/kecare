@@ -15,6 +15,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.98.0",
     "@milkio/astra": "1.0.0-beta.205",
     "@milkio/cookbook-command": "1.0.0-beta.205",
     "@milkio/redis": "1.0.0-beta.205",
@@ -23,6 +24,7 @@
     "@milkio/vite-plugin-milkio": "1.0.0-beta.205",
     "@types/node": "^25.2.2",
     "@vueuse/core": "^14.2.1",
+    "anthropic": "^0.0.0",
     "consola": "^3.4.2",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",

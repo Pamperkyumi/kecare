@@ -1,4 +1,4 @@
-<!-- Generated: 2026-05-22T17:20:06.685Z -->
+<!-- Generated: 2026-05-23T13:46:13.819Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -10,6 +10,18 @@
     "date": "2026-05-20",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f2bcc5d.vue",
     "urlPath": "articles/zh-CN/5f2bcc5d"
+  },
+  {
+    "title": "主题开发文章页",
+    "lang": "zh-CN",
+    "hash": "989b9235",
+    "tags": [
+      "主题开发",
+      "文章页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "title": "主题开发前言",
@@ -44,18 +56,6 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
-  },
-  {
-    "title": "主题开发文章页",
-    "lang": "zh-CN",
-    "hash": "989b9235",
-    "tags": [
-      "主题开发",
-      "文章页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "title": "在已有项目上使用kecare",
