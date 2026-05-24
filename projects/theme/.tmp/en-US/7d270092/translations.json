@@ -107,5 +107,6 @@
   "18f36207": "In the `.kecare` directory, create a new `kecare.config.ts` file.",
   "2dd3bae3": "Then configure LLM in `.kecare/kecare.config.ts`:",
   "44b4303f": "The translation results are cached in the `.kecare/.tmp` directory, and only modified parts will be translated during the next build to maximize token cost savings.",
-  "8327a5bf": "To clear the cache, simply delete the `.tmp` directory."
+  "8327a5bf": "To clear the cache, simply delete the `.tmp` directory.",
+  "e744ecf0": "Supports any service compatible with OpenAI API and Anthropic API formats."
 }
