@@ -1,35 +1,36 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 
-const navItems = [
-    { label: '首页', href: '#home' },
-    { label: '特性', href: '#features' },
-    { label: '生态', href: '#ecosystem' },
-    { label: '开始使用', href: '#start' },
-]
-
 let observer: IntersectionObserver | null = null
 
+// 创建 IntersectionObserver，监听元素是否滚动进入可视区域
 onMounted(() => {
     observer = new IntersectionObserver(
+        // 当被观察的元素与视口交叉时触发
         (entries) => {
             for (const entry of entries) {
+                // 元素进入可视区域
                 if (entry.isIntersecting) {
+                    // 读取 data-delay 属性，控制动画的延迟时间（每单位 0.1 秒）
                     const delay = entry.target.getAttribute('data-delay')
                     if (delay) {
-                        ; (entry.target as HTMLElement).style.transitionDelay = `${parseInt(delay) * 0.1}s`
+                        ; (entry.target as HTMLElement).style.transitionDelay = `${parseInt(delay) * 0.2}s
+`
                     }
+                    // 添加 reveal-up class 触发向上渐入动画
                     entry.target.classList.add('reveal-up')
+                    // 动画只需要触发一次，触发后停止观察该元素
                     observer?.unobserve(entry.target)
                 }
             }
         },
         {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1, // 元素 10% 可见时触发
+            rootMargin: '0px 0px -50px 0px', // 底部提前 50px 触发，让动画更早开始
         }
     )
 
+    // 选中所有带有 scroll-reveal class 的元素并开始观察
     const elements = document.querySelectorAll('.scroll-reveal')
     for (const el of elements) {
         observer.observe(el)
@@ -120,23 +121,6 @@ const ecosystemCards = [
         <div class="landing-glow landing-glow-left"></div>
         <div class="landing-glow landing-glow-right"></div>
 
-        <header class="site-header">
-            <div class="container nav-shell">
-                <NuxtLink class="brand" to="#">
-                    <span class="brand-text">Kecare</span>
-                </NuxtLink>
-
-                <nav class="nav-menu">
-                    <NuxtLink v-for="item in navItems" :key="item.href" to="#">{{ item.label }}</NuxtLink>
-                </nav>
-
-                <div class="nav-actions">
-                    <NuxtLink class="ghost-button" to="#">查看模板</NuxtLink>
-                    <NuxtLink class="solid-button" to="#">立即开始</NuxtLink>
-                </div>
-            </div>
-        </header>
-
         <main>
             <section id="home" class="hero-section">
                 <div class="container hero-grid">
@@ -153,7 +137,8 @@ const ecosystemCards = [
                         </p>
 
                         <div class="hero-actions">
-                            <NuxtLink class="solid-button hero-main-button" href="#start">开始构建页面</NuxtLink>
+                            <NuxtLink class="solid-button hero-main-button" to="https://kecare.me/" target="_blank"
+                                rel="noopener noreferrer">开始构建页面</NuxtLink>
                             <NuxtLink class="ghost-button hero-sub-button" to="https://github.com/Pamperkyumi/kecare"
                                 target="_blank" rel="noopener noreferrer">
                                 Github</NuxtLink>
@@ -290,8 +275,10 @@ const ecosystemCards = [
                         </div>
 
                         <div class="cta-actions">
-                            <NuxtLink class="solid-button" to="#" target="_blank" rel="noreferrer">GitHub</NuxtLink>
-                            <NuxtLink class="ghost-button" to="#">查看文档</NuxtLink>
+                            <NuxtLink class="solid-button" to="https://github.com/Pamperkyumi/kecare" target="_blank"
+                                rel="noreferrer">GitHub</NuxtLink>
+                            <NuxtLink class="ghost-button" to="https://kecare.me/" target="_blank"
+                                rel="noopener noreferrer">查看文档</NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -304,7 +291,8 @@ const ecosystemCards = [
                     <div class="footer-brand">Kecare</div>
                     <span>&copy;2020-{{ new Date().getFullYear() }} Kecare. All rights reserved.</span>
                     <span>Powered
-                        by <NuxtLink to="#" target="_blank" rel="noopener noreferrer">Kecare</NuxtLink></span>
+                        by <NuxtLink to="https://kecare.me/" target="_blank" rel="noopener noreferrer">Kecare</NuxtLink>
+                    </span>
                 </div>
                 <div class="footer-links">
                     <NuxtLink to="#">首页</NuxtLink>
@@ -349,65 +337,14 @@ const ecosystemCards = [
     margin: 0 auto;
 }
 
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    padding: 16px 24px;
-    background: rgba(9, 9, 14, 0.72);
-    backdrop-filter: blur(22px);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.14);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
-}
-
-.nav-shell {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff4fa;
-    font-weight: 800;
-    text-decoration: none;
-}
-
-.brand-text {
-    font-size: 1.3rem;
-    letter-spacing: 0.02em;
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-.nav-menu a,
 .footer-links a {
     color: #b9acb8;
     text-decoration: none;
     transition: color 0.25s ease, opacity 0.25s ease;
 }
 
-.nav-menu a:hover,
 .footer-links a:hover {
     color: #38bdf8;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .solid-button,
@@ -804,21 +741,6 @@ const ecosystemCards = [
 }
 
 @media (max-width: 820px) {
-    .site-header {
-        position: fixed;
-    }
-
-    .nav-shell {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-menu,
-    .nav-actions {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
 
     .hero-section {
         padding-top: 28px;

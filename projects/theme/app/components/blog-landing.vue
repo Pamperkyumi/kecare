@@ -7,6 +7,8 @@ import AuthorCard from '~/components/Theme/Sidebar/author-card.vue'
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
 import Footer from '~/components/Theme/Sidebar/Footer.vue'
 import type { ArticleVariant } from "kecare";
+import SakanaWidget from "sakana-widget";
+import kecreamavif from '~/assets/kecream.avif'
 
 const props = defineProps<{
     articles: ArticleVariant[];
@@ -59,24 +61,24 @@ const paginationItems = computed(() => {
 
 
 // kecream~
-// function initSakanaWidget() {
-//     const kecream = SakanaWidget.getCharacter('chisato');
-//     if (kecream) {
-//         kecream.image = `https://pichost.cloud/files/a585d06168c8553f42b086a6fec51075273913c2092c65b59858e47352b4fc79.avif`;
-//         SakanaWidget.registerCharacter('kecream', kecream);
-//     }
-//     new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
-// }
-// onMounted(async () => {
-//     await nextTick();
-//     initSakanaWidget();
-// });
+function initSakanaWidget() {
+    const kecream = SakanaWidget.getCharacter('chisato');
+    if (kecream) {
+        kecream.image = kecreamavif;
+        SakanaWidget.registerCharacter('kecream', kecream);
+    }
+    new SakanaWidget({ character: 'kecream' }).mount('#sakana-widget');
+}
+onMounted(async () => {
+    await nextTick();
+    initSakanaWidget();
+});
 
 
 const typingTimer = ref<number | null>(null);
 
 // subtitle文字
-const subtitleText = "病弱系小猫女仆,可爱喵,喜欢喵,結婚喵.";
+const subtitleText = "病弱系小猫女仆,可爱喵,喜欢喵,結婚喵,要永远在一起喵!";
 const subtitleElement = ref<HTMLElement | null>(null);
 const typingSpeed = 100;
 
