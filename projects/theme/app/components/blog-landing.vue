@@ -78,7 +78,7 @@ onMounted(async () => {
 const typingTimer = ref<number | null>(null);
 
 // subtitle文字
-const subtitleText = "病弱系小猫女仆,可爱喵,喜欢喵,結婚喵,要永远在一起喵!";
+const subtitleText = "奈绪宝宝,可爱喵,喜欢喵,結婚喵,要永远在一起喵!";
 const subtitleElement = ref<HTMLElement | null>(null);
 const typingSpeed = 100;
 
@@ -156,7 +156,7 @@ onUnmounted(() => {
                             class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
                             {{ article.frontMatter.title }}</div>
                         <div class="text-[var(--color-text-secondary)] leading-[1.5] flex items-center">{{ article.desc
-                        }}
+                            }}
                         </div>
                         <div
                             class="flex justify-between text-[0.85rem] text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-[15px] gap-[10px]">
