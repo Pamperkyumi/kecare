@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, nextTick } from "vue"
+import { computed, onMounted, nextTick, ref } from "vue"
 import SakanaWidget from 'sakana-widget';
 import 'sakana-widget/lib/index.css';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue'
@@ -16,13 +16,17 @@ type YearGroup = {
 const props = defineProps<{
     articles: ArchiveArticleData[];
     totalArticles?: number;
+    totalTags?: number;
 }>();
 
-// 按年份分组文章
+// 按年份分组文章（支持标签筛选）
 const yearGroups = computed<YearGroup[]>(() => {
     const groups: Map<number, ArchiveArticleData[]> = new Map();
 
     for (const article of props.articles ?? []) {
+        // 如果选中了标签，只显示包含该标签的文章
+        if (selectedTag.value && !article.tags.includes(selectedTag.value)) continue;
+
         const year = new Date(article.date).getFullYear();
         if (!groups.has(year)) {
             groups.set(year, []);
@@ -52,6 +56,17 @@ const allTags = computed<string[]>(() => {
     return Array.from(tagSet);
 });
 
+// 当前选中的标签（点击切换）
+const selectedTag = ref<string | null>(null);
+
+function toggleTag(tag: string) {
+    if (selectedTag.value === tag) {
+        selectedTag.value = null; // 再次点击同一标签则取消选择
+    } else {
+        selectedTag.value = tag;
+    }
+}
+
 // // kecream~
 // function initSakanaWidget() {
 //     const kecream = SakanaWidget.getCharacter('chisato');
@@ -64,6 +79,14 @@ const allTags = computed<string[]>(() => {
 
 onMounted(async () => {
     await nextTick();
+    // initSakanaWidget();
+    const route = useRoute();
+    const tagParam = route.query.tag;
+    if (tagParam && typeof tagParam === 'string') {
+        selectedTag.value = decodeURIComponent(tagParam);
+    }
+    console.log('111', tagParam);
+    console.log('222', selectedTag.value);
     // initSakanaWidget();
 });
 
@@ -106,7 +129,7 @@ function formatDate(dateStr: string): string {
                     </h2>
                     <div v-if="allTags.length > 0" class="flex flex-wrap gap-[10px]">
                         <span v-for="tag in allTags" :key="tag"
-                            class="bg-[#87ceeb]/20 text-[#4fc3f7] px-[14px] py-[8px] rounded-full text-[0.9rem] font-medium cursor-pointer transition-all duration-300 hover:bg-[#4fc3f7] hover:text-white hover:-translate-y-[2px]">
+                            :class="['tag-item', { 'tag-active': selectedTag === tag }]" @click="toggleTag(tag)">
                             {{ tag }}
                         </span>
                     </div>
@@ -164,8 +187,8 @@ function formatDate(dateStr: string): string {
             </div>
 
             <!-- 侧边栏 -->
-            <aside class="flex-none w-[300px] max-w-[300px] mt-[210px] h-fit max-[960px]:hidden">
-                <AuthorCard :totalArticles="totalArticles" />
+            <aside class="flex-none w-[300px] max-w-[300px] h-fit max-[960px]:hidden">
+                <AuthorCard :totalArticles="totalArticles" :totalTags="totalTags" />
             </aside>
         </div>
         <Footer />
@@ -176,6 +199,30 @@ function formatDate(dateStr: string): string {
 </template>
 
 <style scoped>
+.tag-item {
+    background-color: rgba(135, 206, 235, 0.2);
+    color: #4fc3f7;
+    padding: 8px 14px;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag-item:hover {
+    background-color: #4fc3f7;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.tag-active {
+    background-color: #4fc3f7;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(79, 195, 247, 0.4);
+}
+
 .article-link {
     transition: all 0.3s ease;
 }

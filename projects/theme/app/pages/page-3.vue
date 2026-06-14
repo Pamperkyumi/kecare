@@ -25,7 +25,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-06"
+      "date": "2026-03-06",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
@@ -53,7 +54,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-05"
+      "date": "2026-03-05",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
@@ -81,7 +83,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-04"
+      "date": "2026-03-04",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
@@ -109,7 +112,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-03"
+      "date": "2026-03-03",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
@@ -142,7 +146,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-02"
+      "date": "2026-03-02",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
@@ -153,9 +158,10 @@
                 const currentPage = 3
                 const totalPages = 4
                 const totalArticles = 16
+                const totalTags = 9
 
                 </script>
                 <template>
-                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" />
+                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" :total-tags="totalTags" />
                 </template>
             

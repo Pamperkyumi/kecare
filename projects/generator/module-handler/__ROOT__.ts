@@ -4,6 +4,7 @@ import { useListModuleHandler } from "./list.ts";
 import { useMenuModuleHandler } from "./menu.ts";
 import { useArchivesModuleHandler } from "./archives.ts";
 import { useSearchModuleHandler } from "./search.ts";
+import { collectArticleData, computeArticleStats } from "./articleStats.ts";
 
 /**
  * 在处理每篇文章时，会调用此方法
@@ -13,12 +14,17 @@ export async function emitArticleHandle(context: KecareContext, article: Article
     await (await useListModuleHandler(context)).handle(article);
     await (await useArchivesModuleHandler(context)).handle(article);
     await (await useSearchModuleHandler(context)).handle(article);
+    // 收集文章元数据，供后续聚合统计使用
+    collectArticleData(article);
 }
 
 /**
  * 在所有处理完成时，会调用此方法
  */
 export async function emitModuleFinish(context: KecareContext) {
+    // 集中计算聚合统计数据，供所有 finish() 处理器使用
+    computeArticleStats(context);
+
     await (await useMenuModuleHandler(context)).finish();
     await (await useListModuleHandler(context)).finish(context);
     await (await useSearchModuleHandler(context)).finish(context);

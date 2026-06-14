@@ -13,6 +13,7 @@ const route = useRoute()
 onMounted(async () => {
     await nextTick();
     await kecareSDK!.mounted(props.article.hash, route.path);
+    console.log(route.path)
 });
 
 const props = defineProps<{
@@ -205,7 +206,7 @@ const wordCount = computed(() => {
                             <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">文章链接:</span>
                             <span class="post-copyright-info"><a class="text-[#3498db] no-underline hover:underline"
                                     :href="`https://www.kecare.me/articles/${props.article.hash} `" targe="_blank"
-                                    rel="noopener noreferrer">kecare.me/articles/{{ props.article.hash }}</a></span>
+                                    rel="noopener noreferrer">kecare.me{{ route.path }}</a></span>
                         </div>
                         <div class="post-copyright-notice">
                             <span class="post-copyright-meta text-[#4fc3f7] font-bold mr-[8px]">版权声明:</span>
@@ -221,14 +222,12 @@ const wordCount = computed(() => {
                     <div
                         class="tags-shares flex justify-between items-center my-[30px] w-full max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-[20px]">
                         <div class="post-tag-list flex flex-wrap gap-[10px]">
-                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
-                                href="#">喵</a>
-                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
-                                href="#">喵喵</a>
-                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
-                                href="#">喵喵喵</a>
-                            <a class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem]"
-                                href="#">喵喵喵喵</a>
+                            <span v-if="props.article.frontMatter.tags.length === 0">作者很懒，本文没有添加标签喵~ </span>
+                            <NuxtLink v-else v-for="tag in props.article.frontMatter.tags" :key="tag"
+                                :to="'/archives?tag=' + encodeURIComponent(tag)"
+                                class="post-tag bg-[#87ceeb] text-white px-[12px] py-[6px] rounded-full no-underline text-[0.9rem] hover:bg-[#4fc3f7] transition-colors duration-300">
+                                {{ tag }}
+                            </NuxtLink>
                         </div>
                     </div>
                     <hr

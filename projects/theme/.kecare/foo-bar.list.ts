@@ -26,9 +26,7 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
         return parseDateString(b.frontMatter.date).getTime() - parseDateString(a.frontMatter.date).getTime();
     });
 
-    const totalArticles = zhArticles.length;
     const totalPages = Math.ceil(zhArticles.length / ARTICLES_PER_PAGE);
-
     for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
         const startIndex = pageIndex * ARTICLES_PER_PAGE;
         const endIndex = startIndex + ARTICLES_PER_PAGE;
@@ -47,11 +45,12 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
                 const articles = ${JSON.stringify(pageArticles, null, 2)}
                 const currentPage = ${pageNumber}
                 const totalPages = ${totalPages}
-                const totalArticles = ${totalArticles}
+                const totalArticles = ${zhArticles.length}
+                const totalTags = ${context.articleStats?.allTags?.length ?? 0}
 
                 </script>
                 <template>
-                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" />
+                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" :total-tags="totalTags" />
                 </template>
             `,
         });

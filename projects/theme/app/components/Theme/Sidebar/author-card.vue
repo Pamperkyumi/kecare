@@ -2,6 +2,7 @@
 
 const props = defineProps<{
     totalArticles?: number
+    totalTags?: number
 }>();
 
 </script>
@@ -22,7 +23,7 @@ const props = defineProps<{
             </div>
             <div class="stat-item">
                 <div class="stat-label">标签</div>
-                <div class="stat-num">1919810</div>
+                <div class="stat-num">{{ props.totalTags }}</div>
             </div>
         </div>
         <button class="follow" onclick="window.open('https://space.bilibili.com/422742655', '_blank')">灌注喵</button>

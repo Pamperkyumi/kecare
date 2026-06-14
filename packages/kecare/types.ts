@@ -14,9 +14,21 @@ export type ThemeConfig = {
     ImageUrl: string[];
 }
 
+export type ArticleStats = {
+    // 按语言分组统计
+    perLang: Record<string, {
+        total: number;                      // 该语言文章总数
+        tags: Record<string, number>;       // 每个标签的文章数量
+    }>;
+    allTags: string[];                      // 所有去重标签
+    totalArticles: number;                  // 全部文章总数
+}
+
 export type KecareContext = {
     // 项目路径
     projectPath: string;
+    // 文章聚合统计数据，emitModuleFinish 阶段填充，finish() 处理器可读取
+    articleStats?: ArticleStats;
 }
 
 export type ArticleVariant = {
@@ -41,6 +53,7 @@ export type FrontMatter = {
     translate: Array<string>;
     sticky: number;
     author: string | undefined;
+    hidden: boolean;
 };
 
 // 生成文章详情
@@ -103,7 +116,6 @@ export type ArchiveArticleData = {
     urlPath: string;
 }
 
-
 // 翻译
 export type TranslationConfigOptions = {
     KecareContext: KecareContext;
@@ -132,6 +144,16 @@ export type NavItem =
 export type ModuleMenuTS = {
     generator: (context: KecareContext,
         articles: ArticlesRecord
+    ) => Promise<{
+        fsPath: string,
+        template: string
+    }>;
+}
+
+// 生成标签页
+export type ModuleTagsTS = {
+    generator: (context: KecareContext,
+        tagGroups: { tag: string, articles: ArchiveArticleData[] }[]
     ) => Promise<{
         fsPath: string,
         template: string

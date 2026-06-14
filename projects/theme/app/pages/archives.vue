@@ -1,27 +1,28 @@
-<!-- Generated: 2026-06-01T19:15:33.742Z -->
+<!-- Generated: 2026-06-14T02:42:59.713Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
   {
-    "title": "顺颂时祺，秋绥冬禧",
+    "title": "阿里云ESA",
     "lang": "zh-CN",
-    "hash": "5f2bcc5d",
+    "hash": "1efdefa8",
     "tags": [],
-    "date": "2026-05-20",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f2bcc5d.vue",
-    "urlPath": "articles/zh-CN/5f2bcc5d"
+    "date": "2026-06-14",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
+    "urlPath": "articles/zh-CN/1efdefa8"
   },
   {
-    "title": "主题开发归档页",
+    "title": "主题开发落地页",
     "lang": "zh-CN",
-    "hash": "93b7f9a7",
+    "hash": "e52553ad",
     "tags": [
       "主题开发",
-      "归档页"
+      "落地页",
+      "列表页"
     ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "urlPath": "articles/zh-CN/e52553ad"
   },
   {
     "title": "主题开发文章页",
@@ -36,17 +37,16 @@
     "urlPath": "articles/zh-CN/989b9235"
   },
   {
-    "title": "主题开发落地页",
+    "title": "主题开发归档页",
     "lang": "zh-CN",
-    "hash": "e52553ad",
+    "hash": "93b7f9a7",
     "tags": [
       "主题开发",
-      "落地页",
-      "列表页"
+      "归档页"
     ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "urlPath": "articles/zh-CN/e52553ad"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
     "title": "主题开发前言",
@@ -67,15 +67,6 @@
     "urlPath": "articles/zh-CN/95140e73"
   },
   {
-    "title": "关于我",
-    "lang": "zh-CN",
-    "hash": "2f0fd1f2",
-    "tags": [],
-    "date": "2026-03-10",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
-    "urlPath": "articles/zh-CN/2f0fd1f2"
-  },
-  {
     "title": "Kecare从这里开始喵",
     "lang": "zh-CN",
     "hash": "70e6923c",
@@ -83,6 +74,15 @@
     "date": "2026-03-10",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
     "urlPath": "articles/zh-CN/70e6923c"
+  },
+  {
+    "title": "关于我",
+    "lang": "zh-CN",
+    "hash": "2f0fd1f2",
+    "tags": [],
+    "date": "2026-03-10",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
+    "urlPath": "articles/zh-CN/2f0fd1f2"
   },
   {
     "title": "markdown扩展",
@@ -168,6 +168,7 @@
   }
 ]
         const totalArticles = 16
+        const totalTags = 9
         useHead({
             title: '归档喵',
         })
@@ -175,5 +176,6 @@
         <template>
         <archivesTheme :articles="articles"
                        :totalArticles="totalArticles"
+                       :totalTags="totalTags"
                        />
         </template>

@@ -57,7 +57,7 @@ onUnmounted(() => {
                     </svg>
                 </button>
             </li>
-            <li class="flex">
+            <!-- <li class="flex">
                 <button
                     class="nav-btn relative inline-flex items-center leading-[1.2] text-[inherit] px-[5px] py-[5px] font-medium cursor-pointer bg-transparent border-none text-[18px]"
                     @click="toggleDark">
@@ -72,7 +72,7 @@ onUnmounted(() => {
                             d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
                     </svg>
                 </button>
-            </li>
+            </li> -->
             <li class="flex">
                 <NuxtLink
                     class="nav-link relative inline-flex items-center leading-[1.2] no-underline text-[inherit] px-[5px] py-[5px] font-medium"

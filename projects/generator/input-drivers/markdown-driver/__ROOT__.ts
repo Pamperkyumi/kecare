@@ -70,6 +70,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             sticky: rawFrontMatter.sticky ?? 0,
             author: rawFrontMatter.author ?? undefined,
             date: rawFrontMatter.date ?? undefined,
+            hidden: rawFrontMatter.hidden ?? false,
         }
 
         // 校验数据是否正确
@@ -84,7 +85,8 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         if (frontMatter.author !== undefined && typeof frontMatter.author !== 'string') throw new Error(`[markdown] ${fsPath} 中的 author 字段必须是字符串`);
         if (typeof frontMatter.sticky !== 'number') throw new Error(`[markdown] ${fsPath} 中的 sticky 字段必须是数字`);
         if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
-
+        if (typeof frontMatter.hidden !== 'boolean') throw new Error(`[markdown] ${fsPath} 中的 hidden 字段必须是布尔值`);
+        if (frontMatter.hidden === true) return;
         // 开始处理翻译
         for (const language of frontMatter.translate) {
             // 对于原始语言，直接使用原始内容，无需翻译

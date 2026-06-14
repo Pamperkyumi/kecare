@@ -30,7 +30,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-01"
+      "date": "2026-03-01",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
@@ -41,9 +42,10 @@
                 const currentPage = 4
                 const totalPages = 4
                 const totalArticles = 16
+                const totalTags = 9
 
                 </script>
                 <template>
-                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" />
+                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" :total-tags="totalTags" />
                 </template>
             

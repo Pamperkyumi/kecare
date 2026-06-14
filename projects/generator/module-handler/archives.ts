@@ -49,4 +49,4 @@ let instancePromise: Promise<any> | null = null;
 export function useArchivesModuleHandler(context: KecareContext): Promise<ReturnType<typeof createArchivesModuleHandler>> {
     if (!instancePromise) instancePromise = createArchivesModuleHandler(context);
     return instancePromise as Promise<ReturnType<typeof createArchivesModuleHandler>>;
-}    
+}

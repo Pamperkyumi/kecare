@@ -6,29 +6,6 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "顺颂时祺，秋绥冬禧",
-    "isOriginalLang": true,
-    "desc": "顺颂时祺，秋绥冬禧 我想对你说一声抱歉。 回想这些日子，我知道自己始终没能做到你心中理想的样子，也常常任性、无理取闹。你对我太好太好了，耐心教我，包容我的脾气，可我却常常因为小事对你发脾气，让我们的相处变得不愉快。 现实总是事与愿违，我也总...",
-    "hash": "5f2bcc5d",
-    "relativePath": "/顺颂时祺，秋绥冬禧.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "顺颂时祺，秋绥冬禧",
-      "tags": [],
-      "desc": "顺颂时祺，秋绥冬禧 我想对你说一声抱歉。 回想这些日子，我知道自己始终没能做到你心中理想的样子，也常常任性、无理取闹。你对我太好太好了，耐心教我，包容我的脾气，可我却常常因为小事对你发脾气，让我们的相处变得不愉快。 现实总是事与愿违，我也总...",
-      "translate": [
-        "zh-CN"
-      ],
-      "sticky": 999,
-      "date": "2026-05-20"
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f2bcc5d.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/5f2bcc5d",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\5f2bcc5d.vue",
-    "urlPath": "articles/zh-CN/5f2bcc5d"
-  },
-  {
-    "lang": "zh-CN",
     "title": "关于我",
     "isOriginalLang": true,
     "menu": "test",
@@ -48,7 +25,8 @@
       ],
       "sticky": 3,
       "author": "Pamper",
-      "date": "2026-03-10"
+      "date": "2026-03-10",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/2f0fd1f2",
@@ -76,7 +54,8 @@
       ],
       "sticky": 2,
       "author": "Pamper",
-      "date": "2026-03-10"
+      "date": "2026-03-10",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
@@ -104,7 +83,8 @@
       ],
       "sticky": 1,
       "author": "Pamper",
-      "date": "2026-03-11"
+      "date": "2026-03-11",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
@@ -113,21 +93,16 @@
   },
   {
     "lang": "zh-CN",
-    "title": "主题开发归档页",
+    "title": "阿里云ESA",
     "isOriginalLang": true,
-    "menu": "test",
-    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
-    "hash": "93b7f9a7",
-    "relativePath": "/主题开发归档页.md",
+    "desc": "阿里云ESA Kecare一开始是部署在Github Pages上的，发现国内访问速度实在拉跨，发现阿里云和腾讯云都出了边缘安全加速平台。腾讯云的EdgeOne 和阿里云的ESA。花了点时间给Kecare部署到阿里云上了。",
+    "hash": "1efdefa8",
+    "relativePath": "/阿里云ESA.md",
     "frontMatter": {
       "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发归档页",
-      "menu": "test",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+      "title": "阿里云ESA",
+      "tags": [],
+      "desc": "阿里云ESA Kecare一开始是部署在Github Pages上的，发现国内访问速度实在拉跨，发现阿里云和腾讯云都出了边缘安全加速平台。腾讯云的EdgeOne 和阿里云的ESA。花了点时间给Kecare部署到阿里云上了。",
       "translate": [
         "zh-CN",
         "en-US",
@@ -135,20 +110,55 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-21"
+      "date": "2026-06-14",
+      "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/1efdefa8",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
+    "urlPath": "articles/zh-CN/1efdefa8"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "主题开发落地页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+    "hash": "e52553ad",
+    "relativePath": "/主题开发落地页.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "主题开发落地页",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-21",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "urlPath": "articles/zh-CN/e52553ad"
   }
 ]
                 const currentPage = 1
                 const totalPages = 4
                 const totalArticles = 16
+                const totalTags = 9
 
                 </script>
                 <template>
-                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" />
+                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" :total-tags="totalTags" />
                 </template>
             

@@ -28,7 +28,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-21"
+      "date": "2026-03-21",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
@@ -37,22 +38,21 @@
   },
   {
     "lang": "zh-CN",
-    "title": "主题开发落地页",
+    "title": "主题开发归档页",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
-    "hash": "e52553ad",
-    "relativePath": "/主题开发落地页.md",
+    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+    "hash": "93b7f9a7",
+    "relativePath": "/主题开发归档页.md",
     "frontMatter": {
       "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发落地页",
+      "title": "主题开发归档页",
       "menu": "test",
       "tags": [
         "主题开发",
-        "落地页",
-        "列表页"
+        "归档页"
       ],
-      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -60,12 +60,13 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-21"
+      "date": "2026-03-21",
+      "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "urlPath": "articles/zh-CN/e52553ad"
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
     "lang": "zh-CN",
@@ -88,7 +89,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-21"
+      "date": "2026-03-21",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
@@ -116,7 +118,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-09"
+      "date": "2026-03-09",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/b40d18d1",
@@ -144,7 +147,8 @@
       ],
       "sticky": 0,
       "author": "Pamper",
-      "date": "2026-03-08"
+      "date": "2026-03-08",
+      "hidden": false
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
@@ -155,9 +159,10 @@
                 const currentPage = 2
                 const totalPages = 4
                 const totalArticles = 16
+                const totalTags = 9
 
                 </script>
                 <template>
-                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" />
+                    <BlogLanding :articles="articles" :current-page="currentPage" :total-pages="totalPages" :total-articles="totalArticles" :total-tags="totalTags" />
                 </template>
             
