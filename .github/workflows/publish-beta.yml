@@ -35,7 +35,7 @@ jobs:
         run: bun install
 
       - name: publish packages
-        run: bun run .commands/scripts/publish-ci.ts
+        run: bun run .commands/scripts/ci/publish-ci.ts
                 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
