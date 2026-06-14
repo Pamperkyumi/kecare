@@ -3,7 +3,7 @@ name: Publish kecare via trusted publishing
 on:
   push:
     branches:
-      - 'beta'
+      - master
 
 permissions:
   id-token: write
