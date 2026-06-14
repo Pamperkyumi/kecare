@@ -35,7 +35,12 @@ jobs:
         run: bun install
 
       - name: publish packages
-        run: bun run .commands/scripts/ci/publish-ci.ts
+        run: bun run scripts/publish.ts
+                
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+            files: dist/**/*
 
 
       - name: Cleanup on failure
