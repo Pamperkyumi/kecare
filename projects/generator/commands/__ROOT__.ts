@@ -1,4 +1,5 @@
 import { argv, } from "node:process";
+import { executeInitCommand } from "./execute-init-command.ts";
 import { executeIndexCommand } from "./execute-index-command.ts";
 import { executeVersionCommand } from "./execute-version-command.ts";
 
@@ -14,6 +15,7 @@ async function __executeCommands(params: Params) {
     // 具体的命令
     if (params.command === 'gen') await executeIndexCommand(params);
     if (params.command === 'version') await executeVersionCommand(params);
+    if (params.command === 'init') await executeInitCommand(params);
 
     process.exit(0);
 }

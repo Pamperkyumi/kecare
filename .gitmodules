@@ -1,0 +1,3 @@
+[submodule "projects/kecare-template-nuxt"]
+	path = projects/kecare-template-nuxt
+	url = https://github.com/Pamperkyumi/kecare-template-nuxt.git

@@ -126,36 +126,36 @@ async function main() {
     if ((await cli.select('是否进行编写发行说明', ['是', '否'])) === '是') {
         // TODO: 实现编写发行说明的功能
     }
-    // if ((await cli.select('是否进行发布喵', ['是', '否'])) === '是') {
-    //     if ((await cli.select('发布到哪里喵', ['Github', 'Gitee'])) === 'Github') {
-    //         const tag = `v${newVersion}`;
-    //         let commited = false;
-    //         let tagged = false;
-    //         try {
-    //             const tagExists = (await $`git rev-parse -q --verify refs/tags/${tag}`.nothrow()).exitCode === 0;
-    //             if (tagExists) {
-    //                 throw new Error(`fatal: tag '${tag}' already exists (local). 请先删除它或提升版本号喵`);
-    //             }
-    //             await $`git add -A`;
-    //             await $`git commit -m ${`feat: release ${tag}`}`;
-    //             commited = true;
-    //             await $`git tag -a ${tag} -m ${tag}`;
-    //             tagged = true;
-    //             await $`git push origin HEAD ${tag}`;
-    //             consola.success('发布到Github成功了喵');
-    //         } catch (error) {
-    //             consola.error('发布到Github失败了喵:', error);
-    //             consola.start('开始撤回本次发布改动了喵');
-    //             if (tagged) {
-    //                 await $`git tag -d ${tag}`.nothrow();
-    //             }
-    //             if (commited) {
-    //                 await $`git reset --hard HEAD~1`.nothrow();
-    //             }
-    //             consola.success('撤回成功了喵');
-    //         }
-    //     }
-    // }
+    if ((await cli.select('是否进行发布喵', ['是', '否'])) === '是') {
+        if ((await cli.select('发布到哪里喵', ['Github', 'Gitee'])) === 'Github') {
+            const tag = `v${newVersion}`;
+            let commited = false;
+            let tagged = false;
+            try {
+                const tagExists = (await $`git rev-parse -q --verify refs/tags/${tag}`.nothrow()).exitCode === 0;
+                if (tagExists) {
+                    throw new Error(`fatal: tag '${tag}' already exists (local). 请先删除它或提升版本号喵`);
+                }
+                await $`git add -A`;
+                await $`git commit -m ${`feat: release ${tag}`}`;
+                commited = true;
+                await $`git tag -a ${tag} -m ${tag}`;
+                tagged = true;
+                await $`git push origin HEAD ${tag}`;
+                consola.success('发布到Github成功了喵');
+            } catch (error) {
+                consola.error('发布到Github失败了喵:', error);
+                consola.start('开始撤回本次发布改动了喵');
+                if (tagged) {
+                    await $`git tag -d ${tag}`.nothrow();
+                }
+                if (commited) {
+                    await $`git reset --mixed HEAD~1`.nothrow();
+                }
+                consola.success('撤回成功了喵');
+            }
+        }
+    }
     if ((await cli.select('是否进行部署gh-pages', ['是', '否'])) === '是') {
         const themeDir = join(cwd, 'projects', 'theme');
         try {
