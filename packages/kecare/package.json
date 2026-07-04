@@ -1,6 +1,6 @@
 {
   "name": "kecare",
-  "version": "1.0.0-beta.88",
+  "version": "1.0.0-beta.89",
   "module": "index.ts",
   "type": "module",
   "repository": {

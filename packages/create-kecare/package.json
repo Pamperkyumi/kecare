@@ -1,6 +1,6 @@
 {
   "name": "create-kecare",
-  "version": "1.0.0-beta.88",
+  "version": "1.0.0-beta.89",
   "main": "index.mjs",
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
     "create-kecare": "./index.mjs"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.5.2",
     "compressing": "^1.10.1",
     "consola": "^3.4.0",
     "fs-extra": "^11.2.0",
