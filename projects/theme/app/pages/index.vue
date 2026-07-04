@@ -6,6 +6,60 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "天天禄杯",
+    "isOriginalLang": true,
+    "desc": "天天禄杯 赞助商 感谢世界上最好的静态网站生成框架Kecare的赞助喵 感谢世界上最好的Ts全栈框架milkio的赞助喵 感谢未来将会是世界上最好的个人开发奖项Fioralune Awards的赞助喵 不接其他赞助喵!!!!!!! 关于这次...",
+    "hash": "74a2573a",
+    "relativePath": "/天天禄杯.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "天天禄杯",
+      "tags": [],
+      "desc": "天天禄杯 赞助商 感谢世界上最好的静态网站生成框架Kecare的赞助喵 感谢世界上最好的Ts全栈框架milkio的赞助喵 感谢未来将会是世界上最好的个人开发奖项Fioralune Awards的赞助喵 不接其他赞助喵!!!!!!! 关于这次...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 3,
+      "author": "Pamper",
+      "date": "2026-07-04",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\74a2573a.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/74a2573a",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\74a2573a.vue",
+    "urlPath": "articles/zh-CN/74a2573a"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "更新日记",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "更新日记~ 随缘更新吧，我很懒，而且我也不会写代码(x 2026/6/14 完善了一下网页功能，修复了一些已知bug(bushi 好忙，要上班赚米，没时间学习了，没时间写代码了，我Github发布的流水线怎么还自己坏掉了啊啊啊啊啊啊。救救我...",
+    "hash": "4c7542c9",
+    "relativePath": "/更新日记.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "更新日记",
+      "menu": "test",
+      "tags": [],
+      "desc": "更新日记~ 随缘更新吧，我很懒，而且我也不会写代码(x 2026/6/14 完善了一下网页功能，修复了一些已知bug(bushi 好忙，要上班赚米，没时间学习了，没时间写代码了，我Github发布的流水线怎么还自己坏掉了啊啊啊啊啊啊。救救我...",
+      "translate": [
+        "zh-CN"
+      ],
+      "sticky": 3,
+      "author": "Pamper",
+      "date": "2026-06-14",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4c7542c9.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4c7542c9",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4c7542c9.vue",
+    "urlPath": "articles/zh-CN/4c7542c9"
+  },
+  {
+    "lang": "zh-CN",
     "title": "关于我",
     "isOriginalLang": true,
     "menu": "test",
@@ -38,7 +92,7 @@
     "title": "Kecare从这里开始喵",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "关于 Kecare Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中解耦，让你的博客能力变成\"可插拔模块\"。 核心优势 传统博客方案（如 Hexo）会绑定特定技术栈，更换技术栈就得重来。 Kecare...",
+    "desc": "关于 Kecare [!WARNING] 由于本人时间原因，Kecare的bug目前好多都没修复。建议先不要用了喵哇哇哇哇哇哇哇哇。对不起喵，我是废物喵 Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中...",
     "hash": "70e6923c",
     "relativePath": "/Kecare从这里开始喵.md",
     "frontMatter": {
@@ -46,7 +100,7 @@
       "title": "Kecare从这里开始喵",
       "menu": "test",
       "tags": [],
-      "desc": "关于 Kecare Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中解耦，让你的博客能力变成\"可插拔模块\"。 核心优势 传统博客方案（如 Hexo）会绑定特定技术栈，更换技术栈就得重来。 Kecare...",
+      "desc": "关于 Kecare [!WARNING] 由于本人时间原因，Kecare的bug目前好多都没修复。建议先不要用了喵哇哇哇哇哇哇哇哇。对不起喵，我是废物喵 Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -90,71 +144,11 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "urlPath": "articles/zh-CN/95140e73"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "阿里云ESA",
-    "isOriginalLang": true,
-    "desc": "阿里云ESA Kecare一开始是部署在Github Pages上的，发现国内访问速度实在拉跨，发现阿里云和腾讯云都出了边缘安全加速平台。腾讯云的EdgeOne 和阿里云的ESA。花了点时间给Kecare部署到阿里云上了。",
-    "hash": "1efdefa8",
-    "relativePath": "/阿里云ESA.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "阿里云ESA",
-      "tags": [],
-      "desc": "阿里云ESA Kecare一开始是部署在Github Pages上的，发现国内访问速度实在拉跨，发现阿里云和腾讯云都出了边缘安全加速平台。腾讯云的EdgeOne 和阿里云的ESA。花了点时间给Kecare部署到阿里云上了。",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-06-14",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/1efdefa8",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
-    "urlPath": "articles/zh-CN/1efdefa8"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "主题开发落地页",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
-    "hash": "e52553ad",
-    "relativePath": "/主题开发落地页.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发落地页",
-      "menu": "test",
-      "tags": [
-        "主题开发",
-        "落地页",
-        "列表页"
-      ],
-      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-21",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "urlPath": "articles/zh-CN/e52553ad"
   }
 ]
                 const currentPage = 1
                 const totalPages = 4
-                const totalArticles = 16
+                const totalArticles = 18
                 const totalTags = 9
 
                 </script>

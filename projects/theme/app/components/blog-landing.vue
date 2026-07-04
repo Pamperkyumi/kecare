@@ -157,7 +157,7 @@ onUnmounted(() => {
                             class="text-[1.4rem] font-bold text-[var(--color-text-primary)] leading-[1.3] flex items-center">
                             {{ article.frontMatter.title }}</div>
                         <div class="text-[var(--color-text-secondary)] leading-[1.5] flex items-center">{{ article.desc
-                            }}
+                        }}
                         </div>
                         <div
                             class="flex justify-between text-[0.85rem] text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-[15px] gap-[10px]">

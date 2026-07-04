@@ -1,9 +1,0 @@
-{
-  "title": "关于我",
-  "lang": "en-US",
-  "hash": "2f0fd1f2",
-  "tags": [],
-  "date": "2026-03-10",
-  "urlPath": "articles/en-US/2f0fd1f2",
-  "content": "# 👋Hello Kecare\n\n## Introduction\n\nKecare is an open-source static site generator that is framework-agnostic. Its core feature is **non-intrusive design**—decoupling the content system from themes/frameworks. With just a basic understanding of TypeScript and by writing corresponding page generation templates, you can freely compose pages based on components, quickly completing site construction on top of your existing projects. It uses Bun as its runtime, offering a lighter and faster experience in both startup and build processes.\n\nIt can be said with certainty that you only need to write HTML and CSS to get a unique blog or documentation site of your own.\n\n## Why Choose Kecare\n\n### Focus on Content Presentation\n\nWhether it's a blog or a documentation site, any website for reading documents will include designs such as **navigation bar, menu bar, table of contents, and search bar**. In Kecare, you don't need to write the corresponding logic one by one—we have already handled these for you when processing articles.\n\nIn addition to these essential features, we offer even more.\n\n- Code Highlighting\n- Markdown Extensions\n- Copy Original Text\n- i18n\n- ...\n\nYou don't need to write logic for each of these individually; just write CSS styles according to your preference.\n\n### Framework Agnostic\n\nTraditional blogging solutions (like Hexo) are tied to specific tech stacks, requiring a complete rebuild when switching technologies.\n\nWe just want everyone to be able to set up a documentation site or blog with the lowest learning cost. Kecare only requires creating a `.kecare/` directory in the project, writing content and rules according to the conventions, and Kecare will generate the corresponding pages and data based on the rules."
-}

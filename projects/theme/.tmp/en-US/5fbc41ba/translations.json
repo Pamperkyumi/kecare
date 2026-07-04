@@ -60,5 +60,6 @@
   "3137e70a": "**Method 2: Custom Theme**",
   "6bfbb8b7": "Add a `.kecare/` directory to any project, customize generation rules, and let Kecare output consumable artifacts for your project.",
   "31fcd1e8": "## Design Philosophy",
-  "bf6d35bc": "- Blogging capability is additional, no need to refactor existing projects\n- Content is decoupled from themes, making it portable\n- Supports any tech stack, not bound to any specific one"
+  "bf6d35bc": "- Blogging capability is additional, no need to refactor existing projects\n- Content is decoupled from themes, making it portable\n- Supports any tech stack, not bound to any specific one",
+  "9dec206c": "> [!WARNING]\n>\n> Due to my time constraints, many bugs in Kecare have not been fixed yet. It is recommended not to use it for now, meow wow wow wow wow wow wow wow. Sorry meow, I am a useless meow."
 }

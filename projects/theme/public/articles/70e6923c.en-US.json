@@ -1,9 +1,0 @@
-{
-  "title": "Kecare从这里开始喵",
-  "lang": "en-US",
-  "hash": "70e6923c",
-  "tags": [],
-  "date": "2026-03-10",
-  "urlPath": "articles/en-US/70e6923c",
-  "content": "# About Kecare\n\nKecare is a static blog generator, with its core feature being **non-intrusive design**—decoupling the content system from themes/frameworks, turning your blogging capabilities into \"pluggable modules.\"\n\n## Core Advantages\n\nTraditional blogging solutions (such as Hexo) are tied to specific technology stacks, requiring a complete restart when switching stacks.\n\nKecare's Solution: Create a `.kecare/` directory in the project, write content and rules according to the convention, and Kecare generates blog pages and data based on the rules.\n\n**Supports any tech stack**: Vue, React, Svelte, traditional SSR, etc., as long as it can integrate with the generated results.\n\n## Two Ways of Use\n\n**Method 1: Default Theme**\n\nUsing the officially provided Nuxt + Vue 3 theme, it's ready to use out of the box, perfect for quickly starting to write.\n\n**Method 2: Custom Theme**\n\nAdd a `.kecare/` directory to any project, customize generation rules, and let Kecare output consumable artifacts for your project.\n\n## Design Philosophy\n\n- Blogging capability is additional, no need to refactor existing projects\n- Content is decoupled from themes, making it portable\n- Supports any tech stack, not bound to any specific one"
-}

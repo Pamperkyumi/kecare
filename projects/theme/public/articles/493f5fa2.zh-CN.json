@@ -1,9 +1,0 @@
-{
-  "title": "国际化处理",
-  "lang": "zh-CN",
-  "hash": "493f5fa2",
-  "tags": [],
-  "date": "2026-03-03",
-  "urlPath": "articles/zh-CN/493f5fa2",
-  "content": "\n# 国际化处理\n\nKecare 可使用 Ai 为你的文章翻译成多种语言， 让文章触达多语言读者。\n\n## 启用翻译\n\n在 Kecare 中使用翻译也非常简单，仅需在所需翻译的文章 Front Matter 中添加 `translate` 字段：\n\n```yaml\n---\ntitle: 我的第一篇文章\ntranslate: ['zh-CN', 'en-US', 'ja-JP']\n---\n```\n\n> 第一个语言代码必须是文章的**原始语言**。\n\n## 配置翻译服务\n\n在  `.kecare`  目录中，新建一个 `kecare.config.ts` 文件。\n\n让后在  `.kecare/kecare.config.ts ` 中配置 LLM：\n\n```ts\nexport async function kecareConfig() {\n    return {\n        llm: {\n            provider: 'OpenAI', // 或 'Anthropic'\n            model: 'deepseek-chat',\n            apiKey: 'your-api-key',\n            apiBaseUrl: 'https://api.deepseek.com/',\n            prompt: ''  // 额外提示词\n        }\n    };\n}\n```\n\n支持任何兼容 OpenAI API 和 Anthropic API 格式的服务。\n\n## 常用语言代码\n\n| 语言 | 代码 |\n|------|------|\n| 简体中文 | `zh-CN` |\n| 英语 | `en-US` |\n| 日语 | `ja-JP` |\n| 韩语 | `ko-KR` |\n| 繁体中文 | `zh-TW` |\n\n语言代码遵循 BCP 47 标准：`语言-地区`（如 `en-GB`、`pt-BR`）。\n\n## 缓存与增量更新\n\n翻译结果缓存在 `.kecare/.tmp` 目录，下次构建时仅翻译修改部分。最大可能的节省Token的花销\n\n清除缓存仅需删除 `.tmp` 目录即可\n"
-}

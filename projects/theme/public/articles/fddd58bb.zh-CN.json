@@ -1,9 +1,0 @@
-{
-  "title": "生成器CLI",
-  "lang": "zh-CN",
-  "hash": "fddd58bb",
-  "tags": [],
-  "date": "2026-03-05",
-  "urlPath": "articles/zh-CN/fddd58bb",
-  "content": "\n# 生成器 CLI\n\n---\n\n## 命令\n\n| 命令 | 说明 |\n|------|------|\n| `kecare gen <path>` | 构建站点，生成页面文件 |\n| `kecare -version` | 查看当前版本 |\n\n---\n\n## 使用示例\n\n```bash\nkecare gen .                    # 当前目录\nkecare gen ./Kecare-theme       # 相对路径\nkecare gen /home/user/theme     # 绝对路径\n```\n\n---\n\n## 执行流程\n\n1. 扫描 `.kecare/articles/` 下的 Markdown 文件\n2. 解析 Front Matter 和正文内容\n3. 执行翻译（如果配置了 `translate`）\n4. 运行 `*.article.ts` 和 `*.list.ts` 生成页面\n5. 输出文件到指定目录\n"
-}
