@@ -1,13 +1,20 @@
-name: Publish kecare via trusted publishing
+name: Publish Kecare
 
 on:
   push:
     branches:
       - master
+    tags:
+      - '*'
+  workflow_dispatch:
 
 permissions:
+  contents: read
   id-token: write
-  contents: write
+
+concurrency:
+  group: npm-publish-${{ github.sha }}
+  cancel-in-progress: false
 
 jobs:
   publish-kecare:
@@ -16,37 +23,34 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Ensure npm supports trusted publishing
-        run: npm install -g npm@latest
+        run: |
+          npm install -g npm@latest
+          node --version
+          npm --version
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: 'latest'
 
-      - name: Install root dependencies
-        run: bun install
+      - name: Install dependencies
+        run: bun install 
 
-      - name: publish packages
+      - name: Publish packages
         run: bun run .commands/scripts/ci/publish-ci.ts
-                
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-            tag_name: v${{ github.run_number }}
-            name: Kecare v${{ github.run_number }}  
-            files: dist/**/*
-
 
       - name: Cleanup on failure
         if: failure()
         run: |
-          echo "Build or release failed. Cleaning up..."
+          echo "Build or publish failed. Cleaning up..."
           rm -rf dist/ || true
