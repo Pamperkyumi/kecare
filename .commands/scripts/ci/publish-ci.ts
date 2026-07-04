@@ -227,5 +227,20 @@ for (const packageDir of platformPackageDirs) {
         cwd: packageDir,
     });
 }
+function publishkecare() {
+    const mainPackageDir = join(cwd, 'packages', 'kecare');
+    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
+        cwd: mainPackageDir,
+    });
+}
+function publishcreatekecare() {
+    const createPackageDir = join(cwd, 'packages', 'create-kecare');
+    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
+        cwd: createPackageDir,
+    });
+}
+publishkecare();
+publishcreatekecare();
+
 
 console.log("\nPublish completed: only @kecare/* binary packages were published");
