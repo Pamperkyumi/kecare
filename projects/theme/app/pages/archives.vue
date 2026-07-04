@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-04T02:03:36.515Z -->
+<!-- Generated: 2026-07-04T02:23:43.701Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -30,15 +30,6 @@
     "urlPath": "articles/zh-CN/1efdefa8"
   },
   {
-    "title": "主题开发前言",
-    "lang": "zh-CN",
-    "hash": "e5dbc117",
-    "tags": [],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "urlPath": "articles/zh-CN/e5dbc117"
-  },
-  {
     "title": "主题开发文章页",
     "lang": "zh-CN",
     "hash": "989b9235",
@@ -62,6 +53,15 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
+  },
+  {
+    "title": "主题开发前言",
+    "lang": "zh-CN",
+    "hash": "e5dbc117",
+    "tags": [],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
     "title": "主题开发归档页",

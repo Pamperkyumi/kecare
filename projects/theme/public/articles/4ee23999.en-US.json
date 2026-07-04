@@ -1,0 +1,14 @@
+{
+  "title": "Menu System",
+  "lang": "en-US",
+  "hash": "4ee23999",
+  "tags": [
+    "菜单",
+    "导航",
+    "测试",
+    "Kecare"
+  ],
+  "date": "2026-03-01",
+  "urlPath": "articles/en-US/4ee23999",
+  "content": "# Menu System\n\nKecare offers a unified menu configuration method for generating side navigation bars.\n\n## Creating a Menu\n\nMenu files are stored in the `.kecare/menus/` directory, with the naming format `<name>.menu.source.ts`:\n\n```ts\n// .kecare/menus/kecare-docs.menu.source.ts\nimport type { NavItem } from \"kecare\";\n\nexport const navItems: NavItem[] = [\n    {\n        text: \"分组名称\",\n        level: 1,\n        items: [\n            { text: \"菜单项\", link: \"./文章路径.md\", level: 2 },\n        ],\n    },\n    {\n        text: \"分组名称2\",\n        level: 1,\n        items: [\n            { text: \"菜单项2\", link: \"./文章路径2.md\", level: 2 },\n        ],\n    }\n];\n```\n\n> The file name prefix (e.g., `kecare-docs`) is the `menu` value referenced in the article.\n\n## Enabling in Articles\n\nAdd the `menu` field in the Front Matter:\n\n```yaml\n---\ntitle: 快速开始\nmenu: kecare-docs\n---\n```\n\nThe `menu` value corresponds to the prefix of the menu file name: `kecare-docs` → `kecare-docs.menu.source.ts`\n\n## NavItem Structure\n\n```ts\ntype NavItem =\n    | { text: string; link: string; level: number; desc?: string; icon?: string }  // 叶子节点\n    | { text: string; items: NavItem[]; level: number };                           // 分组节点\n```\n\n- **Leaf Node**: Clickable for navigation, `link` is the article path (e.g., `./quick-start`)\n- **Group Node**: Used for categorization only, contains a `items` sub-array"
+}
