@@ -8,7 +8,7 @@ import OpenAI from 'openai';
 const mainPackage = 'generator';
 const childPackages = ['create-kecare', 'kecare'];
 
-async function getCommitMessage() {
+async function getCommitMessage(): Promise<string> {
 
     const prompt = `
 You are an expert software engineer.
@@ -37,7 +37,7 @@ ${await $`git diff --staged`.text()}
             temperature: 0.2,
         });
         const commitMessage = completion.choices[0]!.message.content;
-        consola.success(`生成的 commit message: ${commitMessage}`);
+        return commitMessage!;
     } catch (error) {
         consola.error(error);
         process.exit(1);
@@ -142,8 +142,19 @@ async function main() {
                 }
                 await $`git add -A`;
                 const commitMessage = await getCommitMessage();
-                await $`git commit -m ${commitMessage!}`;
-                commited = true;
+                consola.success(`生成的 commit message: ${commitMessage}`);
+
+                const ok = await cli.select('是否使用这个 commit message ', ['是', '重新生成', '否']);
+                if (ok === '是') {
+                    await $`git commit -m "${commitMessage!}"`;
+                    commited = true;
+                }
+                if (ok === '否') {
+                    throw new Error('用户取消发布喵');
+                }
+
+                // await $`git commit -m "${commitMessage!}"`;
+                // commited = true;
                 await $`git tag -a ${tag} -m ${tag}`;
                 tagged = true;
                 await $`git push origin HEAD ${tag}`;
