@@ -2,14 +2,13 @@ import { join } from "node:path";
 import {
     existsSync,
     mkdirSync,
-    readFileSync,
     rmSync,
     writeFileSync,
     renameSync,
+    readFileSync,
 } from "node:fs";
 
 const cwd = process.cwd();
-const mainPackageDir = join(cwd, "packages", "kecare");
 const distRoot = join(cwd, "dist", "npm");
 const registry = "https://registry.npmjs.org";
 
@@ -27,12 +26,11 @@ type PackageJson = {
     type?: string;
     description?: string;
     repository?: any;
-    files?: string[];
-    bin?: Record<string, string> | string;
     exports?: any;
     os?: string[];
     cpu?: string[];
-    optionalDependencies?: Record<string, string>;
+    files?: string[];
+    bin?: Record<string, string>;
     publishConfig?: Record<string, any>;
     [key: string]: any;
 };
@@ -75,17 +73,6 @@ function packageExists(name: string, version: string): boolean {
     return result.exitCode === 0;
 }
 
-function npmPublishArgs(pkg: PackageJson, npmTag: string): string[] {
-    const args = ["publish", "--registry", registry, "--tag", npmTag];
-
-    // Scoped packages are restricted/private by default, so the first public publish must set access explicitly.
-    if (pkg.name.startsWith("@")) {
-        args.push("--access", "public");
-    }
-
-    return args;
-}
-
 const ghRepo = process.env.GITHUB_REPOSITORY || "Pamperkyumi/kecare";
 const repository = {
     type: "git",
@@ -100,8 +87,7 @@ if (process.env.GITHUB_REF?.startsWith("refs/tags/")) {
 } else if (process.env.GITHUB_REF_TYPE === "tag" && process.env.GITHUB_REF_NAME) {
     rawTag = process.env.GITHUB_REF_NAME;
 } else {
-    // For normal branch pushes, read tags that point at HEAD.
-    // This supports the workflow where you run `git push && git push --tags` or `git push --follow-tags`.
+    // Fallback for manually dispatched workflows or branch pushes that point to a tagged commit.
     const tagResult = run("git", ["tag", "--points-at", "HEAD"], {
         allowFail: true,
         quiet: true,
@@ -135,7 +121,7 @@ if (!/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/.test(version)) {
 let npmTag = "latest";
 const prerelease = version.match(/^\d+\.\d+\.\d+-([0-9A-Za-z-]+)/)?.[1];
 
-// Do not publish prerelease versions under latest.
+// Never publish prerelease versions under latest.
 if (prerelease === "alpha") npmTag = "alpha";
 else if (prerelease === "beta") npmTag = "beta";
 else if (prerelease === "rc") npmTag = "rc";
@@ -144,11 +130,11 @@ else if (prerelease) npmTag = "next";
 console.log(`Release tag: ${rawTag}`);
 console.log(`Package version: ${version}`);
 console.log(`npm dist-tag: ${npmTag}`);
+console.log("Publishing only scoped binary packages under @kecare/*");
 
 rmSync(distRoot, { recursive: true, force: true });
 ensureDir(distRoot);
 
-const platformPackageNames: string[] = [];
 const platformPackageDirs: string[] = [];
 
 for (const target of targets) {
@@ -159,7 +145,6 @@ for (const target of targets) {
     const compiledOutput = join(packageDir, "kecare");
     const expectedOutput = join(packageDir, binName);
 
-    platformPackageNames.push(packageName);
     platformPackageDirs.push(packageDir);
     ensureDir(packageDir);
 
@@ -176,8 +161,8 @@ for (const target of targets) {
         target.bunTarget,
     ]);
 
-    // Bun may create either `kecare` or `kecare.exe` depending on target behavior.
-    // Normalize the filename so package.json#bin always points to a real file.
+    // Bun may create either `kecare` or `kecare.exe` depending on the target.
+    // Normalize the filename so package.json#bin always points to an existing file.
     if (isWindows && existsSync(compiledOutput) && !existsSync(expectedOutput)) {
         renameSync(compiledOutput, expectedOutput);
     }
@@ -221,39 +206,13 @@ for (const target of targets) {
     } satisfies PackageJson);
 }
 
-console.log("\nPreparing main package");
-
-const mainPackageJsonPath = join(mainPackageDir, "package.json");
-const mainPackageJson = readJson<PackageJson>(mainPackageJsonPath);
-
-mainPackageJson.version = version;
-mainPackageJson.repository = repository;
-mainPackageJson.optionalDependencies = mainPackageJson.optionalDependencies || {};
-
-// Remove old binary package names to avoid installing both old and new naming schemes.
-for (const target of targets) {
-    delete mainPackageJson.optionalDependencies[`kecare-${target.platform}-${target.arch}`];
-    delete mainPackageJson.optionalDependencies[`@kecare/kecare-${target.platform}-${target.arch}`];
-    mainPackageJson.optionalDependencies[`@kecare/${target.platform}-${target.arch}`] = version;
-}
-
-if (mainPackageJson.name.startsWith("@")) {
-    mainPackageJson.publishConfig = {
-        ...(mainPackageJson.publishConfig || {}),
-        access: "public",
-    };
-}
-
-writeJson(mainPackageJsonPath, mainPackageJson);
-
 console.log("\nPackage dry run");
 
 for (const packageDir of platformPackageDirs) {
     run("npm", ["pack", "--dry-run"], { cwd: packageDir });
 }
-run("npm", ["pack", "--dry-run"], { cwd: mainPackageDir });
 
-console.log("\nPublishing platform packages first");
+console.log("\nPublishing scoped binary packages");
 
 for (const packageDir of platformPackageDirs) {
     const packageJson = readJson<PackageJson>(join(packageDir, "package.json"));
@@ -263,17 +222,10 @@ for (const packageDir of platformPackageDirs) {
         continue;
     }
 
-    run("npm", npmPublishArgs(packageJson, npmTag), { cwd: packageDir });
+    // All packages generated by this script are scoped packages, so publish them as public packages.
+    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
+        cwd: packageDir,
+    });
 }
 
-console.log("\nPublishing main package");
-
-const preparedMainPackageJson = readJson<PackageJson>(mainPackageJsonPath);
-
-if (packageExists(preparedMainPackageJson.name, version)) {
-    console.log(`Skip existing package: ${preparedMainPackageJson.name}@${version}`);
-} else {
-    run("npm", npmPublishArgs(preparedMainPackageJson, npmTag), { cwd: mainPackageDir });
-}
-
-console.log("\nPublish completed");
+console.log("\nPublish completed: only @kecare/* binary packages were published");
