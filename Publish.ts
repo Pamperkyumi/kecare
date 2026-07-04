@@ -3,9 +3,48 @@ import { cli } from './.commands/utils/cli.ts';
 import { readFile, writeFile } from 'node:fs/promises';
 import consola from 'consola';
 import { $ } from 'bun';
+import OpenAI from 'openai';
 
 const mainPackage = 'generator';
 const childPackages = ['create-kecare', 'kecare'];
+
+async function getCommitMessage() {
+
+    const prompt = `
+You are an expert software engineer.
+
+Generate a conventional commit message based on the git diff below.
+
+Rules:
+- Use Conventional Commits format (feat, fix, chore, refactor, etc.)
+- Keep subject line under 72 characters
+- No markdown
+- Return ONLY the commit message
+
+Git diff:
+${await $`git diff --staged`.text()}
+`;
+
+    const openai = new OpenAI({
+        baseURL: 'https://api.deepseek.com',
+        apiKey: process.env.DEPSEEK_API_KEY!,
+    });
+
+    try {
+        const completion = await openai.chat.completions.create({
+            model: "deepseek-v4-flash",
+            messages: [{ role: "user", content: prompt }],
+            temperature: 0.2,
+        });
+        const commitMessage = completion.choices[0]!.message.content;
+        consola.success(`生成的 commit message: ${commitMessage}`);
+    } catch (error) {
+        consola.error(error);
+        process.exit(1);
+    }
+}
+
+
 
 async function updatePackage(cwd: string, pkgDirName: string, newVersion: string) {
     const pkgDir = join(cwd, 'packages', pkgDirName);
@@ -86,41 +125,6 @@ async function main() {
             const name = await updatePackage(cwd, pkg, newVersion);
             consola.success(`已更新 ${name} -> ${newVersion}`);
         }
-        // for (const childpackage of childPackages) {
-        //   const childPackageJson = JSON.parse(await readFile(join(cwd, 'projects', childpackage, 'package.json'), 'utf-8'));
-        //   childPackageJson.version = newVersion;
-        //   await writeFile(join(cwd, 'projects', childpackage, 'package.json'), JSON.stringify(childPackageJson, null, 2));
-
-        //   //   if (await exists(join(cwd, 'projects', childpackage, 'template', 'package.json'))) {
-        //   //     const templatePackageJson = JSON.parse(await readFile(join(cwd, 'projects', childpackage, 'template', 'package.json'), 'utf-8'));
-
-        //   //     if (templatePackageJson.peerDependencies) {
-        //   //       for (const dep in templatePackageJson.peerDependencies) {
-        //   //         if (dep.startsWith('@milkio/') || dep === 'milkio') {
-        //   //           templatePackageJson.peerDependencies[dep] = newVersion;
-        //   //         }
-        //   //       }
-        //   //     }
-
-        //   //     if (templatePackageJson.dependencies) {
-        //   //       for (const dep in templatePackageJson.dependencies) {
-        //   //         if (dep.startsWith('@milkio/') || dep === 'milkio') {
-        //   //           templatePackageJson.dependencies[dep] = newVersion;
-        //   //         }
-        //   //       }
-        //   //     }
-
-        //   //     if (templatePackageJson.devDependencies) {
-        //   //       for (const dep in templatePackageJson.devDependencies) {
-        //   //         if (dep.startsWith('@milkio/') || dep === 'milkio') {
-        //   //           templatePackageJson.devDependencies[dep] = newVersion;
-        //   //         }
-        //   //       }
-        //   //     }
-
-        //   //     await writeFile(join(cwd, 'projects', childpackage, 'template', 'package.json'), JSON.stringify(templatePackageJson, null, 2));
-        //   //   }
-        //   // }
         consola.success('所有包的版本号已修改');
     }
     if ((await cli.select('是否进行编写发行说明', ['是', '否'])) === '是') {
@@ -137,7 +141,8 @@ async function main() {
                     throw new Error(`fatal: tag '${tag}' already exists (local). 请先删除它或提升版本号喵`);
                 }
                 await $`git add -A`;
-                await $`git commit -m ${`feat: release ${tag}`}`;
+                const commitMessage = await getCommitMessage();
+                await $`git commit -m ${commitMessage!}`;
                 commited = true;
                 await $`git tag -a ${tag} -m ${tag}`;
                 tagged = true;
