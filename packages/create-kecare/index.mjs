@@ -39,7 +39,7 @@ const color = gradient(['cyan', '#2d9b87']);
   if (!existsSync(workspace)) mkdirSync(workspace);
   if (!existsSync(tempspace)) mkdirSync(tempspace);
 
-  const packageName = `kecare-${process.platform}-${os.arch()}`;
+  const packageName = `@kecare/${process.platform}-${os.arch()}`;
   const selectedVersion = __VERSION__;
 
   let selectedMirror = '';
