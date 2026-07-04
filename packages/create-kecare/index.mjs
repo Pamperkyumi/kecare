@@ -16,6 +16,7 @@ import { remove, move } from 'fs-extra';
 import consola from 'consola';
 import gradient from 'gradient-string';
 import compressing from 'compressing';
+import { confirm, select } from '@inquirer/prompts';
 
 const color = gradient(['cyan', '#2d9b87']);
 
@@ -173,6 +174,61 @@ const color = gradient(['cyan', '#2d9b87']);
       }
     }
   }
+  // 询问用户是否从模板创建项目
+  const wantTemplate = await confirm({
+    message: 'Do you want to create a project from a template?',
+    default: true,
+  });
+
+  if (wantTemplate) {
+    const template = await select({
+      message: 'Select a template',
+      choices: [
+        {
+          name: 'Nuxt Theme',
+          value: 'kecare-template-nuxt',
+          description: 'Kecare Nuxt template theme',
+        },
+      ],
+    });
+
+    consola.start(color(`Downloading template ${template}...`));
+
+    try {
+      // 从 npm registry 获取模板信息
+      const tplInfoUrl = `${selectedMirror}${template}/latest`;
+      const tplInfoRes = await fetch(tplInfoUrl);
+      if (!tplInfoRes.ok) throw new Error(`HTTP ${tplInfoRes.status}`);
+      const tplInfo = await tplInfoRes.json();
+      const tplVersion = tplInfo.version || 'latest';
+
+      // 下载模板 tarball
+      const tarballUrl = `${selectedMirror}${template}/-/${template}-${tplVersion}.tgz`;
+      consola.info(color(`Fetching from ${tarballUrl}`));
+      const tarballRes = await fetch(tarballUrl);
+      if (!tarballRes.ok) throw new Error(`HTTP ${tarballRes.status}`);
+
+      const tgzPath = join(tempspace, 'template.tgz');
+      const fileStream = createWriteStream(tgzPath);
+      await finished(Readable.fromWeb(tarballRes.body).pipe(fileStream));
+
+      // 解压模板
+      const templateTemp = join(tempspace, 'template');
+      if (existsSync(templateTemp)) await remove(templateTemp);
+      await compressing.tgz.uncompress(tgzPath, templateTemp);
+
+      // 复制到当前目录
+      const targetProject = installPath || process.cwd();
+      const targetDir = join(targetProject, 'kecare-project');
+      if (existsSync(targetDir)) await remove(targetDir);
+      await move(join(templateTemp, 'package'), targetDir, { overwrite: true });
+
+      consola.success(color(`Project created at ${targetDir}`));
+    } catch (error) {
+      consola.warn(color(`Template download failed: ${error.message}`));
+    }
+  }
+
   consola.start(color('cleaning temporary files ...'));
   try {
     await remove(tempspace);
