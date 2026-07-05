@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-04T11:25:33.050Z -->
+<!-- Generated: 2026-07-05T02:53:45.667Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -10,6 +10,15 @@
     "date": "2026-07-04",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\74a2573a.vue",
     "urlPath": "articles/zh-CN/74a2573a"
+  },
+  {
+    "title": "花月项目",
+    "lang": "zh-CN",
+    "hash": "4709c150",
+    "tags": [],
+    "date": "2026-07-04",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4709c150.vue",
+    "urlPath": "articles/zh-CN/4709c150"
   },
   {
     "title": "更新日记",
@@ -30,6 +39,15 @@
     "urlPath": "articles/zh-CN/1efdefa8"
   },
   {
+    "title": "主题开发前言",
+    "lang": "zh-CN",
+    "hash": "e5dbc117",
+    "tags": [],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
+  },
+  {
     "title": "主题开发文章页",
     "lang": "zh-CN",
     "hash": "989b9235",
@@ -42,13 +60,16 @@
     "urlPath": "articles/zh-CN/989b9235"
   },
   {
-    "title": "主题开发前言",
+    "title": "主题开发归档页",
     "lang": "zh-CN",
-    "hash": "e5dbc117",
-    "tags": [],
+    "hash": "93b7f9a7",
+    "tags": [
+      "主题开发",
+      "归档页"
+    ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "urlPath": "articles/zh-CN/e5dbc117"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
     "title": "主题开发落地页",
@@ -62,18 +83,6 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
-  },
-  {
-    "title": "主题开发归档页",
-    "lang": "zh-CN",
-    "hash": "93b7f9a7",
-    "tags": [
-      "主题开发",
-      "归档页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
     "title": "在已有项目上使用kecare",
@@ -185,7 +194,7 @@
     "urlPath": "articles/zh-CN/4ee23999"
   }
 ]
-        const totalArticles = 18
+        const totalArticles = 19
         const totalTags = 9
         useHead({
             title: '归档喵',

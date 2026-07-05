@@ -6,20 +6,43 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "花月项目",
+    "isOriginalLang": true,
+    "desc": "Fioralune（花月） Pamper享有对Fioralune的最终解释权 目前正在举行的天天禄杯和以后可能主要以Fioralune Championship举办的比赛，以及目前还未正式上线的个人开发者奖项Fioralune Awards...",
+    "hash": "4709c150",
+    "relativePath": "/花月项目.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "花月项目",
+      "tags": [],
+      "desc": "Fioralune（花月） Pamper享有对Fioralune的最终解释权 目前正在举行的天天禄杯和以后可能主要以Fioralune Championship举办的比赛，以及目前还未正式上线的个人开发者奖项Fioralune Awards...",
+      "translate": [
+        "zh-CN"
+      ],
+      "sticky": 5,
+      "author": "Pamper",
+      "date": "2026-07-04",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4709c150.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4709c150",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4709c150.vue",
+    "urlPath": "articles/zh-CN/4709c150"
+  },
+  {
+    "lang": "zh-CN",
     "title": "天天禄杯",
     "isOriginalLang": true,
-    "desc": "天天禄杯 赞助商 感谢世界上最好的静态网站生成框架Kecare的赞助喵 感谢世界上最好的Ts全栈框架milkio的赞助喵 感谢未来将会是世界上最好的个人开发奖项Fioralune Awards的赞助喵 不接其他赞助喵!!!!!!! 关于这次...",
+    "desc": "天天禄杯 [!NOTE] 我很懒，我将本赛事的所有内容都写在这一篇文章上了，如果你阅读起来觉得一会这一会那的。那没招，我没时间。 赞助商 感谢世界上最好的静态网站生成框架Kecare的赞助喵 感谢世界上最好的Ts全栈框架milkio的赞助喵...",
     "hash": "74a2573a",
     "relativePath": "/天天禄杯.md",
     "frontMatter": {
       "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
       "title": "天天禄杯",
       "tags": [],
-      "desc": "天天禄杯 赞助商 感谢世界上最好的静态网站生成框架Kecare的赞助喵 感谢世界上最好的Ts全栈框架milkio的赞助喵 感谢未来将会是世界上最好的个人开发奖项Fioralune Awards的赞助喵 不接其他赞助喵!!!!!!! 关于这次...",
+      "desc": "天天禄杯 [!NOTE] 我很懒，我将本赛事的所有内容都写在这一篇文章上了，如果你阅读起来觉得一会这一会那的。那没招，我没时间。 赞助商 感谢世界上最好的静态网站生成框架Kecare的赞助喵 感谢世界上最好的Ts全栈框架milkio的赞助喵...",
       "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
+        "zh-CN"
       ],
       "sticky": 3,
       "author": "Pamper",
@@ -115,40 +138,11 @@
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
     "urlPath": "articles/zh-CN/70e6923c"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "在已有项目上使用kecare",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "在已有项目上使用 Kecare 在已有项目中集成 Kecare，为项目添加文档/博客功能。 目录结构 安装 ::: tabs @tab bun @tab npm @tab pnpm ::: 文章详情页生成器 创建 .article.ts 文...",
-    "hash": "95140e73",
-    "relativePath": "/在已有项目上使用kecare.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "在已有项目上使用kecare",
-      "menu": "test",
-      "tags": [],
-      "desc": "在已有项目上使用 Kecare 在已有项目中集成 Kecare，为项目添加文档/博客功能。 目录结构 安装 ::: tabs @tab bun @tab npm @tab pnpm ::: 文章详情页生成器 创建 .article.ts 文...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 1,
-      "author": "Pamper",
-      "date": "2026-03-11",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
-    "urlPath": "articles/zh-CN/95140e73"
   }
 ]
                 const currentPage = 1
                 const totalPages = 4
-                const totalArticles = 18
+                const totalArticles = 19
                 const totalTags = 9
 
                 </script>

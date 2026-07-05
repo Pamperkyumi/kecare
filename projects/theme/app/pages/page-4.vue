@@ -6,6 +6,35 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "快速开始",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "快速开始 按照Kecare相当简单，仅需安装Kecare CLI 即可帮你从0开始一个 Kecare 项目。它将引导你完成设置新项目的每一步，并允许你从几个不同的官方入门模板中进行选择。如果你只是想为你的已有项目中快速接入一个博客/文档站，...",
+    "hash": "95bb100b",
+    "relativePath": "/快速开始.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "快速开始",
+      "menu": "test",
+      "tags": [],
+      "desc": "快速开始 按照Kecare相当简单，仅需安装Kecare CLI 即可帮你从0开始一个 Kecare 项目。它将引导你完成设置新项目的每一步，并允许你从几个不同的官方入门模板中进行选择。如果你只是想为你的已有项目中快速接入一个博客/文档站，...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-04",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "urlPath": "articles/zh-CN/95bb100b"
+  },
+  {
+    "lang": "zh-CN",
     "title": "国际化处理",
     "isOriginalLang": true,
     "menu": "test",
@@ -104,7 +133,7 @@
 ]
                 const currentPage = 4
                 const totalPages = 4
-                const totalArticles = 18
+                const totalArticles = 19
                 const totalTags = 9
 
                 </script>
