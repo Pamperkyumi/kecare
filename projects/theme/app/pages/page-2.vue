@@ -30,6 +30,7 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95140e73",
+    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95140e73.vue",
     "urlPath": "articles/zh-CN/95140e73"
   },
@@ -57,6 +58,7 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/1efdefa8",
+    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\1efdefa8.vue",
     "urlPath": "articles/zh-CN/1efdefa8"
   },
@@ -86,6 +88,7 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
+    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
     "urlPath": "articles/zh-CN/e5dbc117"
   },
@@ -118,6 +121,7 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
+    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
     "urlPath": "articles/zh-CN/989b9235"
   },
@@ -150,6 +154,7 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
+    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
     "urlPath": "articles/zh-CN/93b7f9a7"
   }

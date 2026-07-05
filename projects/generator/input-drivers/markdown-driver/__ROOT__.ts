@@ -12,9 +12,35 @@ import { translator } from "./translator/translator";
 import GithubSlugger from 'github-slugger';
 import { parseDateString } from "kecare";
 import { useThemeConfig } from "../../utils/theme-config";
+import { existsSync } from 'node:fs';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 export type MarkdownOriginalArticle = ArticleVariant & {
     fsPath: string;
+}
+
+type MarkdownCacheEntry = {
+    contentHash: string;
+    variants: ArticleVariant[];
+}
+
+type MarkdownCacheManifest = {
+    version: 1;
+    articles: Record<string, MarkdownCacheEntry>;
+}
+
+async function loadMarkdownCache(cachePath: string): Promise<MarkdownCacheManifest> {
+    try {
+        const raw = await readFile(cachePath, 'utf-8');
+        const manifest = JSON.parse(raw) as MarkdownCacheManifest;
+        if (manifest.version !== 1 || typeof manifest.articles !== 'object') throw new Error('Invalid markdown cache manifest');
+        return manifest;
+    } catch {
+        return {
+            version: 1,
+            articles: {},
+        };
+    }
 }
 
 export async function markdownInputDriver(context: KecareContext, chunks: Array<InputDriverChunk>): Promise<void> {
@@ -36,12 +62,39 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
 
     const articlePath = join(context.projectPath, '.kecare', 'articles');
     const glob = new Glob(`${articlePath}/**/*.{md,mdx,markdown}`);
+    const cachePath = join(context.projectPath, '.kecare', 'cache', 'markdown-manifest.json');
+    const manifest = await loadMarkdownCache(cachePath);
+    let cacheSaveQueue = Promise.resolve();
+    const saveManifest = async () => {
+        cacheSaveQueue = cacheSaveQueue.then(async () => {
+            await mkdir(join(context.projectPath, '.kecare', 'cache'), { recursive: true });
+            await writeFile(cachePath, JSON.stringify(manifest, null, 2), 'utf-8');
+        });
+        await cacheSaveQueue;
+    };
 
     // 处理每篇文章和它的翻译
     for await (const fsPath of glob.scan(".")) chunks.push(async (emitArticleHandle) => {
         const relativePath = fsPath.replace(articlePath, ''); // 相对路径
         const file = Bun.file(fsPath);
         const rawContent = await file.text();
+        const contentHash = Bun.hash.xxHash3(rawContent, 5678n).toString(16);
+        const cached = manifest.articles[relativePath];
+        if (
+            cached?.contentHash === contentHash
+            && Array.isArray(cached.variants)
+            && cached.variants.length > 0
+            && cached.variants.every((article) => article.__REAL_FS_PATHS__ && existsSync(article.__REAL_FS_PATHS__))
+        ) {
+            for (const cachedArticle of cached.variants) {
+                await emitArticleHandle(context, {
+                    ...cachedArticle,
+                    __SKIP_ARTICLE_GENERATOR__: true,
+                });
+            }
+            return;
+        }
+
         const frontMatterStr = parseFrontMatter(rawContent);
         let rawFrontMatter = YAML.parse(frontMatterStr) as FrontMatter;
         if (!rawFrontMatter) throw new Error(`[markdown] ${fsPath} 中的 frontmatter 不能为空,请检查文档格式`);
@@ -86,7 +139,13 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         if (typeof frontMatter.sticky !== 'number') throw new Error(`[markdown] ${fsPath} 中的 sticky 字段必须是数字`);
         if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
         if (typeof frontMatter.hidden !== 'boolean') throw new Error(`[markdown] ${fsPath} 中的 hidden 字段必须是布尔值`);
-        if (frontMatter.hidden === true) return;
+        if (frontMatter.hidden === true) {
+            delete manifest.articles[relativePath];
+            await saveManifest();
+            return;
+        }
+
+        const variants: ArticleVariant[] = [];
         // 开始处理翻译
         for (const language of frontMatter.translate) {
             // 对于原始语言，直接使用原始内容，无需翻译
@@ -94,7 +153,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 const html = `<div class="kecare">${await marked.parse(rawMarkdown, { renderer: headingRenderer })}</div>`;
                 const desc = frontMatter.desc ?? String(frontMatter.desc).trim().length > 0 ? String(frontMatter.desc).trim() : extraDescFromHtml(html, 120);
                 const hash = await Bun.hash.xxHash3(relativePath, 1234n).toString(16).slice(0, 8);
-                await emitArticleHandle(context, {
+                const article: ArticleVariant = {
                     lang: language,
                     title: frontMatter.title,
                     html: html,
@@ -106,7 +165,9 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                     frontMatter,
                     cover: cover,
                     rawMarkdown: rawMarkdown,
-                });
+                };
+                await emitArticleHandle(context, article);
+                variants.push(article);
                 continue;
             }
             const config = await useKecareConfig(context);
@@ -121,7 +182,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             const html = `<div class="kecare">${await marked.parse(translatedMarkdown[1], { renderer: headingRenderer })}</div>`;
             const desc = frontMatter.desc ?? String(frontMatter.desc).trim().length > 0 ? String(frontMatter.desc).trim() : extraDescFromHtml(translatedMarkdown[1], 120);
             const hash = await Bun.hash.xxHash3(relativePath, 1234n).toString(16).slice(0, 8);
-            await emitArticleHandle(context, {
+            const article: ArticleVariant = {
                 lang: language,
                 title: translatedMarkdown[0],
                 html: html,
@@ -134,8 +195,16 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 cover: cover,
                 rawMarkdown: rawMarkdown,
                 translatedMarkdown: translatedMarkdown[1],
-            });
+            };
+            await emitArticleHandle(context, article);
+            variants.push(article);
             continue
         }
+
+        manifest.articles[relativePath] = {
+            contentHash,
+            variants,
+        };
+        await saveManifest();
     });
 }
