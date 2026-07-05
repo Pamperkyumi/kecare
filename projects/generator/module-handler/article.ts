@@ -21,6 +21,8 @@ async function createArticleModuleHandler(context: KecareContext) {
 
     const module = {
         async handle(article: ArticleVariant) {
+            if (article.__SKIP_ARTICLE_GENERATOR__) return;
+
             // 此方法在处理实际文章时，才会被调用
             for (const module of modules) {
                 const moduleAwaited = await module;
