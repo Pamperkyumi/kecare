@@ -9,7 +9,7 @@ import { exit } from 'node:process';
 import { Readable } from 'node:stream';
 import { finished } from 'node:stream/promises';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, existsSync, createWriteStream, rmSync, mkdir } from 'node:fs';
+import { mkdirSync, existsSync, createWriteStream, rmSync } from 'node:fs';
 
 // 第三方工具库
 import { remove, move } from 'fs-extra';
@@ -19,6 +19,18 @@ import compressing from 'compressing';
 import { confirm, select } from '@inquirer/prompts';
 
 const color = gradient(['cyan', '#2d9b87']);
+
+function packageInfoUrl(mirror, packageName, version) {
+  const baseUrl = mirror.endsWith('/') ? mirror : `${mirror}/`;
+  const encodedPackageName = packageName.startsWith('@') ? encodeURIComponent(packageName) : packageName;
+  return new URL(version ? `${encodedPackageName}/${version}` : encodedPackageName, baseUrl).toString();
+}
+
+async function fetchPackageJson(mirror, packageName, version, signal) {
+  const response = await fetch(packageInfoUrl(mirror, packageName, version), { signal });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
+}
 
 (async () => {
   const args = process.argv.slice(2);
@@ -41,7 +53,7 @@ const color = gradient(['cyan', '#2d9b87']);
   if (!existsSync(tempspace)) mkdirSync(tempspace);
 
   const packageName = `@kecare/${process.platform}-${os.arch()}`;
-  const selectedVersion = __VERSION__;
+  const selectedVersion = version === 'latest' ? __VERSION__ : version;
 
   let selectedMirror = '';
   consola.start(color('Finding the appropriate mirror..'));
@@ -57,13 +69,16 @@ const color = gradient(['cyan', '#2d9b87']);
       consola.info(color(`Trying mirror ${mirror}`));
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 5000);
-      const response = await fetch(`${mirror}${packageName}`, {
-        signal: controller.signal,
-      });
-      clearTimeout(timeout);
-      if (!response.ok) continue;
-      const packageInfo = await response.json();
-      if (!packageInfo || !packageInfo['dist-tags'] || !packageInfo['dist-tags'].latest) continue;
+      let packageInfo;
+      try {
+        packageInfo = await fetchPackageJson(mirror, packageName, undefined, controller.signal);
+      } finally {
+        clearTimeout(timeout);
+      }
+      if (!packageInfo?.versions?.[selectedVersion]?.dist?.tarball) {
+        consola.warn(color(`Version not found at ${mirror}: ${packageName}@${selectedVersion}`));
+        continue;
+      }
       selectedMirror = mirror;
       consola.success(color(`Found version ${selectedVersion} at ${mirror}`));
       break;
@@ -72,10 +87,15 @@ const color = gradient(['cyan', '#2d9b87']);
     }
   }
   if (!selectedMirror) {
-    consola.error(color('Failed to detect latest version from all mirrors'));
+    consola.error(color(`Failed to find ${packageName}@${selectedVersion} from all mirrors`));
     exit(1);
   }
-  const downloadUrl = `${selectedMirror}${packageName}/-/${packageName.split('/')[0]}-${selectedVersion}.tgz`;
+  const packageInfo = await fetchPackageJson(selectedMirror, packageName, selectedVersion);
+  const downloadUrl = packageInfo?.dist?.tarball;
+  if (!downloadUrl) {
+    consola.error(color(`Missing tarball url for ${packageName}@${selectedVersion}`));
+    exit(1);
+  }
   consola.start(color(`Downloading package from ${downloadUrl}`));
   try {
     const res = await fetch(downloadUrl);
@@ -93,6 +113,8 @@ const color = gradient(['cyan', '#2d9b87']);
   }
   consola.start(color(`Extracting package ...`));
   try {
+    const packageTemp = join(tempspace, 'package');
+    if (existsSync(packageTemp)) await remove(packageTemp);
     await compressing.tgz.uncompress(join(tempspace, 'package.tgz'), tempspace);
     consola.success(color('package extracted'));
   } catch (error) {
@@ -110,7 +132,7 @@ const color = gradient(['cyan', '#2d9b87']);
   if (installPath) {
     consola.start(color(`Installing to custom path: ${installPath}`));
 
-    if (!existsSync(installPath)) mkdir(installPath, { recursive: true });
+    if (!existsSync(installPath)) mkdirSync(installPath, { recursive: true });
 
     await move(execPath, join(installPath, execName), { overwrite: true });
   } else {
@@ -128,7 +150,7 @@ const color = gradient(['cyan', '#2d9b87']);
         //把用户 Path 按 ; 拆开成数组，并清理空项
         //过滤条件：元素存在，并且 trim 后不是空字符串（防止出现 ;; 这种空项）
 
-        const ps = `${target}=' ${targetPath.replace(/'/g, "''")}'
+        const ps = `$target='${targetPath.replace(/'/g, "''")}'
         $userPath = [Environment]::GetEnvironmentVariable('Path','User')
         if($null -eq $userPath) { $userPath = ''}
         $parts = $userPath -split ';' | Where-Object {$_ -and $_.Trim() -ne ''}
