@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-05T17:59:21.887Z -->
+<!-- Generated: 2026-07-06T15:41:28.278Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -39,6 +39,27 @@
     "urlPath": "articles/zh-CN/1efdefa8"
   },
   {
+    "title": "主题开发文章页",
+    "lang": "zh-CN",
+    "hash": "989b9235",
+    "tags": [
+      "主题开发",
+      "文章页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
+  },
+  {
+    "title": "主题开发前言",
+    "lang": "zh-CN",
+    "hash": "e5dbc117",
+    "tags": [],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
+  },
+  {
     "title": "主题开发落地页",
     "lang": "zh-CN",
     "hash": "e52553ad",
@@ -50,15 +71,6 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
-  },
-  {
-    "title": "主题开发前言",
-    "lang": "zh-CN",
-    "hash": "e5dbc117",
-    "tags": [],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
     "title": "主题开发归档页",
@@ -73,18 +85,6 @@
     "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
-    "title": "主题开发文章页",
-    "lang": "zh-CN",
-    "hash": "989b9235",
-    "tags": [
-      "主题开发",
-      "文章页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
-  },
-  {
     "title": "在已有项目上使用kecare",
     "lang": "zh-CN",
     "hash": "95140e73",
@@ -94,15 +94,6 @@
     "urlPath": "articles/zh-CN/95140e73"
   },
   {
-    "title": "Kecare从这里开始喵",
-    "lang": "zh-CN",
-    "hash": "70e6923c",
-    "tags": [],
-    "date": "2026-03-10",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "urlPath": "articles/zh-CN/70e6923c"
-  },
-  {
     "title": "关于我",
     "lang": "zh-CN",
     "hash": "2f0fd1f2",
@@ -110,6 +101,15 @@
     "date": "2026-03-10",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
     "urlPath": "articles/zh-CN/2f0fd1f2"
+  },
+  {
+    "title": "Kecare从这里开始喵",
+    "lang": "zh-CN",
+    "hash": "70e6923c",
+    "tags": [],
+    "date": "2026-03-10",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "urlPath": "articles/zh-CN/70e6923c"
   },
   {
     "title": "markdown扩展",

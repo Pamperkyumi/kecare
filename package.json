@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "gen": "bun run ./projects/generator/index.ts gen \"C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\"",
+    "clean": "bun run ./projects/generator/index.ts clean \"C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\"",
     "dev": "bun run gen && cd ./projects/theme && bun run dev",
     "test": "bun run ./projects/test/run.ts"
   },

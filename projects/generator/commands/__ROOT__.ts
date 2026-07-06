@@ -2,6 +2,7 @@ import { argv, } from "node:process";
 import { executeInitCommand } from "./execute-init-command.ts";
 import { executeIndexCommand } from "./execute-index-command.ts";
 import { executeVersionCommand } from "./execute-version-command.ts";
+import { executeCleanCommand } from "./execute-clean-command.ts";
 
 export type Params = {
     command: string;
@@ -16,6 +17,7 @@ async function __executeCommands(params: Params) {
     if (params.command === 'gen') await executeIndexCommand(params);
     if (params.command === 'version') await executeVersionCommand(params);
     if (params.command === 'init') await executeInitCommand(params);
+    if (params.command === 'clean') await executeCleanCommand(params);
 
     process.exit(0);
 }
