@@ -6,6 +6,31 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "赛程及结果及一些事件",
+    "isOriginalLang": true,
+    "desc": "一些事情 本届比赛确实有点太乱了，而且这也不是我所希望看到的。赛前换人，以及一人分饰两角，还有一个队伍三个替补的。这种情况几乎每个队伍都有。我是不希望这种情况的。让后呢，这个比赛又完全是我个人出资奖金，我是没有那么多能力去支持8月份的奖金去...",
+    "hash": "fad6ed3f",
+    "relativePath": "/赛程及结果及一些事件.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "赛程及结果及一些事件",
+      "tags": [],
+      "desc": "一些事情 本届比赛确实有点太乱了，而且这也不是我所希望看到的。赛前换人，以及一人分饰两角，还有一个队伍三个替补的。这种情况几乎每个队伍都有。我是不希望这种情况的。让后呢，这个比赛又完全是我个人出资奖金，我是没有那么多能力去支持8月份的奖金去...",
+      "translate": [
+        "zh-CN"
+      ],
+      "sticky": 5,
+      "author": "Pamper",
+      "date": "2026-07-20",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fad6ed3f.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fad6ed3f",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fad6ed3f.vue",
+    "urlPath": "articles/zh-CN/fad6ed3f"
+  },
+  {
+    "lang": "zh-CN",
     "title": "花月项目",
     "isOriginalLang": true,
     "desc": "Fioralune（花月） Pamper享有对Fioralune的最终解释权 目前正在举行的天天禄杯和以后可能主要以Fioralune Championship举办的比赛，以及目前还未正式上线的个人开发者奖项Fioralune Awards...",
@@ -113,41 +138,11 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
     "urlPath": "articles/zh-CN/2f0fd1f2"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "Kecare从这里开始喵",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "关于 Kecare [!WARNING] 由于本人时间原因，Kecare的bug目前好多都没修复。建议先不要用了喵哇哇哇哇哇哇哇哇。对不起喵，我是废物喵 Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中...",
-    "hash": "70e6923c",
-    "relativePath": "/Kecare从这里开始喵.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "Kecare从这里开始喵",
-      "menu": "test",
-      "tags": [],
-      "desc": "关于 Kecare [!WARNING] 由于本人时间原因，Kecare的bug目前好多都没修复。建议先不要用了喵哇哇哇哇哇哇哇哇。对不起喵，我是废物喵 Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 2,
-      "author": "Pamper",
-      "date": "2026-03-10",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
-    "urlPath": "articles/zh-CN/70e6923c"
   }
 ]
                 const currentPage = 1
                 const totalPages = 4
-                const totalArticles = 19
+                const totalArticles = 20
                 const totalTags = 9
 
                 </script>

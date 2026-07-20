@@ -6,6 +6,36 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "生成器CLI",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "生成器 CLI 命令 | 命令 | 说明 | |------|------| | kecare gen | 构建站点，生成页面文件 | | kecare -version | 查看当前版本 | 使用示例 执行流程 扫描 .kecare/ar...",
+    "hash": "fddd58bb",
+    "relativePath": "/生成器CLI.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "生成器CLI",
+      "menu": "test",
+      "tags": [],
+      "desc": "生成器 CLI 命令 | 命令 | 说明 | |------|------| | kecare gen | 构建站点，生成页面文件 | | kecare -version | 查看当前版本 | 使用示例 执行流程 扫描 .kecare/ar...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-05",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
+    "urlPath": "articles/zh-CN/fddd58bb"
+  },
+  {
+    "lang": "zh-CN",
     "title": "快速开始",
     "isOriginalLang": true,
     "menu": "test",
@@ -137,7 +167,7 @@
 ]
                 const currentPage = 4
                 const totalPages = 4
-                const totalArticles = 19
+                const totalArticles = 20
                 const totalTags = 9
 
                 </script>

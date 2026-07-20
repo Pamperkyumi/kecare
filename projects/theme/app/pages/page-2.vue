@@ -6,6 +6,36 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "Kecare从这里开始喵",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "关于 Kecare [!WARNING] 由于本人时间原因，Kecare的bug目前好多都没修复。建议先不要用了喵哇哇哇哇哇哇哇哇。对不起喵，我是废物喵 Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中...",
+    "hash": "70e6923c",
+    "relativePath": "/Kecare从这里开始喵.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "Kecare从这里开始喵",
+      "menu": "test",
+      "tags": [],
+      "desc": "关于 Kecare [!WARNING] 由于本人时间原因，Kecare的bug目前好多都没修复。建议先不要用了喵哇哇哇哇哇哇哇哇。对不起喵，我是废物喵 Kecare 是一个静态博客生成器，核心特点是非侵入式设计——把内容系统从主题/框架中...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 2,
+      "author": "Pamper",
+      "date": "2026-03-10",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/70e6923c",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\70e6923c.vue",
+    "urlPath": "articles/zh-CN/70e6923c"
+  },
+  {
+    "lang": "zh-CN",
     "title": "在已有项目上使用kecare",
     "isOriginalLang": true,
     "menu": "test",
@@ -64,21 +94,18 @@
   },
   {
     "lang": "zh-CN",
-    "title": "主题开发归档页",
+    "title": "主题开发前言",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
-    "hash": "93b7f9a7",
-    "relativePath": "/主题开发归档页.md",
+    "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
+    "hash": "e5dbc117",
+    "relativePath": "/主题开发前言.md",
     "frontMatter": {
       "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发归档页",
+      "title": "主题开发前言",
       "menu": "test",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+      "tags": [],
+      "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -89,11 +116,11 @@
       "date": "2026-03-21",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
+    "urlPath": "articles/zh-CN/e5dbc117"
   },
   {
     "lang": "zh-CN",
@@ -127,41 +154,11 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
     "urlPath": "articles/zh-CN/989b9235"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "主题开发前言",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
-    "hash": "e5dbc117",
-    "relativePath": "/主题开发前言.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "主题开发前言",
-      "menu": "test",
-      "tags": [],
-      "desc": "感谢你为 Kecare 主题生态做出贡献 Kecare 诞生不久，在主题生态中，远远不及其他博客或文档站框架，所以 Kecare 非常欢迎大家贡献主题，为 Kecare 主题生态贡献力量~ 本目录将带你开始如何编写一个主题供大家使用 开始了...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-21",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e5dbc117",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e5dbc117.vue",
-    "urlPath": "articles/zh-CN/e5dbc117"
   }
 ]
                 const currentPage = 2
                 const totalPages = 4
-                const totalArticles = 19
+                const totalArticles = 20
                 const totalTags = 9
 
                 </script>

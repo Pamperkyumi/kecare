@@ -40,6 +40,39 @@
   },
   {
     "lang": "zh-CN",
+    "title": "主题开发归档页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+    "hash": "93b7f9a7",
+    "relativePath": "/主题开发归档页.md",
+    "frontMatter": {
+      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
+      "title": "主题开发归档页",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "归档页"
+      ],
+      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-21",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
+  },
+  {
+    "lang": "zh-CN",
     "title": "markdown扩展",
     "isOriginalLang": true,
     "menu": "test",
@@ -127,41 +160,11 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
     "urlPath": "articles/zh-CN/6e8c5f0b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "生成器CLI",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "生成器 CLI 命令 | 命令 | 说明 | |------|------| | kecare gen | 构建站点，生成页面文件 | | kecare -version | 查看当前版本 | 使用示例 执行流程 扫描 .kecare/ar...",
-    "hash": "fddd58bb",
-    "relativePath": "/生成器CLI.md",
-    "frontMatter": {
-      "cover": "https://free.picui.cn/free/2026/05/20/6a0dcd06916f0.jpg",
-      "title": "生成器CLI",
-      "menu": "test",
-      "tags": [],
-      "desc": "生成器 CLI 命令 | 命令 | 说明 | |------|------| | kecare gen | 构建站点，生成页面文件 | | kecare -version | 查看当前版本 | 使用示例 执行流程 扫描 .kecare/ar...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-05",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/fddd58bb",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\fddd58bb.vue",
-    "urlPath": "articles/zh-CN/fddd58bb"
   }
 ]
                 const currentPage = 3
                 const totalPages = 4
-                const totalArticles = 19
+                const totalArticles = 20
                 const totalTags = 9
 
                 </script>

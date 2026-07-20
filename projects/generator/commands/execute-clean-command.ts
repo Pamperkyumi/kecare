@@ -24,4 +24,5 @@ export async function executeCleanCommand(params: Params) {
     await rm(searchCachePath, { recursive: true, force: true });
     consola.success(`Cleaned generated articles: ${generatedArticlesPath}`);
     consola.success(`Cleaned markdown cache: ${markdownCachePath}`);
+    consola.success(`Clean search Cache: ${searchCachePath}`)
 }
