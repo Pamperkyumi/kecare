@@ -1,0 +1,1 @@
+import"./FjuqEV6L.js";var e=``+new URL(`kecream.D91mzjoa.avif`,import.meta.url).href;export{e as t};

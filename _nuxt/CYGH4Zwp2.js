@@ -1,0 +1,1 @@
+import"./FjuqEV6L.js";var e=``+new URL(`avatar.DyiS59iC.webp`,import.meta.url).href;export{e as t};
