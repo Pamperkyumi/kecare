@@ -60,7 +60,6 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/95bb100b",
-    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
     "urlPath": "articles/zh-CN/95bb100b"
   },
@@ -73,7 +72,7 @@
     "hash": "37e86293",
     "relativePath": "/项目结构.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "项目结构",
       "menu": "test",
       "tags": [],
@@ -90,42 +89,8 @@
     },
     "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/37e86293",
-    "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
     "urlPath": "articles/zh-CN/37e86293"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "主题开发文章页",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-    "hash": "989b9235",
-    "relativePath": "/主题开发文章页.md",
-    "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "主题开发文章页",
-      "menu": "test",
-      "tags": [
-        "主题开发",
-        "文章页"
-      ],
-      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-21",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "lang": "zh-CN",
@@ -159,6 +124,39 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
     "urlPath": "articles/zh-CN/93b7f9a7"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "主题开发文章页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+    "hash": "989b9235",
+    "relativePath": "/主题开发文章页.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "主题开发文章页",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "文章页"
+      ],
+      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-21",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
   }
 ]
                 const currentPage = 2

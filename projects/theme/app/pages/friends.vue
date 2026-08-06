@@ -33,6 +33,12 @@ const friendLinks: FriendLink[] = [
         desc: '关注可莉姆船长谢谢喵',
         image: kecreamAvatar,
     },
+    {
+        "name": "枝动力の小站",
+        "image": "https://zhidongli.top/Photo.jpg",
+        "desc": "渺渺星海,唯我独芒!",
+        "url": "https://zhidongli.top/"
+    }
 ]
 
 // function initSakanaWidget() {
