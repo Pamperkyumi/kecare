@@ -1,7 +1,16 @@
-<!-- Generated: 2026-08-03T19:21:16.901Z -->
+<!-- Generated: 2026-08-05T14:25:12.341Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
+  {
+    "title": "Kecare的热更新以及Vite的HMR原理",
+    "lang": "zh-CN",
+    "hash": "aaddef53",
+    "tags": [],
+    "date": "2026-08-03",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
+    "urlPath": "articles/zh-CN/aaddef53"
+  },
   {
     "title": "增量生成与热更新原理",
     "lang": "zh-CN",
@@ -57,18 +66,6 @@
     "urlPath": "articles/zh-CN/54f6a7aa"
   },
   {
-    "title": "主题开发归档页",
-    "lang": "zh-CN",
-    "hash": "93b7f9a7",
-    "tags": [
-      "主题开发",
-      "归档页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
-    "urlPath": "articles/zh-CN/93b7f9a7"
-  },
-  {
     "title": "主题开发文章页",
     "lang": "zh-CN",
     "hash": "989b9235",
@@ -79,6 +76,18 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
     "urlPath": "articles/zh-CN/989b9235"
+  },
+  {
+    "title": "主题开发归档页",
+    "lang": "zh-CN",
+    "hash": "93b7f9a7",
+    "tags": [
+      "主题开发",
+      "归档页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
   },
   {
     "title": "主题开发落地页",
@@ -167,7 +176,7 @@
     "urlPath": "articles/zh-CN/4ee23999"
   }
 ]
-        const totalArticles = 16
+        const totalArticles = 17
         const totalTags = 9
         useHead({
             title: '归档喵',

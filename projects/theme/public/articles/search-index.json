@@ -1,16 +1,22 @@
 {
   "articles": [
     {
-      "title": "主题开发归档页",
+      "title": "Kecare的热更新以及Vite的HMR原理",
       "lang": "zh-CN",
-      "hash": "93b7f9a7",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/zh-CN/93b7f9a7",
-      "file": "93b7f9a7.zh-CN.json"
+      "hash": "aaddef53",
+      "tags": [],
+      "date": "2026-08-03",
+      "urlPath": "articles/zh-CN/aaddef53",
+      "file": "aaddef53.zh-CN.json"
+    },
+    {
+      "title": "Kecare的缓存",
+      "lang": "zh-CN",
+      "hash": "8246c8ed",
+      "tags": [],
+      "date": "2026-08-02",
+      "urlPath": "articles/zh-CN/8246c8ed",
+      "file": "8246c8ed.zh-CN.json"
     },
     {
       "title": "Github pages",
@@ -20,15 +26,6 @@
       "date": "2026-03-08",
       "urlPath": "articles/zh-CN/39f6b230",
       "file": "39f6b230.zh-CN.json"
-    },
-    {
-      "title": "markdown扩展",
-      "lang": "zh-CN",
-      "hash": "b40d18d1",
-      "tags": [],
-      "date": "2026-03-09",
-      "urlPath": "articles/zh-CN/b40d18d1",
-      "file": "b40d18d1.zh-CN.json"
     },
     {
       "title": "主题开发文章页",
@@ -41,6 +38,54 @@
       "date": "2026-03-21",
       "urlPath": "articles/zh-CN/989b9235",
       "file": "989b9235.zh-CN.json"
+    },
+    {
+      "title": "主题开发归档页",
+      "lang": "zh-CN",
+      "hash": "93b7f9a7",
+      "tags": [
+        "主题开发",
+        "归档页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/zh-CN/93b7f9a7",
+      "file": "93b7f9a7.zh-CN.json"
+    },
+    {
+      "title": "markdown扩展",
+      "lang": "zh-CN",
+      "hash": "b40d18d1",
+      "tags": [],
+      "date": "2026-03-09",
+      "urlPath": "articles/zh-CN/b40d18d1",
+      "file": "b40d18d1.zh-CN.json"
+    },
+    {
+      "title": "写作",
+      "lang": "zh-CN",
+      "hash": "6e8c5f0b",
+      "tags": [],
+      "date": "2026-03-06",
+      "urlPath": "articles/zh-CN/6e8c5f0b",
+      "file": "6e8c5f0b.zh-CN.json"
+    },
+    {
+      "title": "增量生成与热更新原理",
+      "lang": "zh-CN",
+      "hash": "8a8cb741",
+      "tags": [],
+      "date": "2026-08-03",
+      "urlPath": "articles/zh-CN/8a8cb741",
+      "file": "8a8cb741.zh-CN.json"
+    },
+    {
+      "title": "关于我",
+      "lang": "zh-CN",
+      "hash": "2f0fd1f2",
+      "tags": [],
+      "date": "2026-03-10",
+      "urlPath": "articles/zh-CN/2f0fd1f2",
+      "file": "2f0fd1f2.zh-CN.json"
     },
     {
       "title": "主题开发落地页",
@@ -56,24 +101,6 @@
       "file": "e52553ad.zh-CN.json"
     },
     {
-      "title": "写作",
-      "lang": "zh-CN",
-      "hash": "6e8c5f0b",
-      "tags": [],
-      "date": "2026-03-06",
-      "urlPath": "articles/zh-CN/6e8c5f0b",
-      "file": "6e8c5f0b.zh-CN.json"
-    },
-    {
-      "title": "关于我",
-      "lang": "zh-CN",
-      "hash": "2f0fd1f2",
-      "tags": [],
-      "date": "2026-03-10",
-      "urlPath": "articles/zh-CN/2f0fd1f2",
-      "file": "2f0fd1f2.zh-CN.json"
-    },
-    {
       "title": "国际化处理",
       "lang": "zh-CN",
       "hash": "493f5fa2",
@@ -81,15 +108,6 @@
       "date": "2026-03-03",
       "urlPath": "articles/zh-CN/493f5fa2",
       "file": "493f5fa2.zh-CN.json"
-    },
-    {
-      "title": "Kecare的缓存",
-      "lang": "zh-CN",
-      "hash": "8246c8ed",
-      "tags": [],
-      "date": "2026-08-02",
-      "urlPath": "articles/zh-CN/8246c8ed",
-      "file": "8246c8ed.zh-CN.json"
     },
     {
       "title": "天天禄杯S2",
@@ -101,15 +119,6 @@
       "file": "aff462d2.zh-CN.json"
     },
     {
-      "title": "花月",
-      "lang": "zh-CN",
-      "hash": "54f6a7aa",
-      "tags": [],
-      "date": "2026-07-04",
-      "urlPath": "articles/zh-CN/54f6a7aa",
-      "file": "54f6a7aa.zh-CN.json"
-    },
-    {
       "title": "快速开始",
       "lang": "zh-CN",
       "hash": "95bb100b",
@@ -119,25 +128,13 @@
       "file": "95bb100b.zh-CN.json"
     },
     {
-      "title": "增量生成与热更新原理",
-      "lang": "zh-CN",
-      "hash": "8a8cb741",
-      "tags": [],
-      "date": "2026-08-03",
-      "urlPath": "articles/zh-CN/8a8cb741",
-      "file": "8a8cb741.zh-CN.json"
-    },
-    {
-      "title": "Theme Development Archive Page",
+      "title": "Kecare's cache",
       "lang": "en-US",
-      "hash": "93b7f9a7",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/en-US/93b7f9a7",
-      "file": "93b7f9a7.en-US.json"
+      "hash": "8246c8ed",
+      "tags": [],
+      "date": "2026-08-02",
+      "urlPath": "articles/en-US/8246c8ed",
+      "file": "8246c8ed.en-US.json"
     },
     {
       "title": "## Deploy on GitHub Pages",
@@ -147,15 +144,6 @@
       "date": "2026-03-08",
       "urlPath": "articles/en-US/39f6b230",
       "file": "39f6b230.en-US.json"
-    },
-    {
-      "title": "Markdown extension",
-      "lang": "en-US",
-      "hash": "b40d18d1",
-      "tags": [],
-      "date": "2026-03-09",
-      "urlPath": "articles/en-US/b40d18d1",
-      "file": "b40d18d1.en-US.json"
     },
     {
       "title": "看起来您只提供了标题“主题开发文章页”，但没有提供需要翻译的文章正文内容。请将完整的文章内容粘贴过来，我会按照您的要求进行翻译。",
@@ -170,20 +158,28 @@
       "file": "989b9235.en-US.json"
     },
     {
-      "title": "Theme Development Landing Page",
+      "title": "Theme Development Archive Page",
       "lang": "en-US",
-      "hash": "e52553ad",
+      "hash": "93b7f9a7",
       "tags": [
         "主题开发",
-        "落地页",
-        "列表页"
+        "归档页"
       ],
       "date": "2026-03-21",
-      "urlPath": "articles/en-US/e52553ad",
-      "file": "e52553ad.en-US.json"
+      "urlPath": "articles/en-US/93b7f9a7",
+      "file": "93b7f9a7.en-US.json"
     },
     {
-      "title": "writing",
+      "title": "Markdown extension",
+      "lang": "en-US",
+      "hash": "b40d18d1",
+      "tags": [],
+      "date": "2026-03-09",
+      "urlPath": "articles/en-US/b40d18d1",
+      "file": "b40d18d1.en-US.json"
+    },
+    {
+      "title": "我注意到您还没有提供需要翻译的文章内容。请发送您要翻译的文章，我会按照您的要求将中文翻译成英文（en-US），并确保：\n\n- 不增删任何 HTML 标签/属性或 Markdown 标签/属性\n- 不翻译代码块内的内容（如果是代码内容，原样放回）\n- 不翻译代码块占位符（如 __CODE_BLOCK_0__）\n- 保留链接 href、图片 src、id、class 等属性不变\n- 只翻译文本节点\n\n请提供您的文章内容，我将开始翻译。",
       "lang": "en-US",
       "hash": "6e8c5f0b",
       "tags": [],
@@ -201,6 +197,19 @@
       "file": "2f0fd1f2.en-US.json"
     },
     {
+      "title": "Theme Development Landing Page",
+      "lang": "en-US",
+      "hash": "e52553ad",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/en-US/e52553ad",
+      "file": "e52553ad.en-US.json"
+    },
+    {
       "title": "好的，请发送需要翻译的文章内容。目前只收到了标题「国际化处理」，没有正文内容。\n\n标题「国际化处理」翻译为：\n\n**Internationalization Processing**\n\n请提供完整文章内容，我会按照您的要求进行翻译：\n- 保留所有 HTML/Markdown 标签和属性不变\n- 代码块内容不翻译，原样保留\n- 代码块占位符（如 `__CODE_BLOCK_0__`）不翻译\n- 只翻译文本节点",
       "lang": "en-US",
       "hash": "493f5fa2",
@@ -208,15 +217,6 @@
       "date": "2026-03-03",
       "urlPath": "articles/en-US/493f5fa2",
       "file": "493f5fa2.en-US.json"
-    },
-    {
-      "title": "Kecare's cache",
-      "lang": "en-US",
-      "hash": "8246c8ed",
-      "tags": [],
-      "date": "2026-08-02",
-      "urlPath": "articles/en-US/8246c8ed",
-      "file": "8246c8ed.en-US.json"
     },
     {
       "title": "Quick Start",
@@ -228,16 +228,13 @@
       "file": "95bb100b.en-US.json"
     },
     {
-      "title": "テーマ開発アーカイブページ",
+      "title": "Kecareのキャッシュ\n\n__CODE_BLOCK_0__",
       "lang": "ja-JP",
-      "hash": "93b7f9a7",
-      "tags": [
-        "主题开发",
-        "归档页"
-      ],
-      "date": "2026-03-21",
-      "urlPath": "articles/ja-JP/93b7f9a7",
-      "file": "93b7f9a7.ja-JP.json"
+      "hash": "8246c8ed",
+      "tags": [],
+      "date": "2026-08-02",
+      "urlPath": "articles/ja-JP/8246c8ed",
+      "file": "8246c8ed.ja-JP.json"
     },
     {
       "title": "您似乎只提供了“Github pages”这几个字，没有附带完整的文章内容。请问您能否提供完整的待翻译文本？\n\n如果您是想翻译“Github pages”本身，在日语中通常保留原样为「GitHub Pages」（作为专有名词），有时也可意译为「GitHub ページ」。请确认您的具体需求。",
@@ -247,15 +244,6 @@
       "date": "2026-03-08",
       "urlPath": "articles/ja-JP/39f6b230",
       "file": "39f6b230.ja-JP.json"
-    },
-    {
-      "title": "マークダウン拡張",
-      "lang": "ja-JP",
-      "hash": "b40d18d1",
-      "tags": [],
-      "date": "2026-03-09",
-      "urlPath": "articles/ja-JP/b40d18d1",
-      "file": "b40d18d1.ja-JP.json"
     },
     {
       "title": "我需要翻译的内容在哪里？您只提供了“主题开发文章页”这个标题，但没有提供需要翻译的完整文章内容。\n\n请提供完整的文章内容，我会将其翻译成日语（ja-JP），并严格遵守您的要求：\n- 不增删任何HTML标签/属性和markdown标签/属性\n- 代码块内容不翻译，只翻译文本节点\n- 代码内容原样保留\n- 保留链接href、图片src、id、class等属性\n- 代码块占位符（如 __CODE_BLOCK_0__）原样保留",
@@ -270,17 +258,25 @@
       "file": "989b9235.ja-JP.json"
     },
     {
-      "title": "テーマ開発ランディングページ",
+      "title": "テーマ開発アーカイブページ",
       "lang": "ja-JP",
-      "hash": "e52553ad",
+      "hash": "93b7f9a7",
       "tags": [
         "主题开发",
-        "落地页",
-        "列表页"
+        "归档页"
       ],
       "date": "2026-03-21",
-      "urlPath": "articles/ja-JP/e52553ad",
-      "file": "e52553ad.ja-JP.json"
+      "urlPath": "articles/ja-JP/93b7f9a7",
+      "file": "93b7f9a7.ja-JP.json"
+    },
+    {
+      "title": "マークダウン拡張",
+      "lang": "ja-JP",
+      "hash": "b40d18d1",
+      "tags": [],
+      "date": "2026-03-09",
+      "urlPath": "articles/ja-JP/b40d18d1",
+      "file": "b40d18d1.ja-JP.json"
     },
     {
       "title": "書くこと",
@@ -301,6 +297,19 @@
       "file": "2f0fd1f2.ja-JP.json"
     },
     {
+      "title": "テーマ開発ランディングページ",
+      "lang": "ja-JP",
+      "hash": "e52553ad",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "date": "2026-03-21",
+      "urlPath": "articles/ja-JP/e52553ad",
+      "file": "e52553ad.ja-JP.json"
+    },
+    {
       "title": "我理解了翻译要求。请发送需要翻译成日语的文本（仅文本节点内容），我会严格遵循以下原则：\n\n1. **仅翻译文本节点**，不增删任何HTML标签、属性或markdown标记\n2. **代码块内容**不翻译，原样保留\n3. **代码内容**（如变量名、函数名等）不翻译\n4. **链接href、图片src、id、class等属性**保持原样\n5. **代码块占位符**（如`__CODE_BLOCK_0__`）原样保留\n\n请发送待翻译的文章内容。",
       "lang": "ja-JP",
       "hash": "493f5fa2",
@@ -308,15 +317,6 @@
       "date": "2026-03-03",
       "urlPath": "articles/ja-JP/493f5fa2",
       "file": "493f5fa2.ja-JP.json"
-    },
-    {
-      "title": "Kecareのキャッシュ\n\n__CODE_BLOCK_0__",
-      "lang": "ja-JP",
-      "hash": "8246c8ed",
-      "tags": [],
-      "date": "2026-08-02",
-      "urlPath": "articles/ja-JP/8246c8ed",
-      "file": "8246c8ed.ja-JP.json"
     },
     {
       "title": "クイックスタート",
@@ -342,43 +342,6 @@
       "file": "4ee23999.zh-CN.json"
     },
     {
-      "title": "Menu System",
-      "lang": "en-US",
-      "hash": "4ee23999",
-      "tags": [
-        "菜单",
-        "导航",
-        "测试",
-        "Kecare"
-      ],
-      "date": "2026-03-01",
-      "urlPath": "articles/en-US/4ee23999",
-      "file": "4ee23999.en-US.json"
-    },
-    {
-      "title": "メニューシステム",
-      "lang": "ja-JP",
-      "hash": "4ee23999",
-      "tags": [
-        "菜单",
-        "导航",
-        "测试",
-        "Kecare"
-      ],
-      "date": "2026-03-01",
-      "urlPath": "articles/ja-JP/4ee23999",
-      "file": "4ee23999.ja-JP.json"
-    },
-    {
-      "title": "项目结构",
-      "lang": "zh-CN",
-      "hash": "37e86293",
-      "tags": [],
-      "date": "2026-08-02",
-      "urlPath": "articles/zh-CN/37e86293",
-      "file": "37e86293.zh-CN.json"
-    },
-    {
       "title": "贡献指南",
       "lang": "zh-CN",
       "hash": "43fc313b",
@@ -393,13 +356,18 @@
       "file": "43fc313b.zh-CN.json"
     },
     {
-      "title": "Project Structure",
+      "title": "Menu System",
       "lang": "en-US",
-      "hash": "37e86293",
-      "tags": [],
-      "date": "2026-08-02",
-      "urlPath": "articles/en-US/37e86293",
-      "file": "37e86293.en-US.json"
+      "hash": "4ee23999",
+      "tags": [
+        "菜单",
+        "导航",
+        "测试",
+        "Kecare"
+      ],
+      "date": "2026-03-01",
+      "urlPath": "articles/en-US/4ee23999",
+      "file": "4ee23999.en-US.json"
     },
     {
       "title": "Contribution Guide",
@@ -416,13 +384,18 @@
       "file": "43fc313b.en-US.json"
     },
     {
-      "title": "プロジェクト構造",
+      "title": "メニューシステム",
       "lang": "ja-JP",
-      "hash": "37e86293",
-      "tags": [],
-      "date": "2026-08-02",
-      "urlPath": "articles/ja-JP/37e86293",
-      "file": "37e86293.ja-JP.json"
+      "hash": "4ee23999",
+      "tags": [
+        "菜单",
+        "导航",
+        "测试",
+        "Kecare"
+      ],
+      "date": "2026-03-01",
+      "urlPath": "articles/ja-JP/4ee23999",
+      "file": "4ee23999.ja-JP.json"
     },
     {
       "title": "貢献ガイド",
@@ -437,6 +410,42 @@
       "date": "2026-03-02",
       "urlPath": "articles/ja-JP/43fc313b",
       "file": "43fc313b.ja-JP.json"
+    },
+    {
+      "title": "项目结构",
+      "lang": "zh-CN",
+      "hash": "37e86293",
+      "tags": [],
+      "date": "2026-08-02",
+      "urlPath": "articles/zh-CN/37e86293",
+      "file": "37e86293.zh-CN.json"
+    },
+    {
+      "title": "Project Structure",
+      "lang": "en-US",
+      "hash": "37e86293",
+      "tags": [],
+      "date": "2026-08-02",
+      "urlPath": "articles/en-US/37e86293",
+      "file": "37e86293.en-US.json"
+    },
+    {
+      "title": "プロジェクト構造",
+      "lang": "ja-JP",
+      "hash": "37e86293",
+      "tags": [],
+      "date": "2026-08-02",
+      "urlPath": "articles/ja-JP/37e86293",
+      "file": "37e86293.ja-JP.json"
+    },
+    {
+      "title": "花月",
+      "lang": "zh-CN",
+      "hash": "54f6a7aa",
+      "tags": [],
+      "date": "2026-07-04",
+      "urlPath": "articles/zh-CN/54f6a7aa",
+      "file": "54f6a7aa.zh-CN.json"
     }
   ]
 }

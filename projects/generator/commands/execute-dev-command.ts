@@ -17,6 +17,18 @@ import { loadMarkdownCache } from '../input-drivers/markdown-driver/__ROOT__.ts'
  * 进程模型：
  *   - 默认仅运行 kecare 监听器，用户自行在另一终端运行 nuxt dev（解耦、稳健）。
  *   - --with-nuxt：同时拉起 nuxt dev 子进程，统一管理生命周期。
+ *
+ * HMR 原理（文件系统解耦）：
+ *   Kecare 与 Nuxt 是独立进程，通过文件系统通信：
+ *   1. Node.js fs.watch 监听 .kecare/articles/ 目录（recursive），检测 .md 文件变更
+ *   2. 400ms debounce 合并编辑器连续保存事件，触发 runDevCycle
+ *   3. runDevCycle 调用 runGeneration → 写入 .vue 文件到 app/pages/articles/
+ *   4. Vite（Nuxt 内置的 dev server）通过 chokidar 监听 app/pages/ 目录，发现 .vue 文件变化
+ *   5. Vite 触发 HMR：分析依赖图 → 确定受影响模块 → 通过 WebSocket 推送增量更新到浏览器
+ *   6. 浏览器收到 HMR update 消息 → Vue 组件热替换（保留组件状态）→ 页面无刷新更新
+ *
+ *   对于新增/删除页面，Nuxt 的 Vite 插件会触发 full-reload 以保证路由表同步。
+ *   Kecare 不需要主动"通知"Nuxt —— 只要 .vue 写入 Nuxt 的文件路由目录，Vite 自动感知。
  */
 export async function executeDevCommand(params: Params) {
     // 解析项目路径，默认为当前目录
@@ -67,8 +79,13 @@ export async function executeDevCommand(params: Params) {
         try {
             consola.info('检测到文章变更，开始增量重生成...');
             await pruneOrphans(projectPath);
+            // ── HMR 第 2 步：runGeneration 将文章转换为 .vue 文件，写入 app/pages/articles/ ──
+            // 这些 .vue 位于 Nuxt 的文件路由目录内，Vite 的 chokidar 文件监听器会自动检测到变更，
+            // 立即触发 HMR（Hot Module Replacement）向浏览器推送增量更新。
+            // 新增/删除页面时 Nuxt 会触发 full-reload 以同步路由表。
             await runGeneration(projectPath);
-            consola.success('增量重生成完成');
+            // 此时 Vite 已经检测到了 app/pages/ 下的文件变化，Nuxt 已自行触发 HMR
+            consola.success('增量重生成完成 —— .vue 已写入，Vite 将自动触发 HMR');
         } catch (error) {
             consola.error('增量重生成失败:', error instanceof Error ? error.message : String(error));
         } finally {
@@ -89,12 +106,17 @@ export async function executeDevCommand(params: Params) {
         }, 400);
     };
 
-    // 监听文章目录（recursive 在 Windows 上原生支持）
+    // ── HMR 第 1 步：Node.js fs.watch 监听文章源目录 ──
+    // recursive 在 Windows 上原生支持，子目录内文章变更也会触发。
+    // 回调参数：eventType 为 'change' | 'rename'（Windows 上均为 'change'），filename 为相对路径。
     const watcher = watch(articlesDir, { recursive: true }, (_eventType, filename) => {
         if (!filename) return;
         const name = filename.toString();
         // 只关注 markdown 文件；编辑器临时文件（.md~、.swp、.tmp 等）无 .md 后缀自然被过滤
         if (!/\.(md|mdx|markdown)$/i.test(name)) return;
+        consola.info(`[fs.watch] 检测到文章源文件变更: ${name}`);
+        // → 进入 debounce → runDevCycle → runGeneration 写入 .vue 到 app/pages/
+        // → Vite 的 chokidar 检测到 app/pages/ 下的 .vue 变化 → 触发 HMR → 浏览器热更新
         scheduleCycle();
     });
 

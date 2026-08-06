@@ -2,7 +2,7 @@
   "53233653": "`articles` はあなたの記事データであり、あなたのすべての記事がここに保存されて初めて、Kecareが読み取れるようになるにゃ。[執筆]([写作 - Pamperのblog](https://kecare.me/articles/zh-CN/6e8c5f0b/))",
   "6c3d09f1": "# プロジェクト構成",
   "f823e758": "Kecareのディレクトリ構造は概ね以下の通りです。",
-  "3d0b85e0": "![](http://img.pichost.cloud/images/1785682544369.png)",
+  "3d0b85e0": "![](http://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785682544369.png)",
   "2e7f4ebf": "よし、それでは一つずつ紹介していきましょうにゃ。",
   "a7fb7530": "`cache` はKecareが生成したキャッシュファイルです。記事データや翻訳結果などのキャッシュに使用します。詳細は [キャッシュメカニズム](https://kecare.me/articles/zh-CN/8246c8ed) を参照してください。",
   "a998b1f8": "`menus` はKecareが提供する左側メニュー機能です。対応する階層構造を記述して、ページに挿入するだけでOKです。[メニューシステム](https://kecare.me/articles/zh-CN/4ee23999)",

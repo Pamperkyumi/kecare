@@ -1,6 +1,6 @@
 {
   "45223993": "### Start the Development Server",
-  "51625251": "![安装向导](http://img.pichost.cloud/images/1785680820894.png)",
+  "51625251": "![安装向导](http://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785680820894.png)",
   "2c7d8b08": "Quick Start",
   "15c627e2": "Getting started with Kecare is quite simple. Just install the Kecare CLI, and it will help you start a Kecare project from scratch. It will guide you through each step of setting up a new project and allow you to choose from several different official starter templates. If you just want to quickly integrate a blog/documentation site into your existing project, please read",
   "b8f977f6": "Prerequisites",
@@ -41,7 +41,7 @@
   "3beb16f6": "Start the local server.",
   "db381e8d": "__CODE_BLOCK_5__",
   "dd4502bd": "If everything goes well, you will also see a message similar to the following.",
-  "8e118a64": "![Start server](http://img.pichost.cloud/images/1785681846899.png)",
+  "8e118a64": "![Start server](http://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785681846899.png)",
   "97d63e14": "Hold down Ctrl and click the \"Local\" link in the figure to preview your website in the local browser.",
   "36fbf9ea": "Now you can start learning about Kecare's project structure and how to write articles and themes."
 }

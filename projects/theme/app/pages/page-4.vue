@@ -6,6 +6,41 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "贡献指南",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "贡献指南 感谢你对 Kecare 项目的关注！ 开发环境 Node.js Bun（推荐） 项目结构 本地开发 代码规范 项目使用 oxlint 和 oxfmt 进行代码检查和格式化： 提交前请确保代码通过检查。 提交规范 提交信息格式： 类...",
+    "hash": "43fc313b",
+    "relativePath": "/贡献指南.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "贡献指南",
+      "menu": "test",
+      "tags": [
+        "菜单",
+        "导航",
+        "测试",
+        "Kecare"
+      ],
+      "desc": "贡献指南 感谢你对 Kecare 项目的关注！ 开发环境 Node.js Bun（推荐） 项目结构 本地开发 代码规范 项目使用 oxlint 和 oxfmt 进行代码检查和格式化： 提交前请确保代码通过检查。 提交规范 提交信息格式： 类...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-02",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "urlPath": "articles/zh-CN/43fc313b"
+  },
+  {
+    "lang": "zh-CN",
     "title": "菜单系统",
     "isOriginalLang": true,
     "menu": "test",
@@ -13,7 +48,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "https://img.pichost.cloud/images/1785613091954.webp",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "菜单系统",
       "menu": "test",
       "tags": [
@@ -42,7 +77,7 @@
 ]
                 const currentPage = 4
                 const totalPages = 4
-                const totalArticles = 16
+                const totalArticles = 17
                 const totalTags = 9
 
                 </script>

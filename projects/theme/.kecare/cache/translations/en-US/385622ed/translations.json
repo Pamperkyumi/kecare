@@ -1,4 +1,5 @@
 {
+  "11834420": "1. Create `.md` files in the `.kecare/articles/` directory.\n2. Write content.",
   "5bf3f3b3": "# Writing",
   "690026d0": "In Kecare, articles are stored in the `主题目录/.kecare/articles/` directory, and currently only Markdown files are supported.",
   "23001abe": "## Creating an Article",
@@ -14,5 +15,8 @@
   "a9fa17cb": "__CODE_BLOCK_1__",
   "e10755e6": "You don't need to add all Front Matter fields for every article. Currently only the date field is required. For other fields, if you don't provide values, Kecare will use default values.",
   "86aa6958": "## Running the Generator",
-  "2b4353a7": "After writing, run the generator to preview it in the browser."
+  "2b4353a7": "After writing, run the generator to preview it in the browser.",
+  "da862d0a": "1. Create `.md` in the `.kecare/articles/` directory\n2. Write content",
+  "67ec217c": "1. Create in the `.kecare/articles/` directory\n2. Write content",
+  "e18a9cfe": "The article consists of **Front Matter** and **body content**"
 }

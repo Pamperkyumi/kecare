@@ -6,6 +6,40 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "主题开发落地页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+    "hash": "e52553ad",
+    "relativePath": "/主题开发落地页.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "主题开发落地页",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-21",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "urlPath": "articles/zh-CN/e52553ad"
+  },
+  {
+    "lang": "zh-CN",
     "title": "markdown扩展",
     "isOriginalLang": true,
     "menu": "test",
@@ -13,7 +47,7 @@
     "hash": "b40d18d1",
     "relativePath": "/markdown扩展.md",
     "frontMatter": {
-      "cover": "https://img.pichost.cloud/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "markdown扩展",
       "menu": "test",
       "tags": [],
@@ -43,7 +77,7 @@
     "hash": "39f6b230",
     "relativePath": "/Github pages.md",
     "frontMatter": {
-      "cover": "https://img.pichost.cloud/images/1785613091954.webp",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "Github pages",
       "menu": "test",
       "tags": [],
@@ -69,15 +103,15 @@
     "title": "写作",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件 编写内容 文章结构 文章由 Fr...",
+    "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件. 编写内容 文章结构 文章由 F...",
     "hash": "6e8c5f0b",
     "relativePath": "/写作.md",
     "frontMatter": {
-      "cover": "https://img.pichost.cloud/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "写作",
       "menu": "test",
       "tags": [],
-      "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件 编写内容 文章结构 文章由 Fr...",
+      "desc": "写作 在 Kecare 中，文章存放在 主题目录/.kecare/articles/ 目录下，目前仅支持 Markdown 文件。 创建文章 在 .kecare/articles/ 目录下创建 .md 文件. 编写内容 文章结构 文章由 F...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -103,7 +137,7 @@
     "hash": "493f5fa2",
     "relativePath": "/国际化处理.md",
     "frontMatter": {
-      "cover": "https://img.pichost.cloud/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "国际化处理",
       "menu": "test",
       "tags": [],
@@ -123,46 +157,11 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
     "urlPath": "articles/zh-CN/493f5fa2"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "贡献指南",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "贡献指南 感谢你对 Kecare 项目的关注！ 开发环境 Node.js Bun（推荐） 项目结构 本地开发 代码规范 项目使用 oxlint 和 oxfmt 进行代码检查和格式化： 提交前请确保代码通过检查。 提交规范 提交信息格式： 类...",
-    "hash": "43fc313b",
-    "relativePath": "/贡献指南.md",
-    "frontMatter": {
-      "cover": "https://img.pichost.cloud/images/1785612859072.jpg",
-      "title": "贡献指南",
-      "menu": "test",
-      "tags": [
-        "菜单",
-        "导航",
-        "测试",
-        "Kecare"
-      ],
-      "desc": "贡献指南 感谢你对 Kecare 项目的关注！ 开发环境 Node.js Bun（推荐） 项目结构 本地开发 代码规范 项目使用 oxlint 和 oxfmt 进行代码检查和格式化： 提交前请确保代码通过检查。 提交规范 提交信息格式： 类...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-02",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
-    "urlPath": "articles/zh-CN/43fc313b"
   }
 ]
                 const currentPage = 3
                 const totalPages = 4
-                const totalArticles = 16
+                const totalArticles = 17
                 const totalTags = 9
 
                 </script>
