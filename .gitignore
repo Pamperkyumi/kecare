@@ -39,3 +39,13 @@ generator.exe
 # Finder (MacOS) folder config
 .DS_Store
 projects/theme/.kecare/kecare.config.ts
+
+# IDE / AI tooling
+.codex/
+.commands/
+.trae/
+.vscode/settings.json
+
+# generated / internal docs
+packages/kecare/README.md
+projects/theme/README.md
