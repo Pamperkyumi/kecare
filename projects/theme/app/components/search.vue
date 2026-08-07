@@ -30,7 +30,14 @@ interface SearchIndexPayload {
     articles: SearchIndexArticle[]
 }
 
-const visible = ref(false)
+const props = defineProps<{
+    visible: boolean
+}>()
+
+const emit = defineEmits<{
+    'update:visible': [value: boolean]
+}>()
+
 const keyword = ref('')
 const results = ref<SearchResult[]>([])
 const loading = ref(false)
@@ -56,6 +63,9 @@ let searchVersion = 0
 const MAX_RESULTS = 10
 const SEARCH_DELAY = 180
 const BATCH_SIZE = 20
+
+const inputRef = ref<HTMLInputElement | null>(null)
+const wrapperRef = ref<HTMLElement | null>(null)
 
 const normalizeText = (text: string): string => {
     return text
@@ -192,6 +202,7 @@ const calculateTitleScore = (query: string, article: SearchIndexArticle): number
 
     return score
 }
+
 const getFilteredArticles = (): SearchIndexArticle[] => {
     return indexArticles.value.filter((article) => {
         if (selectedLang.value === 'all') return true
@@ -432,13 +443,11 @@ const scheduleSearch = () => {
     }, SEARCH_DELAY)
 }
 
-const open = () => {
-    visible.value = true
-    void initializeIndex()
+const close = () => {
+    emit('update:visible', false)
 }
 
-const close = () => {
-    visible.value = false
+const reset = () => {
     keyword.value = ''
     results.value = []
     errorMessage.value = ''
@@ -459,130 +468,123 @@ watch(selectedLang, () => {
     scheduleSearch()
 })
 
-defineExpose({
-    open,
-    close,
+watch(() => props.visible, (v) => {
+    if (v) {
+        void initializeIndex()
+        nextTick(() => {
+            inputRef.value?.focus()
+        })
+    } else {
+        reset()
+    }
+})
+
+const onClickOutside = (event: MouseEvent) => {
+    if (!props.visible) return
+    const target = event.target as Node
+    if (wrapperRef.value && !wrapperRef.value.contains(target)) {
+        close()
+    }
+}
+
+const onKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && props.visible) {
+        close()
+    }
+}
+
+onMounted(() => {
+    if (props.visible) {
+        void initializeIndex()
+        nextTick(() => {
+            inputRef.value?.focus()
+        })
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    document.addEventListener('keydown', onKeydown)
+})
+
+onUnmounted(() => {
+    document.removeEventListener('mousedown', onClickOutside)
+    document.removeEventListener('keydown', onKeydown)
+
+    if (searchTimer) {
+        clearTimeout(searchTimer)
+        searchTimer = null
+    }
 })
 </script>
 
 <template>
-    <div v-if="visible" class="search-overlay" @click.self="close">
-        <div class="search-container">
-            <div class="search-header">
-                <div class="search-logo">
-                    <span class="logo-icon">🔍</span>
-                    <span class="logo-text">搜索</span>
-                </div>
-                <input v-model="keyword" type="text" class="search-input" placeholder="输入关键词搜索文章..."
-                    :disabled="loading" />
-                <select v-model="selectedLang" class="search-lang-select">
-                    <option v-for="opt in LANG_OPTIONS" :key="opt.value" :value="opt.value">
-                        {{ opt.label }}
-                    </option>
-                </select>
-                <button class="search-close" @click="close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
+    <div v-show="visible" ref="wrapperRef" class="search-inline">
+        <div class="search-input-row">
+            <input ref="inputRef" v-model="keyword" type="text" class="search-input"
+                placeholder="输入关键词搜索文章..." :disabled="loading" />
+            <select v-model="selectedLang" class="search-lang-select">
+                <option v-for="opt in LANG_OPTIONS" :key="opt.value" :value="opt.value">
+                    {{ opt.label }}
+                </option>
+            </select>
+            <button class="search-close" @click="close" aria-label="关闭搜索">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div v-show="keyword.trim() || loading || results.length > 0" class="search-results">
+            <div v-if="loading" class="search-status">
+                <span class="status-text">正在加载索引... 不要着急哦宝宝~</span>
             </div>
-            <div class="search-results">
-                <div v-if="loading" class="search-loading">
-                    <span class="loading-text">正在加载索引... 不要着急哦宝宝~</span>
-                </div>
-                <div v-else-if="keyword.trim() && results.length === 0" class="search-empty">
-                    <span class="empty-text">未找到相关文章，宝宝可以尝试搜索其他关键词哦~</span>
-                </div>
-                <div v-else-if="results.length > 0" class="search-list">
-                    <NuxtLink v-for="result in results" :key="result.article.hash + result.article.lang"
-                        :to="`/${result.article.urlPath}`" class="search-item" @click="close">
-                        <div class="item-title" v-html="highlightKeyword(result.article.title, keyword)"></div>
-                        <div class="item-meta">
-                            <span class="item-lang">{{ result.article.lang }}</span>
-                            <span class="item-date">{{ result.article.date }}</span>
-                            <span v-if="contentSearching && !result.contentSearched"
-                                class="item-searching">搜索内容中...</span>
-                        </div>
-                        <div v-for="(ctx, idx) in result.contexts" :key="idx" class="item-context"
-                            v-html="highlightKeyword(ctx, keyword)">
-                        </div>
-                    </NuxtLink>
-                </div>
-                <div v-else class="search-placeholder">
-                    <span class="placeholder-text">输入关键词开始搜索</span>
-                </div>
+            <div v-else-if="keyword.trim() && results.length === 0" class="search-status">
+                <span class="status-text">未找到相关文章，宝宝可以尝试搜索其他关键词哦~</span>
+            </div>
+            <div v-else-if="results.length > 0" class="search-list">
+                <NuxtLink v-for="result in results" :key="result.article.hash + result.article.lang"
+                    :to="`/${result.article.urlPath}`" class="search-item" @click="close">
+                    <div class="item-title" v-html="highlightKeyword(result.article.title, keyword)"></div>
+                    <div class="item-meta">
+                        <span class="item-lang">{{ result.article.lang }}</span>
+                        <span class="item-date">{{ result.article.date }}</span>
+                        <span v-if="contentSearching && !result.contentSearched"
+                            class="item-searching">搜索内容中...</span>
+                    </div>
+                    <div v-for="(ctx, idx) in result.contexts" :key="idx" class="item-context"
+                        v-html="highlightKeyword(ctx, keyword)">
+                    </div>
+                </NuxtLink>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.search-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    display: grid;
-    place-items: flex-start center;
-    padding-top: 15vh;
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(4px);
+.search-inline {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 320px;
 }
 
-.search-container {
-    width: 90%;
-    max-width: 600px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-}
-
-:global(.dark) .search-container {
-    background: rgba(31, 41, 55, 0.95);
-}
-
-.search-header {
+.search-input-row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-:global(.dark) .search-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.search-logo {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-.logo-icon {
-    font-size: 20px;
-}
-
-.logo-text {
-    font-size: 16px;
-    font-weight: 600;
-    color: #4fc3f7;
+    gap: 8px;
+    width: 100%;
 }
 
 .search-input {
     flex: 1;
-    height: 40px;
-    padding: 0 16px;
+    height: 36px;
+    padding: 0 12px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    font-size: 15px;
+    border-radius: 8px;
+    font-size: 14px;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fff;
-    color: #333;
+    background: var(--color-bg-primary, #fff);
+    color: var(--color-text-primary, #333);
 }
 
 :global(.dark) .search-input {
@@ -609,21 +611,16 @@ defineExpose({
     cursor: not-allowed;
 }
 
-:global(.dark) .search-input:disabled {
-    background: rgba(55, 65, 81, 0.5);
-}
-
 .search-lang-select {
-    height: 40px;
-    padding: 0 12px;
+    height: 36px;
+    padding: 0 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    font-size: 14px;
-    color: #333;
-    background: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--color-text-primary, #333);
+    background: var(--color-bg-primary, #fff);
     cursor: pointer;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
     flex-shrink: 0;
 }
 
@@ -649,7 +646,7 @@ defineExpose({
     width: 36px;
     height: 36px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     background: rgba(0, 0, 0, 0.05);
     color: #666;
     cursor: pointer;
@@ -668,29 +665,47 @@ defineExpose({
 }
 
 .search-results {
-    min-height: 200px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    min-height: 80px;
     max-height: 400px;
     overflow-y: auto;
+    border-radius: 12px;
+    background: var(--color-bg-primary, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    z-index: 1100;
 }
 
-.search-loading,
-.search-empty,
-.search-placeholder {
+:global(.dark) .search-results {
+    background: rgba(31, 41, 55, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-status {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    min-height: 80px;
     color: #999;
-    font-size: 14px;
+    font-size: 13px;
+    padding: 16px;
+}
+
+:global(.dark) .search-status {
+    color: #9ca3af;
 }
 
 .search-list {
-    padding: 8px 0;
+    padding: 6px 0;
 }
 
 .search-item {
     display: block;
-    padding: 12px 20px;
+    padding: 10px 16px;
     text-decoration: none;
     color: inherit;
     transition: background 0.2s;
@@ -702,10 +717,10 @@ defineExpose({
 }
 
 .item-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 6px;
+    color: var(--color-text-primary, #333);
+    margin-bottom: 4px;
 }
 
 :global(.dark) .item-title {
@@ -714,20 +729,21 @@ defineExpose({
 
 .item-meta {
     display: flex;
-    gap: 12px;
-    margin-bottom: 6px;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
 }
 
 .item-lang {
-    font-size: 12px;
+    font-size: 11px;
     color: #4fc3f7;
     background: rgba(79, 195, 247, 0.1);
-    padding: 2px 8px;
+    padding: 1px 6px;
     border-radius: 4px;
 }
 
 .item-date {
-    font-size: 12px;
+    font-size: 11px;
     color: #999;
 }
 
@@ -736,29 +752,15 @@ defineExpose({
 }
 
 .item-searching {
-    font-size: 12px;
+    font-size: 11px;
     color: #ffa726;
     background: rgba(255, 167, 38, 0.1);
-    padding: 2px 8px;
+    padding: 1px 6px;
     border-radius: 4px;
 }
 
-.item-desc {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.5;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
-
-:global(.dark) .item-desc {
-    color: #9ca3af;
-}
-
 .item-context {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
     line-height: 1.6;
     margin-top: 4px;

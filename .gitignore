@@ -43,8 +43,6 @@ projects/theme/.kecare/kecare.config.ts
 # IDE / AI tooling
 .codex/
 .commands/
-.trae/
-.vscode/settings.json
 
 # generated / internal docs
 packages/kecare/README.md
