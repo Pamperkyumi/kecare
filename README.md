@@ -2,11 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
 ![Version](https://img.shields.io/badge/version-1.0.0--beta.113-06b6d4?style=flat-square)
-![Runtime](https://img.shields.io/badge/bun-runtime-f9f1e1?style=flat-square)
-
-**把 Markdown 喂给 Kecare，它吐出一个能上线的中文/英文/日文文档站——前端用什么框架，你说了算。**
-
-Kecare 是一个**框架无关的静态文档站生成器**。它负责内容：解析 Markdown、调度 AI 翻译、产出结构化数据与按需页面模板。前端怎么写、主题怎么搭、部署去哪——全都由你的框架（Nuxt / Next.js / VitePress / Astro / React / Vue / 甚至纯 PHP）决定。
+![Runtime](https://img.shields.io/badge/bun-runtime-f9f1e1?style=flat-square)Kecare 是一个**框架无关的静态文档站生成器**。它负责内容：解析 Markdown、调度 AI 翻译、产出结构化数据与按需页面模板。前端怎么写、主题怎么搭、部署去哪——全都由你的框架（Nuxt / Next.js / VitePress / Astro / React / Vue / 甚至纯 PHP）决定。
 
 ***
 
@@ -137,20 +133,22 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
 
 ## 部署
 
-Kecare 输出是**纯静态文件**（含你框架的构建产物），可以部署到任何静态托管：
+Kecare 的职责在「内容层」就结束了——它输出的结构化数据、模板代码、静态资源，配合**你框架自己的构建步骤**才会变成可部署的产物。
 
-- **Cloudflare Pages** — 选 `Framework preset` 对应框架，构建命令 / 输出目录自动填充
-- **Vercel / Netlify** — 同上，自动识别框架
-- **GitHub Pages / 自建 Nginx** — 把构建输出目录（如 `dist/`）丢上去
+所以这一节没有"标准流程"。Nuxt 用 `nuxt build`、Next.js 用 `next build`、Astro 用 `astro build`、纯 HTML 可能根本不用构建——`build command` 和 `output directory` 取决于你的模板里写的是什么。
 
-详细的 Cloudflare Pages 步骤参考各框架官方文档。Nuxt 用户的示例：
+部署侧同样五花八门：Cloudflare Pages、Vercel、Netlify、GitHub Pages、自建 Nginx、对象存储 + CDN……只要能托管静态文件就行，Kecare 不挑。
 
-| 配置项                        | 值                       |
-| -------------------------- | ----------------------- |
-| **Framework preset**       | `Nuxt.js`               |
-| **Build command**          | `npm run build`         |
-| **Build output directory** | `dist`                  |
-| **Environment variables**  | `NODE_VERSION = 20`     |
+> **建议**：先确认你的模板能跑出可部署的产物（参考对应框架的部署文档），再把 Kecare 的输出接进去。下面给一个 Nuxt 用户的最小示例，方便对齐字段含义：
+
+| 配置项                        | 示例（Nuxt）            |
+| -------------------------- | ------------------- |
+| **Framework preset**       | `Nuxt.js`           |
+| **Build command**          | `npm run build`     |
+| **Build output directory** | `dist`              |
+| **Environment variables**  | `NODE_VERSION = 20` |
+
+非 Nuxt 模板请把 `Framework preset` 改成你用的栈，让平台自动填充，或参考该框架官方文档手填。
 
 ***
 
