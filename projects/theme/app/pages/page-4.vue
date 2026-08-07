@@ -13,7 +13,7 @@
     "hash": "43fc313b",
     "relativePath": "/贡献指南.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "贡献指南",
       "menu": "test",
       "tags": [
@@ -48,7 +48,7 @@
     "hash": "4ee23999",
     "relativePath": "/菜单系统.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "菜单系统",
       "menu": "test",
       "tags": [

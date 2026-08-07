@@ -6,6 +6,32 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "Kecare的热更新以及Vite的HMR原理",
+    "isOriginalLang": true,
+    "desc": "Kecare的热更新以及Vite的HMR原理 一、概述 传统流程下，每改一个字都要 kecare gen 全量重跑：扫描所有文章 → 解析 Markdown → AI 翻译 → 写所有页面。这在文章多、需要翻译时非常慢。 如果你使用过Vit...",
+    "hash": "aaddef53",
+    "relativePath": "/Kecare的热更新以及Vite的HMR原理.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "Kecare的热更新以及Vite的HMR原理",
+      "tags": [],
+      "desc": "Kecare的热更新以及Vite的HMR原理 一、概述 传统流程下，每改一个字都要 kecare gen 全量重跑：扫描所有文章 → 解析 Markdown → AI 翻译 → 写所有页面。这在文章多、需要翻译时非常慢。 如果你使用过Vit...",
+      "translate": [
+        "zh-CN"
+      ],
+      "sticky": 5,
+      "author": "Pamper",
+      "date": "2026-08-03",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/aaddef53",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
+    "urlPath": "articles/zh-CN/aaddef53"
+  },
+  {
+    "lang": "zh-CN",
     "title": "增量生成与热更新原理",
     "isOriginalLang": true,
     "desc": "Kecare 增量生成与热更新原理 一、概述 传统流程下，每改一个字都要 kecare gen 全量重跑：扫描所有文章 → 解析 Markdown → AI 翻译 → 写所有页面。这在文章多、需要翻译时非常慢。 kecare dev 解决三...",
@@ -29,31 +55,6 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\8a8cb741.vue",
     "urlPath": "articles/zh-CN/8a8cb741"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "Kecare的热更新以及Vite的HMR原理",
-    "isOriginalLang": true,
-    "desc": "Kecare的热更新以及Vite的HMR原理 一、概述 传统流程下，每改一个字都要 kecare gen 全量重跑：扫描所有文章 → 解析 Markdown → AI 翻译 → 写所有页面。这在文章多、需要翻译时非常慢。 如果你使用过Vit...",
-    "hash": "aaddef53",
-    "relativePath": "/Kecare的热更新以及Vite的HMR原理.md",
-    "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "Kecare的热更新以及Vite的HMR原理",
-      "tags": [],
-      "desc": "Kecare的热更新以及Vite的HMR原理 一、概述 传统流程下，每改一个字都要 kecare gen 全量重跑：扫描所有文章 → 解析 Markdown → AI 翻译 → 写所有页面。这在文章多、需要翻译时非常慢。 如果你使用过Vit...",
-      "translate": [
-        "zh-CN"
-      ],
-      "sticky": 5,
-      "author": "Pamper",
-      "date": "2026-08-03",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/aaddef53",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
-    "urlPath": "articles/zh-CN/aaddef53"
   },
   {
     "lang": "zh-CN",
