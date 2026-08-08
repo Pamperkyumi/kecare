@@ -34,28 +34,58 @@ Kecare 把**内容层**从主题/框架里剥离出来，让上面这些事**只
 
 ***
 
-## 核心执行流程
+## 四个角色
+
+Kecare 的工作流涉及**四个角色**。每个角色只关心自己的事，角色之间通过约定的接口协作：
+
+| 角色                | 位置                              | 职责                                                                                                  |
+| ----------------- | ------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Kecare 生成器**    | `/projects/generator`           | 解析 Markdown、调 AI 翻译、产出结构化数据。把数据交给"主题配置"定义的模板去生成具体页面，不关心页面长什么样、什么框架                            |
+| **主题配置**          | `/projects/theme/.kecare`       | 主题作者定义的规则——起什么文件名、生成什么格式（`.vue` / `.tsx` / `.ejs` / `.html` / `.php` 都可以），是 Kecare 与主题之间的契约           |
+| **主题**            | `/projects/theme/app/components` | 主题作者写的 UI 组件代码。引用组件本身，不掺内容生成逻辑                                                                    |
+| **用户**            | `/projects/theme`               | 文档站的最终使用者。打开的是已生成、可部署的页面，不直接接触 Kecare                                                            |
+
+### 数据流向
 
 ```
-用户输入: kecare gen <project-path>
+Markdown 源文件 (.kecare/articles/*.md)
        ↓
-  commands/         解析 CLI 参数、创建 KecareContext
+Kecare 生成器
+   ├─ input-driver：解析 Front Matter
+   ├─ Markdown → HTML（marked + 自定义扩展）
+   └─ AI 多语言翻译（按内容哈希缓存）
+       ↓ 输出结构化数据
+模块管道 (module-handler)
        ↓
-  input-drivers/    扫描 .kecare/articles/*.md
-       ↓              ├─ 解析 Front Matter
-       ↓              ├─ Markdown → HTML
-       ↓              └─ AI 翻译多语言变体（按内容哈希缓存）
+模板路由（按模板文件的 `type` 字段）
+   ├─ type = 'article-detail'  → 详情页模板（每次 1 篇 → 1 个文件）
+   ├─ type = 'article-list'    → 列表页模板（每次 N 篇 → N 个分页文件）
+   ├─ type = 'archives'        → 归档页模板
+   ├─ type = 'menu'            → 导航源
+   └─ type = 'search' / 'stats' → 索引与统计
        ↓
-  module-handler/   调用主题模板，生成最终文件
-       ↓              ├─ article.ts      → 详情页
-       ↓              ├─ list.ts         → 列表页
-       ↓              ├─ archives.ts     → 归档页
-       ↓              ├─ menu.ts         → 导航
-       ↓              ├─ articleStats.ts → 统计
-       ↓              └─ search.ts       → 搜索索引
+具体页面文件（路径 / 格式由"主题配置"决定）
+       ↓
+主题组件渲染
+       ↓
+最终页面 → 交给用户
 ```
 
-`commands/`、`input-drivers/`、`module-handler/` 三层各司其职，主题开发者只需在 `.kecare/` 下放模板文件即可注入自定义行为。
+### 模板的 `type` 字段
+
+模板文件通过 `type` 字段声明自己处理哪类页面，`module-handler` 据此路由：
+
+```typescript
+// 详情页模板 — 一次处理 1 篇文章，生成 1 个文件
+export const type = 'article-detail'
+export async function generator(context, article) { ... }
+
+// 列表页模板 — 一次处理整批文章，用于分页
+export const type = 'article-list'
+export function generator(context, articles) { ... }
+```
+
+`article-detail` 每篇文章都调用一次；`article-list` 一次性拿到所有文章做分页。其他处理器（归档、菜单、搜索、统计）以此类推。
 
 ***
 
