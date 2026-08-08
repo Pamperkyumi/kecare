@@ -1,5 +1,5 @@
 {
-  "title": "好的，请发送需要翻译的文章内容。目前只收到了标题「国际化处理」，没有正文内容。\n\n标题「国际化处理」翻译为：\n\n**Internationalization Processing**\n\n请提供完整文章内容，我会按照您的要求进行翻译：\n- 保留所有 HTML/Markdown 标签和属性不变\n- 代码块内容不翻译，原样保留\n- 代码块占位符（如 `__CODE_BLOCK_0__`）不翻译\n- 只翻译文本节点",
+  "title": "国际化处理",
   "lang": "en-US",
   "hash": "493f5fa2",
   "tags": [],

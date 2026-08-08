@@ -8,7 +8,7 @@ import OpenAI from 'openai';
 const mainPackage = 'generator';
 const childPackages = ['create-kecare', 'kecare'];
 
-async function getCommitMessage(): Promise<string> {
+async function getCommitMessage(cwd: string = process.cwd()): Promise<string> {
 
     const prompt = `
 You are an expert software engineer.
@@ -22,7 +22,7 @@ Rules:
 - Return ONLY the commit message
 
 Git diff:
-${await $`git diff --staged`.text()}
+${await $`git diff --staged`.cwd(cwd).text()}
 `;
 
     const openai = new OpenAI({
@@ -127,9 +127,6 @@ async function main() {
         }
         consola.success('所有包的版本号已修改');
     }
-    if ((await cli.select('是否进行编写发行说明', ['是', '否'])) === '是') {
-        // TODO: 实现编写发行说明的功能
-    }
     if ((await cli.select('是否进行发布喵', ['是', '否'])) === '是') {
         if ((await cli.select('发布到哪里喵', ['Github', 'Gitee'])) === 'Github') {
             const tag = `v${newVersion}`;
@@ -172,18 +169,62 @@ async function main() {
             }
         }
     }
-    if ((await cli.select('是否进行部署gh-pages', ['是', '否'])) === '是') {
-        const themeDir = join(cwd, 'projects', 'theme');
-        try {
-            consola.start('开始部署gh-pages...');
-            await $`npx nuxt build --preset github_pages`.cwd(themeDir);
-            consola.success('Nuxt 构建完成, 开始部署gh-pages...');
-            await $`npx gh-pages --dotfiles -d .output/public`.cwd(themeDir);
-            consola.success('部署完成！已经发布到 gh-pages 了耶✌');
-        } catch (error) {
-            consola.error('部署gh-pages失败了喵:', error);
+    // 发布主题仓库（projects/theme 是一个独立的 git 子模块仓库）
+    const themeDir = join(cwd, 'projects', 'theme');
+    let themeCommited = false;
+    let themePushed = false;
+    try {
+        consola.start('开始发布主题仓库...');
+        await $`git add -A`.cwd(themeDir);
+        const themeCommitMessage = await getCommitMessage(themeDir);
+        consola.success(`生成的 theme commit message: ${themeCommitMessage}`);
+
+        const ok = await cli.select('是否使用这个 commit message ', ['是', '否']);
+        if (ok === '否') {
+            throw new Error('用户取消发布主题仓库喵');
         }
-        process.exit(1);
+
+        await $`git commit -m "${themeCommitMessage!}"`.cwd(themeDir);
+        themeCommited = true;
+        await $`git push origin HEAD`.cwd(themeDir);
+        themePushed = true;
+        consola.success('主题仓库发布成功了喵');
+    } catch (error) {
+        consola.error('主题仓库发布失败了喵:', error);
+        // 推送失败但本地已提交，撤回本次提交，保持仓库干净
+        if (themeCommited && !themePushed) {
+            consola.start('开始撤回主题仓库的提交喵');
+            await $`git reset --mixed HEAD~1`.cwd(themeDir).nothrow();
+            consola.success('撤回成功了喵');
+        }
+    }
+
+    // 主题发布成功后，主仓库记录的子模块指针会过期，这里自动补一次提交同步引用
+    if (themePushed) {
+        let subCommited = false;
+        try {
+            // 子模块指针未变化则跳过，避免空提交
+            const subChanged = (await $`git status --porcelain -- projects/theme`.text()).trim().length > 0;
+            if (!subChanged) {
+                consola.info('子模块指针未变化，无需同步');
+            } else {
+                consola.start('开始同步主仓库的子模块引用...');
+                // 只提交子模块指针，避免误带其他改动
+                await $`git add projects/theme`;
+                await $`git commit -m "chore(theme): bump submodule to latest" -- projects/theme`;
+                subCommited = true;
+                await $`git push origin HEAD`;
+                consola.success('主仓库子模块引用同步成功了喵');
+            }
+        } catch (error) {
+            consola.error('同步主仓库子模块引用失败了喵:', error);
+            // 同步失败但本地已提交，撤回本次提交，保持仓库干净
+            if (subCommited) {
+                consola.start('开始撤回主仓库的子模块提交喵');
+                await $`git reset --mixed HEAD~1`.nothrow();
+                consola.success('撤回成功了喵');
+            }
+        }
     }
 }
 main().catch((error) => {
