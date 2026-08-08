@@ -38,12 +38,12 @@ Kecare 把**内容层**从主题/框架里剥离出来，让上面这些事**只
 
 Kecare 的工作流涉及**四个角色**。每个角色只关心自己的事，角色之间通过约定的接口协作：
 
-| 角色                | 位置                              | 职责                                                                                                  |
-| ----------------- | ------------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Kecare 生成器**    | `/projects/generator`           | 解析 Markdown、调 AI 翻译、产出结构化数据。把数据交给"主题配置"定义的模板去生成具体页面，不关心页面长什么样、什么框架                            |
-| **主题配置**          | `/projects/theme/.kecare`       | 主题作者定义的规则——起什么文件名、生成什么格式（`.vue` / `.tsx` / `.ejs` / `.html` / `.php` 都可以），是 Kecare 与主题之间的契约           |
-| **主题**            | `/projects/theme/app/components` | 主题作者写的 UI 组件代码。引用组件本身，不掺内容生成逻辑                                                                    |
-| **用户**            | `/projects/theme`               | 文档站的最终使用者。打开的是已生成、可部署的页面，不直接接触 Kecare                                                            |
+| 角色             | 位置                               | 职责                                                                                          |
+| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Kecare 生成器** | `/projects/generator`            | 解析 Markdown、调 AI 翻译、产出结构化数据。把数据交给"主题配置"定义的模板去生成具体页面，不关心页面长什么样、什么框架                          |
+| **主题配置**       | `/projects/theme/.kecare`        | 主题作者定义的规则——起什么文件名、生成什么格式（`.vue` / `.tsx` / `.ejs` / `.html` / `.php` 都可以），是 Kecare 与主题之间的契约 |
+| **主题**         | `/projects/theme/app/components` | 主题作者写的 UI 组件代码。引用组件本身，不掺内容生成逻辑                                                              |
+| **用户**         | `/projects/theme`                | 文档站的最终使用者。打开的是已生成、可部署的页面，不直接接触 Kecare                                                       |
 
 ### 数据流向
 
@@ -129,15 +129,12 @@ kecare init
 
 ```markdown
 ---
-title: 快速上手
-menu: 入门
-date: 2026-01-15
-translate: [zh-CN, en-US, ja-JP]
+title: 
+menu: 
+date: 
+translate: 
 ---
-
-# 快速上手
-
-这是文档正文……
+# 正文部分
 ```
 
 ### 生成 + 启动
@@ -152,15 +149,15 @@ kecare dev .         # 监听文件变更，增量重生成
 
 ## CLI 命令
 
-| 命令                                  | 说明                                       |
-| ----------------------------------- | ---------------------------------------- |
-| `kecare gen <project-path>`         | 全量生成指定主题项目                              |
-| `kecare dev <project-path>`         | 监听 `.kecare/articles` 增量重生成               |
-| `kecare dev --with-framework`       | 增量重生成后自动拉起框架 dev server                  |
-| `kecare clean <project-path>`       | 清理生成产物（缓存、翻译、生成的页面）                    |
-| `kecare init [project-path]`        | 初始化项目（交互式选择模板）                          |
-| `kecare version`                    | 输出版本号                                   |
-| `kecare --help` / `kecare <cmd> --help` | 输出帮助，可指定命令查看详细选项与示例                |
+| 命令                                      | 说明                          |
+| --------------------------------------- | --------------------------- |
+| `kecare gen <project-path>`             | 全量生成指定主题项目                  |
+| `kecare dev <project-path>`             | 监听 `.kecare/articles` 增量重生成 |
+| `kecare dev --with-framework`           | 增量重生成后自动拉起框架 dev server     |
+| `kecare clean <project-path>`           | 清理生成产物（缓存、翻译、生成的页面）         |
+| `kecare init [project-path]`            | 初始化项目（交互式选择模板）              |
+| `kecare version`                        | 输出版本号                       |
+| `kecare --help` / `kecare <cmd> --help` | 输出帮助，可指定命令查看详细选项与示例         |
 
 ***
 
@@ -186,12 +183,12 @@ kecare dev .         # 监听文件变更，增量重生成
 
 主题就是项目里的 `.kecare/` 目录。下放同名模板文件即可覆盖默认行为：
 
-| 模板文件                  | 用途           | 类型                 |
-| --------------------- | ------------ | ------------------ |
-| `*.article.ts`        | 文档详情页        | 每篇文章调用一次           |
-| `*.list.ts`           | 文档列表页        | 按语言分组 / 排序 / 分页     |
-| `*.archives.ts`       | 归档页          | 按时间聚合              |
-| `*.menu.source.ts`    | 导航源          | 编译为 `*.menu.generated.ts` |
+| 模板文件               | 用途    | 类型                        |
+| ------------------ | ----- | ------------------------- |
+| `*.article.ts`     | 文档详情页 | 每篇文章调用一次                  |
+| `*.list.ts`        | 文档列表页 | 按语言分组 / 排序 / 分页           |
+| `*.archives.ts`    | 归档页   | 按时间聚合                     |
+| `*.menu.source.ts` | 导航源   | 编译为 `*.menu.generated.ts` |
 
 ### 模板接口
 
@@ -261,14 +258,14 @@ const sdk = await useKecareSDK()
 await sdk.mounted(article.hash, currentPath)
 ```
 
-| 模块                     | 职责                          |
-| ---------------------- | --------------------------- |
-| `style`                | 注入 Kecare 主题样式（CSS 变量、布局）    |
-| `copy`                 | 代码块一键复制按钮                   |
-| `language-switcher`    | 多语言切换组件                     |
-| `sidebar`              | 侧边导航目录树                     |
-| `tabs`                 | Markdown Tab 语法扩展（多 Tab 代码块） |
-| `syntax-highlight`     | 代码高亮（Prism / Shiki）          |
+| 模块                  | 职责                           |
+| ------------------- | ---------------------------- |
+| `style`             | 注入 Kecare 主题样式（CSS 变量、布局）    |
+| `copy`              | 代码块一键复制按钮                    |
+| `language-switcher` | 多语言切换组件                      |
+| `sidebar`           | 侧边导航目录树                      |
+| `tabs`              | Markdown Tab 语法扩展（多 Tab 代码块） |
+| `syntax-highlight`  | 代码高亮（Prism / Shiki）          |
 
 ***
 
