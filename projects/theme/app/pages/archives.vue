@@ -1,4 +1,4 @@
-<!-- Generated: 2026-08-07T15:42:43.314Z -->
+<!-- Generated: 2026-09-29T13:13:02.394Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [

@@ -1,3 +1,4 @@
+import { renderFilled } from 'oh-my-logo';
 /**
  * 命令帮助系统：为 gen/dev/init/clean/version/help 提供统一的帮助输出。
  *
@@ -121,7 +122,10 @@ export function printHelp(commandName?: string): void {
 
 function printGlobalHelp(): void {
     console.log('');
-    console.log('  Kecare — 静态博客生成器');
+    renderFilled('kecare', {
+        palette: 'ocean',
+        letterSpacing: 1
+    });
     console.log('');
     console.log('  用法: kecare <command> [options]');
     console.log('');

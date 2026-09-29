@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "marked": "^16.4.1",
     "nuxt": "^4.1.2",
+    "sakana-widget": "^2.7.1",
     "tailwindcss": "^4.1.18",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"

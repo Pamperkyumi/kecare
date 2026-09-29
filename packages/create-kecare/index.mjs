@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { renderFilled } from 'oh-my-logo';
 import { __VERSION__ } from './__VERSION__.mjs';
 
 // Node.js
@@ -9,7 +10,7 @@ import { exit } from 'node:process';
 import { Readable } from 'node:stream';
 import { finished } from 'node:stream/promises';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, existsSync, createWriteStream, rmSync } from 'node:fs';
+import { mkdirSync, existsSync, createWriteStream, rmSync, readFileSync, appendFileSync } from 'node:fs';
 
 // 第三方工具库
 import { remove, move } from 'fs-extra';
@@ -21,136 +22,136 @@ import { confirm, select } from '@inquirer/prompts';
 const color = gradient(['cyan', '#2d9b87']);
 
 function packageInfoUrl(mirror, packageName, version) {
-  const baseUrl = mirror.endsWith('/') ? mirror : `${mirror}/`;
-  const encodedPackageName = packageName.startsWith('@') ? encodeURIComponent(packageName) : packageName;
-  return new URL(version ? `${encodedPackageName}/${version}` : encodedPackageName, baseUrl).toString();
+    const baseUrl = mirror.endsWith('/') ? mirror : `${mirror}/`;
+    const encodedPackageName = packageName.startsWith('@') ? encodeURIComponent(packageName) : packageName;
+    return new URL(version ? `${encodedPackageName}/${version}` : encodedPackageName, baseUrl).toString();
 }
 
 async function fetchPackageJson(mirror, packageName, version, signal) {
-  const response = await fetch(packageInfoUrl(mirror, packageName, version), { signal });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.json();
+    const response = await fetch(packageInfoUrl(mirror, packageName, version), { signal });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.json();
 }
 
 (async () => {
-  const args = process.argv.slice(2);
+    const args = process.argv.slice(2);
 
-  // oxlint-disable-next-line no-unused-vars
-  let version = 'latest';
-  let installPath = undefined;
+    // oxlint-disable-next-line no-unused-vars
+    let version = 'latest';
+    let installPath = undefined;
 
-  for (const arg of args) {
-    if (arg.startsWith('--version=')) {
-      version = arg.slice(10);
-    } else {
-      installPath = arg;
+    for (const arg of args) {
+        if (arg.startsWith('--version=')) {
+            version = arg.slice(10);
+        } else {
+            installPath = arg;
+        }
     }
-  }
-  const workspace = process.platform === 'win32' ? join(process.env.USERPROFILE, '.kecare') : join(process.env.HOME, '.kecare');
+    const workspace = process.platform === 'win32' ? join(process.env.USERPROFILE, '.kecare') : join(process.env.HOME, '.kecare');
 
-  const tempspace = join(workspace, '.temp');
-  if (!existsSync(workspace)) mkdirSync(workspace);
-  if (!existsSync(tempspace)) mkdirSync(tempspace);
+    const tempspace = join(workspace, '.temp');
+    if (!existsSync(workspace)) mkdirSync(workspace);
+    if (!existsSync(tempspace)) mkdirSync(tempspace);
 
-  const packageName = `@kecare/${process.platform}-${os.arch()}`;
-  const selectedVersion = version === 'latest' ? __VERSION__ : version;
+    const packageName = `@kecare/${process.platform}-${os.arch()}`;
+    const selectedVersion = version === 'latest' ? __VERSION__ : version;
 
-  let selectedMirror = '';
-  consola.start(color('Finding the appropriate mirror..'));
+    let selectedMirror = '';
+    consola.start(color('Finding the appropriate mirror..'));
 
-  const mirrors = [
-    'https://registry.npmjs.org/',
-    // "https://registry.npmmirror.com/", // binary removal blocked
-    'https://mirrors.cloud.tencent.com/npm/',
-    'https://cdn.jsdelivr.net/npm/',
-  ];
-  for (const mirror of mirrors) {
+    const mirrors = [
+        'https://registry.npmjs.org/',
+        // "https://registry.npmmirror.com/", // binary removal blocked
+        'https://mirrors.cloud.tencent.com/npm/',
+        'https://cdn.jsdelivr.net/npm/',
+    ];
+    for (const mirror of mirrors) {
+        try {
+            consola.info(color(`Trying mirror ${mirror}`));
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 5000);
+            let packageInfo;
+            try {
+                packageInfo = await fetchPackageJson(mirror, packageName, undefined, controller.signal);
+            } finally {
+                clearTimeout(timeout);
+            }
+            if (!packageInfo?.versions?.[selectedVersion]?.dist?.tarball) {
+                consola.warn(color(`Version not found at ${mirror}: ${packageName}@${selectedVersion}`));
+                continue;
+            }
+            selectedMirror = mirror;
+            consola.success(color(`Found version ${selectedVersion} at ${mirror}`));
+            break;
+        } catch (error) {
+            consola.warn(color(`Mirror unavailable: ${error.message}`));
+        }
+    }
+    if (!selectedMirror) {
+        consola.error(color(`Failed to find ${packageName}@${selectedVersion} from all mirrors`));
+        exit(1);
+    }
+    const packageInfo = await fetchPackageJson(selectedMirror, packageName, selectedVersion);
+    const downloadUrl = packageInfo?.dist?.tarball;
+    if (!downloadUrl) {
+        consola.error(color(`Missing tarball url for ${packageName}@${selectedVersion}`));
+        exit(1);
+    }
+    consola.start(color(`Downloading package from ${downloadUrl}`));
     try {
-      consola.info(color(`Trying mirror ${mirror}`));
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 5000);
-      let packageInfo;
-      try {
-        packageInfo = await fetchPackageJson(mirror, packageName, undefined, controller.signal);
-      } finally {
-        clearTimeout(timeout);
-      }
-      if (!packageInfo?.versions?.[selectedVersion]?.dist?.tarball) {
-        consola.warn(color(`Version not found at ${mirror}: ${packageName}@${selectedVersion}`));
-        continue;
-      }
-      selectedMirror = mirror;
-      consola.success(color(`Found version ${selectedVersion} at ${mirror}`));
-      break;
+        const res = await fetch(downloadUrl);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const destination = join(tempspace, `package.tgz`);
+        if (existsSync(destination)) await remove(destination);
+
+        const fileStream = createWriteStream(destination);
+        await finished(Readable.fromWeb(res.body).pipe(fileStream));
+        consola.success(color(`Package downloaded successfully`));
     } catch (error) {
-      consola.warn(color(`Mirror unavailable: ${error.message}`));
+        consola.error(color(`Download failed: ${error.message}`));
+        exit(1);
     }
-  }
-  if (!selectedMirror) {
-    consola.error(color(`Failed to find ${packageName}@${selectedVersion} from all mirrors`));
-    exit(1);
-  }
-  const packageInfo = await fetchPackageJson(selectedMirror, packageName, selectedVersion);
-  const downloadUrl = packageInfo?.dist?.tarball;
-  if (!downloadUrl) {
-    consola.error(color(`Missing tarball url for ${packageName}@${selectedVersion}`));
-    exit(1);
-  }
-  consola.start(color(`Downloading package from ${downloadUrl}`));
-  try {
-    const res = await fetch(downloadUrl);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    consola.start(color(`Extracting package ...`));
+    try {
+        const packageTemp = join(tempspace, 'package');
+        if (existsSync(packageTemp)) await remove(packageTemp);
+        await compressing.tgz.uncompress(join(tempspace, 'package.tgz'), tempspace);
+        consola.success(color('package extracted'));
+    } catch (error) {
+        consola.error(color(`Extraction failed: ${error.message}`));
+        exit(1);
+    }
 
-    const destination = join(tempspace, `package.tgz`);
-    if (existsSync(destination)) await remove(destination);
+    const execName = process.platform === 'win32' ? 'kecare.exe' : 'kecare';
+    const execPath = join(tempspace, 'package', execName);
+    if (!existsSync(execPath)) {
+        consola.error(color('Executable not found in package'));
+        exit(1);
+    }
 
-    const fileStream = createWriteStream(destination);
-    await finished(Readable.fromWeb(res.body).pipe(fileStream));
-    consola.success(color(`Package downloaded successfully`));
-  } catch (error) {
-    consola.error(color(`Download failed: ${error.message}`));
-    exit(1);
-  }
-  consola.start(color(`Extracting package ...`));
-  try {
-    const packageTemp = join(tempspace, 'package');
-    if (existsSync(packageTemp)) await remove(packageTemp);
-    await compressing.tgz.uncompress(join(tempspace, 'package.tgz'), tempspace);
-    consola.success(color('package extracted'));
-  } catch (error) {
-    consola.error(color(`Extraction failed: ${error.message}`));
-    exit(1);
-  }
+    if (installPath) {
+        consola.start(color(`Installing to custom path: ${installPath}`));
 
-  const execName = process.platform === 'win32' ? 'kecare.exe' : 'kecare';
-  const execPath = join(tempspace, 'package', execName);
-  if (!existsSync(execPath)) {
-    consola.error(color('Executable not found in package'));
-    exit(1);
-  }
+        if (!existsSync(installPath)) mkdirSync(installPath, { recursive: true });
 
-  if (installPath) {
-    consola.start(color(`Installing to custom path: ${installPath}`));
+        await move(execPath, join(installPath, execName), { overwrite: true });
+    } else {
+        consola.start(color('Finding suitable installation location..'));
+        let targetPath = '';
+        if (process.platform === 'win32') {
+            targetPath = join(process.env.USERPROFILE, '.kecare');
+            if (!existsSync(targetPath)) mkdirSync(targetPath);
+            consola.info(color(`Installing to ${targetPath}`));
+            await move(execPath, join(targetPath, execName), { overwrite: true });
+            try {
+                //拼接出 Powershell 代码给PowerShell运行
+                //只读User Path 只修改User Path 不使用 $env:Path
+                //如果用户没有设置过用户级 Path，这里可能返回 $null 把它变成空字符串 ''
+                //把用户 Path 按 ; 拆开成数组，并清理空项
+                //过滤条件：元素存在，并且 trim 后不是空字符串（防止出现 ;; 这种空项）
 
-    if (!existsSync(installPath)) mkdirSync(installPath, { recursive: true });
-
-    await move(execPath, join(installPath, execName), { overwrite: true });
-  } else {
-    consola.start(color('Finding suitable installation location..'));
-    let targetPath = '';
-    if (process.platform === 'win32') {
-      targetPath = join(process.env.USERPROFILE, '.kecare');
-      if (!existsSync(targetPath)) mkdirSync(targetPath);
-      consola.info(color(`Installing to ${targetPath}`));
-      await move(execPath, join(targetPath, execName), { overwrite: true });
-      try {
-        //拼接出 Powershell 代码给PowerShell运行
-        //只读User Path 只修改User Path 不使用 $env:Path
-        //如果用户没有设置过用户级 Path，这里可能返回 $null 把它变成空字符串 ''
-        //把用户 Path 按 ; 拆开成数组，并清理空项
-        //过滤条件：元素存在，并且 trim 后不是空字符串（防止出现 ;; 这种空项）
-
-        const ps = `$target='${targetPath.replace(/'/g, "''")}'
+                const ps = `$target='${targetPath.replace(/'/g, "''")}'
         $userPath = [Environment]::GetEnvironmentVariable('Path','User')
         if($null -eq $userPath) { $userPath = ''}
         $parts = $userPath -split ';' | Where-Object {$_ -and $_.Trim() -ne ''}
@@ -160,110 +161,127 @@ async function fetchPackageJson(mirror, packageName, version, signal) {
         [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
       }
         `;
-        execFileSync('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', ps], { stdio: 'ignore' });
-        consola.success(color('Added to PATH (requires restart)'));
-      } catch {
-        consola.warn(color('Manual PATH configuration required'));
-      }
-    } else {
-      const searchPaths = [join(process.env.HOME, 'bin'), join(process.env.HOME, '.local', 'bin'), '/usr/local/bin'];
-      for (const path of searchPaths) {
-        if (existsSync(path)) {
-          targetPath = path;
-          break;
-        }
-      }
-      if (!targetPath) {
-        targetPath = join(process.env.HOME, 'bin');
-        mkdirSync(targetPath, { recursive: true });
-      }
-      consola.info(`Installing to ${targetPath}`);
-      const targetFile = join(targetPath, 'kecare');
-      if (existsSync(targetFile)) rmSync(targetFile);
-      try {
-        consola.info(color(`Moving executable to PATH: ${targetPath}`));
-        await move(execPath, targetFile, { overwrite: true });
-      } catch (error) {
-        consola.error(color(`Installation failed: ${error?.message}`));
-        exit(1);
-      }
-      try {
-        execFileSync('chmod', ['+x', targetFile]);
-        consola.success(color('Executable permissions set'));
-      } catch (error) {
-        consola.error(color(`Permission setting failed: ${error?.message}`));
-        exit(1);
-      }
-    }
-  }
-  // 询问用户是否从模板创建项目
-  const wantTemplate = await confirm({
-    message: 'Do you want to create a project from a template?',
-    default: true,
-  });
+                execFileSync('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', ps], { stdio: 'ignore' });
+                consola.success(color('Added to PATH (requires restart)'));
+            } catch {
+                consola.warn(color('Manual PATH configuration required'));
+            }
+        } else {
+            // 优先安装到用户可写目录 ~/.local/bin，避免 /usr/local/bin 需要 sudo 的权限问题
+            targetPath = join(process.env.HOME, '.local', 'bin');
+            if (!existsSync(targetPath)) mkdirSync(targetPath, { recursive: true });
 
-  if (wantTemplate) {
-    const template = await select({
-      message: 'Select a template',
-      choices: [
-        {
-          name: 'Nuxt Theme',
-          value: 'kecare-template-nuxt',
-          description: 'Kecare Nuxt template theme',
-        },
-      ],
+            consola.info(color(`Installing to ${targetPath}`));
+            const targetFile = join(targetPath, 'kecare');
+            if (existsSync(targetFile)) rmSync(targetFile);
+            try {
+                consola.info(color(`Moving executable to PATH: ${targetPath}`));
+                await move(execPath, targetFile, { overwrite: true });
+            } catch (error) {
+                consola.error(color(`Installation failed: ${error?.message}`));
+                exit(1);
+            }
+            try {
+                execFileSync('chmod', ['+x', targetFile]);
+                consola.success(color('Executable permissions set'));
+            } catch (error) {
+                consola.error(color(`Permission setting failed: ${error?.message}`));
+                exit(1);
+            }
+
+            // 把 ~/.local/bin 追加到用户级 shell 配置的 PATH 中，无需 sudo
+            const exportLine = `export PATH="${targetPath}:$PATH"`;
+            const shellConfigs = [join(process.env.HOME, '.zshrc'), join(process.env.HOME, '.bashrc'), join(process.env.HOME, '.bash_profile'), join(process.env.HOME, '.profile')];
+            const existingConfigs = [];
+            for (const configPath of shellConfigs) {
+                if (existsSync(configPath)) existingConfigs.push(configPath);
+            }
+            // 若所有 shell 配置都不存在，则默认创建 ~/.zshrc
+            const configTargets = existingConfigs.length > 0 ? existingConfigs : [join(process.env.HOME, '.zshrc')];
+            for (const configPath of configTargets) {
+                try {
+                    const content = readFileSync(configPath, 'utf8');
+                    if (content.includes(targetPath)) continue;
+                    appendFileSync(configPath, `\n# kecare\n${exportLine}\n`);
+                    consola.success(color(`Added PATH to ${configPath}`));
+                } catch (error) {
+                    consola.warn(color(`Failed to update ${configPath}: ${error?.message}`));
+                }
+            }
+        }
+    }
+    // 询问用户是否从模板创建项目
+    const wantTemplate = await confirm({
+        message: 'Do you want to create a project from a template?',
+        default: true,
     });
 
-    consola.start(color(`Downloading template ${template}...`));
+    if (wantTemplate) {
+        const template = await select({
+            message: 'Select a template',
+            choices: [
+                {
+                    name: 'Nuxt Theme',
+                    value: 'kecare-template-nuxt',
+                    description: 'Kecare Nuxt template theme',
+                },
+            ],
+        });
 
-    try {
-      // 从 npm registry 获取模板信息
-      const tplInfoUrl = `${selectedMirror}${template}/latest`;
-      const tplInfoRes = await fetch(tplInfoUrl);
-      if (!tplInfoRes.ok) throw new Error(`HTTP ${tplInfoRes.status}`);
-      const tplInfo = await tplInfoRes.json();
-      const tplVersion = tplInfo.version || 'latest';
+        consola.start(color(`Downloading template ${template}...`));
 
-      // 下载模板 tarball
-      const tarballUrl = `${selectedMirror}${template}/-/${template}-${tplVersion}.tgz`;
-      consola.info(color(`Fetching from ${tarballUrl}`));
-      const tarballRes = await fetch(tarballUrl);
-      if (!tarballRes.ok) throw new Error(`HTTP ${tarballRes.status}`);
+        try {
+            // 从 npm registry 获取模板信息
+            const tplInfoUrl = `${selectedMirror}${template}/latest`;
+            const tplInfoRes = await fetch(tplInfoUrl);
+            if (!tplInfoRes.ok) throw new Error(`HTTP ${tplInfoRes.status}`);
+            const tplInfo = await tplInfoRes.json();
+            const tplVersion = tplInfo.version || 'latest';
 
-      const tgzPath = join(tempspace, 'template.tgz');
-      const fileStream = createWriteStream(tgzPath);
-      await finished(Readable.fromWeb(tarballRes.body).pipe(fileStream));
+            // 下载模板 tarball
+            const tarballUrl = `${selectedMirror}${template}/-/${template}-${tplVersion}.tgz`;
+            consola.info(color(`Fetching from ${tarballUrl}`));
+            const tarballRes = await fetch(tarballUrl);
+            if (!tarballRes.ok) throw new Error(`HTTP ${tarballRes.status}`);
 
-      // 解压模板
-      const templateTemp = join(tempspace, 'template');
-      if (existsSync(templateTemp)) await remove(templateTemp);
-      await compressing.tgz.uncompress(tgzPath, templateTemp);
+            const tgzPath = join(tempspace, 'template.tgz');
+            const fileStream = createWriteStream(tgzPath);
+            await finished(Readable.fromWeb(tarballRes.body).pipe(fileStream));
 
-      // 复制到当前目录
-      const targetProject = installPath || process.cwd();
-      const targetDir = join(targetProject, 'kecare-project');
-      if (existsSync(targetDir)) await remove(targetDir);
-      await move(join(templateTemp, 'package'), targetDir, { overwrite: true });
+            // 解压模板
+            const templateTemp = join(tempspace, 'template');
+            if (existsSync(templateTemp)) await remove(templateTemp);
+            await compressing.tgz.uncompress(tgzPath, templateTemp);
 
-      consola.success(color(`Project created at ${targetDir}`));
-    } catch (error) {
-      consola.warn(color(`Template download failed: ${error.message}`));
+            // 复制到当前目录
+            const targetProject = installPath || process.cwd();
+            const targetDir = join(targetProject, 'kecare-project');
+            if (existsSync(targetDir)) await remove(targetDir);
+            await move(join(templateTemp, 'package'), targetDir, { overwrite: true });
+
+            consola.success(color(`Project created at ${targetDir}`));
+        } catch (error) {
+            consola.warn(color(`Template download failed: ${error.message}`));
+        }
     }
-  }
 
-  consola.start(color('cleaning temporary files ...'));
-  try {
-    await remove(tempspace);
-    consola.success(color(`Installation complete`));
-  } catch (error) {
-    consola.warn(color(`Cleanup failed: ${error.message}`));
-  }
+    consola.start(color('cleaning temporary files ...'));
+    try {
+        await remove(tempspace);
+        consola.success(color(`Installation complete`));
+    } catch (error) {
+        consola.warn(color(`Cleanup failed: ${error.message}`));
+    }
 
-  console.log('');
-  consola.success(color(`kecare Generator installed successfully!`));
+    console.log('');
+    consola.success(color(`kecare Generator installed successfully!`));
 
-  consola.log(color('△ Try running: kecare --version'));
-  if (process.platform === 'win32') {
-    console.log(color('△ Note: You may need to restart your terminal for PATH changes to take effect'));
-  }
+    consola.log(color('△ Try running: kecare --version'));
+    if (process.platform === 'win32') {
+        console.log(color('△ Note: You may need to restart your terminal for PATH changes to take effect'));
+    }
+    await renderFilled('kecare', {
+        palette: 'ocean',
+        letterSpacing: 1
+    });
 })();
