@@ -157,6 +157,12 @@ for (const target of targets) {
         compiledOutput,
         "--compile",
         "--minify",
+        // react-devtools-core is an optional peer dependency of `ink` (pulled in
+        // transitively by `oh-my-logo`). It is not installed, so `bun build` fails
+        // to resolve it. Mark it external so the (DEV-only) devtools import is kept
+        // out of the bundle instead of breaking the compile.
+        "--external",
+        "react-devtools-core",
         "--target",
         target.bunTarget,
     ]);
