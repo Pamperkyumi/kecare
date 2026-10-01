@@ -5,6 +5,9 @@
         "lib": [
             "ESNext"
         ],
+        "types": [
+            "node"
+        ],
         "target": "ESNext",
         "module": "ESNext",
         "moduleDetection": "force",

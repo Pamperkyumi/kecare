@@ -56,7 +56,7 @@
     },
     "packages/create-kecare": {
       "name": "create-kecare",
-      "version": "1.0.0-beta.114",
+      "version": "1.0.0-beta.116",
       "bin": {
         "create-kecare": "index.mjs",
       },
@@ -66,11 +66,12 @@
         "consola": "^3.4.0",
         "fs-extra": "^11.2.0",
         "gradient-string": "^3.0.0",
+        "oh-my-logo": "^0.5.0",
       },
     },
     "packages/kecare": {
       "name": "kecare",
-      "version": "1.0.0-beta.114",
+      "version": "1.0.0-beta.116",
       "devDependencies": {
         "@types/bun": "latest",
       },
@@ -80,7 +81,7 @@
     },
     "projects/generator": {
       "name": "kecare-generator",
-      "version": "1.0.0-beta.114",
+      "version": "1.0.0-beta.116",
       "devDependencies": {
         "@types/bun": "latest",
       },
