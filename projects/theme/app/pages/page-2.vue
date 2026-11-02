@@ -66,36 +66,6 @@
   },
   {
     "lang": "zh-CN",
-    "title": "项目结构",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "项目结构 Kecare的目录结构大概如下 好，那让我们来一个个介绍喵 .milkio是隔壁Milkio的东西喵，我们这里不需要管喵。当然你也没有这个文件喵。 articles 为你的文章数据，你所有的文章都保存在这里，才能被Kecare读取...",
-    "hash": "37e86293",
-    "relativePath": "/项目结构.md",
-    "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "项目结构",
-      "menu": "test",
-      "tags": [],
-      "desc": "项目结构 Kecare的目录结构大概如下 好，那让我们来一个个介绍喵 .milkio是隔壁Milkio的东西喵，我们这里不需要管喵。当然你也没有这个文件喵。 articles 为你的文章数据，你所有的文章都保存在这里，才能被Kecare读取...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-08-02",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/37e86293",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
-    "urlPath": "articles/zh-CN/37e86293"
-  },
-  {
-    "lang": "zh-CN",
     "title": "快速开始",
     "isOriginalLang": true,
     "menu": "test",
@@ -126,22 +96,51 @@
   },
   {
     "lang": "zh-CN",
-    "title": "主题开发落地页",
+    "title": "项目结构",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
-    "hash": "e52553ad",
-    "relativePath": "/主题开发落地页.md",
+    "desc": "项目结构 Kecare的目录结构大概如下 好，那让我们来一个个介绍喵 .milkio是隔壁Milkio的东西喵，我们这里不需要管喵。当然你也没有这个文件喵。 articles 为你的文章数据，你所有的文章都保存在这里，才能被Kecare读取...",
+    "hash": "37e86293",
+    "relativePath": "/项目结构.md",
     "frontMatter": {
       "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "主题开发落地页",
+      "title": "项目结构",
+      "menu": "test",
+      "tags": [],
+      "desc": "项目结构 Kecare的目录结构大概如下 好，那让我们来一个个介绍喵 .milkio是隔壁Milkio的东西喵，我们这里不需要管喵。当然你也没有这个文件喵。 articles 为你的文章数据，你所有的文章都保存在这里，才能被Kecare读取...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-08-02",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/37e86293",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
+    "urlPath": "articles/zh-CN/37e86293"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "主题开发归档页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+    "hash": "93b7f9a7",
+    "relativePath": "/主题开发归档页.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "主题开发归档页",
       "menu": "test",
       "tags": [
         "主题开发",
-        "落地页",
-        "列表页"
+        "归档页"
       ],
-      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -152,11 +151,11 @@
       "date": "2026-03-21",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "urlPath": "articles/zh-CN/e52553ad"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
   }
 ]
                 const currentPage = 2
