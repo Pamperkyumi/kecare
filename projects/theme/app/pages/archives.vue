@@ -1,7 +1,16 @@
-<!-- Generated: 2026-09-29T13:13:02.394Z -->
+<!-- Generated: 2026-11-02T19:11:20.107Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
+  {
+    "title": "使用 NapCat 和 Astrbot 部署 QQ Bot",
+    "lang": "zh-CN",
+    "hash": "25977326",
+    "tags": [],
+    "date": "2026-11-03",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\25977326.vue",
+    "urlPath": "articles/zh-CN/25977326"
+  },
   {
     "title": "Kecare的热更新以及Vite的HMR原理",
     "lang": "zh-CN",
@@ -66,6 +75,18 @@
     "urlPath": "articles/zh-CN/54f6a7aa"
   },
   {
+    "title": "主题开发文章页",
+    "lang": "zh-CN",
+    "hash": "989b9235",
+    "tags": [
+      "主题开发",
+      "文章页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
+  },
+  {
     "title": "主题开发归档页",
     "lang": "zh-CN",
     "hash": "93b7f9a7",
@@ -89,18 +110,6 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
-  },
-  {
-    "title": "主题开发文章页",
-    "lang": "zh-CN",
-    "hash": "989b9235",
-    "tags": [
-      "主题开发",
-      "文章页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "title": "关于我",
@@ -176,7 +185,7 @@
     "urlPath": "articles/zh-CN/4ee23999"
   }
 ]
-        const totalArticles = 17
+        const totalArticles = 18
         const totalTags = 9
         useHead({
             title: '归档喵',

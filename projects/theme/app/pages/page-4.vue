@@ -6,6 +6,36 @@
                 const articles = [
   {
     "lang": "zh-CN",
+    "title": "国际化处理",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "国际化处理 Kecare 可使用 Ai 为你的文章翻译成多种语言， 让文章触达多语言读者。 启用翻译 在 Kecare 中使用翻译也非常简单，仅需在所需翻译的文章 Front Matter 中添加 translate 字段： 第一个语言代码...",
+    "hash": "493f5fa2",
+    "relativePath": "/国际化处理.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "国际化处理",
+      "menu": "test",
+      "tags": [],
+      "desc": "国际化处理 Kecare 可使用 Ai 为你的文章翻译成多种语言， 让文章触达多语言读者。 启用翻译 在 Kecare 中使用翻译也非常简单，仅需在所需翻译的文章 Front Matter 中添加 translate 字段： 第一个语言代码...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-03",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "urlPath": "articles/zh-CN/493f5fa2"
+  },
+  {
+    "lang": "zh-CN",
     "title": "贡献指南",
     "isOriginalLang": true,
     "menu": "test",
@@ -77,7 +107,7 @@
 ]
                 const currentPage = 4
                 const totalPages = 4
-                const totalArticles = 17
+                const totalArticles = 18
                 const totalTags = 9
 
                 </script>

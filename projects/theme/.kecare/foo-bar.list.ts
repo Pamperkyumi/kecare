@@ -40,7 +40,7 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
                 <script setup lang="ts">
                 import BlogLanding from "~/components/blog-landing.vue";
                 useHead({
-                    title: \'首页\',
+                    title: '首页',
                 })
                 const articles = ${JSON.stringify(pageArticles, null, 2)}
                 const currentPage = ${pageNumber}

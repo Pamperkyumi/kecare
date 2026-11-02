@@ -6,21 +6,21 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "主题开发文章页",
+    "title": "主题开发归档页",
     "isOriginalLang": true,
     "menu": "test",
-    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-    "hash": "989b9235",
-    "relativePath": "/主题开发文章页.md",
+    "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
+    "hash": "93b7f9a7",
+    "relativePath": "/主题开发归档页.md",
     "frontMatter": {
       "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "主题开发文章页",
+      "title": "主题开发归档页",
       "menu": "test",
       "tags": [
         "主题开发",
-        "文章页"
+        "归档页"
       ],
-      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+      "desc": "归档页 归档页是博客中用于按时间顺序展示所有文章的页面，通常以时间轴的形式呈现，方便读者浏览和查找历史文章。 归档页模板 归档页模板是一个 .archive.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用...",
       "translate": [
         "zh-CN",
         "en-US",
@@ -31,11 +31,45 @@
       "date": "2026-03-21",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/93b7f9a7",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "urlPath": "articles/zh-CN/93b7f9a7"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "主题开发落地页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+    "hash": "e52553ad",
+    "relativePath": "/主题开发落地页.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "title": "主题开发落地页",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "落地页",
+        "列表页"
+      ],
+      "desc": "落地页 当将 Kecare 用作博客时，我们需要一个落地页（即首页），用于展示博客的文章列表。 落地页模板 落地页模板是一个 .list.ts 文件，存放在 .kecare/ 目录下。生成器会在处理完所有文章后调用它，用于生成文章列表页面。...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-21",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "urlPath": "articles/zh-CN/e52553ad"
   },
   {
     "lang": "zh-CN",
@@ -126,41 +160,11 @@
     "__SKIP_ARTICLE_GENERATOR__": true,
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
     "urlPath": "articles/zh-CN/6e8c5f0b"
-  },
-  {
-    "lang": "zh-CN",
-    "title": "国际化处理",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "国际化处理 Kecare 可使用 Ai 为你的文章翻译成多种语言， 让文章触达多语言读者。 启用翻译 在 Kecare 中使用翻译也非常简单，仅需在所需翻译的文章 Front Matter 中添加 translate 字段： 第一个语言代码...",
-    "hash": "493f5fa2",
-    "relativePath": "/国际化处理.md",
-    "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "国际化处理",
-      "menu": "test",
-      "tags": [],
-      "desc": "国际化处理 Kecare 可使用 Ai 为你的文章翻译成多种语言， 让文章触达多语言读者。 启用翻译 在 Kecare 中使用翻译也非常简单，仅需在所需翻译的文章 Front Matter 中添加 translate 字段： 第一个语言代码...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-03",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
-    "urlPath": "articles/zh-CN/493f5fa2"
   }
 ]
                 const currentPage = 3
                 const totalPages = 4
-                const totalArticles = 17
+                const totalArticles = 18
                 const totalTags = 9
 
                 </script>
