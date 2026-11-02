@@ -18,7 +18,7 @@ author: Pamper
 
 > [!NOTE]
 >
-> 这是一个纯教程向的文档，所以我不再介绍以上工具是什么以及在后续配置过程中每一步的含义（涉及Bot体验的功能会进行讲解）
+> 这是一个纯教程向的文档，所以我不再介绍以上工具是什么以及在后续配置过程中每一步的含义（涉及Bot体验的功能会进行解释）
 
 好，我们已经下载好了Docker，我们可以使用Docker Compose 一键部署 Astrbot 和 Napcat
 
@@ -38,17 +38,17 @@ sudo docker compose -f astrbot.yml up -d
 
 如果不出意外的话，就应该不出意外
 
-![Astrbot](https://kecare.me/astrbot path1.png)
+![Astrbot](/assets/astrbotpath1.png)
 
 让后你就耐心等待这两个进度条 Download 满即可。
 
 让后你就可以关掉这两个无用的终端了，接着打开你的 Docker Desktop 就应该能看到两个镜像
 
-![Astrbot path2](https://kecare.me/astrbot path2.png)
+![Astrbot path2](/assets/astrbotpath2.png)
 
 那我们一个个来，先找到 Name 为 soulter/astrbot 的镜像，点击一下 Run 不需要你进行任何的 Options Setting。让后你就可以在 容器 中找到这个 容器 并查看其日志，不出意外的话会输出下面这段日志
 
-![image-20261103022050120](https://kecare.me/astrbot path3.png)
+![image-20261103022050120](/assets/astrbotpath3.png)
 
 让后在浏览器中打开这段Url（点一下即可）
 
@@ -56,9 +56,9 @@ sudo docker compose -f astrbot.yml up -d
 
 初始密码为 Url 下方的 password 
 
-````markdown
-我不知道为什么，我的初始密码不初始也不正确。每次都要手动改一下密码 // [!code focus]
-````
+```js
+我不知道为什么，我的初始密码不初始也不正确。每次都要手动改一下密码  // [!code focus]
+```
 
 成功登录之后你会进入到 Astrbot 的首页，我们就跟着它的快速引导来，第一步配置 Ai 模型。
 
@@ -80,7 +80,7 @@ QQ的话，就选  OneBot v11 （不要选官Bot!）
 
 让后就可以把 Astrbot 放一边了，我们启动 Napcat 的镜像，依旧是按照刚刚启动 Astrbot 的样子，在 容器 日志 中找到 Napcat 的 Url 并 打开
 
-[1](https://kecare.me/astrbot path4.png)
+[1](/assets/astrbotpath4.png)
 
 应该会让你登录 QQ ，拿出你即将要被风控的 Bot 小号，进行登录即可。
 
@@ -88,7 +88,7 @@ QQ的话，就选  OneBot v11 （不要选官Bot!）
 
 让后点击 新建 让后选择 Websocket客户端
 
-![image-20261103030132366](https://kecare.me/astrbot path5.png)
+![image-20261103030132366](/assets/astrbotpath5.png)
 
 Url 一定要这么写（前提是你在docker下部署的）
 
@@ -96,7 +96,7 @@ Url 一定要这么写（前提是你在docker下部署的）
 
 前往 AstrBot 网页 的 `数据与日志` -> `日志`，如果出现 `aiocqhttp(OneBot v11) 适配器已连接。` 蓝色的日志，说明连接成功。如果没有，若干秒后出现` aiocqhttp 适配器已被关闭` 则为连接超时（失败），请检查配置是否正确。
 
-![image-20261103030539085](https://kecare.me/astrbot path6.png)
+![image-20261103030539085](/assets/astrbotpath6.png)
 
 我这图是在docker的日志里截的，其实是一个东西，看到 aiocqhttp(OneBot v11) 适配器已连接 这句话就行。
 

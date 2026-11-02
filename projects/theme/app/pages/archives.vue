@@ -1,4 +1,4 @@
-<!-- Generated: 2026-11-02T19:11:20.107Z -->
+<!-- Generated: 2026-11-02T19:23:28.708Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -39,15 +39,6 @@
     "urlPath": "articles/zh-CN/8246c8ed"
   },
   {
-    "title": "快速开始",
-    "lang": "zh-CN",
-    "hash": "95bb100b",
-    "tags": [],
-    "date": "2026-08-02",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
-    "urlPath": "articles/zh-CN/95bb100b"
-  },
-  {
     "title": "项目结构",
     "lang": "zh-CN",
     "hash": "37e86293",
@@ -55,6 +46,15 @@
     "date": "2026-08-02",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
     "urlPath": "articles/zh-CN/37e86293"
+  },
+  {
+    "title": "快速开始",
+    "lang": "zh-CN",
+    "hash": "95bb100b",
+    "tags": [],
+    "date": "2026-08-02",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "urlPath": "articles/zh-CN/95bb100b"
   },
   {
     "title": "天天禄杯S2",
@@ -73,6 +73,19 @@
     "date": "2026-07-04",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\54f6a7aa.vue",
     "urlPath": "articles/zh-CN/54f6a7aa"
+  },
+  {
+    "title": "主题开发落地页",
+    "lang": "zh-CN",
+    "hash": "e52553ad",
+    "tags": [
+      "主题开发",
+      "落地页",
+      "列表页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "urlPath": "articles/zh-CN/e52553ad"
   },
   {
     "title": "主题开发文章页",
@@ -97,19 +110,6 @@
     "date": "2026-03-21",
     "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
     "urlPath": "articles/zh-CN/93b7f9a7"
-  },
-  {
-    "title": "主题开发落地页",
-    "lang": "zh-CN",
-    "hash": "e52553ad",
-    "tags": [
-      "主题开发",
-      "落地页",
-      "列表页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
-    "urlPath": "articles/zh-CN/e52553ad"
   },
   {
     "title": "关于我",

@@ -12,7 +12,7 @@
     "hash": "25977326",
     "relativePath": "/使用 NapCat 和 Astrbot 部署 QQ Bot.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "使用 NapCat 和 Astrbot 部署 QQ Bot",
       "tags": [],
       "desc": "使用 NapCat 和 Astrbot 部署 QQ Bot Docker Desktop AstrBot NapCat 以上是本文涉及到的工具，你不必全部下载，仅需下载 Docker Desktop即可 [!NOTE] 这是一个纯教程向的文...",
