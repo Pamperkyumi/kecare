@@ -37,6 +37,9 @@ COPY . /workspace
 
 RUN bun install
 
+# 产物不入库，从 .kecare 源内容重新生成页面
+RUN bun run gen
+
 RUN co build kecare
 
 WORKDIR /workspace/projects/theme

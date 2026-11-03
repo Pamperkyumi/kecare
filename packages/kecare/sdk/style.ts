@@ -5,7 +5,6 @@ export const __STYLE__ = `
 
 .kecare {
   position: relative;
-}
 
 .kecare-copy-button {
   position: absolute;

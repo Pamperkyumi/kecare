@@ -2,9 +2,9 @@
   "name": "@milkio/cookbook",
   "private": true,
   "scripts": {
-    "gen": "bun run ./projects/generator/index.ts gen \"C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\"",
-    "clean": "bun run ./projects/generator/index.ts clean \"C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\"",
-    "dev": "bun run ./projects/generator/index.ts dev \"C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\" --with-nuxt",
+    "gen": "bun run ./projects/generator/index.ts gen \"projects/theme\"",
+    "clean": "bun run ./projects/generator/index.ts clean \"projects/theme\"",
+    "dev": "bun run ./projects/generator/index.ts dev \"projects/theme\" --with-nuxt",
     "test": "bun run ./projects/test/run.ts"
   },
   "workspaces": [

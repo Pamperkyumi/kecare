@@ -15,8 +15,7 @@ export async function generator(context: KecareContext, articles: ArchiveArticle
 
     return {
         fsPath: join(context.projectPath, 'app', 'pages', 'archives.vue'), // 文件生成的路径
-        template: `<!-- Generated: ${new Date().toISOString()} -->
-        <script setup lang="ts">
+        template: `<script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = ${JSON.stringify(zhArticles, null, 2)}
         const totalArticles = ${context.articleStats?.perLang?.['zh-CN']?.total ?? 0}

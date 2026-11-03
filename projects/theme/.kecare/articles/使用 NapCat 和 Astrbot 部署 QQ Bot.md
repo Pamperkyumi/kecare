@@ -14,6 +14,12 @@ author: Pamper
 - [AstrBot](https://docs.astrbot.app/what-is-astrbot.html)
 - [NapCat](https://napneko.github.io/guide/start-install)
 
+> [!WARNING]
+>
+> 通过 Docker 可以方便地将 AstrBot 部署到 Windows, Mac, Linux 上。
+>
+> 以下教程默认您的环境已安装 Docker。如果没有安装，请参考 [Docker 官方文档](https://docs.docker.com/get-docker/) 进行安装。
+
 以上是本文涉及到的工具，你不必全部下载，仅需下载 Docker Desktop即可
 
 > [!NOTE]
@@ -24,7 +30,7 @@ author: Pamper
 
 直接复制 [NapNeko/NapCat-Docker/astrbot.yml](https://github.com/NapNeko/NapCat-Docker/blob/main/compose/astrbot.yml) 文件到你的服务器上即可。
 
-如果您的网络环境在中国大陆境内，上述文件无法正常获取。那你<a href="https://www.kecare.me/assets/astrbot.yml" download>点一下我</a>我大方的送你一份。
+如果您的网络环境在中国大陆境内，上述文件无法正常拉取。那你<a href="https://www.kecare.me/assets/astrbot.yml" download>点一下我 </a>我大方的送你一份
 
 让后将其放在你喜欢的地方，最好是新一个文件夹内。
 
@@ -80,7 +86,7 @@ QQ的话，就选  OneBot v11 （不要选官Bot!）
 
 让后就可以把 Astrbot 放一边了，我们启动 Napcat 的镜像，依旧是按照刚刚启动 Astrbot 的样子，在 容器 日志 中找到 Napcat 的 Url 并 打开
 
-[1](/assets/astrbotpath4.png)
+![!image](/assets/astrbotpath4.png)
 
 应该会让你登录 QQ ，拿出你即将要被风控的 Bot 小号，进行登录即可。
 

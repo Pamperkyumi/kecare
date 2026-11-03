@@ -346,3 +346,8 @@
     padding-left: 10px;
     border-left: 2px solid #b2ebf2;
 }
+
+.article-content:deep(p) {
+    padding: 5px;
+
+}
