@@ -93,12 +93,15 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             cached?.contentHash === contentHash
             && Array.isArray(cached.variants)
             && cached.variants.length > 0
-            && cached.variants.every((article) => article.__REAL_FS_PATHS__ && existsSync(article.__REAL_FS_PATHS__))
         ) {
+            // 缓存命中：译文等数据都在 manifest 中，无需重新翻译。
+            // 但如果产物 .vue 文件在磁盘上缺失（如 CI 全新 checkout 的场景），
+            // 则不能跳过页面生成，需要用缓存数据重新生成产物文件
+            const needRegenerate = cached.variants.some((article) => !article.__REAL_FS_PATHS__ || !existsSync(article.__REAL_FS_PATHS__));
             for (const cachedArticle of cached.variants) {
                 await emitArticleHandle(context, {
                     ...cachedArticle,
-                    __SKIP_ARTICLE_GENERATOR__: true,
+                    __SKIP_ARTICLE_GENERATOR__: !needRegenerate,
                 });
             }
             return;
