@@ -1,9 +1,0 @@
-{
-  "title": "花月",
-  "lang": "zh-CN",
-  "hash": "54f6a7aa",
-  "tags": [],
-  "date": "2026-07-04",
-  "urlPath": "articles/zh-CN/54f6a7aa",
-  "content": "\r\n# Fioralune（花月）\r\n\r\n我好懒的，以下都是几个我自己在做的东西，恳请大家学习和指点喵\r\n\r\n## PicHost 图床\r\n\r\npichost.cloud\r\n\r\n一个用于个人使用的图床罢了，均使用阿里云国内节点部署，存储节点在国内上海，访问速度应该挺快的了已经，禁止用于商用，禁止上传违法违规内容。\r\n\r\n### Kecare\r\n\r\n[Pamperkyumi/kecare: Kecare 是一个面向现代静态博客与笔记站点的生成器框架。它最大的目标不是“再做一个 Hexo”，而是把 内容系统 从 主题/框架 里拆出来，让你的博客能力变成“可插拔模块”喵~](https://github.com/Pamperkyumi/kecare)\r\n\r\nKecare是一个静态网站生成框架，主要针对于文档站/博客 两类。你目前所阅读的网页，正是由Kecare处理而来的喵。\r\n\r\nKecare 目前应该是到了可以上线测试的完成度了喵，后续我将会完善Kecare的使用手册供大家使用。也欢迎大家完善Kecare喵，欢迎Star。欢迎PR。\r\n\r\n### Fioralune Awards （花月奖）\r\n\r\n花月奖，是我自己为了给自己颁奖而诞生的项目（bushi)，是给个人独立开发者奖项，可能要好久才能上线了，我好懒的。\r\n\r\n## Milkio\r\n\r\n[Milkio --- Milkio](https://milkio.fun/)\r\n\r\n[akirarika/milkio: 🌟 A TypeScript Framework - Now, break the boundaries between Frontend and Backend](https://github.com/akirarika/milkio)\r\n\r\n一个是一个 TypeScript 全栈框架，支持 Bun 及任何运行时。\r\n\r\n### Cs赛事 Fioralune CS2 Competition\r\n\r\n单纯是为了看Xpl比赛的如此稀烂，让后又头脑一热想出来的东西。S1赛季办的也还算凑合，既然大家又这么想要S2，那就将其变成Fioralune的长期项目吧，比赛的奖金均有大家赞助而来，具体奖金流水可看[花月 · 赞助 - Pamperのblog](https://kecare.me/sponsor/)\r\n\r\n\r\n\r\n"
-}
