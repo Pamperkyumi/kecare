@@ -5,7 +5,8 @@
     "gen": "bun run ./projects/generator/index.ts gen \"projects/theme\"",
     "clean": "bun run ./projects/generator/index.ts clean \"projects/theme\"",
     "dev": "bun run ./projects/generator/index.ts dev \"projects/theme\" --with-nuxt",
-    "test": "bun run ./projects/test/run.ts"
+    "test": "bun run ./projects/test/run.ts",
+    "build": "bun run --filter kecare-theme build"
   },
   "workspaces": [
     "projects/*",
