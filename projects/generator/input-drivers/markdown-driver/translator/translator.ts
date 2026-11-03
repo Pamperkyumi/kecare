@@ -39,15 +39,39 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
     const Prompt = `你是一个很好用的翻译助手，请帮我将下面的文章翻译成${lang}，注意：千万不要增删任何 HTML标签/属性和markdown标签/属性,你如果看到markdown标签，如果是代码块的内容，请不要翻译，只翻译文本节点,如果是代码内容，请不要翻译，原样放回。保留链接 href、图片 src、id、class 不动。注意：代码块占位符（如 __CODE_BLOCK_0__）不要翻译，原样保留。`
     const systemPrompt = Prompt + prompt
 
+    // 缓存文件按 (语言, 原始标题哈希) 定位目录，标题译文用固定键存入同一份缓存文件。
+    // 命中时直接复用，避免每次文章内容变更都重新调用 AI 翻译标题
+    const titleHash = Bun.hash.xxHash3(title || "", 1234n).toString(16).slice(0, 8);
+    const cacheDir = join(KecareContext.projectPath, ".kecare", "cache", "translations", lang, titleHash);
+    mkdirSync(cacheDir, { recursive: true });
+    const cacheFilePath = join(cacheDir, "translations.json");
+    const TITLE_CACHE_KEY = "__TRANSLATED_TITLE__";
+
+    const translatedParts: string[] = [];
+    const allTranslationTemp: Record<string, string> = {};
+
+    // Load cache
+    try {
+        const cacheData = await Bun.file(cacheFilePath);
+        const cacheDataJson = await cacheData.json();
+        Object.assign(allTranslationTemp, cacheDataJson);
+        // consola.info(`Loaded cached translations from ${cacheFilePath}`);
+    } catch {
+        // consola.info(`No cached translations found for ${title}.`);
+    }
+
     let translatedTitle = title || "";
 
 
     // =========================
-    // 1) Translate Title 
+    // 1) Translate Title
     // =========================
     if (!title || title.trim().length === 0) {
         // consola.warn("Empty title provided for translation");
         translatedTitle = title || "";
+    } else if (allTranslationTemp[TITLE_CACHE_KEY]) {
+        // 标题命中缓存，直接复用
+        translatedTitle = allTranslationTemp[TITLE_CACHE_KEY];
     } else {
         // Protect code blocks in title (rare, but keep same behavior)
         const titleCodeBlocks: Array<{ id: string; content: string }> = [];
@@ -107,6 +131,8 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
                 translatedTitle = title;
             }
         }
+        // 记录标题译文，供下次缓存命中
+        allTranslationTemp[TITLE_CACHE_KEY] = translatedTitle;
     }
 
 
@@ -134,25 +160,6 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
         .split(/\n{2,}/)
         .map((s) => s.trim())
         .filter(Boolean);
-
-    const translatedParts: string[] = [];
-    const allTranslationTemp: Record<string, string> = {};
-
-    // Cache path
-    const titleHash = Bun.hash.xxHash3(title || "", 1234n).toString(16).slice(0, 8);
-    const cacheDir = join(KecareContext.projectPath, ".kecare", "cache", "translations", lang, titleHash);
-    mkdirSync(cacheDir, { recursive: true });
-    const cacheFilePath = join(cacheDir, "translations.json");
-
-    // Load cache
-    try {
-        const cacheData = await Bun.file(cacheFilePath);
-        const cacheDataJson = await cacheData.json();
-        Object.assign(allTranslationTemp, cacheDataJson);
-        // consola.info(`Loaded cached translations from ${cacheFilePath}`);
-    } catch {
-        // consola.info(`No cached translations found for ${title}.`);
-    }
 
     // Translate each part (use cache if hit)
     for (const [index, part] of parts.entries()) {
