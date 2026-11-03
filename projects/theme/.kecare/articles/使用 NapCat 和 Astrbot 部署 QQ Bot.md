@@ -57,7 +57,7 @@ sudo docker compose -f astrbot.yml up -d
 初始密码为 Url 下方的 password 
 
 ```js
-我不知道为什么，我的初始密码不初始也不正确。每次都要手动改一下密码  // [!code focus]
+我不知道为什么，我的初始密码不初始也不正确。每次都要手动改一下密码  // [!code blur]
 ```
 
 成功登录之后你会进入到 Astrbot 的首页，我们就跟着它的快速引导来，第一步配置 Ai 模型。

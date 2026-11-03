@@ -1,4 +1,4 @@
-<!-- Generated: 2026-11-02T19:49:20.940Z -->
+<!-- Generated: 2026-11-03T08:00:59.660Z -->
         <script setup lang="ts">
         import archivesTheme from '~/components/archive-landing.vue'
         const articles = [
@@ -8,7 +8,7 @@
     "hash": "25977326",
     "tags": [],
     "date": "2026-11-03",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\25977326.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/25977326.vue",
     "urlPath": "articles/zh-CN/25977326"
   },
   {
@@ -17,7 +17,7 @@
     "hash": "aaddef53",
     "tags": [],
     "date": "2026-08-03",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/aaddef53.vue",
     "urlPath": "articles/zh-CN/aaddef53"
   },
   {
@@ -26,17 +26,8 @@
     "hash": "8a8cb741",
     "tags": [],
     "date": "2026-08-03",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\8a8cb741.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/8a8cb741.vue",
     "urlPath": "articles/zh-CN/8a8cb741"
-  },
-  {
-    "title": "Kecare的缓存",
-    "lang": "zh-CN",
-    "hash": "8246c8ed",
-    "tags": [],
-    "date": "2026-08-02",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\8246c8ed.vue",
-    "urlPath": "articles/zh-CN/8246c8ed"
   },
   {
     "title": "快速开始",
@@ -44,8 +35,17 @@
     "hash": "95bb100b",
     "tags": [],
     "date": "2026-08-02",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\95bb100b.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/95bb100b.vue",
     "urlPath": "articles/zh-CN/95bb100b"
+  },
+  {
+    "title": "Kecare的缓存",
+    "lang": "zh-CN",
+    "hash": "8246c8ed",
+    "tags": [],
+    "date": "2026-08-02",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/8246c8ed.vue",
+    "urlPath": "articles/zh-CN/8246c8ed"
   },
   {
     "title": "项目结构",
@@ -53,7 +53,7 @@
     "hash": "37e86293",
     "tags": [],
     "date": "2026-08-02",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\37e86293.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/37e86293.vue",
     "urlPath": "articles/zh-CN/37e86293"
   },
   {
@@ -62,7 +62,7 @@
     "hash": "aff462d2",
     "tags": [],
     "date": "2026-08-01",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aff462d2.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/aff462d2.vue",
     "urlPath": "articles/zh-CN/aff462d2"
   },
   {
@@ -71,7 +71,7 @@
     "hash": "54f6a7aa",
     "tags": [],
     "date": "2026-07-04",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\54f6a7aa.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/54f6a7aa.vue",
     "urlPath": "articles/zh-CN/54f6a7aa"
   },
   {
@@ -83,20 +83,8 @@
       "归档页"
     ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\93b7f9a7.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/93b7f9a7.vue",
     "urlPath": "articles/zh-CN/93b7f9a7"
-  },
-  {
-    "title": "主题开发文章页",
-    "lang": "zh-CN",
-    "hash": "989b9235",
-    "tags": [
-      "主题开发",
-      "文章页"
-    ],
-    "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "title": "主题开发落地页",
@@ -108,8 +96,20 @@
       "列表页"
     ],
     "date": "2026-03-21",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
+  },
+  {
+    "title": "主题开发文章页",
+    "lang": "zh-CN",
+    "hash": "989b9235",
+    "tags": [
+      "主题开发",
+      "文章页"
+    ],
+    "date": "2026-03-21",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "title": "关于我",
@@ -117,7 +117,7 @@
     "hash": "2f0fd1f2",
     "tags": [],
     "date": "2026-03-10",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\2f0fd1f2.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/2f0fd1f2.vue",
     "urlPath": "articles/zh-CN/2f0fd1f2"
   },
   {
@@ -126,7 +126,7 @@
     "hash": "b40d18d1",
     "tags": [],
     "date": "2026-03-09",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/b40d18d1.vue",
     "urlPath": "articles/zh-CN/b40d18d1"
   },
   {
@@ -135,7 +135,7 @@
     "hash": "39f6b230",
     "tags": [],
     "date": "2026-03-08",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/39f6b230.vue",
     "urlPath": "articles/zh-CN/39f6b230"
   },
   {
@@ -144,7 +144,7 @@
     "hash": "6e8c5f0b",
     "tags": [],
     "date": "2026-03-06",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/6e8c5f0b.vue",
     "urlPath": "articles/zh-CN/6e8c5f0b"
   },
   {
@@ -153,7 +153,7 @@
     "hash": "493f5fa2",
     "tags": [],
     "date": "2026-03-03",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/493f5fa2.vue",
     "urlPath": "articles/zh-CN/493f5fa2"
   },
   {
@@ -167,7 +167,7 @@
       "Kecare"
     ],
     "date": "2026-03-02",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/43fc313b.vue",
     "urlPath": "articles/zh-CN/43fc313b"
   },
   {
@@ -181,7 +181,7 @@
       "Kecare"
     ],
     "date": "2026-03-01",
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/4ee23999.vue",
     "urlPath": "articles/zh-CN/4ee23999"
   }
 ]

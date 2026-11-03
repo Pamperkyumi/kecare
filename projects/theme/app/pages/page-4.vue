@@ -28,10 +28,10 @@
       "date": "2026-03-03",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/493f5fa2.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/493f5fa2",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\493f5fa2.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/493f5fa2.vue",
     "urlPath": "articles/zh-CN/493f5fa2"
   },
   {
@@ -43,7 +43,7 @@
     "hash": "43fc313b",
     "relativePath": "/贡献指南.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "贡献指南",
       "menu": "test",
       "tags": [
@@ -63,10 +63,10 @@
       "date": "2026-03-02",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/43fc313b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/43fc313b",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\43fc313b.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/43fc313b.vue",
     "urlPath": "articles/zh-CN/43fc313b"
   },
   {
@@ -98,10 +98,10 @@
       "date": "2026-03-01",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/4ee23999.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/4ee23999",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\4ee23999.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/4ee23999.vue",
     "urlPath": "articles/zh-CN/4ee23999"
   }
 ]

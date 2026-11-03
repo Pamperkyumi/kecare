@@ -3,7 +3,14 @@ import { transformerNotationHighlight } from '@shikijs/transformers';
 export async function onMountedSyntaxHighlight(articleElement: HTMLDivElement) {
     const codeElements = articleElement.querySelectorAll('pre > code');
     const { codeToHtml } = await import('shiki');
-    const { transformerNotationDiff, transformerNotationFocus } = await import('@shikijs/transformers');
+    const { transformerNotationDiff, transformerNotationFocus, transformerNotationMap } = await import('@shikijs/transformers');
+
+    // 代码模糊标注：与代码聚焦相反，标记的行默认模糊，鼠标悬停到该行时才显示
+    const transformerNotationBlur = transformerNotationMap({
+        classMap: { blur: 'blurred' },
+        classActivePre: 'has-blurred',
+        matchAlgorithm: 'v3'
+    });
 
     for (const codeElement of codeElements) {
         const classList = codeElement.className.split(' ')
@@ -17,14 +24,14 @@ export async function onMountedSyntaxHighlight(articleElement: HTMLDivElement) {
             highlightedHtml = await codeToHtml(code, {
                 lang,
                 theme: 'one-dark-pro', // or 亮色主题 one-light
-                transformers: [transformerNotationDiff({ matchAlgorithm: 'v3' }), transformerNotationFocus({ matchAlgorithm: 'v3' }), transformerNotationHighlight({ matchAlgorithm: 'v3' })],
+                transformers: [transformerNotationDiff({ matchAlgorithm: 'v3' }), transformerNotationFocus({ matchAlgorithm: 'v3' }), transformerNotationBlur, transformerNotationHighlight({ matchAlgorithm: 'v3' })],
             });
         } catch {
             // Fallback for unknown/invalid languages such as ```1
             highlightedHtml = await codeToHtml(code, {
                 lang: 'text',
                 theme: 'one-dark-pro',
-                transformers: [transformerNotationDiff({ matchAlgorithm: 'v3' }), transformerNotationFocus({ matchAlgorithm: 'v3' }), transformerNotationHighlight({ matchAlgorithm: 'v3' })],
+                transformers: [transformerNotationDiff({ matchAlgorithm: 'v3' }), transformerNotationFocus({ matchAlgorithm: 'v3' }), transformerNotationBlur, transformerNotationHighlight({ matchAlgorithm: 'v3' })],
             });
         }
 

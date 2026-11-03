@@ -330,6 +330,25 @@ pre.shiki.has-focused code .line:not(.focused):hover {
   opacity: 1;
 }
 
+/* 代码模糊：与聚焦相反，被标记的行默认模糊 */
+pre.shiki.has-blurred code .line {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+pre.shiki.has-blurred code .line.blurred {
+  filter: blur(0.07rem);
+  opacity: 0.35;
+}
+
+/* 鼠标悬停到模糊行时：显示该行内容 */
+pre.shiki.has-blurred code .line.blurred:hover {
+  filter: none;
+  opacity: 1;
+}
+
 
 `; // 这里放你需要在用户那边加载的编辑器区域的样式
 

@@ -6,39 +6,6 @@
                 const articles = [
   {
     "lang": "zh-CN",
-    "title": "主题开发文章页",
-    "isOriginalLang": true,
-    "menu": "test",
-    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-    "hash": "989b9235",
-    "relativePath": "/主题开发文章页.md",
-    "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
-      "title": "主题开发文章页",
-      "menu": "test",
-      "tags": [
-        "主题开发",
-        "文章页"
-      ],
-      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
-      "translate": [
-        "zh-CN",
-        "en-US",
-        "ja-JP"
-      ],
-      "sticky": 0,
-      "author": "Pamper",
-      "date": "2026-03-21",
-      "hidden": false
-    },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\989b9235.vue",
-    "urlPath": "articles/zh-CN/989b9235"
-  },
-  {
-    "lang": "zh-CN",
     "title": "主题开发落地页",
     "isOriginalLang": true,
     "menu": "test",
@@ -46,7 +13,7 @@
     "hash": "e52553ad",
     "relativePath": "/主题开发落地页.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "主题开发落地页",
       "menu": "test",
       "tags": [
@@ -65,11 +32,44 @@
       "date": "2026-03-21",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/e52553ad.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/e52553ad",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\e52553ad.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/e52553ad.vue",
     "urlPath": "articles/zh-CN/e52553ad"
+  },
+  {
+    "lang": "zh-CN",
+    "title": "主题开发文章页",
+    "isOriginalLang": true,
+    "menu": "test",
+    "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+    "hash": "989b9235",
+    "relativePath": "/主题开发文章页.md",
+    "frontMatter": {
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
+      "title": "主题开发文章页",
+      "menu": "test",
+      "tags": [
+        "主题开发",
+        "文章页"
+      ],
+      "desc": "文章页 无论是博客还是文档站，我们都需要一个页面来显示文章内容，这个页面就是文章页。 文章页模板 文章页模板是一个 .article.ts 文件，存放在 .kecare/ 目录下。生成器会在处理每篇文章时调用它，用于生成文章详情页面。 一个...",
+      "translate": [
+        "zh-CN",
+        "en-US",
+        "ja-JP"
+      ],
+      "sticky": 0,
+      "author": "Pamper",
+      "date": "2026-03-21",
+      "hidden": false
+    },
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/989b9235.vue",
+    "__REAL_RELATIVE_PATHS__": "articles/zh-CN/989b9235",
+    "__SKIP_ARTICLE_GENERATOR__": true,
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/989b9235.vue",
+    "urlPath": "articles/zh-CN/989b9235"
   },
   {
     "lang": "zh-CN",
@@ -80,7 +80,7 @@
     "hash": "b40d18d1",
     "relativePath": "/markdown扩展.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "markdown扩展",
       "menu": "test",
       "tags": [],
@@ -95,10 +95,10 @@
       "date": "2026-03-09",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/b40d18d1.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/b40d18d1",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\b40d18d1.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/b40d18d1.vue",
     "urlPath": "articles/zh-CN/b40d18d1"
   },
   {
@@ -125,10 +125,10 @@
       "date": "2026-03-08",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/39f6b230.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/39f6b230",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\39f6b230.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/39f6b230.vue",
     "urlPath": "articles/zh-CN/39f6b230"
   },
   {
@@ -155,10 +155,10 @@
       "date": "2026-03-06",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/6e8c5f0b.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/6e8c5f0b",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\6e8c5f0b.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/6e8c5f0b.vue",
     "urlPath": "articles/zh-CN/6e8c5f0b"
   }
 ]

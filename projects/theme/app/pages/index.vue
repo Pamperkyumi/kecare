@@ -24,10 +24,9 @@
       "date": "2026-11-03",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\25977326.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/25977326.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/25977326",
-    "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\25977326.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/25977326.vue",
     "urlPath": "articles/zh-CN/25977326"
   },
   {
@@ -38,7 +37,7 @@
     "hash": "aaddef53",
     "relativePath": "/Kecare的热更新以及Vite的HMR原理.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
       "title": "Kecare的热更新以及Vite的HMR原理",
       "tags": [],
       "desc": "Kecare的热更新以及Vite的HMR原理 一、概述 传统流程下，每改一个字都要 kecare gen 全量重跑：扫描所有文章 → 解析 Markdown → AI 翻译 → 写所有页面。这在文章多、需要翻译时非常慢。 如果你使用过Vit...",
@@ -50,10 +49,10 @@
       "date": "2026-08-03",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/aaddef53.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/aaddef53",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aaddef53.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/aaddef53.vue",
     "urlPath": "articles/zh-CN/aaddef53"
   },
   {
@@ -76,10 +75,10 @@
       "date": "2026-08-03",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\8a8cb741.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/8a8cb741.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/8a8cb741",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\8a8cb741.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/8a8cb741.vue",
     "urlPath": "articles/zh-CN/8a8cb741"
   },
   {
@@ -90,7 +89,7 @@
     "hash": "54f6a7aa",
     "relativePath": "/花月.md",
     "frontMatter": {
-      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp",
+      "cover": "https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg",
       "title": "花月",
       "tags": [],
       "desc": "Fioralune（花月） 我好懒的，以下都是几个我自己在做的东西，恳请大家学习和指点喵 PicHost 图床 pichost.cloud 一个用于个人使用的图床罢了，均使用阿里云国内节点部署，存储节点在国内上海，访问速度应该挺快的了已经，...",
@@ -102,10 +101,10 @@
       "date": "2026-07-04",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\54f6a7aa.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/54f6a7aa.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/54f6a7aa",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\54f6a7aa.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/54f6a7aa.vue",
     "urlPath": "articles/zh-CN/54f6a7aa"
   },
   {
@@ -128,10 +127,10 @@
       "date": "2026-08-01",
       "hidden": false
     },
-    "__REAL_FS_PATHS__": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aff462d2.vue",
+    "__REAL_FS_PATHS__": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/aff462d2.vue",
     "__REAL_RELATIVE_PATHS__": "articles/zh-CN/aff462d2",
     "__SKIP_ARTICLE_GENERATOR__": true,
-    "fsPath": "C:\\Users\\Pamper\\Desktop\\workspace\\Kecare\\projects\\theme\\app\\pages\\articles\\zh-CN\\aff462d2.vue",
+    "fsPath": "/Users/pamper/Desktop/workspace/kecare/projects/theme/app/pages/articles/zh-CN/aff462d2.vue",
     "urlPath": "articles/zh-CN/aff462d2"
   }
 ]

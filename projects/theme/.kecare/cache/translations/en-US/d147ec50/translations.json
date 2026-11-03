@@ -39,5 +39,9 @@
   "8bc09294": "__CODE_BLOCK_7__",
   "d10f3f50": "@tab ts [config.ts]",
   "f8e8cdbb": "__CODE_BLOCK_8__",
-  "dedd478f": ":::"
+  "dedd478f": ":::",
+  "637dd41e": "## Code Obfuscation",
+  "43012c54": "The blur feature can hide the content of a line, with the opposite effect of code focus: marked lines are blurred by default, and their content is only shown when the mouse hovers over that line.",
+  "fc85901e": "Add a `// [!code blur]` comment to the target line:",
+  "f5e6e84a": "__CODE_BLOCK_9__"
 }
