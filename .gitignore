@@ -38,7 +38,6 @@ generator.exe
 
 # Finder (MacOS) folder config
 .DS_Store
-projects/theme/.kecare/kecare.config.ts
 
 # kecare gen 产物（部署构建时执行 bun run gen 重新生成）
 projects/theme/app/pages/articles/

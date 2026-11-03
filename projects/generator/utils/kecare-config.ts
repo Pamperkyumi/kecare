@@ -5,16 +5,17 @@ import { existsSync } from "fs";
 async function createKecareConfig(context: KecareContext) {
     if (!existsSync(join(context.projectPath, '.kecare', 'kecare.config.ts'))) return {} as KecareConfig;
     const configModule = await import(join(context.projectPath, '.kecare', 'kecare.config.ts'));
+    const config = (await configModule.kecareConfig(context)) as KecareConfig;
 
-    // 校验配置文件
-    if (configModule.llm) {
+    // llm 实际来自 kecareConfig() 的返回值，需在结果上校验
+    if (config.llm) {
         // 如果存在 llm 配置，校验其字段
-        if (!configModule.llm.model) throw new Error('llm.model 不能为空');
-        if (!configModule.llm.apiKey) throw new Error('llm.apiKey 不能为空');
-        if (!configModule.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
+        if (!config.llm.model) throw new Error('llm.model 不能为空');
+        if (!config.llm.apiKey) throw new Error('llm.apiKey 不能为空，请通过 DEPSEEK_API_KEY 环境变量配置');
+        if (!config.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
     }
 
-    return configModule.kecareConfig(context) as KecareConfig;
+    return config;
 }
 
 // 以 context 为键缓存配置：每次 gen 都会创建新的 context，

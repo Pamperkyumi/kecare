@@ -22,6 +22,3 @@ logs
 .env
 .env.*
 !.env.example
-
-# Kecare config
-.kecare/kecare.config.ts
