@@ -244,52 +244,15 @@ for (const packageDir of platformPackageDirs) {
     run("npm", ["pack", "--dry-run"], { cwd: packageDir });
 }
 
-// npm publish 存在静默失败的情况：进程以 exit code 0 退出且不打印 `+ pkg@version`，
-// 但版本实际未上传到 registry（beta.120 的 @kecare/linux-arm64 就发生过）。
-// 因此发布后必须轮询 registry 确认版本真实可见，未确认则重试。
-const maxPublishAttempts = 3;
-
 function publishAndVerify(name: string, packageDir: string) {
     if (packageExists(name, version)) {
         console.log(`Skip existing package: ${name}@${version}`);
         return;
     }
 
-    let verified = false;
-
-    for (let attempt = 1; attempt <= maxPublishAttempts && !verified; attempt++) {
-        if (attempt > 1) {
-            console.log(`Retry publish: ${name}@${version} (attempt ${attempt}/${maxPublishAttempts})`);
-        }
-
-        const publishResult = run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
-            cwd: packageDir,
-            allowFail: true,
-        });
-
-        // publish 报错但版本已存在（如 "cannot publish over previously published version"），视为发布成功
-        if (publishResult.exitCode !== 0) {
-            verified = packageExists(name, version);
-            continue;
-        }
-
-        // registry CDN 有同步延迟，最多轮询 3 分钟等待版本可见
-        for (let poll = 0; poll < 18; poll++) {
-            if (packageExists(name, version)) {
-                verified = true;
-                break;
-            }
-            Bun.sleepSync(10_000);
-        }
-
-        if (!verified) {
-            console.warn(`Publish exited 0 but version not visible on registry: ${name}@${version}`);
-        }
-    }
-
-    if (!verified) {
-        throw new Error(`publish verification failed: ${name}@${version} not found on registry`);
-    }
+    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
+        cwd: packageDir,
+    });
 }
 
 console.log("\nPublishing scoped binary packages");
