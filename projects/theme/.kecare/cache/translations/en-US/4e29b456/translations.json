@@ -10,5 +10,6 @@
   "634f748f": "## Page Components",
   "d8c09892": "We called `<Landing/>` in the template, so next we should move on to writing the page component.",
   "a9fa17cb": "__CODE_BLOCK_1__",
-  "7767d2ce": "In Vue, the way to use data is through text interpolation, i.e., `<span> 文章标题: {{ article.frontMatter.title }}</span>` this form. Simple, right? That's probably all there is to it. As for the specific styles, you'll have to use your imagination."
+  "7767d2ce": "In Vue, the way to use data is through text interpolation, i.e., `<span> 文章标题: {{ article.frontMatter.title }}</span>` this form. Simple, right? That's probably all there is to it. As for the specific styles, you'll have to use your imagination.",
+  "__TRANSLATED_TITLE__": "主题开发落地页"
 }

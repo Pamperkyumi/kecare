@@ -18,5 +18,6 @@
   "2b4353a7": "After writing, run the generator to preview it in the browser.",
   "da862d0a": "1. Create `.md` in the `.kecare/articles/` directory\n2. Write content",
   "67ec217c": "1. Create in the `.kecare/articles/` directory\n2. Write content",
-  "e18a9cfe": "The article consists of **Front Matter** and **body content**"
+  "e18a9cfe": "The article consists of **Front Matter** and **body content**",
+  "__TRANSLATED_TITLE__": "写作"
 }

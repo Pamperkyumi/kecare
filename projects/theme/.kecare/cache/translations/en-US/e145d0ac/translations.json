@@ -27,5 +27,6 @@
   "6e598c92": "__CODE_BLOCK_2__",
   "5927ff09": "## Summary",
   "14cbab91": "Kecare's caching system covers multiple layers of the generation pipeline:",
-  "2ef3c13f": "With this multi-layer caching mechanism, Kecare can maintain fast generation speed even as the number of articles grows. Only content that actually changes gets reprocessed; the rest hits the cache and is reused directly. This significantly improves the experience for writing workflows that require frequent edits and previews."
+  "2ef3c13f": "With this multi-layer caching mechanism, Kecare can maintain fast generation speed even as the number of articles grows. Only content that actually changes gets reprocessed; the rest hits the cache and is reused directly. This significantly improves the experience for writing workflows that require frequent edits and previews.",
+  "__TRANSLATED_TITLE__": "Kecare的缓存"
 }

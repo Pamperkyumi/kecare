@@ -1,4 +1,5 @@
 {
+  "79288505": "- First, it makes **multilingual support** a first-class citizen at build time—each of your articles can be automatically translated into multiple languages at build time, instead of relying on runtime language-switching components.\n- Second, it gives **the choice** back to you—the generator is separated from the rendering framework, themes come with a complete tech stack, and you can migrate all your content at any time to any host framework you like.",
   "93336361": "Traditional blog solutions (such as Hexo) are tied to a specific tech stack, so if you change the stack, you have to start over.",
   "44c35a67": "# 👋Hello Kecare",
   "87b99a62": "## Introduction",
@@ -11,5 +12,12 @@
   "a220b923": "- Code highlighting\n- Markdown extensions\n- Copy original\n- i18n\n- ...",
   "8366be70": "You don't need to write logic for each of these; simply write CSS styles according to your preferences.",
   "63df23c1": "### No Framework Restrictions",
-  "8b17ee5f": "Our only goal is to let everyone build a documentation site or blog with minimal learning cost. Kecare's convention is that you just need to create a `.kecare/` directory in your project, write the content and rules as specified, and Kecare will generate the corresponding pages and data according to those rules."
+  "8b17ee5f": "Our only goal is to let everyone build a documentation site or blog with minimal learning cost. Kecare's convention is that you just need to create a `.kecare/` directory in your project, write the content and rules as specified, and Kecare will generate the corresponding pages and data according to those rules.",
+  "__TRANSLATED_TITLE__": "关于我",
+  "914a4075": "Kecare is an open-source static site generator that is framework-agnostic. Its core feature is **non-intrusive design**—decoupling the content system from themes/frameworks.",
+  "37f46356": "Kecare is a static site generator for multilingual content creation. Its core philosophy is **non-intrusive design**—completely decoupling the content system from themes and frontend frameworks.",
+  "3396fd1b": "You can think of Kecare as a \"compiler\": it reads your Markdown articles, performs a series of build-time processes such as translation, caching, and batched scheduling, and ultimately hands the page files to any file-routing-based frontend framework for rendering. The rendering framework is merely a \"host,\" not part of Kecare—meaning your content assets are never bound to the life or death of a specific framework.",
+  "c0c0848a": "Kecare is powered by Bun and distributed as a standalone CLI. By installing a global kecare command, users gain full generation capabilities without needing to install any dependencies in the project for \"generation.\"",
+  "84899d3d": "## Why Choose Kecare?",
+  "1e4269bd": "「Let me tell you two good things」："
 }

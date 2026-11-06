@@ -40,7 +40,7 @@ Kecare 使用 [Shiki](https://shiki.style/) 实现代码块的语法高亮，支
 在代码块的起始反引号后添加语言标识：
 
 ````markdown
-```js
+```js 
 export default {
   name: 'MyComponent',
   data() {
@@ -60,21 +60,38 @@ Shiki 支持几乎所有主流编程语言
 
 你可以高亮代码块中的特定行，让读者更容易关注重点内容。
 
-### 方式一：行号范围
+### 基本用法
 
 在语言标识后添加 `{行号}`：
 
 ````markdown
-```js{4}
+```js{4,6-7}
 export default {
   data () {
     return {
-      msg: 'Highlighted!'  // 这一行会被高亮
+      msg: 'Highlighted!' 
+      msg: 'No highlighted!'
+      msg: 'Highlighted!'
+      nsg: 'Highlighted!'
     }
-  }
+  } 
 }
 ```
 ````
+### 效果展示
+
+```js{4,6-7}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!' 
+      msg: 'No highlighted!'
+      msg: 'Highlighted!'
+      nsg: 'Highlighted!'
+    }
+  } 
+}
+```
 
 ### 高亮多行
 
@@ -89,18 +106,6 @@ export default {
 
 你也可以使用行内注释，在该行添加 `// [!code highlight]` 注释来实现高亮
 
-### 效果展示
-
-```js
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'  //[!code highlight]
-    }
-  }
-}
-```
-
 ## 代码聚焦
 
 使用聚焦功能可以让某一行突出显示，同时模糊其他行。
@@ -108,7 +113,8 @@ export default {
 
 ### 效果展示
 
-````js
+`````markdown
+```js
 export default {
   data () {
     return {
@@ -117,6 +123,9 @@ export default {
   }
 }
 ````
+`````
+
+
 
 ## 代码模糊
 
@@ -168,7 +177,7 @@ export default {
 
 @tab js [config.js]
 
-```js
+```js  
 /**
  * @type {import('vitepress').UserConfig}
  */

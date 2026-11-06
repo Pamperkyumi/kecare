@@ -218,7 +218,6 @@ export const __STYLE__ = `
 
 .md-tabs__panel {
   margin: 0;
-  padding: 14px 16px;
   font-size: 1rem;
   line-height: 1.8;
   color: #2c3e50;
@@ -253,38 +252,52 @@ export const __STYLE__ = `
 .md-tabs__panel pre code {
   font-family: inherit;
 }
-pre.shiki.has-diff code .line {
+/* 代码行号：基于 CSS 计数器，在每个 .line 前自动生成行号 */
+pre.shiki code {
+  counter-reset: line;
+}
+
+pre.shiki code .line {
   display: inline-block;
   width: 100%;
   margin: 0;
   padding: 0;
+  /* 所有行统一加透明左边框，保证带边框标记的行（highlighted/focused）行号不错位 */
+  border-left: 3px solid transparent;
+  box-sizing: border-box;
+}
+
+pre.shiki code .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2em;
+  margin-right: 1.5em;
+  text-align: right;
+  color: rgba(171, 178, 191, 0.4);
+  /* 行号不可选中，避免用户复制代码时带上行号 */
+  user-select: none;
 }
 
 pre.shiki.has-diff code .line.diff.remove {
   background-color: rgba(239,68,68,0.15);
 }
 pre.shiki.has-diff code .line.diff.remove::before {
-  content: '-';
-  font-size: 1em;
+  /* 合并行号与删除标记，覆盖默认的 content: counter(line) */
+  content: counter(line) " -";
   color: rgba(239,68,68,0.8);
-  margin-right: 1em;
 }
 pre.shiki.has-diff code .line.diff.add {
   background-color: rgba(34,197,94,0.15);
 }
 pre.shiki.has-diff code .line.diff.add::before {
-  content: '+';
-  font-size: 1em;
+  /* 合并行号与新增标记，覆盖默认的 content: counter(line) */
+  content: counter(line) " +";
   color: rgba(34,197,94,0.8);
-  margin-right: 1em;
 }
   
-/* 给高亮行添加背景色和字体颜色 */
+/* 给高亮行添加背景色和字体颜色（左边框覆盖全局透明边框，行号不会错位） */
 pre.shiki.has-highlighted code .line.highlighted {
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
   background-color: rgba(142, 150, 170, .14);
   border-left: 3px solid rgba(253, 253, 150, 0.7);
 }
@@ -296,10 +309,6 @@ pre.shiki.has-highlighted code .line.highlighted:hover {
 
 /* 默认状态：聚焦行清晰，其他行模糊 */
 pre.shiki.has-focused code .line {
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
   filter: blur(0.07rem);
   opacity: 0.35;
 }
@@ -330,13 +339,6 @@ pre.shiki.has-focused code .line:not(.focused):hover {
 }
 
 /* 代码模糊：与聚焦相反，被标记的行默认模糊 */
-pre.shiki.has-blurred code .line {
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 pre.shiki.has-blurred code .line.blurred {
   filter: blur(0.07rem);
   opacity: 0.35;

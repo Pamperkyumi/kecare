@@ -15,5 +15,6 @@
   "6080737d": "Language codes follow the BCP 47 standard: `语言-地区` (e.g., `en-GB`, `pt-BR`).",
   "e132d898": "## Caching and Incremental Updates",
   "44b4303f": "Translation results are cached in the `.kecare/.tmp` directory, and on the next build, only the modified parts are translated. This maximizes savings on token costs.",
-  "8327a5bf": "To clear the cache, simply delete the `.tmp` directory."
+  "8327a5bf": "To clear the cache, simply delete the `.tmp` directory.",
+  "__TRANSLATED_TITLE__": "国际化处理"
 }

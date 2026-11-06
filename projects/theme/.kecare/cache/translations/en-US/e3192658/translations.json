@@ -13,5 +13,6 @@
   "a9fa17cb": "__CODE_BLOCK_1__",
   "754c5903": "## ArchiveArticleData Type",
   "6e598c92": "__CODE_BLOCK_2__",
-  "8ab5b12e": "Unlike landing pages, archive pages have a more streamlined data structure, containing only the basic information needed for archive display, which helps reduce the size of generated pages."
+  "8ab5b12e": "Unlike landing pages, archive pages have a more streamlined data structure, containing only the basic information needed for archive display, which helps reduce the size of generated pages.",
+  "__TRANSLATED_TITLE__": "主题开发归档页"
 }

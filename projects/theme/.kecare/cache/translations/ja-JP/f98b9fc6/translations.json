@@ -10,5 +10,6 @@
   "4688b4fb": "`Kecare.config.ts` は、翻訳時のAPIなど、Kecareで必要ないくつかの設定を構成するために使用されます。",
   "5a5756cc": "### Kecareは本当に簡単ですね（たぶん）",
   "a2203d0f": "`.milkio`は隣の[Milkio](https://github.com/akirarika/milkio)のものだにゃ、ここでは気にしなくていいにゃ。もちろん君はこのファイルを持っていないにゃ。",
-  "10f7c00f": "![](http://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785682544369.png)"
+  "10f7c00f": "![](http://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785682544369.png)",
+  "__TRANSLATED_TITLE__": "项目结构"
 }

@@ -11,5 +11,6 @@
   "ded352e5": "The `menu` value corresponds to the menu file name prefix: `kecare-docs` → `kecare-docs.menu.source.ts`",
   "a3d628e6": "## NavItem Structure",
   "6e598c92": "__CODE_BLOCK_2__",
-  "fcd33f63": "- **Leaf nodes**: clickable for navigation, with `link` being the article path (e.g., `./快速开始`)\n- **Group nodes**: for categorization only, containing an `items` subarray"
+  "fcd33f63": "- **Leaf nodes**: clickable for navigation, with `link` being the article path (e.g., `./快速开始`)\n- **Group nodes**: for categorization only, containing an `items` subarray",
+  "__TRANSLATED_TITLE__": "Menu system"
 }

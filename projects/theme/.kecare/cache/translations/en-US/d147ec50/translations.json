@@ -43,5 +43,10 @@
   "637dd41e": "## Code Obfuscation",
   "43012c54": "The blur feature can hide the content of a line, with the opposite effect of code focus: marked lines are blurred by default, and their content is only shown when the mouse hovers over that line.",
   "fc85901e": "Add a `// [!code blur]` comment to the target line:",
-  "f5e6e84a": "__CODE_BLOCK_9__"
+  "f5e6e84a": "__CODE_BLOCK_9__",
+  "__TRANSLATED_TITLE__": "markdown扩展",
+  "cf2aef41": "__CODE_BLOCK_10__",
+  "131e2f54": "__CODE_BLOCK_2__\nEffect Display\n__CODE_BLOCK_3__",
+  "d559c10b": "__CODE_BLOCK_2__\n### Results Showcase\n__CODE_BLOCK_3__",
+  "ccc5077f": "__CODE_BLOCK_2__\n### Results Showcase"
 }

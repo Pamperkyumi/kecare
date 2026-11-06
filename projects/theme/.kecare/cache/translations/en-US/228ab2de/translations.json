@@ -37,5 +37,6 @@
   "c3074866": "### Q: How to use a custom domain?",
   "cc634d1e": "A: Add a custom domain in the GitHub Pages settings, and configure DNS resolution at your domain registrar to point to GitHub Pages.",
   "a0996d7b": "### Q: What to do if the build fails?",
-  "1ca2f9de": "A: I don't know."
+  "1ca2f9de": "A: I don't know.",
+  "__TRANSLATED_TITLE__": "Github pages"
 }

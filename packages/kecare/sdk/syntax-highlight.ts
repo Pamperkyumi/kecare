@@ -1,37 +1,55 @@
-import { transformerNotationHighlight } from '@shikijs/transformers';
+import { createCodeTransformers } from './code-transformers.ts';
+import { createCodeCopyButton } from './code-copy-button.ts';
 
 export async function onMountedSyntaxHighlight(articleElement: HTMLDivElement) {
     const codeElements = articleElement.querySelectorAll('pre > code');
     const { codeToHtml } = await import('shiki');
-    const { transformerNotationDiff, transformerNotationFocus, transformerNotationMap } = await import('@shikijs/transformers');
 
-    // 代码模糊标注：与代码聚焦相反，标记的行默认模糊，鼠标悬停到该行时才显示
-    const transformerNotationBlur = transformerNotationMap({
-        classMap: { blur: 'blurred' },
-        classActivePre: 'has-blurred',
-        matchAlgorithm: 'v3'
-    });
+    // transformers 只需创建一次，所有代码块复用
+    const transformers = createCodeTransformers();
 
     for (const codeElement of codeElements) {
         const classList = codeElement.className.split(' ')
         const langClass = classList.find(cls => cls.startsWith('language-'))
-        const lang = langClass ? langClass.replace('language-', '') : 'text'
+        // 从 class 中拆出语言和 meta 标注：如 "language-js{4}" → lang="js"、meta="{4}"
+        // marked 会把围栏语言后的整段信息（含 {行号} 标注）放进 language-xxx class
+        let lang = 'text'
+        let meta = ''
+        if (langClass) {
+            const rawLang = langClass.replace('language-', '')
+            const metaMatch = rawLang.match(/^([A-Za-z0-9_-]+)(\{.*\})?$/)
+            if (metaMatch) {
+                lang = metaMatch[1] || 'text'
+                meta = metaMatch[2] || ''
+            } else {
+                // 无法识别的 class（如非法语言 ```1），保留原文交给下方 try/catch 兜底
+                lang = rawLang
+            }
+        }
 
-        const code = codeElement.textContent || '';
+        // markdown/md 代码块通常用于"展示原始写法"的演示场景（代码框嵌套代码框），
+        // 块内的 // [!code focus] 等标注注释是要给读者看的文本，跳过标注 transformers 避免被误处理
+        const isMarkdownDemo = lang === 'markdown' || lang === 'md'
+        const effectiveTransformers = isMarkdownDemo ? [] : transformers
+
+        // 去掉末尾换行：Markdown 围栏代码块末尾自带 \n，Shiki 会渲染出一个多余的空行，导致行号多计一行
+        const code = (codeElement.textContent || '').replace(/\n$/, '');
 
         let highlightedHtml = '';
         try {
             highlightedHtml = await codeToHtml(code, {
                 lang,
+                meta: { __raw: meta },
                 theme: 'one-dark-pro', // or 亮色主题 one-light
-                transformers: [transformerNotationDiff({ matchAlgorithm: 'v3' }), transformerNotationFocus({ matchAlgorithm: 'v3' }), transformerNotationBlur, transformerNotationHighlight({ matchAlgorithm: 'v3' })],
+                transformers: effectiveTransformers,
             });
         } catch {
             // Fallback for unknown/invalid languages such as ```1
             highlightedHtml = await codeToHtml(code, {
                 lang: 'text',
+                meta: { __raw: meta },
                 theme: 'one-dark-pro',
-                transformers: [transformerNotationDiff({ matchAlgorithm: 'v3' }), transformerNotationFocus({ matchAlgorithm: 'v3' }), transformerNotationBlur, transformerNotationHighlight({ matchAlgorithm: 'v3' })],
+                transformers: effectiveTransformers,
             });
         }
 
@@ -41,44 +59,11 @@ export async function onMountedSyntaxHighlight(articleElement: HTMLDivElement) {
 
         if (!preElement) continue
 
-        // SVG 图标
-        const copyIcon = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.25 5.25H7.25C6.14543 5.25 5.25 6.14543 5.25 7.25V14.25C5.25 15.3546 6.14543 16.25 7.25 16.25H14.25C15.3546 16.25 16.25 15.3546 16.25 14.25V7.25C16.25 6.14543 15.3546 5.25 14.25 5.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.80103 11.998L1.77203 5.07397C1.61003 3.98097 2.36403 2.96397 3.45603 2.80197L10.38 1.77297C11.313 1.63397 12.19 2.16297 12.528 3.00097" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
-        const successIcon = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 4.5L6.75 12.75L3 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
-        const errorIcon = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L4.5 13.5M4.5 4.5L13.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
-
-        // 添加复制按钮
-        const copyButton = document.createElement('button');
-        copyButton.className = 'code-copy-button';
-        copyButton.innerHTML = copyIcon;
-        copyButton.type = 'button';
-
-        // 复制功能
-        copyButton.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(code);
-                copyButton.innerHTML = successIcon;
-                copyButton.classList.add('success');
-
-                setTimeout(() => {
-                    copyButton.innerHTML = copyIcon;
-                    copyButton.classList.remove('success');
-                }, 2000);
-            } catch (err) {
-                copyButton.innerHTML = errorIcon;
-                copyButton.classList.add('error');
-
-                setTimeout(() => {
-                    copyButton.innerHTML = copyIcon;
-                    copyButton.classList.remove('error');
-                }, 2000);
-            }
-        });
-
         // 设置 pre 元素为相对定位，以便放置复制按钮
         if (preElement instanceof HTMLElement) {
             preElement.style.position = 'relative';
             preElement.setAttribute('data-lang', (lang || 'text').toLowerCase());
-            preElement.appendChild(copyButton);
+            preElement.appendChild(createCodeCopyButton(code));
         }
 
         const parentElement = codeElement.parentElement
