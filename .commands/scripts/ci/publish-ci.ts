@@ -154,6 +154,42 @@ const stubReactDevtoolsCorePlugin = {
     },
 };
 
+// cfonts 通过运行时动态 require(path.normalize(`../fonts/${font}.json`)) 加载字体，
+// bun 编译的独立二进制里没有 node_modules 文件，导致 help 渲染时报
+// "Font file for the font 'block' could not be found"。
+// 这里用插件替换 GetFont 模块，把全部字体 JSON 静态打进 bundle（总共约 165KB）。
+const inlineCfontsFontsPlugin = {
+    name: "inline-cfonts-fonts",
+    setup(builder: any) {
+        builder.onLoad({ filter: /cfonts[\\/]lib[\\/]GetFont\.js$/ }, () => {
+            const fontNames = [
+                "3d", "block", "chrome", "console", "grid", "huge", "pallet",
+                "shade", "simple", "simple3d", "simpleBlock", "slick", "tiny",
+            ];
+
+            const lines = ["'use strict';"];
+
+            for (const name of fontNames) {
+                const key = name.replace(/[^a-z0-9]/gi, "_");
+                lines.push(`const font_${key} = require("../fonts/${name}.json");`);
+            }
+
+            lines.push("const GetFont = (font) => {");
+            lines.push("  switch (font) {");
+            for (const name of fontNames) {
+                const key = name.replace(/[^a-z0-9]/gi, "_");
+                lines.push(`    case "${name}": return font_${key};`);
+            }
+            lines.push("    default: return false;");
+            lines.push("  }");
+            lines.push("};");
+            lines.push("module.exports = exports = { GetFont };");
+
+            return { contents: lines.join("\n"), loader: "js" };
+        });
+    },
+};
+
 const platformPackageDirs: string[] = [];
 
 for (const target of targets) {
@@ -173,7 +209,7 @@ for (const target of targets) {
         compile: true,
         minify: true,
         target: target.bunTarget,
-        plugins: [stubReactDevtoolsCorePlugin],
+        plugins: [stubReactDevtoolsCorePlugin, inlineCfontsFontsPlugin],
     });
 
     if (!buildResult.success) {
