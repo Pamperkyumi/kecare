@@ -30,19 +30,19 @@ function parseMetaLineNumbers(meta: string): number[] {
     return lineNumbers;
 }
 
-// 自定义 meta 聚焦 transformer：通过围栏语言后的 {行号} 标注（如 ```js{4}）触发聚焦效果
-// 被标注的行加 focused class 保持清晰，其余行由 CSS（pre.shiki.has-focused）模糊显示
-const transformerMetaFocus: ShikiTransformer = {
-    name: 'kecare:meta-focus',
+// 自定义 meta 高亮 transformer：通过围栏语言后的 {行号} 标注（如 ```js{4,6-7}）触发行高亮效果
+// 被标注的行加 highlighted class，与 // [!code highlight] 行内标注共用同一套样式
+const transformerMetaHighlight: ShikiTransformer = {
+    name: 'kecare:meta-highlight',
     pre(node) {
         const meta = this.options.meta?.__raw || '';
         const lineNumbers = parseMetaLineNumbers(meta);
         if (lineNumbers.length === 0) return;
 
-        // 给 pre 加 has-focused，激活 CSS 中的整块模糊规则
-        this.addClassToHast(node, 'has-focused');
+        // 给 pre 加 has-highlighted，激活 CSS 中的行高亮规则
+        this.addClassToHast(node, 'has-highlighted');
 
-        // 遍历 code 下的直接子 span.line，按行号（从 1 开始）打 focused 标记
+        // 遍历 code 下的直接子 span.line，按行号（从 1 开始）打 highlighted 标记
         for (const code of node.children) {
             if (code.type !== 'element' || code.tagName !== 'code') continue;
 
@@ -57,7 +57,7 @@ const transformerMetaFocus: ShikiTransformer = {
 
                 lineNumber++;
                 if (lineNumbers.includes(lineNumber)) {
-                    this.addClassToHast(lineSpan, 'focused');
+                    this.addClassToHast(lineSpan, 'highlighted');
                 }
             }
         }
@@ -78,6 +78,6 @@ export function createCodeTransformers() {
         transformerNotationFocus({ matchAlgorithm: 'v3' }),
         transformerNotationBlur,
         transformerNotationHighlight({ matchAlgorithm: 'v3' }),
-        transformerMetaFocus
+        transformerMetaHighlight
     ];
 }

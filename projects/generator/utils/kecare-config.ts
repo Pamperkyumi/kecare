@@ -11,7 +11,7 @@ async function createKecareConfig(context: KecareContext) {
     if (config.llm) {
         // 如果存在 llm 配置，校验其字段
         if (!config.llm.model) throw new Error('llm.model 不能为空');
-        if (!config.llm.apiKey) throw new Error('llm.apiKey 不能为空，请通过 DEPSEEK_API_KEY 环境变量配置');
+        if (!config.llm.apiKey) throw new Error('llm.apiKey 不能为空，请通过 API_KEY 环境变量配置');
         if (!config.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
     }
 

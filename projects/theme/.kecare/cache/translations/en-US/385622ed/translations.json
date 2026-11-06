@@ -19,5 +19,6 @@
   "da862d0a": "1. Create `.md` in the `.kecare/articles/` directory\n2. Write content",
   "67ec217c": "1. Create in the `.kecare/articles/` directory\n2. Write content",
   "e18a9cfe": "The article consists of **Front Matter** and **body content**",
-  "__TRANSLATED_TITLE__": "写作"
+  "__TRANSLATED_TITLE__": "写作",
+  "b03d6385": "你无需为每个文章添加所有的 Front Matter 字段，目前仅有 date 字段是必须的。"
 }

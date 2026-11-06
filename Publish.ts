@@ -26,13 +26,13 @@ ${await $`git diff --staged`.cwd(cwd).text()}
 `;
 
     const openai = new OpenAI({
-        baseURL: 'https://api.deepseek.com',
-        apiKey: process.env.DEPSEEK_API_KEY!,
+        baseURL: 'https://ws-ny5wue1zlvrq3oa4.cn-beijing.maas.aliyuncs.com/compatible-mode/v1',
+        apiKey: process.env.API_KEY!,
     });
 
     try {
         const completion = await openai.chat.completions.create({
-            model: "deepseek-v4-flash",
+            model: "deepseek-v4.1-flash-1017",
             messages: [{ role: "user", content: prompt }],
             temperature: 0.2,
         });

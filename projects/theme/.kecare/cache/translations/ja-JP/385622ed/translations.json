@@ -19,5 +19,6 @@
   "da862d0a": "1. `.kecare/articles/` ディレクトリに `.md` を作成します。\n2. 内容を記述します。",
   "67ec217c": "1. `.kecare/articles/` ディレクトリ配下に作成する\n2. 内容を記述する",
   "e18a9cfe": "文章は **フロントマター** と **本文** から構成されています。",
-  "__TRANSLATED_TITLE__": "写作"
+  "__TRANSLATED_TITLE__": "写作",
+  "b03d6385": "你无需为每个文章添加所有的 Front Matter 字段，目前仅有 date 字段是必须的。"
 }

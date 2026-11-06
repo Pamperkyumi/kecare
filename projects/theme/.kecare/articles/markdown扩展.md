@@ -7,7 +7,7 @@ author: Pamper
 
 # Markdown 扩展
 
-Kecare 在标准 Markdown 语法的基础上，提供了丰富的扩展功能，让你的文档更加生动和专业。
+Kecare也在框架层面实现了一些 Markdown 扩展,而无需主题开发者再次实现。其中不少借鉴于 VitePress 中
 
 ## Front Matter
 
@@ -52,8 +52,6 @@ export default {
 ```
 ````
 
-### 支持的语言
-
 Shiki 支持几乎所有主流编程语言
 
 ## 代码块行高亮
@@ -62,7 +60,7 @@ Shiki 支持几乎所有主流编程语言
 
 ### 基本用法
 
-在语言标识后添加 `{行号}`：
+在语言标识后添加 `{行号}`,你也可以使用行内注释，在该行添加 `// [!code highlight]` 注释来实现高亮
 
 ````markdown
 ```js{4,6-7}
@@ -72,7 +70,8 @@ export default {
       msg: 'Highlighted!' 
       msg: 'No highlighted!'
       msg: 'Highlighted!'
-      nsg: 'Highlighted!'
+      msg: 'Highlighted!'
+      msg: 'highlighted!' // [!code highlight]
     }
   } 
 }
@@ -87,13 +86,12 @@ export default {
       msg: 'Highlighted!' 
       msg: 'No highlighted!'
       msg: 'Highlighted!'
-      nsg: 'Highlighted!'
+      msg: 'Highlighted!'
+      msg: 'highlighted!' // [!code highlight]
     }
   } 
 }
 ```
-
-### 高亮多行
 
 支持多种格式组合：
 
@@ -104,14 +102,13 @@ export default {
 | 行范围 | `{5-8}` | 高亮第 5 到 8 行 |
 | 混合使用 | `{4,7-13,16,23-27,40}` | 高亮多个行和范围 |
 
-你也可以使用行内注释，在该行添加 `// [!code highlight]` 注释来实现高亮
-
 ## 代码聚焦
 
 使用聚焦功能可以让某一行突出显示，同时模糊其他行。
-在目标行添加 `// [!code focus]` 注释：
 
-### 效果展示
+### 基本用法
+
+在目标行添加注释`// [!code focus]` ：
 
 `````markdown
 ```js
@@ -125,13 +122,38 @@ export default {
 ````
 `````
 
+### 效果展示
 
+```js
+export default {
+  data () {
+    return {
+      msg: 'Focused!' // [!code focus]
+    }
+  }
+}
+```
 
 ## 代码模糊
 
 使用模糊功能可以隐藏某一行内容，效果与代码聚焦相反：被标记的行默认模糊显示，只有当鼠标悬停到该行时才会显示内容。
 
 在目标行添加 `// [!code blur]` 注释：
+
+### 基本用法
+
+在目标行添加注释`// [!code blur]` ：
+````markdown
+```js
+export default {
+  data () {
+    return {
+      msg: 'Blurred!' // [!code blur]
+    }
+  }
+}
+```
+````
 
 ### 效果展示
 
@@ -151,6 +173,21 @@ export default {
 
 在某一行添加 `// [!code --]` 或 `// [!code ++]` 注释将会为该行创建 diff，同时保留代码块的颜色。
 
+### 基本用法
+
+````markdown
+```js
+export default {
+  data () {
+    return {
+      msg: 'Removed' // [!code --]
+      msg: 'Added' // [!code ++]
+    }
+  }
+}
+```
+````
+
 ### 效果展示
 
 ```js
@@ -166,7 +203,7 @@ export default {
 
 ---
 
-## 代码分组（Tabs）
+## 分组（Tabs）
 
 你可以将多个代码块分组显示为标签页，方便切换查看。
 
@@ -234,3 +271,4 @@ export default config
 
 :::
 
+## 更多功能敬请期待 嘿嘿嘿 
