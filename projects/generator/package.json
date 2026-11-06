@@ -3,7 +3,7 @@
   "exports": "./index.ts",
   "type": "module",
   "private": true,
-  "version": "1.0.0-beta.119",
+  "version": "1.0.0-beta.120",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build"

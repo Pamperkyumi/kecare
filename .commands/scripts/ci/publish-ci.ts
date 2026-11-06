@@ -204,7 +204,7 @@ for (const target of targets) {
         cpu: [target.arch],
         files: [binName, "index.js"],
         bin: {
-            kecare: `./${binName}`,
+            kecare: `${binName}`,
         },
         publishConfig: {
             access: "public",
