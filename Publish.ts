@@ -8,7 +8,7 @@ import OpenAI from 'openai';
 const mainPackage = 'generator';
 const childPackages = ['create-kecare', 'kecare'];
 
-async function getCommitMessage(cwd: string = process.cwd()): Promise<string> {
+async function getCommitMessage(diff: string): Promise<string> {
 
     const prompt = `
 You are an expert software engineer.
@@ -22,7 +22,7 @@ Rules:
 - Return ONLY the commit message
 
 Git diff:
-${await $`git diff --staged`.cwd(cwd).text()}
+${diff}
 `;
 
     const openai = new OpenAI({
@@ -130,7 +130,7 @@ async function main() {
     if ((await cli.select('是否进行发布喵', ['是', '否'])) === '是') {
         if ((await cli.select('发布到哪里喵', ['Github', 'Gitee'])) === 'Github') {
             const tag = `v${newVersion}`;
-            let commited = false;
+            let commitedCount = 0;
             let tagged = false;
             try {
                 const tagExists = (await $`git rev-parse -q --verify refs/tags/${tag}`.nothrow()).exitCode === 0;
@@ -138,20 +138,52 @@ async function main() {
                     throw new Error(`fatal: tag '${tag}' already exists (local). 请先删除它或提升版本号喵`);
                 }
                 await $`git add -A`;
-                const commitMessage = await getCommitMessage();
-                consola.success(`生成的 commit message: ${commitMessage}`);
 
-                const ok = await cli.select('是否使用这个 commit message ', ['是', '重新生成', '否']);
-                if (ok === '是') {
-                    await $`git commit -m "${commitMessage!}"`;
-                    commited = true;
+                // 获取所有暂存文件，为空则无东西可提交
+                const stagedFiles = (await $`git diff --staged --name-only`.text()).split('\n').filter(Boolean);
+                if (stagedFiles.length === 0) {
+                    throw new Error('没有需要提交的变更喵');
                 }
+
+                // 按顶层目录分组，根目录文件归为 '.' 组，实现分段提交
+                const groups = new Map<string, string[]>();
+                for (const file of stagedFiles) {
+                    const topDir = file.includes('/') ? file.split('/')[0]! : '.';
+                    if (!groups.has(topDir)) {
+                        groups.set(topDir, []);
+                    }
+                    groups.get(topDir)!.push(file);
+                }
+
+                // 逐组暂存并生成 commit message，每次只把该组的 diff 提交给 AI，控制上下文长度
+                const commitGroups: { topDir: string; files: string[]; message: string }[] = [];
+                for (const [topDir, files] of groups) {
+                    consola.info(`正在为 [${topDir}] (${files.length} 个文件) 生成 commit message 喵`);
+                    await $`git reset --quiet`.nothrow();
+                    await $`git add ${files}`;
+                    const diff = await $`git diff --staged`.text();
+                    const message = await getCommitMessage(diff);
+                    commitGroups.push({ topDir, files, message });
+                }
+                // 生成完毕后取消暂存，等待用户统一确认后再按组提交
+                await $`git reset --quiet`.nothrow();
+
+                consola.info('各分组的 commit message 如下:');
+                for (const group of commitGroups) {
+                    consola.info(`  [${group.topDir}] (${group.files.length} 个文件): ${group.message}`);
+                }
+                const ok = await cli.select('是否使用这些 commit message 分组提交喵', ['是', '否']);
                 if (ok === '否') {
                     throw new Error('用户取消发布喵');
                 }
 
-                // await $`git commit -m "${commitMessage!}"`;
-                // commited = true;
+                // 按分组顺序依次提交
+                for (const group of commitGroups) {
+                    await $`git add ${group.files}`;
+                    await $`git commit -m ${group.message}`;
+                    commitedCount++;
+                }
+
                 await $`git tag -a ${tag} -m ${tag}`;
                 tagged = true;
                 await $`git push origin HEAD ${tag}`;
@@ -162,66 +194,10 @@ async function main() {
                 if (tagged) {
                     await $`git tag -d ${tag}`.nothrow();
                 }
-                if (commited) {
-                    await $`git reset --mixed HEAD~1`.nothrow();
+                // 按本次实际提交的 commit 数量回滚
+                if (commitedCount > 0) {
+                    await $`git reset --mixed HEAD~${commitedCount}`.nothrow();
                 }
-                consola.success('撤回成功了喵');
-            }
-        }
-    }
-    // 发布主题仓库（projects/theme 是一个独立的 git 子模块仓库）
-    const themeDir = join(cwd, 'projects', 'theme');
-    let themeCommited = false;
-    let themePushed = false;
-    try {
-        consola.start('开始发布主题仓库...');
-        await $`git add -A`.cwd(themeDir);
-        const themeCommitMessage = await getCommitMessage(themeDir);
-        consola.success(`生成的 theme commit message: ${themeCommitMessage}`);
-
-        const ok = await cli.select('是否使用这个 commit message ', ['是', '否']);
-        if (ok === '否') {
-            throw new Error('用户取消发布主题仓库喵');
-        }
-
-        await $`git commit -m "${themeCommitMessage!}"`.cwd(themeDir);
-        themeCommited = true;
-        await $`git push origin HEAD`.cwd(themeDir);
-        themePushed = true;
-        consola.success('主题仓库发布成功了喵');
-    } catch (error) {
-        consola.error('主题仓库发布失败了喵:', error);
-        // 推送失败但本地已提交，撤回本次提交，保持仓库干净
-        if (themeCommited && !themePushed) {
-            consola.start('开始撤回主题仓库的提交喵');
-            await $`git reset --mixed HEAD~1`.cwd(themeDir).nothrow();
-            consola.success('撤回成功了喵');
-        }
-    }
-
-    // 主题发布成功后，主仓库记录的子模块指针会过期，这里自动补一次提交同步引用
-    if (themePushed) {
-        let subCommited = false;
-        try {
-            // 子模块指针未变化则跳过，避免空提交
-            const subChanged = (await $`git status --porcelain -- projects/theme`.text()).trim().length > 0;
-            if (!subChanged) {
-                consola.info('子模块指针未变化，无需同步');
-            } else {
-                consola.start('开始同步主仓库的子模块引用...');
-                // 只提交子模块指针，避免误带其他改动
-                await $`git add projects/theme`;
-                await $`git commit -m "chore(theme): bump submodule to latest" -- projects/theme`;
-                subCommited = true;
-                await $`git push origin HEAD`;
-                consola.success('主仓库子模块引用同步成功了喵');
-            }
-        } catch (error) {
-            consola.error('同步主仓库子模块引用失败了喵:', error);
-            // 同步失败但本地已提交，撤回本次提交，保持仓库干净
-            if (subCommited) {
-                consola.start('开始撤回主仓库的子模块提交喵');
-                await $`git reset --mixed HEAD~1`.nothrow();
                 consola.success('撤回成功了喵');
             }
         }
