@@ -135,6 +135,25 @@ console.log("Publishing only scoped binary packages under @kecare/*");
 rmSync(distRoot, { recursive: true, force: true });
 ensureDir(distRoot);
 
+// react-devtools-core 是 ink（由 oh-my-logo 传递依赖）的可选 peer 依赖，环境中未安装。
+// bun 编译的独立二进制在启动时会预解析所有 external 导入，因此不能像 CLI 构建那样用
+// --external 绕过，否则用户机器上会直接报
+// "Cannot find package 'react-devtools-core' from 'B:/~BUN/root/kecare'"。
+// 这里用构建插件把该包替换成空实现，将（仅开发用的）devtools 分支内联为无操作。
+const stubReactDevtoolsCorePlugin = {
+    name: "stub-react-devtools-core",
+    setup(builder: any) {
+        builder.onResolve({ filter: /^react-devtools-core$/ }, () => ({
+            path: "react-devtools-core",
+            namespace: "stub",
+        }));
+        builder.onLoad({ filter: /.*/, namespace: "stub" }, () => ({
+            contents: "export default { connectToDevTools() {} };",
+            loader: "js",
+        }));
+    },
+};
+
 const platformPackageDirs: string[] = [];
 
 for (const target of targets) {
@@ -142,7 +161,6 @@ for (const target of targets) {
     const packageDir = join(distRoot, `${target.platform}-${target.arch}`);
     const isWindows = target.platform === "win32";
     const binName = isWindows ? "kecare.exe" : "kecare";
-    const compiledOutput = join(packageDir, "kecare");
     const expectedOutput = join(packageDir, binName);
 
     platformPackageDirs.push(packageDir);
@@ -150,28 +168,36 @@ for (const target of targets) {
 
     console.log(`\nBuilding ${packageName}`);
 
-    run(process.execPath, [
-        "build",
-        join(cwd, "projects", "generator", "index.ts"),
-        "--outfile",
-        compiledOutput,
-        "--compile",
-        "--minify",
-        // react-devtools-core is an optional peer dependency of `ink` (pulled in
-        // transitively by `oh-my-logo`). It is not installed, so `bun build` fails
-        // to resolve it. Mark it external so the (DEV-only) devtools import is kept
-        // out of the bundle instead of breaking the compile.
-        "--external",
-        "react-devtools-core",
-        "--target",
-        target.bunTarget,
-    ]);
+    const buildResult = await Bun.build({
+        entrypoints: [join(cwd, "projects", "generator", "index.ts")],
+        compile: true,
+        minify: true,
+        target: target.bunTarget,
+        plugins: [stubReactDevtoolsCorePlugin],
+    });
 
-    // Bun may create either `kecare` or `kecare.exe` depending on the target.
-    // Normalize the filename so package.json#bin always points to an existing file.
-    if (isWindows && existsSync(compiledOutput) && !existsSync(expectedOutput)) {
-        renameSync(compiledOutput, expectedOutput);
+    if (!buildResult.success) {
+        for (const log of buildResult.logs) {
+            console.error(log);
+        }
+        throw new Error(`build failed: ${packageName}`);
     }
+
+    // 插件模式下 Bun.build 会忽略 outfile，产物以 generator / generator.exe 命名写到 cwd。
+    // 将其移动到平台包目录并统一命名，保证 package.json#bin 指向的文件真实存在。
+    let compiledPath = "";
+    for (const output of buildResult.outputs) {
+        if (output.kind === "entry-point") {
+            compiledPath = output.path;
+            break;
+        }
+    }
+
+    if (!compiledPath) {
+        throw new Error(`binary artifact not found after build: ${packageName}`);
+    }
+
+    renameSync(compiledPath, expectedOutput);
 
     if (!existsSync(expectedOutput)) {
         throw new Error(`binary not found after build: ${expectedOutput}`);
@@ -218,35 +244,63 @@ for (const packageDir of platformPackageDirs) {
     run("npm", ["pack", "--dry-run"], { cwd: packageDir });
 }
 
+// npm publish 存在静默失败的情况：进程以 exit code 0 退出且不打印 `+ pkg@version`，
+// 但版本实际未上传到 registry（beta.120 的 @kecare/linux-arm64 就发生过）。
+// 因此发布后必须轮询 registry 确认版本真实可见，未确认则重试。
+const maxPublishAttempts = 3;
+
+function publishAndVerify(name: string, packageDir: string) {
+    if (packageExists(name, version)) {
+        console.log(`Skip existing package: ${name}@${version}`);
+        return;
+    }
+
+    let verified = false;
+
+    for (let attempt = 1; attempt <= maxPublishAttempts && !verified; attempt++) {
+        if (attempt > 1) {
+            console.log(`Retry publish: ${name}@${version} (attempt ${attempt}/${maxPublishAttempts})`);
+        }
+
+        const publishResult = run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
+            cwd: packageDir,
+            allowFail: true,
+        });
+
+        // publish 报错但版本已存在（如 "cannot publish over previously published version"），视为发布成功
+        if (publishResult.exitCode !== 0) {
+            verified = packageExists(name, version);
+            continue;
+        }
+
+        // registry CDN 有同步延迟，最多轮询 3 分钟等待版本可见
+        for (let poll = 0; poll < 18; poll++) {
+            if (packageExists(name, version)) {
+                verified = true;
+                break;
+            }
+            Bun.sleepSync(10_000);
+        }
+
+        if (!verified) {
+            console.warn(`Publish exited 0 but version not visible on registry: ${name}@${version}`);
+        }
+    }
+
+    if (!verified) {
+        throw new Error(`publish verification failed: ${name}@${version} not found on registry`);
+    }
+}
+
 console.log("\nPublishing scoped binary packages");
 
 for (const packageDir of platformPackageDirs) {
     const packageJson = readJson<PackageJson>(join(packageDir, "package.json"));
+    publishAndVerify(packageJson.name, packageDir);
+}
 
-    if (packageExists(packageJson.name, version)) {
-        console.log(`Skip existing package: ${packageJson.name}@${version}`);
-        continue;
-    }
-
-    // All packages generated by this script are scoped packages, so publish them as public packages.
-    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
-        cwd: packageDir,
-    });
-}
-function publishkecare() {
-    const mainPackageDir = join(cwd, 'packages', 'kecare');
-    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
-        cwd: mainPackageDir,
-    });
-}
-function publishcreatekecare() {
-    const createPackageDir = join(cwd, 'packages', 'create-kecare');
-    run("npm", ["publish", "--registry", registry, "--tag", npmTag, "--access", "public"], {
-        cwd: createPackageDir,
-    });
-}
-publishkecare();
-publishcreatekecare();
+publishAndVerify("kecare", join(cwd, "packages", "kecare"));
+publishAndVerify("create-kecare", join(cwd, "packages", "create-kecare"));
 
 
 console.log("\nPublish completed: only @kecare/* binary packages were published");
