@@ -1,13 +1,16 @@
-import type { ArticleVariant, KecareContext, ModuleListTS } from "kecare";
+import type { KecareContext, ModuleListTS } from "kecare";
 import { Glob, write } from "bun";
 import { join } from "node:path";
+import { useProductRegistry } from "../utils/product-registry.ts";
+import { useArticleCollector } from "./article-collector.ts";
 
 
 /**
  * 创建文章列表模块处理程序
- * 会读取 *.list.ts 文件，调用其 generator 方法，生成文章列表页面
- * @param context 
- * @returns 
+ * 会读取 *.list.ts 文件，调用其 generator 方法，生成文章列表页面。
+ * 文章数据不再在 handle 阶段平行收集，finish 时统一从 article-collector 派生
+ * @param context
+ * @returns
  */
 async function createListModuleHandler(context: KecareContext) {
     // 开始：这里的代码，在初始化的时候就会被执行，只执行一次
@@ -16,26 +19,13 @@ async function createListModuleHandler(context: KecareContext) {
 
     const modules: Array<Promise<ModuleListTS>> = [];
     for await (const file of glob.scan(".")) modules.push(await import(file));
-
     // 结束：这里的代码，在初始化的时候就会被执行，只执行一次
-    const articles: Parameters<ModuleListTS['generator']>[1] = {};
 
     const module = {
-        async handle(article: ArticleVariant) {
-            // 在此阶段，我们需要记录文章的真实写入文件的路径和 URL 路径，然后整理一份全部文章的列表 (变量 articles)
-            const fsPath = article.__REAL_FS_PATHS__; // 上一阶段记录的真实写入文件的路径
-            const urlPath = article.__REAL_RELATIVE_PATHS__; // 上一阶段记录的 URL 路径
-            if (!(article.hash in articles)) articles[article.hash] = {};
-            const articleData = articles[article.hash]!;
-            articleData[article.lang] = {
-                ...article,
-                fsPath,
-                urlPath,
-                html: undefined, // 将 html 字段设为 undefined，来节约内存
-                rawMarkdown: undefined,
-            };
-        },
         async finish(context: KecareContext) {
+            // 全部文章数据（含产物路径）统一从收集器派生
+            const articles = useArticleCollector(context).toArticlesRecord();
+
             for (const module of modules) {
                 const moduleAwaited = await module;
                 if (!moduleAwaited.generator) continue;
@@ -46,6 +36,8 @@ async function createListModuleHandler(context: KecareContext) {
                     if (typeof result !== 'object' || !result.fsPath || !result.template) continue;
                     await write(result.fsPath, result.template);
                     console.log(`[list] 已生成 ${result.fsPath}`);
+                    // 登记产物路径，供 clean 命令按真实路径清理
+                    useProductRegistry(context).register(result.fsPath);
                 }
             }
             return articles;

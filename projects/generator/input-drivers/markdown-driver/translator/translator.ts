@@ -61,6 +61,8 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
     }
 
     let translatedTitle = title || "";
+    // 标题翻译失败标记：失败时回退原文展示，但不写入缓存，避免原文被当作译文永久缓存
+    let titleTranslationFailed = false;
 
 
     // =========================
@@ -106,6 +108,7 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
             } catch (error) {
                 consola.error("Translation failed (title):", error);
                 translatedTitle = title;
+                titleTranslationFailed = true;
             }
         } else if (provider === 'Anthropic') {
             try {
@@ -129,10 +132,13 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
             } catch (error) {
                 consola.error("Translation failed (title):", error);
                 translatedTitle = title;
+                titleTranslationFailed = true;
             }
         }
-        // 记录标题译文，供下次缓存命中
-        allTranslationTemp[TITLE_CACHE_KEY] = translatedTitle;
+        // 记录标题译文，供下次缓存命中；翻译失败时不写缓存，下次运行会重试
+        if (!titleTranslationFailed) {
+            allTranslationTemp[TITLE_CACHE_KEY] = translatedTitle;
+        }
     }
 
 
@@ -193,8 +199,8 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
                 translatedParts.push(translatedPart);
             } catch (error) {
                 consola.error(`Failed to translate part ${index + 1}:`, error);
+                // 翻译失败仅回退原文渲染，不写入缓存，下次运行会重试该段落
                 translatedParts.push(part);
-                allTranslationTemp[partHash] = part;
             }
         } else if (provider === 'Anthropic') {
             try {
@@ -212,8 +218,8 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
                 translatedParts.push(translatedPart);
             } catch (error) {
                 consola.error(`Failed to translate part ${index + 1}:`, error);
+                // 翻译失败仅回退原文渲染，不写入缓存，下次运行会重试该段落
                 translatedParts.push(part);
-                allTranslationTemp[partHash] = part;
             }
         }
     }

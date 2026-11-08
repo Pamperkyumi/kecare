@@ -1,10 +1,13 @@
 import { Glob, write } from "bun";
-import type { KecareContext, ModuleArchiveTS, ArchiveArticleData, ArticleVariant } from "kecare";
+import type { KecareContext, ModuleArchiveTS } from "kecare";
 import { join } from "node:path";
+import { useProductRegistry } from "../utils/product-registry.ts";
+import { useArticleCollector } from "./article-collector.ts";
 
 /**
  * 归档模块处理程序
- * 会读取 *.archives.ts 文件，调用其 generator 方法，生成归档页面
+ * 会读取 *.archives.ts 文件，调用其 generator 方法，生成归档页面。
+ * 文章数据不再在 handle 阶段平行收集，finish 时统一从 article-collector 派生
  */
 async function createArchivesModuleHandler(context: KecareContext) {
     const modulePath = join(context.projectPath, '.kecare')
@@ -14,24 +17,11 @@ async function createArchivesModuleHandler(context: KecareContext) {
 
     for await (const file of glob.scan(".")) modules.push(await import(file))
 
-    let archivesData: ArchiveArticleData[] = [];
-
     const module = {
-        async handle(article: ArticleVariant) {
-            const fsPath = article.__REAL_FS_PATHS__; // 上一阶段记录的真实写入文件的路径
-            const urlPath = article.__REAL_RELATIVE_PATHS__; // 上一阶段记录的 URL 路径
-            archivesData.push({
-                title: article.title,
-                lang: article.lang,
-                hash: article.hash,
-                tags: article.frontMatter.tags,
-                date: article.frontMatter.date,
-                fsPath: fsPath,
-                urlPath: urlPath,
-
-            })
-        },
         async finish(context: KecareContext) {
+            // 全部文章数据统一从收集器派生
+            const archivesData = useArticleCollector(context).toArchiveArticles();
+
             for (const module of modules) {
                 const moduleAwaited = await module;
                 if (!moduleAwaited.generator) continue;
@@ -39,6 +29,8 @@ async function createArchivesModuleHandler(context: KecareContext) {
                 if (typeof generatorResult !== 'object' || !generatorResult.fsPath || !generatorResult.template) continue;
                 await write(generatorResult.fsPath, generatorResult.template);
                 console.log(`[archives] 已生成 ${generatorResult.fsPath}`);
+                // 登记产物路径，供 clean 命令按真实路径清理
+                useProductRegistry(context).register(generatorResult.fsPath);
             }
         }
     }

@@ -25,7 +25,8 @@ type MarkdownCacheEntry = {
 }
 
 export type MarkdownCacheManifest = {
-    version: 1;
+    // v2：产物路径字段 __REAL_FS_PATHS__ / __REAL_RELATIVE_PATHS__ 从单个字符串升级为路径数组
+    version: 2;
     articles: Record<string, MarkdownCacheEntry>;
 }
 
@@ -34,17 +35,40 @@ export type MarkdownCacheManifest = {
 let markedInitialized = false;
 
 export async function loadMarkdownCache(cachePath: string): Promise<MarkdownCacheManifest> {
+    // 读取并解析缓存文件，不存在或损坏时视作空缓存
+    let rawManifest: unknown;
     try {
         const raw = await readFile(cachePath, 'utf-8');
-        const manifest = JSON.parse(raw) as MarkdownCacheManifest;
-        if (manifest.version !== 1 || typeof manifest.articles !== 'object') throw new Error('Invalid markdown cache manifest');
-        return manifest;
+        rawManifest = JSON.parse(raw);
     } catch {
-        return {
-            version: 1,
-            articles: {},
-        };
+        return { version: 2, articles: {} };
     }
+    if (typeof rawManifest !== 'object' || rawManifest === null) return { version: 2, articles: {} };
+    const manifest = rawManifest as { version?: number; articles?: Record<string, MarkdownCacheEntry> };
+    if (typeof manifest.articles !== 'object' || manifest.articles === null) return { version: 2, articles: {} };
+
+    // v1 → v2 迁移：产物路径从单个字符串升级为路径数组（多个模板会产出多个产物文件）
+    if (manifest.version === 1) {
+        for (const key of Object.keys(manifest.articles)) {
+            const entry = manifest.articles[key];
+            if (!entry || !Array.isArray(entry.variants)) continue;
+            for (const variant of entry.variants) {
+                variant.__REAL_FS_PATHS__ = normalizeProductPaths(variant.__REAL_FS_PATHS__);
+                variant.__REAL_RELATIVE_PATHS__ = normalizeProductPaths(variant.__REAL_RELATIVE_PATHS__);
+            }
+        }
+        manifest.version = 2;
+    }
+
+    if (manifest.version !== 2) return { version: 2, articles: {} };
+    return manifest as MarkdownCacheManifest;
+}
+
+// 将历史版本中字符串形式的产物路径统一为路径数组
+function normalizeProductPaths(value: unknown): string[] {
+    if (typeof value === 'string' && value.length > 0) return [value];
+    if (Array.isArray(value)) return value.filter((item) => typeof item === 'string' && item.length > 0);
+    return [];
 }
 
 export async function markdownInputDriver(context: KecareContext, chunks: Array<InputDriverChunk>): Promise<void> {
@@ -96,8 +120,16 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         ) {
             // 缓存命中：译文等数据都在 manifest 中，无需重新翻译。
             // 但如果产物 .vue 文件在磁盘上缺失（如 CI 全新 checkout 的场景），
-            // 则不能跳过页面生成，需要用缓存数据重新生成产物文件
-            const needRegenerate = cached.variants.some((article) => !article.__REAL_FS_PATHS__ || !existsSync(article.__REAL_FS_PATHS__));
+            // 则不能跳过页面生成，需要用缓存数据重新生成产物文件。
+            // 一个变体可能由多个模板产出多个文件，任一文件缺失都需要重新生成
+            let needRegenerate = false;
+            for (const cachedArticle of cached.variants) {
+                const realFsPaths = cachedArticle.__REAL_FS_PATHS__;
+                if (!Array.isArray(realFsPaths) || realFsPaths.length === 0 || realFsPaths.some((fsPath) => !existsSync(fsPath))) {
+                    needRegenerate = true;
+                    break;
+                }
+            }
             for (const cachedArticle of cached.variants) {
                 await emitArticleHandle(context, {
                     ...cachedArticle,
@@ -163,11 +195,15 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
         if (typeof frontMatter.hidden !== 'boolean') throw new Error(`[markdown] ${fsPath} 中的 hidden 字段必须是布尔值`);
         if (frontMatter.hidden === true) {
-            // 切换为隐藏时，清理已生成的 .vue 文件，避免产生孤儿产物
+            // 切换为隐藏时，清理已生成的 .vue 文件，避免产生孤儿产物。
+            // 一个变体可能由多个模板产出多个文件，必须全部清理
             if (cached?.variants) {
                 for (const variant of cached.variants) {
-                    const realFsPath = variant.__REAL_FS_PATHS__;
-                    if (realFsPath && existsSync(realFsPath)) await rm(realFsPath, { force: true });
+                    const realFsPaths = variant.__REAL_FS_PATHS__;
+                    if (!Array.isArray(realFsPaths)) continue;
+                    for (const realFsPath of realFsPaths) {
+                        if (existsSync(realFsPath)) await rm(realFsPath, { force: true });
+                    }
                 }
             }
             delete manifest.articles[relativePath];
@@ -193,7 +229,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                     hash: hash,
                     relativePath,
                     frontMatter,
-                    cover: cover,
+                    cover: finalCover,
                     rawMarkdown: rawMarkdown,
                 };
                 await emitArticleHandle(context, article);
@@ -210,7 +246,9 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 KecareContext: context,
             });
             const html = `<div class="kecare">${await marked.parse(translatedMarkdown[1], { renderer: headingRenderer })}</div>`;
-            const desc = frontMatter.desc ?? String(frontMatter.desc).trim().length > 0 ? String(frontMatter.desc).trim() : extraDescFromHtml(translatedMarkdown[1], 120);
+            // 译文页面的简介从译文正文中提取，保证摘要语言与页面语言一致
+            // （frontMatter.desc 是原始语言的简介，只用于原始语言变体）
+            const desc = extraDescFromHtml(translatedMarkdown[1], 120);
             const hash = await Bun.hash.xxHash3(relativePath, 1234n).toString(16).slice(0, 8);
             const article: ArticleVariant = {
                 lang: language,
@@ -222,7 +260,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 hash: hash,
                 relativePath,
                 frontMatter,
-                cover: cover,
+                cover: finalCover,
                 rawMarkdown: rawMarkdown,
                 translatedMarkdown: translatedMarkdown[1],
             };

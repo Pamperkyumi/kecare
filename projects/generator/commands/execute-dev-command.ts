@@ -164,9 +164,13 @@ async function pruneOrphans(projectPath: string) {
         const entry = manifest.articles[key];
         if (entry?.variants) {
             for (const variant of entry.variants) {
-                const realFsPath = variant.__REAL_FS_PATHS__;
-                if (realFsPath && existsSync(realFsPath)) {
-                    await rm(realFsPath, { force: true });
+                const realFsPaths = variant.__REAL_FS_PATHS__;
+                if (!Array.isArray(realFsPaths)) continue;
+                // 一个变体可能由多个模板产出多个文件，必须全部清理
+                for (const realFsPath of realFsPaths) {
+                    if (existsSync(realFsPath)) {
+                        await rm(realFsPath, { force: true });
+                    }
                 }
             }
         }

@@ -68,7 +68,7 @@ const commandsMeta: Record<string, CommandMeta> = {
     },
     clean: {
         name: 'clean',
-        summary: '清理生成的文章页面、搜索索引与 markdown 缓存',
+        summary: '按产物登记表清理生成的页面产物（详情/列表/归档页）、搜索索引与 markdown 缓存',
         usage: 'kecare clean <project-path>',
         options: [
             { flag: '--help, -h', type: 'flag', description: '显示该命令的帮助' },

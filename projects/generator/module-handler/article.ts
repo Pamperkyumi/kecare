@@ -1,6 +1,7 @@
 import type { ArticleVariant, KecareContext, ModuleArticleTS } from "kecare";
 import { Glob, write } from "bun";
 import { join } from "node:path";
+import { useProductRegistry } from "../utils/product-registry.ts";
 
 /**
  * 创建文章模块处理程序
@@ -21,7 +22,18 @@ async function createArticleModuleHandler(context: KecareContext) {
 
     const module = {
         async handle(article: ArticleVariant) {
-            if (article.__SKIP_ARTICLE_GENERATOR__) return;
+            // 缓存命中且产物完好时跳过重新生成，但已有产物仍需登记到产物登记表，供 clean 命令清理
+            if (article.__SKIP_ARTICLE_GENERATOR__) {
+                const realFsPaths = article.__REAL_FS_PATHS__;
+                if (Array.isArray(realFsPaths)) {
+                    for (const realFsPath of realFsPaths) useProductRegistry(context).register(realFsPath);
+                }
+                return;
+            }
+
+            // 重新生成前重置产物登记（缓存重建场景下 article 上可能残留上一轮的旧路径）
+            article.__REAL_FS_PATHS__ = [];
+            article.__REAL_RELATIVE_PATHS__ = [];
 
             // 此方法在处理实际文章时，才会被调用
             for (const module of modules) {
@@ -33,9 +45,11 @@ async function createArticleModuleHandler(context: KecareContext) {
                 await write(generatorResult.fsPath, generatorResult.template);
                 console.log(`[article] 已生成 ${generatorResult.fsPath}`);
 
-                // 记录生成的文章真实路径
-                article.__REAL_FS_PATHS__ = generatorResult.fsPath;
-                article.__REAL_RELATIVE_PATHS__ = generatorResult.urlPath;
+                // 登记生成的产物路径：多个模板会产出多个文件，必须全部记录，
+                // 供缓存重建判断、hidden 清理、dev 孤儿清理与 clean 命令使用
+                article.__REAL_FS_PATHS__!.push(generatorResult.fsPath);
+                article.__REAL_RELATIVE_PATHS__!.push(generatorResult.urlPath);
+                useProductRegistry(context).register(generatorResult.fsPath);
             }
         }
 

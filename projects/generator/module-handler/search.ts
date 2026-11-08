@@ -1,7 +1,8 @@
-import type { ArticleVariant, KecareContext, SearchArticleData } from "kecare";
-import { Glob, write } from "bun";
-import { join, basename, } from "node:path";
-import { copyFile, mkdir, rm } from "node:fs/promises";
+import type { KecareContext } from "kecare";
+import { write } from "bun";
+import { join } from "node:path";
+import { mkdir, rm } from "node:fs/promises";
+import { useArticleCollector } from "./article-collector.ts";
 
 interface SearchIndexArticle {
     title: string;
@@ -17,47 +18,41 @@ interface SearchIndex {
     articles: SearchIndexArticle[];
 }
 
+/**
+ * 搜索模块处理程序（内建模块，无模板文件）。
+ * 文章数据统一从 article-collector 派生，索引条目再从同一份数据派生，
+ * 不再维护 articles + indexArticles 两份平行数组
+ */
 async function createSearchModuleHandler(context: KecareContext) {
-    const articles: SearchArticleData[] = [];
-    const indexArticles: SearchIndexArticle[] = [];
-
     const publicPath = join(context.projectPath, 'public', 'articles');
 
+    // 每次生成都重建搜索索引目录，避免残留已删除文章的 JSON
     await rm(publicPath, { recursive: true, force: true });
     await mkdir(publicPath, { recursive: true });
 
-
     const module = {
-        async handle(article: ArticleVariant) {
-            const urlPath = article.__REAL_RELATIVE_PATHS__;
-            const jsonFileName = `${article.hash}.${article.lang}.json`;
-
-            articles.push({
-                title: article.title,
-                lang: article.lang,
-                hash: article.hash,
-                tags: article.frontMatter.tags,
-                date: article.frontMatter.date,
-                urlPath: urlPath,
-                content: article.lang === 'zh-CN' ? article.rawMarkdown : article.translatedMarkdown
-            });
-
-            indexArticles.push({
-                title: article.title,
-                lang: article.lang,
-                hash: article.hash,
-                tags: article.frontMatter.tags,
-                date: article.frontMatter.date,
-                urlPath: urlPath,
-                file: jsonFileName
-            });
-        },
         async finish(context: KecareContext) {
+            const searchArticles = useArticleCollector(context).toSearchArticles();
 
-            for (const article of articles) {
+            // 每篇文章每个语言一份 JSON，正文供前端搜索读取
+            for (const article of searchArticles) {
                 const jsonFileName = `${article.hash}.${article.lang}.json`;
                 const jsonPath = join(publicPath, jsonFileName);
                 await write(jsonPath, JSON.stringify(article, null, 2));
+            }
+
+            // 索引条目从同一份搜索数据派生，仅去掉 content、补上文件名
+            const indexArticles: SearchIndexArticle[] = [];
+            for (const article of searchArticles) {
+                indexArticles.push({
+                    title: article.title,
+                    lang: article.lang,
+                    hash: article.hash,
+                    tags: article.tags,
+                    date: article.date,
+                    urlPath: article.urlPath,
+                    file: `${article.hash}.${article.lang}.json`,
+                });
             }
 
             const indexPath = join(publicPath, 'search-index.json');
