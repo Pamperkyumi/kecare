@@ -12,7 +12,7 @@ Kecare 当前每次改一个字都要 `bun run gen` 全量重跑，体验差；�
 **复用已有缓存基础设施，而非新建增量记账。** 每次变更后创建**新的 `KecareContext`** 重跑 `executeInputDrivers` 全流程：
 - markdown-driver 已有 `markdown-manifest.json` 内容哈希缓存：未变文章命中缓存 → 跳过解析/AI 翻译/.vue 写入（仍走内存收集，廉价）；仅变更文章做实活。
 - 下游聚合页（list/search/archive）每周期用全量内存数据重算 —— 它们是聚合，必须全量，且只写少量文件，廉价。
-- 全部 module-handler 用 `WeakMap<KecareContext, instance>` 模式（[article.ts:48](file:///c:/Users/Pamper/Desktop/workspace/Kecare/projects/generator/module-handler/article.ts#L48)、[list.ts:59](file:///c:/Users/Pamper/Desktop/workspace/Kecare/projects/generator/module-handler/list.ts#L59) 等），新 context = 新实例，无状态泄漏。
+- 全部 module-handler、article-collector、product-registry 都用 `WeakMap<KecareContext, instance>` 模式，新 context = 新实例，无状态泄漏。
 - Nuxt dev 自动监听 `app/pages/` 和 `public/`，kecare 写文件即触发 HMR，**无需特殊桥接**。
 
 ### 已确认的用户决策
@@ -30,11 +30,10 @@ Kecare 当前每次改一个字都要 `bun run gen` 全量重跑，体验差；�
 
 ### 0.2 修复 `hidden: true` 产生孤儿 .vue
 - 文件：[markdown-driver/__ROOT__.ts](file:///c:/Users/Pamper/Desktop/workspace/Kecare/projects/generator/input-drivers/markdown-driver/__ROOT__.ts#L153-L157)
-- 改动：在 `delete manifest.articles[relativePath]` 前，若 `cached` 存在且 variants 有 `__REAL_FS_PATHS__`，循环 `rm` 这些文件。
+- 改动：在 `delete manifest.articles[relativePath]` 前，若 `cached` 存在，遍历每个 variant 的 `__REAL_FS_PATHS__` 数组，`rm` 全部登记的产物文件（多模板 = 多产物）。
 
-### 0.3（可选）修复 articleStats tag 计数 bug
-- 文件：[articleStats.ts:49](file:///c:/Users/Pamper/Desktop/workspace/Kecare/projects/generator/module-handler/articleStats.ts#L49)
-- 改动：`perLang[article.lang]!.tags[tag]!++;`（加 `++`）。dev 模式下若 list 模板用到 tag 统计，不修会持续显示错误数据。
+### 0.3（可选）修复 articleStats tag 计数 bug（已完成，后有演进）
+- 原文件 articleStats.ts 已在统一收集器重构中删除，tag 计数逻辑现位于 [article-collector.ts](file:///c:/Users/Pamper/Desktop/workspace/kecare/projects/generator/module-handler/article-collector.ts) 的 computeStats() 中，计数已用 `?? 0` 兜底累加修复。
 
 ---
 
@@ -74,7 +73,7 @@ Kecare 当前每次改一个字都要 `bun run gen` 全量重跑，体验差；�
 解决文章删除/重命名产生的孤儿 .vue：
 1. 读 `markdown-manifest.json`（复用 markdown-driver 的 `loadMarkdownCache`，需导出该函数）
 2. glob 当前 `.kecare/articles/**/*.{md,mdx,markdown}`，计算 relativePath 集合（与 markdown-driver line 78 同样算法：`fsPath.replace(articlePath, '')`）
-3. 遍历 `manifest.articles` 的 key，不在当前集合的：删除该 entry 所有 variant 的 `__REAL_FS_PATHS__` 文件，`delete manifest.articles[key]`
+3. 遍历 `manifest.articles` 的 key，不在当前集合的：删除该 entry 所有 variant 的 `__REAL_FS_PATHS__` **数组中的全部文件**（多模板 = 多产物），`delete manifest.articles[key]`
 4. 有变更则写回 manifest
 
 ### 2.3 修改 `__ROOT__.ts` 路由
@@ -162,3 +161,16 @@ export function printHelp(commandName?: string): void { /* 无参=全局，有�
    - `bun run test`（根目录）通过现有 e2e 测试
 
 > 注：dev 命令在 Windows 上跑；`fs.watch` recursive 与 `Bun.spawn` 信号行为已在设计中考虑 Windows 限制。
+
+---
+
+## 实现后演进（2026-11 更新，以最新代码为准）
+
+上述方案已全部落地。此后的修复与重构对本文档描述的行为做了如下修正：
+
+1. **产物登记数组化**：`__REAL_FS_PATHS__` / `__REAL_RELATIVE_PATHS__` 从单个字符串升级为**路径数组**（多个 `*.article.ts` 模板会产出多个文件，原先只记录最后一个模板的路径，导致清理/重建漏文件）。manifest 升级为 version: 2，`loadMarkdownCache` 自动迁移 v1。hidden 清理、prune 孤儿清理、缓存重建检查均按数组遍历全部产物。
+2. **产物登记表 + clean 重构**：新增 [utils/product-registry.ts](file:///c:/Users/Pamper/Desktop/workspace/kecare/projects/generator/utils/product-registry.ts)。article/list/archives 产物全部登记，`emitModuleFinish` 统一落盘到 `.kecare/cache/product-registry.json`。clean 命令改为按登记表 + manifest 的真实路径逐文件清理并自下而上回收空目录，不再硬编码 `app/pages/articles`（产物路径由主题模板决定，硬编码必漏）。
+3. **统一数据收集**：list/search/archives 的 handle 阶段平行收集（`articles` / `indexArticles` / `archivesData`）与 articleStats.ts 全部移除，合并为 [module-handler/article-collector.ts](file:///c:/Users/Pamper/Desktop/workspace/kecare/projects/generator/module-handler/article-collector.ts) 的单一 `collect()` + 派生视图（`toArticlesRecord / toSearchArticles / toArchiveArticles / computeStats`）。`emitArticleHandle` 只做 article 生成 + collect 一次，搜索索引条目从同一份数据派生。
+4. **确定性输出**：文章并发处理完成顺序不定，原先各收集器的插入顺序每次漂移，导致 `archives.vue` / `search-index.json` 等产物每次生成都不同。收集器派生视图前按 `relativePath + lang` 排序（代码单元序），相同输入产出逐字节相同的产物。
+5. **翻译与元数据修复**：LLM 翻译失败（标题/段落）不再写入段落缓存，下次运行自动重试；译文页 desc 从译文正文提取（原运算符优先级 bug 使回退逻辑永不执行）；随机封面（theme-config ImageUrl）正确写入变体的 `cover` 字段；搜索 content 的原文/译文判断从硬编码 `zh-CN` 改为 `isOriginalLang`。
+6. **已知未修复项**：根目录 `bun run test`（projects/test/run.ts）当前损坏——`../generator/index.ts` 相对路径按 CWD 解析导致 Module not found，且仅覆盖 14 个夹具中的 1 个。单测请用 `bunx vitest run --config projects/generator/vitest.config.ts`（50 个用例全过）。
