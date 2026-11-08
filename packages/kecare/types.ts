@@ -40,6 +40,10 @@ export type ArticleVariant = {
     frontMatter: FrontMatter;
     [key: string | number | symbol]: any;
     rawMarkdown: string;
+    // 产物登记：该变体已生成的全部页面文件绝对路径（每个 *.article.ts 模板各登记一条，多模板时为多条）
+    __REAL_FS_PATHS__?: string[];
+    // 产物登记：该变体已生成的全部页面 URL 路径，与 __REAL_FS_PATHS__ 一一对应
+    __REAL_RELATIVE_PATHS__?: string[];
 }
 
 export type FrontMatter = {
