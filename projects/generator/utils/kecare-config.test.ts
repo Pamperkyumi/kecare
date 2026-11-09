@@ -1,4 +1,6 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
+import type { KecareConfig } from 'kecare';
+import { validateKecareConfig } from './kecare-config.ts';
 
 vi.mock('fs', () => ({
     existsSync: vi.fn(),
@@ -46,82 +48,58 @@ describe('useKecareConfig', () => {
     });
 });
 
-describe('createKecareConfig LLM 校验逻辑', () => {
+describe('validateKecareConfig LLM 校验逻辑', () => {
     it('LLM 配置缺少 model 时应该抛出错误', () => {
-        const configModule = {
+        // 故意构造缺字段的非法输入，断言为 KecareConfig 以测试校验的拦截能力
+        const config = {
             llm: {
                 apiKey: 'test-key',
                 apiBaseUrl: 'https://api.test.com',
             },
-        };
+        } as KecareConfig;
 
-        expect(() => {
-            if (configModule.llm) {
-                if (!configModule.llm.model) throw new Error('llm.model 不能为空');
-            }
-        }).toThrow('llm.model 不能为空');
+        expect(() => validateKecareConfig(config)).toThrow('llm.model 不能为空');
     });
 
     it('LLM 配置缺少 apiKey 时应该抛出错误', () => {
-        const configModule = {
+        const config = {
             llm: {
                 model: 'gpt-4',
                 apiBaseUrl: 'https://api.test.com',
             },
-        };
+        } as KecareConfig;
 
-        expect(() => {
-            if (configModule.llm) {
-                if (!configModule.llm.model) throw new Error('llm.model 不能为空');
-                if (!configModule.llm.apiKey) throw new Error('llm.apiKey 不能为空');
-            }
-        }).toThrow('llm.apiKey 不能为空');
+        expect(() => validateKecareConfig(config)).toThrow('llm.apiKey 不能为空');
     });
 
     it('LLM 配置缺少 apiBaseUrl 时应该抛出错误', () => {
-        const configModule = {
+        const config = {
             llm: {
                 model: 'gpt-4',
                 apiKey: 'test-key',
             },
-        };
+        } as KecareConfig;
 
-        expect(() => {
-            if (configModule.llm) {
-                if (!configModule.llm.model) throw new Error('llm.model 不能为空');
-                if (!configModule.llm.apiKey) throw new Error('llm.apiKey 不能为空');
-                if (!configModule.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
-            }
-        }).toThrow('llm.apiBaseUrl 不能为空');
+        expect(() => validateKecareConfig(config)).toThrow('llm.apiBaseUrl 不能为空');
     });
 
     it('完整的 LLM 配置应该通过校验', () => {
-        const configModule = {
+        const config: KecareConfig = {
             llm: {
+                provider: 'OpenAI',
                 model: 'gpt-4',
                 apiKey: 'test-key',
                 apiBaseUrl: 'https://api.test.com',
+                prompt: '',
             },
         };
 
-        expect(() => {
-            if (configModule.llm) {
-                if (!configModule.llm.model) throw new Error('llm.model 不能为空');
-                if (!configModule.llm.apiKey) throw new Error('llm.apiKey 不能为空');
-                if (!configModule.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
-            }
-        }).not.toThrow();
+        expect(() => validateKecareConfig(config)).not.toThrow();
     });
 
     it('没有 LLM 配置时应该通过校验', () => {
-        const configModule = {};
+        const config = {} as KecareConfig;
 
-        expect(() => {
-            if (configModule.llm) {
-                if (!configModule.llm.model) throw new Error('llm.model 不能为空');
-                if (!configModule.llm.apiKey) throw new Error('llm.apiKey 不能为空');
-                if (!configModule.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
-            }
-        }).not.toThrow();
+        expect(() => validateKecareConfig(config)).not.toThrow();
     });
 });

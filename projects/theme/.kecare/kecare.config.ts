@@ -12,9 +12,9 @@ export async function kecareConfig() {
         }
     };
 }
-export async function ThemeConfig() {
+export async function themeConfig() {
     return {
-        ImageUrl: [
+        imageUrl: [
             'https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg',
             'https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785613091954.webp',
         ]

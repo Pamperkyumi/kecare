@@ -7,10 +7,10 @@ async function createThemeConfig(context: KecareContext) {
     const configModule = await import(join(context.projectPath, '.kecare', 'kecare.config.ts'));
 
     // 校验配置文件
-    if (configModule.ThemeConfig) {
-        const themeConfig = await configModule.ThemeConfig();
-        if (!themeConfig.ImageUrl || themeConfig.ImageUrl.length === 0) {
-            throw new Error('ThemeConfig.ImageUrl 不能为空');
+    if (configModule.themeConfig) {
+        const themeConfig = await configModule.themeConfig();
+        if (!themeConfig.imageUrl || themeConfig.imageUrl.length === 0) {
+            throw new Error('themeConfig.imageUrl 不能为空');
         }
         return themeConfig as ThemeConfig;
     }

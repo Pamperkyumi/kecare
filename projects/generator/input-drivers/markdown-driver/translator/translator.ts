@@ -9,8 +9,8 @@ import Anthropic from '@anthropic-ai/sdk';
 
 export async function translator(options: TranslationConfigOptions): Promise<[string, string]> {
 
-    const { llm, text, title, lang, KecareContext } = options;
-    const { apiKey, apiBaseUrl, model, prompt, provider, max_tokens } = llm;
+    const { llm, text, title, lang, kecareContext } = options;
+    const { apiKey, apiBaseUrl, model, prompt, provider, maxTokens } = llm;
 
     if (!lang) {
         consola.warn(`${lang}.trans.ts is not provided, skipping translation`);
@@ -42,7 +42,7 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
     // 缓存文件按 (语言, 原始标题哈希) 定位目录，标题译文用固定键存入同一份缓存文件。
     // 命中时直接复用，避免每次文章内容变更都重新调用 AI 翻译标题
     const titleHash = Bun.hash.xxHash3(title || "", 1234n).toString(16).slice(0, 8);
-    const cacheDir = join(KecareContext.projectPath, ".kecare", "cache", "translations", lang, titleHash);
+    const cacheDir = join(kecareContext.projectPath, ".kecare", "cache", "translations", lang, titleHash);
     mkdirSync(cacheDir, { recursive: true });
     const cacheFilePath = join(cacheDir, "translations.json");
     const TITLE_CACHE_KEY = "__TRANSLATED_TITLE__";
@@ -114,7 +114,7 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
             try {
                 const completion = await anthropicClient!.messages.create({
                     model: model || "deepseek-v4-flash",
-                    max_tokens: max_tokens || 1024,
+                    max_tokens: maxTokens || 1024,
                     system: systemPrompt,
                     messages: [
                         { role: "user", content: titleWithPlaceholders },
@@ -206,7 +206,7 @@ export async function translator(options: TranslationConfigOptions): Promise<[st
             try {
                 const completion = await anthropicClient!.messages.create({
                     model: model || "deepseek-v4-flash",
-                    max_tokens: max_tokens || 1024,
+                    max_tokens: maxTokens || 1024,
                     system: systemPrompt,
                     messages: [
                         { role: "user", content: part },

@@ -2,18 +2,23 @@ import { join } from "path";
 import type { KecareConfig, KecareContext } from "kecare";
 import { existsSync } from "fs";
 
+// 校验 KecareConfig 的 llm 字段，字段缺失时抛出错误（在 gen 阶段早失败，而不是翻译时才报错）。
+// 独立导出为纯函数，供 createKecareConfig 与单元测试共用同一份校验逻辑，避免测试复制源码
+export function validateKecareConfig(config: KecareConfig): void {
+    // 没有 llm 配置视为合法（不启用 AI 翻译）
+    if (!config.llm) return;
+    if (!config.llm.model) throw new Error('llm.model 不能为空');
+    if (!config.llm.apiKey) throw new Error('llm.apiKey 不能为空，请通过 API_KEY 环境变量配置');
+    if (!config.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
+}
+
 async function createKecareConfig(context: KecareContext) {
     if (!existsSync(join(context.projectPath, '.kecare', 'kecare.config.ts'))) return {} as KecareConfig;
     const configModule = await import(join(context.projectPath, '.kecare', 'kecare.config.ts'));
     const config = (await configModule.kecareConfig(context)) as KecareConfig;
 
     // llm 实际来自 kecareConfig() 的返回值，需在结果上校验
-    if (config.llm) {
-        // 如果存在 llm 配置，校验其字段
-        if (!config.llm.model) throw new Error('llm.model 不能为空');
-        if (!config.llm.apiKey) throw new Error('llm.apiKey 不能为空，请通过 API_KEY 环境变量配置');
-        if (!config.llm.apiBaseUrl) throw new Error('llm.apiBaseUrl 不能为空');
-    }
+    validateKecareConfig(config);
 
     return config;
 }

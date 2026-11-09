@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useKecareSDK, } from 'kecare';
+import { useKecareSDK, } from 'kecare/sdk';
 import TocCard from '~/components/Theme/Sidebar/Toc-card.vue';
 import SidebarNavtree from '~/components/Theme/Sidebar/Sidebar-navtree.vue';
 import Navbar from '~/components/Theme/Sidebar/Navbar.vue';

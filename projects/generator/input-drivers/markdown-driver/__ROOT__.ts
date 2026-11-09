@@ -151,7 +151,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         let finalCover = cover;
         if (!finalCover) {
             const themeConfig = await useThemeConfig(context);
-            const images = themeConfig.ImageUrl;
+            const images = themeConfig.imageUrl;
             if (images && images.length > 0) {
                 const randomIndex = Math.floor(Math.random() * images.length);
                 finalCover = images[randomIndex];
@@ -243,7 +243,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
                 text: rawMarkdown,
                 title: frontMatter.title,
                 lang: language,
-                KecareContext: context,
+                kecareContext: context,
             });
             const html = `<div class="kecare">${await marked.parse(translatedMarkdown[1], { renderer: headingRenderer })}</div>`;
             // 译文页面的简介从译文正文中提取，保证摘要语言与页面语言一致
