@@ -22,11 +22,11 @@
 ```
 Kecare/
 ├── packages/
-│   └── kecare/              # 核心包，导出公共类型和工具函数
+│   └── kecare/              # 核心包（单包双入口）
 │       ├── types.ts         # 核心类型定义 (KecareContext, ArticleVariant, FrontMatter, ArticlesRecord 等)
-│       ├── sdk/             # 浏览器端运行时 SDK（tabs/代码高亮/复制/目录等文章页交互）
+│       ├── sdk/             # 浏览器端运行时 SDK（tabs/代码高亮/复制/目录等文章页交互），从 "kecare/sdk" 子路径导出
 │       ├── utils/           # 工具函数 (is-valid-date-string.ts)
-│       └── index.ts         # 包入口（导出 sdk + types + utils）
+│       └── index.ts         # 根入口 "kecare"：仅导出 types + utils（环境无关，禁止 re-export sdk）
 │
 ├── projects/
 │   ├── generator/           # 生成器核心（Bun 侧 CLI）
