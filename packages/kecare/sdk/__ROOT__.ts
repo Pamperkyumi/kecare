@@ -1,9 +1,9 @@
-import { onMountedSidebar } from './sidebar';
-import { style } from './style';
-import { onMountedSyntaxHighlight } from './syntax-highlight';
-import { onMountedTabs } from './tabs';
-import { onMountedCopy } from './copy';
-import { onMountedLanguageSwitcher } from './language-switcher';
+import { onMountedSidebar } from './sidebar.ts';
+import { style } from './style.ts';
+import { onMountedSyntaxHighlight } from './syntax-highlight.ts';
+import { onMountedTabs } from './tabs.ts';
+import { onMountedCopy } from './copy.ts';
+import { onMountedLanguageSwitcher } from './language-switcher.ts';
 
 let instancePromise: ReturnType<typeof createKecareSDK> | null = null; // 缓存 Promise
 

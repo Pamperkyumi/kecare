@@ -10,7 +10,7 @@ export async function onMountedSyntaxHighlight(articleElement: HTMLDivElement) {
 
     for (const codeElement of codeElements) {
         const classList = codeElement.className.split(' ')
-        const langClass = classList.find(cls => cls.startsWith('language-'))
+        const langClass = classList.find((cls: string) => cls.startsWith('language-'))
         // 从 class 中拆出语言和 meta 标注：如 "language-js{4}" → lang="js"、meta="{4}"
         // marked 会把围栏语言后的整段信息（含 {行号} 标注）放进 language-xxx class
         let lang = 'text'

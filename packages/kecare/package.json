@@ -1,8 +1,12 @@
 {
   "name": "kecare",
-  "version": "1.0.0-beta.124",
-  "module": "index.ts",
+  "version": "1.0.0-beta.125",
   "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./sdk": "./sdk/__ROOT__.ts"
+  },
+  "module": "index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/Pamperkyumi/kecare"

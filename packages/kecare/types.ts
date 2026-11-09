@@ -6,12 +6,12 @@ export type KecareConfig = {
         apiKey: string;
         apiBaseUrl: string;
         prompt: string;
-        max_tokens?: number;
+        maxTokens?: number;
     }
 }
 
 export type ThemeConfig = {
-    ImageUrl: string[];
+    imageUrl: string[];
 }
 
 export type ArticleStats = {
@@ -122,7 +122,7 @@ export type ArchiveArticleData = {
 
 // 翻译
 export type TranslationConfigOptions = {
-    KecareContext: KecareContext;
+    kecareContext: KecareContext;
     llm: KecareConfig['llm'];
     text?: string;
     title?: string;
