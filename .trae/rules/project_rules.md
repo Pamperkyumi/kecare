@@ -95,6 +95,7 @@ module-handler/__ROOT__.ts → 处理文章数据，生成页面
 - `execute-dev-command.ts`：dev 命令，初始全量生成后监听 `.kecare/articles`（400ms debounce），每周期先 pruneOrphans 清理孤儿产物再 runGeneration；`--with-nuxt` 同时拉起 nuxt dev 子进程
 - `execute-init-command.ts`：初始化项目（模板克隆/空项目/GitHub 导入）
 - `execute-clean-command.ts`：按产物登记表 + manifest 的真实路径清理全部生成产物与搜索索引，并自下而上回收空目录
+- `execute-check-command.ts`：check 体检命令——校验模板导出契约（含干跑）、Front Matter（全量扫描、无视缓存）、菜单与配置；不生成文件、不调 LLM；有问题 exit(1)，可挂 CI
 - `run-generation.ts`：共享生成流程（gen 与 dev 周期共用）
 - `execute-version-command.ts` / `help.ts`：版本输出 / 统一帮助系统
 
