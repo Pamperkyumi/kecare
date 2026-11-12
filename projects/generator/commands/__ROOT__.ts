@@ -4,6 +4,7 @@ import { executeIndexCommand } from "./execute-index-command.ts";
 import { executeVersionCommand } from "./execute-version-command.ts";
 import { executeCleanCommand } from "./execute-clean-command.ts";
 import { executeDevCommand } from "./execute-dev-command.ts";
+import { executeCheckCommand } from "./execute-check-command.ts";
 import { printHelp } from "./help.ts";
 
 export type Params = {
@@ -25,6 +26,7 @@ async function __executeCommands(params: Params) {
     else if (params.command === 'version') await executeVersionCommand(params);
     else if (params.command === 'init') await executeInitCommand(params);
     else if (params.command === 'clean') await executeCleanCommand(params);
+    else if (params.command === 'check') await executeCheckCommand(params);
     else if (params.command === 'help') {
         // help 命令：kecare help [command]
         printHelp(params.commands[0]);

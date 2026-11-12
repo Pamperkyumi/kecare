@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import type { ArticlesRecord, KecareContext } from "kecare";
 import { parseDateString } from "kecare";
 
-export const type = 'article-detail';
+export const type = 'article-list';
 
 const ARTICLES_PER_PAGE = 5;
 const TARGET_LANGUAGE = 'zh-CN';

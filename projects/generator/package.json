@@ -3,7 +3,7 @@
   "exports": "./index.ts",
   "type": "module",
   "private": true,
-  "version": "1.0.0-beta.125",
+  "version": "1.0.0-beta.126",
   "devDependencies": {
     "@types/bun": "latest"
   },

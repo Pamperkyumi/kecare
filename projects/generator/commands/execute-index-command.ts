@@ -19,6 +19,7 @@ export async function executeIndexCommand(params: Params) {
         await runGeneration(projectPath);
     } catch (error) {
         consola.error(error instanceof Error ? error.message : String(error));
+        consola.info('提示：可运行 kecare check <project-path> 快速体检模板与文章配置');
         process.exit(1);
     }
 }

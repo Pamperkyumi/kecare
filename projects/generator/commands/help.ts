@@ -77,6 +77,17 @@ const commandsMeta: Record<string, CommandMeta> = {
             { command: 'kecare clean ./projects/theme', description: '清理 theme 项目的生成产物' },
         ],
     },
+    check: {
+        name: 'check',
+        summary: '快速体检：校验模板导出契约、文章 Front Matter、菜单与配置（不生成文件、不调 LLM、无视缓存）',
+        usage: 'kecare check <project-path>',
+        options: [
+            { flag: '--help, -h', type: 'flag', description: '显示该命令的帮助' },
+        ],
+        examples: [
+            { command: 'kecare check ./projects/theme', description: '体检 theme 项目的模板与文章，适合挂在 pre-commit / CI' },
+        ],
+    },
     version: {
         name: 'version',
         summary: '显示 Kecare 版本号',
@@ -101,7 +112,7 @@ const commandsMeta: Record<string, CommandMeta> = {
 };
 
 // 命令展示顺序
-const commandOrder = ['gen', 'dev', 'init', 'clean', 'version', 'help'];
+const commandOrder = ['gen', 'dev', 'init', 'clean', 'check', 'version', 'help'];
 
 /**
  * 打印帮助信息。无参数时打印全局帮助，有参数时打印指定命令的详细帮助。
