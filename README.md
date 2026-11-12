@@ -1,97 +1,132 @@
 # Kecare
 
-基于 Bun + Nuxt 的静态博客生成器。编写 Markdown，自动生成多语言文章页、列表页、归档页、菜单与搜索索引，并支持增量生成与开发时热更新。
+English | [简体中文](./README.zh-CN.md)
 
-## 特性
+Kecare is a static site generator for multilingual content sites. You write Markdown in `.kecare/articles/`; the build translates it, renders it, and hands finished pages to whatever file-routing framework your theme ships with — Nuxt by default, but the output doesn't care. The generator and the site framework stay separate on purpose: content belongs to you, the pipeline belongs to Kecare, the presentation layer belongs to the theme.
 
-- **Markdown 驱动**：Front Matter 声明元数据，`marked` + 自定义扩展（KaTeX、代码高亮、Tabs 等）渲染 HTML
-- **多语言翻译**：`translate` 字段声明目标语言，支持 AI 翻译并缓存翻译结果，增量生成时跳过已翻译内容
-- **主题系统**：通过 `.kecare/` 目录下的 `*.article.ts`、`*.list.ts`、`*.menu.source.ts`、`*.archives.ts` 模板文件定制页面
-- **增量生成与热更新**：基于 manifest 缓存实现增量生成，`dev` 命令监听源文件变化并联动 Nuxt HMR
-- **内置搜索与统计**：自动生成搜索索引与文章统计
+Think of it as a compiler. Markdown in, pages out — the renderer is just the host.
 
-## 仓库结构
+## Why Kecare
 
-```
-Kecare/
-├── packages/
-│   ├── kecare/           # 核心包：公共类型定义与工具函数（发布到 npm）
-│   └── create-kecare/    # 脚手架：创建新的 Kecare 项目（发布到 npm）
-├── projects/
-│   ├── generator/        # 生成器核心（CLI 命令、输入驱动、模块处理器）
-│   ├── theme/            # 官方主题示例（Nuxt 应用，文章源文件位于 .kecare/articles）
-│   └── test/             # 端到端测试用例
-├── .commands/            # 仓库辅助脚本（CI 发布等）
-├── Publish.ts            # 交互式发布脚本（版本号、打 tag、推送）
-└── kecare-zh-cn.dockerfile  # 中文站点构建与部署镜像
-```
+**Translation is a build step, not a runtime widget.** Put `translate: ['zh-CN', 'en-US', 'ja-JP']` in your front matter and the build calls an OpenAI- or Anthropic-compatible API to translate the article. Each language gets real URLs with real HTML, which search engines like better than a language toggle in the browser. A two-layer cache keeps the bills sane: a content-hash manifest skips untouched articles entirely, and paragraph-level caching means editing one paragraph only re-translates that paragraph. Code blocks are masked with placeholders before anything leaves the machine. Failed calls fall back to the original text and are never cached, so a flaky network doesn't permanently degrade a translation.
 
-> `projects/kecare-template-nuxt` 是模板子模块（默认不初始化），如需修改模板请先执行 `git submodule update --init projects/kecare-template-nuxt`。
+**Themes are projects, and templates are TypeScript.** A theme is a complete Nuxt project with its own dependencies and components. The Kecare-specific part is a handful of files in `.kecare/`:
 
-## 环境要求
+| File | Called |
+| --- | --- |
+| `*.article.ts` | once per article variant |
+| `*.list.ts` | once after all articles, receives the full record |
+| `*.archives.ts` | once, receives archive data |
+| `*.menu.source.ts` | once, before articles — link names become hash links |
 
-- [Bun](https://bun.com) >= 1.2
-- Node.js >= 20（Nuxt 主题开发时使用）
+Each template exports a `generator` function that receives typed data and returns `{ urlPath, fsPath, template }`. Where pages live, how they're routed, what's in them — that's your code, not a config dialect. Several `*.article.ts` templates produce several output files per article, and every one of them is tracked, so cache rebuilds and `clean` never miss a file.
 
-## 快速开始
+**Builds are incremental and deterministic.** Same input, byte-identical output — article data is collected once and sorted by path and language before any view is derived, so nothing depends on concurrent completion order. Unchanged articles skip parsing and translation. In `dev` mode Kecare watches `.kecare/articles/`, regenerates only what changed, and writes pages straight into Nuxt's route directory; Vite's HMR takes it from there. Deleted or hidden articles have their pages pruned automatically.
+
+**Problems surface before the build, not during it.** `kecare check` loads your templates, dry-runs them with minimal data, scans every article's front matter (cached or not — the build itself skips validation on cache hits), and validates your config. It runs in seconds, writes nothing, calls no APIs, and exits non-zero when something is off, so it slots into CI or a pre-commit hook. When `gen` does fail, it points you at `check`.
+
+**Cleanup is tracked, not guessed.** Every file the generator writes lands in a product registry. `kecare clean` deletes exactly those files plus the search index and caches, then removes the empty directories left behind — no hardcoded paths, no orphans.
+
+Also in the box: KaTeX and tab groups in the Markdown pipeline, a built-in search index, per-language article stats for list and archive templates, and a small browser SDK (tabs, Shiki highlighting, copy buttons, TOC, language switching) so themes don't each rebuild the same article-page plumbing. The CLI ships as standalone per-platform binaries via `create-kecare`, so a content site needs no generator dependencies in its `package.json`.
+
+## Quick start
 
 ```bash
-# 安装依赖
 bun install
 
-# 生成主题页面（路径为本地 theme 目录，可按需修改 package.json 中的脚本）
+# generate the example theme
 bun run gen
 
-# 开发模式（监听文章变化 + 启动 Nuxt 开发服务器）
+# watch mode: regenerate on save, wired to Nuxt HMR
 bun run dev
 
-# 运行测试
-bun run test
+# lint templates + front matter + config before committing
+bun run ./projects/generator/index.ts check projects/theme
 
-# 清理生成产物
+# remove generated files and caches
 bun run clean
 ```
 
-## 生成器 CLI
+Unit tests: `bunx vitest run --config projects/generator/vitest.config.ts`.
 
-直接运行生成器：
+Requirements: Bun >= 1.2, Node.js >= 20 (for the Nuxt theme).
+
+## CLI
 
 ```bash
-bun run ./projects/generator/index.ts <command> <theme-path> [options]
+bun run ./projects/generator/index.ts <command> <project-path> [options]
 ```
 
-| 命令   | 说明                                       |
-| ------ | ------------------------------------------ |
-| `gen`  | 扫描并生成主题页面                         |
-| `dev`  | 增量生成并监听文件变化，联动 Nuxt HMR      |
-| `init` | 初始化主题目录结构                         |
-| `clean`| 清理生成的页面与缓存                      |
-| `version` | 输出版本信息                            |
-| `help` | 查看帮助，支持 `--option=value` 传参       |
+| Command | Description |
+| --- | --- |
+| `gen` | Scan articles and generate all pages |
+| `dev` | Incremental generation + file watching, wired to Nuxt HMR (`--with-nuxt` to also start `nuxt dev`) |
+| `check` | Fast lint of template contracts, front matter, menus and config — no writes, no API calls, non-zero exit on problems |
+| `init` | Initialize a project from a template |
+| `clean` | Remove generated files and caches based on the product registry |
+| `version` / `help` | Version info and command help (`--help, -h` on any command) |
 
-## 文章格式
+## Writing articles
 
-文章源文件位于主题的 `.kecare/articles/` 目录，Front Matter 必填字段：
+Articles are Markdown files under `<theme>/.kecare/articles/`:
 
 ```markdown
 ---
-title: 文章标题
-menu: 所属菜单
-date: 2026-01-01
-translate:
-  - zh-CN        # 第一个为原始语言
+title: My post            # optional — falls back to the filename
+menu: docs                # optional — groups the post under a menu
+date: 2026-01-01          # required, YYYY-MM-DD
+translate:                # first entry is the source language
+  - zh-CN
   - en-US
   - ja-JP
 ---
 
-正文内容（Markdown）...
+Body text...
 ```
 
-## 发布
+Optional fields: `desc`, `cover`, `tags`, `sticky`, `author`, `layout`, `hidden`.
 
-- 运行 `bun run Publish.ts`：交互式更新版本号、生成 commit message、打 tag 并推送，随后同步发布 theme 仓库
-- 推送 tag 后，GitHub Actions（`.github/workflows/publish.yml`）自动发布 npm 包（`kecare`、`create-kecare`、`kecare-generator`）
+## A template, concretely
+
+```ts
+// .kecare/foo-bar.article.ts
+import { join } from 'node:path';
+import type { ArticleVariant, KecareContext } from 'kecare';
+
+export async function generator(context: KecareContext, article: ArticleVariant) {
+    return {
+        urlPath: `articles/${article.lang}/${article.hash}`,
+        fsPath: join(context.projectPath, 'app/pages/articles', article.lang, `${article.hash}.vue`),
+        template: `<template>...</template>`,
+    };
+}
+```
+
+All language variants of an article share one short hash of its path, so URLs look like `articles/en-US/fcc31e3f` and the mapping between languages is predictable.
+
+## Repository layout
+
+```
+Kecare/
+├── packages/
+│   ├── kecare/           # core package: shared types + browser SDK (published to npm)
+│   └── create-kecare/    # scaffolding: installs the standalone CLI (published to npm)
+├── projects/
+│   ├── generator/        # the generator: CLI commands, input drivers, module handlers
+│   ├── theme/            # official example theme (Nuxt app, articles live in .kecare/articles)
+│   └── test/             # end-to-end fixtures
+├── .commands/            # repo helper scripts (CI publishing)
+├── Publish.ts            # interactive release script (version, tag, push)
+└── kecare-zh-cn.dockerfile
+```
+
+> `projects/kecare-template-nuxt` is a submodule (not initialized by default). To modify the template, run `git submodule update --init projects/kecare-template-nuxt` first.
+
+## Publishing
+
+- Run `bun run Publish.ts`: bump the version interactively, generate the commit message, tag and push, then sync the theme repo.
+- Pushing a tag triggers GitHub Actions (`.github/workflows/publish.yml`), which publishes the npm packages (`kecare`, `create-kecare`, and the per-platform `@kecare/*` binaries).
 
 ## License
 
-见 [LICENSE](./LICENSE)。
+See [LICENSE](./LICENSE).
