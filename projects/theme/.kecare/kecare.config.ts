@@ -12,7 +12,7 @@ export async function kecareConfig() {
         }
     };
 }
-export async function themeConfig() {
+export async function themeConfig(): Promise<ThemeConfig> {
     return {
         imageUrl: [
             'https://pichostoss.oss-cn-shanghai.aliyuncs.com/images/1785612859072.jpg',
