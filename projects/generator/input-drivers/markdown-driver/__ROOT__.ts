@@ -179,6 +179,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
             author: rawFrontMatter.author ?? undefined,
             date: rawFrontMatter.date ?? undefined,
             hidden: rawFrontMatter.hidden ?? false,
+            type: rawFrontMatter.type ?? undefined,
         }
 
         // 校验数据是否正确
@@ -194,6 +195,7 @@ export async function markdownInputDriver(context: KecareContext, chunks: Array<
         if (typeof frontMatter.sticky !== 'number') throw new Error(`[markdown] ${fsPath} 中的 sticky 字段必须是数字`);
         if (!parseDateString(frontMatter.date)) throw new Error(`[markdown] ${fsPath} 中的 date 字段格式错误，期望格式如 "2026-03-01"`);
         if (typeof frontMatter.hidden !== 'boolean') throw new Error(`[markdown] ${fsPath} 中的 hidden 字段必须是布尔值`);
+        if (typeof frontMatter.type !== "undefined" && typeof frontMatter.type !== 'string') throw new Error(`[markdown] ${fsPath} 中的 type 字段必须是字符串`);
         if (frontMatter.hidden === true) {
             // 切换为隐藏时，清理已生成的 .vue 文件，避免产生孤儿产物。
             // 一个变体可能由多个模板产出多个文件，必须全部清理

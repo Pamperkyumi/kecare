@@ -3,6 +3,7 @@ date: 2026-03-09
 menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
 author: Pamper
+type: guide
 ---
 
 # Markdown 扩展

@@ -3,6 +3,7 @@ date: 2026-03-08
 menu: test
 translate: ['zh-CN', 'en-US', 'ja-JP']
 author: Pamper
+type: guide
 ---
 
 # 部署到 GitHub Pages

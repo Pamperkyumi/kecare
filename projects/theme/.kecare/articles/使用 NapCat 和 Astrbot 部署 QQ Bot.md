@@ -3,6 +3,7 @@ date: 2026-11-03
 sticky: 5
 translate: ['zh-CN']
 author: Pamper
+type: blog
 ---
 
 

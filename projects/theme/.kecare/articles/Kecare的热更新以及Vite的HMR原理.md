@@ -3,6 +3,7 @@ date: 2026-08-03
 sticky: 5
 translate: ['zh-CN']
 author: Pamper
+type: blog
 ---
 
 # Kecare的热更新以及Vite的HMR原理

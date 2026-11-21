@@ -12,5 +12,8 @@
   "a3d628e6": "## NavItem Structure",
   "6e598c92": "__CODE_BLOCK_2__",
   "fcd33f63": "- **Leaf nodes**: clickable for navigation, with `link` being the article path (e.g., `./快速开始`)\n- **Group nodes**: for categorization only, containing an `items` subarray",
-  "__TRANSLATED_TITLE__": "Menu system"
+  "__TRANSLATED_TITLE__": "Menu system",
+  "643a6409": "## Create Menu\n \n \nMenu files are stored in the `.kecare/menus/` directory, with the naming format `<名称>.menu.source.ts`:",
+  "3f3f7874": "Kecare provides a unified menu configuration method for generating the sidebar.",
+  "e11e8704": "Kecare provides a unified menu configuration method for generating side"
 }

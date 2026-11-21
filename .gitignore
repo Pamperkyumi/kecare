@@ -41,6 +41,8 @@ generator.exe
 
 # kecare gen 产物（部署构建时执行 bun run gen 重新生成）
 projects/theme/app/pages/articles/
+projects/theme/app/pages/guide/
+projects/theme/app/pages/blog/
 projects/theme/app/pages/archives.vue
 projects/theme/app/pages/index.vue
 projects/theme/app/pages/page-*.vue

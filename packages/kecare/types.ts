@@ -58,6 +58,7 @@ export type FrontMatter = {
     sticky: number;
     author: string | undefined;
     hidden: boolean;
+    type: string;
 };
 
 // 生成文章详情

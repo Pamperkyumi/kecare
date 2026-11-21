@@ -5,6 +5,7 @@ menu: test
 translate: ['zh-CN']
 author: Pamper
 tags: [Kecare, 静态站点生成器, 文档]
+type: guide
 ---
 # 为什么选择 Kecare
 

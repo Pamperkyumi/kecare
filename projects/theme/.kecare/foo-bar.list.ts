@@ -6,6 +6,9 @@ export const type = 'article-list';
 
 const ARTICLES_PER_PAGE = 5;
 const TARGET_LANGUAGE = 'zh-CN';
+// type=guide 的文章不进入落地页列表（详情页 .vue 仍正常构建），仅保留此处指定的一篇
+// 按源文件相对路径指定（即 .kecare/articles/ 下的文件名），换指定文章时改这一行即可
+const GUIDE_LANDING_EXCEPTION = '/关于我.md';
 
 export function generator(context: KecareContext, articles: ArticlesRecord) {
     const files: Array<{ fsPath: string, template: string }> = [];
@@ -13,9 +16,11 @@ export function generator(context: KecareContext, articles: ArticlesRecord) {
 
     for (const articleHash in articles) {
         const articleLanguages = articles[articleHash]!;
-        if (articleLanguages[TARGET_LANGUAGE]) {
-            zhArticles.push(articleLanguages[TARGET_LANGUAGE]);
-        }
+        const article = articleLanguages[TARGET_LANGUAGE];
+        if (!article) continue;
+        // guide 类型文章跳过落地页列表，仅 GUIDE_LANDING_EXCEPTION 指定的文章例外
+        if (article.frontMatter.type === 'guide' && article.relativePath !== GUIDE_LANDING_EXCEPTION) continue;
+        zhArticles.push(article);
     }
     //sort by sticky and date
     zhArticles.sort((a: any, b: any) => {
